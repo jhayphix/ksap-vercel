@@ -1,0 +1,91 @@
+/* Custom Green Checkbox */
+.form-check-input:checked {
+    background-color: #28a745 !important; /* Bootstrap success green */
+    border-color: #28a745 !important;
+  }
+
+
+#dynamicFormBuilder input, #dynamicFormBuilder select, #dynamicFormBuilder textarea {
+    border: none;
+    border-radius: none;
+    border-bottom: 2px solid var(--gray_color_3);
+}
+
+#dynamicFormBuilder input:focus, #dynamicFormBuilder select:focus, #dynamicFormBuilder textarea:focus {
+    outline: none !important;
+    box-shadow: none !important;
+    border-color: var(--secondary_color) !important;
+    border-bottom-width: 2px;
+}
+
+
+#dynamicFormBuilder label {
+    display: none;
+}
+
+#dynamicFormBuilder label.show_label {
+    display: inline-block;
+}
+
+/* Application Form */
+#uniqueCustomForm .fieldHasError {
+    border-color: var(--danger_light_color) !important;
+}
+#uniqueCustomForm .fieldHasError:focus {
+    border-color: var(--danger_color) !important;
+}
+#uniqueCustomForm .input, #uniqueCustomForm textarea, #uniqueCustomForm select {
+    border: none;
+    border-radius: none;
+    border-bottom: 2px solid var(--gray_color_3);
+    /* padding-left: 2px; */
+}
+#uniqueCustomForm .input:focus, #uniqueCustomForm textarea:focus {
+    outline: none !important;
+    box-shadow: none !important;
+    border-color: var(--secondary_color) !important;
+    border-bottom-width: 2px;
+}
+#uniqueCustomForm select:focus {
+    outline: none !important;
+    box-shadow: none !important;
+    border-color: var(--secondary_color);
+}
+#uniqueCustomForm .form_check_input{
+    border-color: var(--gray_color);
+}
+#uniqueCustomForm .form_check_input:checked{
+    border-color: var(--secondary_color_2);
+    background-color: var(--secondary_color_2);
+}
+
+
+input[type="datetime-local"],
+input[type="date"],
+input[type="time"] {
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+input[type="datetime-local"]:focus,
+input[type="date"]:focus,
+input[type="time"]:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+  
+  input[type="checkbox"] {
+    border: 1.8px solid var(--secondary_color) !important;
+    background-color: white !important;
+    cursor: pointer;
+  }
+  
+  input[type="checkbox"]:checked {
+    background-color: var(--secondary_color_2) !important;
+    border-color: var(--secondary_color_2) !important;
+  }
+
+  

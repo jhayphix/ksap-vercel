@@ -1,0 +1,195 @@
+
+CONCEPT:
+    ✔ @Restrictions @done(25-04-02 09:28)
+    ✔ @POSSIBLE-CENARIOS: @done(25-04-02 09:28)
+    ☐ @Add-These-To-the-database
+    ☐ @FILE-HANDLING
+    ☐ @WORK-ON-STRUCTURE
+    ☐ @DO-THIS-BEFORE-HOSTING
+    ☐ @VERSION-2
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+UPDATE THE DATABASE:
+    ☐ Somethings like with updatedAt should be last updated at
+    ☐ Also the lastUpdateAtTime should be there instead of converting it each time
+    ☐ createdByAdminId , then the createdByAdmin ( having the full name of the admin) instead of converting it each time
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+FILE HANDLING:
+    ☐ Work on documents update where needed
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+WORK ON STRUCTURE:
+    ☐ Work on queries and queries outside context
+    ☐ Create a resusable CRUD for all and display correct axios errors
+    ☐ Change Helper to a context
+    ☐ Change some queries
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+DO THIS BEFORE HOSTING:
+    ☐ Change && to ? : 
+    ☐ If none on scholarship and applicants display " You have no scholarship ... existing application ... "
+    ☐ Delete all console output (console.log...)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+VERSION 2:
+    ☐ User deactivation
+    ☐ Generating of award letter
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+Archive:
+  ✔ For admin (Fix super admin) @done(25-04-02 09:28) @project(POSSIBLE CENARIOS)
+  ✔ Super admin create scholarship @done(25-04-02 09:11) @project(POSSIBLE CENARIOS)
+  ✔ Applicant apply for scholarship @done(25-04-02 09:28) @project(POSSIBLE CENARIOS)
+  ✔ Review manager review application @done(25-04-02 09:28) @project(POSSIBLE CENARIOS)
+  ✔ Approval manager approve application @done(25-04-02 09:28) @project(POSSIBLE CENARIOS)
+  ✔ Only Super Admin See NavLink [Register admin, Create Scholarship] @done(25-04-02 09:08) @project(RESTRICTIONS)
+  ✔ Only Super Admin Can create scholarship and register admin @done(25-04-02 09:08) @project(RESTRICTIONS)
+  ✔ Only Supper Admin and Approval Manager can Approve application @done(25-04-02 09:08) @project(RESTRICTIONS)
+  ✔ Super admin register an applicant as approval admin @done(25-04-01 21:56) @project(POSSIBLE CENARIOS)
+  ✔ Super admin change admin role to review admin @done(25-04-02 07:24) @project(POSSIBLE CENARIOS)
+  ✔ Super admin manage users @done(25-04-01 22:42) @project(POSSIBLE CENARIOS)
+  ✔ @OAUTH @done(25-04-01 17:02) @project(CONCEPT)
+  ✔ Login @done(25-03-31 19:30) @project(OATH)
+  ✔ Register @done(25-03-31 20:05) @project(OATH)
+  ✔ Logout @done(25-03-31 20:05) @project(OATH)
+  ✔ addFromAuth @done(25-03-31 20:47) @project(OATH)
+  ✔ Set show profile images @done(25-03-31 21:31) @project(OATH)
+  ✔ Flash Message on Middleware @done(25-03-31 20:49) @project(RESTRICTIONS)
+  ✔ Only Admin can review applications @done(25-03-31 20:49) @project(RESTRICTIONS)
+  ✔ Only Applicants can apply for scholarship @done(25-03-31 20:49) @project(RESTRICTIONS)
+  ✔ Updating a scholarship causes issues in the application responses section @done(25-03-31 03:20) @project(CONCEPT)
+  ✔ Create a page to see all applicants and admins [Table] @done(25-03-31 02:11) @project(CONCEPT)
+  ✔ Set up flash message for errors @done(25-03-30 03:38) @project(DO THIS BEFORE HOSTING)
+  ✔ Create UpdateApplicantProfilePage @done(25-03-29 11:53) @project(CONCEPT)
+  ✔ Add scroll to top and bottom @done(25-03-30 03:37) @project(CONCEPT)
+  ✔ Add the appropriate id's [Applicant, Admin] in {Create, Update} Application && Scholarship "Search for  "// Change Id" to change that" @done(25-03-29 14:13) @project(CONCEPT)
+  ✔ Create RegisterAdminPage @done(25-03-29 14:13) @project(CONCEPT)
+  ✔ Create UpdateAdminPage @done(25-03-29 14:13) @project(CONCEPT)
+  ✔ Minor @started(25-03-27 07:20) @done(25-03-27 07:39) @lasted(19m12s) @project(CONCEPT)
+  ✔ Create ApplicantProfilePage @done(25-03-28 15:50) @project(CONCEPT)
+  ✔ Work on middle ware @started(25-03-27 07:23) @done(25-03-27 07:20) @lasted(3mins) @project(MINOR)
+  ✔ Add isDeactivated to user registration @started(25-03-27 07:26) @done(25-03-27 07:39) @lasted(13m7s) @project(MINOR)
+  ✔ Create navigationRecords @started(25-03-27 07:40) @done(25-03-27 07:44) @lasted(4m52s) @project(WORK ON CREATE APPLICANT PROFILE PAGE)
+  ✔ Create NavigationContext @started(25-03-27 07:44) @done(25-03-27 07:51) @lasted(7m46s) @project(WORK ON CREATE APPLICANT PROFILE PAGE)
+  ✔ Create Profile Page @done(25-03-29 09:39) @project(WORK ON CREATE APPLICANT PROFILE PAGE)
+  ✔ Create Profile Header Section @done(25-03-28 07:48) @project(WORK ON CREATE APPLICANT PROFILE PAGE)
+  ✔ Add Action Buttons [Update, Deactivate] @done(25-03-29 09:39) @project(WORK ON CREATE APPLICANT PROFILE PAGE)
+  ✔ Create Profile Information @done(25-03-29 09:39) @project(WORK ON CREATE APPLICANT PROFILE PAGE)
+  ✔ Work on Update Scholarship @done(25-03-25 09:36) @project(CONCEPT)
+  ✔ Use custom id in creation of [Scholarship, application, applicants] @done(25-03-25 10:02) @project(CONCEPT)
+  ✔ Work on Create scholarship form using format in registerApplicantPage @done(25-03-25 00:18)] @project(CONCEPT)
+  ✔ Clean all @done(25-03-24 20:39) @project(WORK ON CREATE SCHOLARSHIP)
+  ✔ Work on array @done(25-03-24 22:09) @project(WORK ON CREATE SCHOLARSHIP)
+  ✔ Add textareaList @done(25-03-24 22:09) @project(WORK ON CREATE SCHOLARSHIP)
+  ✔ Add Clear form @done(25-03-24 23:04) @project(WORK ON CREATE SCHOLARSHIP)
+  ✔ Add dynamic form @done(25-03-25 00:18) @project(WORK ON CREATE SCHOLARSHIP)
+  ✔ Work on applicantAPIContext @done(25-03-23 23:04) @project(CONCEPT)
+  ✔ Scholarships @done(25-03-23 22:06) @project(WORK ON API)
+  ✔ Fetch @done(25-03-23 21:48) @project(WORK ON API)
+  ✔ Create @done(25-03-23 22:03) @project(WORK ON API)
+  ✔ Update @done(25-03-23 22:03) @project(WORK ON API)
+  ✔ Delete @done(25-03-23 22:06) @project(WORK ON API)
+  ✔ Applications @done(25-03-23 23:04) @project(WORK ON API)
+  ✔ Fetch @done(25-03-23 22:33) @project(WORK ON API)
+  ✔ Create @done(25-03-23 22:33) @project(WORK ON API)
+  ✔ Update @done(25-03-23 22:37) @project(WORK ON API)
+  ✔ Delete @done(25-03-23 22:54) @project(WORK ON API)
+  ✔ Admins @done(25-03-23 23:04) @project(WORK ON API)
+  ✔ Fetch @done(25-03-23 23:04) @project(WORK ON API)
+  ✔ Create @done(25-03-23 23:04) @project(WORK ON API)
+  ✔ Update @done(25-03-23 23:04) @project(WORK ON API)
+  ✔ Delete @done(25-03-23 23:04) @project(WORK ON API)
+  ✔ Applicants @done(25-03-23 23:04) @project(WORK ON API)
+  ✔ Fetch @done(25-03-23 22:55) @project(WORK ON API)
+  ✔ Create @done(25-03-23 22:57) @project(WORK ON API)
+  ✔ Update @done(25-03-23 22:57) @project(WORK ON API)
+  ✔ Delete @done(25-03-23 22:57) @project(WORK ON API)
+  ✔ Create feature-pre-auth @done(25-03-22 20:47) @project(CONCEPT)
+  ✔ Create feature-authentication @done(25-03-22 20:47) @project(CONCEPT)
+  ✔ Start up system @started(25-03-22 20:48) @done(25-03-22 20:53) @lasted(5m29s) @project(CONCEPT)
+  ✔ Create RegisterApplicantPage @done(25-03-23 19:51) @project(CONCEPT)
+  ✔ Create navigation @started(25-03-22 20:53) @done(25-03-22 21:00) @lasted(7m1s) @project(CREATE REGISTER APPLICANT PAGE)
+  ✔ Create page @started(25-03-22 21:00) @done(25-03-22 21:18) @lasted(18m35s) @project(CREATE REGISTER APPLICANT PAGE)
+  ✔ Plan out the fields : Use objects @started(25-03-22 21:23) @done(25-03-22 22:14) @lasted(51m14s) @project(CREATE REGISTER APPLICANT PAGE)
+  ✔ Create form wrapper @started(25-03-22 22:14) @done(25-03-22 22:34) @lasted(20m20s) @project(CREATE REGISTER APPLICANT PAGE)
+  ✔ Create fields data @done(25-03-23 19:51) @project(CREATE REGISTER APPLICANT PAGE)
+  ✔ Create fields @done(25-03-23 19:51) @project(CREATE REGISTER APPLICANT PAGE)
+  ✔ Store fields value @done(25-03-23 19:51) @project(CREATE REGISTER APPLICANT PAGE)
+  ✔ Validate fields @done(25-03-23 19:51) @project(CREATE REGISTER APPLICANT PAGE)
+  ✔ Create api for registering user, updating user @done(25-03-23 19:51) @project(CREATE REGISTER APPLICANT PAGE)
+  ✔ FILTER AND SEARCH: @done(25-03-15 22:07)
+  ✔ Plan @done(25-03-15 22:07)
+  ✔ Clear data base [Application database] [ Scholarship database] @done(25-03-02 21:05) @project(MINOR)
+  ✔ Change the name scholarshipOnly to the object scholarshipStatus?.scholarshipOnly @done(25-03-02 21:17) @project(MINOR)
+  ✔ Change the name applicationOnly to the object applicationStatus?.applicationOnly @started(25-03-02 21:17) @done(25-03-02 21:39) @lasted(22m39s) @project(MINOR)
+  ✔ Fix update scholarship : The data to update before saved @done(25-03-02 21:40) @project(MINOR)
+  ✔ Fix update applications : The data to update before saved @done(25-03-02 21:40) @project(MINOR)
+  ✔ Fix not able to update applicaitons @done(25-03-02 21:53) @project(MINOR)
+  ✔ Plan @started(25-03-04 19:15) @done(25-03-04 19:47) @lasted(32m28s) @project(WORK ON)
+  ✔ Add Disapproved to where fit @started(25-03-04 19:47) @done(25-03-04 21:39) @lasted(1h52m48s) @project(WORK ON)
+  ✔ Add the following [approval status , approval comment , reviewed at , Approved at] to the database @done(25-03-04 21:11) @project(WORK ON)
+  ✔ Work on table Using a library @done(25-03-08 18:09) @project(WORK ON)
+  ✔ Work on table column filter and search @done(25-03-09 09:46) @project(WORK ON)
+  ✔ Create application review @done(25-03-09 17:50) @project(WORK ON)
+  ✔ Create application approval @done(25-03-09 17:50) @project(WORK ON)
+  ✔ Uncompleted and completed text not working well on update application @done(25-02-17 10:07) @project(MINOR)
+  ✔ Uncompleted and update not working well @done(25-02-17 16:12) @project(MINOR)
+  ✔ Start edit from last section @done(25-02-17 17:52) @project(MINOR)
+  ✔ On Application card, action should be drop down, (view, edit, delete) @done(25-02-17 19:27) @project(MINOR)
+  ✔ Delete application @done(25-02-17 19:28) @project(MINOR)
+  ✔ Display application progress @done(25-02-17 20:06) @project(MINOR)
+  ✔ Applicant can only apply once @done(25-02-17 21:30) @project(MINOR)
+  ✔ Applicant cannot edit if deadline is due @done(25-02-17 21:55) @project(MINOR)
+  ✘ On dashboard show resume application and in view application @cancelled(25-02-17 22:25) @project(MINOR)
+  ✔ Create applicantions @done(25-02-16 19:37) @project(APPLICATION)
+  ✔ Create form page @started(25-02-11 20:37) @done(25-02-12 13:44) @lasted(17h7m57s) @project(APPLICATION)
+  ✔ Get the scholarship id from params and get it scholarship @done(25-02-12 13:44) @project(APPLICATION)
+  ✔ Get the fields in the scholarship @done(25-02-12 13:45) @project(APPLICATION)
+  ✔ Map through the fields to get each section @done(25-02-12 13:45) @project(APPLICATION)
+  ✔ Create a file for the rendering of the sections @done(25-02-16 19:37) @project(APPLICATION)
+  ✔ Use search params ?section=sectionId @done(25-02-16 19:37) @project(APPLICATION)
+  ✔ Display the section with it application form who's section id equals the search params section id @done(25-02-16 19:38) @project(APPLICATION)
+  ✔ Buttons back [to go back] Proceed [to saved changes] @done(25-02-16 19:38) @project(APPLICATION)
+  ✔ Update applicantions @done(25-02-16 19:38) @project(APPLICATION)
+  ✔ Dynamic form with Inspiration from google forms @done(25-02-10 00:58) @project(REDESIGN )
+  ✔ Redo @done(25-02-10 01:35) @project(APPLICATION)
+  ✔ Add options to dynamic forms if these are selected [check box, radio, select] @done(25-02-10 01:35) @project(APPLICATION)
+  ✔ Delete unwanted files @started(25-01-30 08:50) @done(25-01-30 15:16) @lasted(6h26m29s) @project(START UP)
+  ✔ Pages @started(25-01-30 15:16) @done(25-01-30 15:50) @lasted(34m28s) @project(START UP)
+  ✔ Routing @started(25-01-30 15:50) @done(25-01-30 15:50) @lasted(31s) @project(START UP)
+  ✔ Clean up package.json @done(25-01-30 16:00) @project(START UP)
+  ✔ NPM install @done(25-01-30 16:17) @project(START UP)
+  ✔ Link to github @started(25-01-30 16:30) @done(25-01-30 16:51) @lasted(21m34s) @project(START UP)
+  ✔ Root Variables @done(25-01-30 17:49) @project(STYLES)
+  ✔ Themes @done(25-01-30 17:49) @project(STYLES)
+  ✔ Typography @done(25-01-30 18:04) @project(STYLES)
+  ✔ Layout @done(25-01-31 10:42) @project(APP LAYOUT)
+  ✔ Side Navigation @done(25-01-31 10:42) @project(APP LAYOUT)
+  ✔ Top Navigation @done(25-01-31 10:42) @project(APP LAYOUT)
+  ✔ Footer @done(25-02-02 19:29) @project(APP LAYOUT)
+  ✔ Profile Menu @started(25-02-02 19:36) @done(25-02-02 19:41) @lasted(5m35s) @project(FIX)
+  ✔ Setup JSON SERVER (npx json-server --watch db.json --port 3001) @started(25-02-02 19:42) @done(25-02-02 19:50) @lasted(8m41s) @project(DATABASE)
+  ✔ Setup database schema @started(25-02-02 19:50) @done(25-02-02 20:55) @lasted(1h5m32s) @project(DATABASE)
+  ✔ Fetch Scholarship data @started(25-02-02 21:34) @done(25-02-02 23:09) @lasted(1h35m1s) @project(DATABASE)
+  ✔ Read scholarship data @started(25-02-02 23:09) @done(25-02-02 23:40) @lasted(31m27s) @project(DATABASE)
+  ✔ Render scholarhship details @done(25-02-03 01:29) @project(WORK ON VIEW SCHOLARSHIP)
+  ✔ Set Wont be apple to view scholarship page when deadline is pass @done(25-02-04 00:39) @project(WORK ON VIEW SCHOLARSHIP)
+  ✔ Move up and down @started(25-02-04 09:24) @done(25-02-04 09:24) @lasted(33s) @project(SCHOLARSHIP)
+  ✔ Store in local storage @done(25-02-04 09:43) @project(SCHOLARSHIP)
+  ✔ Modal @done(25-02-04 13:18) @project(SCHOLARSHIP)
+  ✔ Add validation @done(25-02-05 22:36) @project(SCHOLARSHIP)
+  ✔ * For reqired @done(25-02-05 22:36) @project(SCHOLARSHIP)
+  ✔ Error message when not mert @done(25-02-05 22:36) @project(SCHOLARSHIP)
+  ✔ Create Scholarships @done(25-02-05 22:36) @project(SCHOLARSHIP)
+  ✔ Redirect if successfull @done(25-02-05 22:36) @project(SCHOLARSHIP)
+  ✔ Delete scholarship @done(25-02-06 08:33) @project(SCHOLARSHIP)
+  ✔ Render view scholarship details @done(25-02-06 18:14) @project(SCHOLARSHIP)
+  ✔ Update scholarship @done(25-02-08 16:16) @project(SCHOLARSHIP)
+  ✔ Add feilds @done(25-02-08 18:59) @project(APPLICANTATION)
+  ✔ Add applications @done(25-02-08 20:57) @project(APPLICANTATION)
+  ✔ Read applications @started(25-02-08 20:57) @done(25-02-08 22:14) @lasted(1h17m22s) @project(APPLICANTATION)
+  ✔ View applications @done(25-02-09 16:22) @project(APPLICANTATION)

@@ -1,0 +1,81 @@
+
+
+
+
+
+
+
+/* Custome */
+.blurred {
+  filter: blur(2px);
+  pointer-events: none;
+}
+
+/* Shadow */
+.shadow_sm {
+  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.1);
+}
+
+.shadow_md {
+  box-shadow: 0px 4px 6px 0px rgba(0, 0, 0, 0.2);
+}
+
+.shadow_lg {
+  box-shadow: 0px 8px 12px 0px rgba(0, 0, 0, 0.3);
+}
+
+/* Border */
+.border_danger {
+  border: 1px solid red;
+}
+.border_success {
+  border: 1px solid green;
+}
+.border_secondary {
+  border: 1px solid var(--secondary_color);
+}
+.border_secondary_light {
+  border: 1px solid var(--secondary_light_color);
+}
+
+/* Hover */
+.hover_highlight:hover {
+  color: rgb(0, 158, 53) !important;
+  color: var(--secondary_color) !important;
+}
+.hover_secondary:hover {
+  color: var(--secondary_color) !important;
+}
+.hover_danger:hover {
+  color: var(--danger_color) !important;
+}
+
+.hover_opacity_5,
+.hover_transform {
+  transition: all 0.5s ease-in-out;
+}
+.hover_opacity_5:hover {
+  opacity: 0.5;
+}
+.hover_opacity_9:hover {
+  opacity: 0.9;
+}
+.hover_transform:hover {
+  transform: scale(1.059);
+}
+.hover_underline:hover {
+  text-decoration: underline;
+}
+
+/* Transition */
+.transition_all,
+.has_transition {
+  transition: all 0.3s ease-in-out !important;
+}
+.transition_height {
+  transition: height 0.3s ease-in-out !important;
+}
+
+.transition_color {
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out !important;
+}

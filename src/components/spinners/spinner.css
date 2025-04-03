@@ -1,0 +1,48 @@
+:root {
+  --spinner-size: 25px; /* Adjust this value to resize everything */
+  --bar-width: calc(var(--spinner-size) * 0.2); /* Scale bar width */
+  --bar-height: calc(var(--spinner-size) * 0.4); /* Scale bar height */
+  --translate-distance: calc(var(--spinner-size) / -2); /* Scale position */
+}
+
+#loadingSpinnerContainer {
+  width: var(--spinner-size);
+  height: var(--spinner-size);
+  position: relative;
+}
+
+#loadingSpinnerContainer .loadingSpinnerBar > div {
+  width: var(--bar-width);
+  height: var(--bar-height);
+  position: absolute;
+  top: calc(var(--spinner-size) * 0.35);
+  left: calc(var(--spinner-size) * 0.5);
+  opacity: 1;
+  animation: fadeit 0.6s linear infinite;
+}
+
+/* Generate the 12 rotating bars */
+#loadingSpinnerContainer .loadingSpinnerBar > div:nth-child(n) {
+  transform: rotate(calc((var(--n) - 1) * 30deg)) translate(0, var(--translate-distance));
+  animation-delay: calc(0.05s * var(--n));
+}
+
+/* Rotations & Colors */
+#loadingSpinnerContainer .loadingSpinnerBar > div:nth-child(1) { --n: 1; background-color: #FF6B6B; }
+#loadingSpinnerContainer .loadingSpinnerBar > div:nth-child(2) { --n: 2; background-color: #FF9F43; }
+#loadingSpinnerContainer .loadingSpinnerBar > div:nth-child(3) { --n: 3; background-color: #FFD93D; }
+#loadingSpinnerContainer .loadingSpinnerBar > div:nth-child(4) { --n: 4; background-color: #6BCB77; }
+#loadingSpinnerContainer .loadingSpinnerBar > div:nth-child(5) { --n: 5; background-color: #4D96FF; }
+#loadingSpinnerContainer .loadingSpinnerBar > div:nth-child(6) { --n: 6; background-color: #645CFF; }
+#loadingSpinnerContainer .loadingSpinnerBar > div:nth-child(7) { --n: 7; background-color: #8A2BE2; }
+#loadingSpinnerContainer .loadingSpinnerBar > div:nth-child(8) { --n: 8; background-color: #D76DF2; }
+#loadingSpinnerContainer .loadingSpinnerBar > div:nth-child(9) { --n: 9; background-color: #FF5DA2; }
+#loadingSpinnerContainer .loadingSpinnerBar > div:nth-child(10) { --n: 10; background-color: #FF7EB3; }
+#loadingSpinnerContainer .loadingSpinnerBar > div:nth-child(11) { --n: 11; background-color: #FF9CEE; }
+#loadingSpinnerContainer .loadingSpinnerBar > div:nth-child(12) { --n: 12; background-color: #FBCB8D; }
+
+
+@keyframes fadeit {
+  0% { opacity: 1; }
+  100% { opacity: 0.2; }
+}

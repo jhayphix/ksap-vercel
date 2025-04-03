@@ -1,0 +1,47 @@
+{
+  "applicants": [
+    {
+      "id": "h6BwMdMXu5PhkVQUIBD6",
+      "accountStatus": "Active",
+      "deactivatedAt": null,
+      "deactivatedByAdminId": null,
+      "age": "24",
+      "faculty": "Engineering",
+      "department": "Computer Science",
+      "college": "Engineering",
+      "createdAt": "2025-01-07T23:53:59Z",
+      "updatedAt": "2025-01-07T23:53:59Z",
+      "dateOfBirth": "2002-05-07T00:00:00.000Z",
+      "durationOfProgramme": "48 months (4 years)",
+      "educationalLevel": "Undergraduate",
+      "email": "osei@ernest.com",
+      "firstName": "Ernest",
+      "gender": "Male",
+      "indexNumber": "PG5678729",
+      "modeOfAdmission": "Regular",
+      "nationality": "Ghanaian",
+      "otherNames": "Owusu",
+      "programmeOfStudy": "BSc Biochemistry",
+      "referenceNumber": "21874698",
+      "role": "Applicant",
+      "lastName": "Osei",
+      "telecelNumber": "+233201234567",
+      "phoneNumber": "+233245385937",
+      "yearOfStudy": "3",
+      "guardianName": "John Aboagye Owusu",
+      "guardianPhone": "+233242452587",
+      "guardianEmail": "poky@mailinator.com",
+      "guardianLocation": "Kumasi",
+      "guardianRelationship": "Mentor",
+      "guardianOccupation": "Data Analyst",
+      "guardianDetails": {
+        "guardianName": "John Aboagye Owusu",
+        "guardianPhone": "+233242452587",
+        "guardianEmail": "poky@mailinator.com",
+        "guardianLocation": "Kumasi",
+        "guardianRelationship": "Mentor",
+        "guardianOccupation": "Data Analyst"
+      }
+    }
+  ]
+}

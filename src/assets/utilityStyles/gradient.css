@@ -1,0 +1,82 @@
+.custom_gradient,
+.custom_gradient_1 {
+  background: linear-gradient(
+    45deg,
+    #6a0dad,
+    #ff1493,
+    #007bff,
+    #8a2be2,
+    #ff69b4,
+    #483d8b,
+    #1e90ff
+  );
+  transition: background-color 0.5s ease-in-out;
+}
+
+.custom_gradient:hover,
+.custom_gradient_1:hover {
+  background: linear-gradient(
+    45deg,
+    #9400d3,
+    #ff4500,
+    #1e90ff,
+    #9932cc,
+    #ff6347,
+    #8a2be2,
+    #ff00ff
+  );
+}
+
+.custom_gradient_2 {
+  background: linear-gradient(
+    135deg,
+    #ff7f50,
+    #9932cc,
+    #ff4500,
+    #800080,
+    #ff8c00,
+    #9400d3,
+    #da70d6
+  );
+  transition: background-color 0.5s ease-in-out;
+}
+
+.custom_gradient_2:hover {
+  background: linear-gradient(
+    135deg,
+    #ff6347,
+    #ba55d3,
+    #ff5722,
+    #6a0dad,
+    #ffa500,
+    #8a2be2,
+    #d87093
+  );
+}
+
+.custom_gradient_3 {
+  background: linear-gradient(
+    135deg,
+    #6a0dad,
+    #ff1493,
+    #8a2be2,
+    #ff4500,
+    #1e90ff,
+    #da70d6,
+    #ff6347
+  );
+  transition: background-color 0.5s ease-in-out;
+}
+
+.custom_gradient_3:hover {
+  background: linear-gradient(
+    135deg,
+    #9400d3,
+    #ff69b4,
+    #4b0082,
+    #ff8c00,
+    #4682b4,
+    #ba55d3,
+    #ff7f50
+  );
+}

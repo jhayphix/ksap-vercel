@@ -1,0 +1,60 @@
+:root {
+
+  /* DYNAMIC COLORS */
+  --primary_color: #FFFFFF;
+  --primary_color_2: #f5f5f5;
+  --primary_color_3: #e6e6e6;
+
+  --primary_text_color: rgb(34, 34, 34, 0.88);
+  --primary_text_color_2: rgb(51, 51, 51, 0.89);
+  --primary_text_color_3: #444444;
+
+  /* --secondary_color: #004E1A;
+  --secondary_color: #0F5E3D;
+  --secondary_color_2: #157347;
+  --secondary_color_3: #D9F1E1; */
+
+  --secondary_color: #074173;
+  --secondary_color_2: #1679AB;
+  --secondary_color_3: #C4D9FF;
+
+
+
+  --secondary_text_color: #FFFFFF;
+  --secondary_text_color_2: #FFFFFF;
+  --secondary_text_color_3: #222222;
+
+  /* STATIC COLORS */
+  --blue_color: #0D6EFD;
+  --blue_light_color: #CFE2FF;
+  --blue_light_color_2: #D9E6FF;
+
+  --success_color: #198754;
+  --success_light_color: #D9F1E1;
+  --success_light_color_2: #EBFDF1;
+
+  --warning_color: #FFC107;
+  --warning_text_color: #CC8800;
+  --warning_light_color: #FFF3CD;
+  --warning_light_color_2: #FFF8D1;
+
+  --danger_color: #DC3545;
+  --danger_light_color: #F8D7DA;
+  --danger_light_color_2: #F9D8DC;
+
+  --light_color: #FFFFFF;
+  --light_color_2: #E8E8E8; /* Softer gray */
+  --light_color_3: #D6D6D6; /* Slightly lighter */
+
+  --dark_color: #222222;
+  --dark_color_2: #333333;
+  --dark_color_3: #444444;
+
+  --gray_color: #2F2F2F;
+  --gray_color_2: #6C757D;
+  --gray_color_3: #BDBDBD;
+}
+
+/* --alt_dark_color: #1A1A1A;
+  --alt_dark_light_color: #333333;
+  --alt_dark_light_color_2: #4D4D4D; */

@@ -1,0 +1,77 @@
+LEGEND 
+    [C] Creating application
+    [R] Revewing application
+    [A] Approving application
+
+
+CREATE APPLICATION
+    id  : Application Id
+    applicantId : Applicant Id
+    scholarshipId   : Scholarship Id
+    approvedByAdminId   : " "   [A]
+    reviewedByAdminId   : " "   [R]
+
+    responseSections : Answeres or response from applicants
+    progress : Progress of applicant application
+    appliedAt : Time of application
+    updatedAt : Last update of application
+    
+
+    isApproved  : False [A]
+    isDisapproved : null [A]
+    isAwaitingApproval : [A]
+    isProcessed : False [A]
+    isQualified : False [R]
+    isPending   : False [R]
+    isDisqualified  : False [R]
+    isReviewed : False  [R]
+
+    reviewStatus : ""   [R]
+    reviewComment : ""  [R]
+    reviewedAcademicScore : " " [R]
+    approvalStatus  : "" [A]
+    approvalComment : "" [A]
+    applicationScore : " "  [A]
+    applicationStatus : "Unreviewed" Current status of the application [C] [R] [A]
+
+    
+    reviewedAt  : Time of review [R]
+    approvedAt  : Time of approval [A]
+
+
+REVIEW APPLICATION
+    ...
+    reviewedByAdminId   : Id of admin who did the review
+
+    isQualified : True if Qualified else False
+    isPending   : True if Pending else False
+    isDisqualified  : True if Disqualified else False
+    isReviewed : True
+
+    reviewedAcademicScore : The reviewed CWA or Wassce Result
+    reviewStatus : ["Qualified", "Pending", "Disqualified"]
+    reviewComment : Comment during review process
+    applicationStatus : Get selected review status - Current status of the application
+
+    reviewedAt: Time of review
+
+
+APPROVE APPLICATION
+    ...
+    approvedByAdminId   : Id of the admin who reviewed the data
+
+    isApproved  : True if application is approved else False
+    isDisapproved : True if not approved
+    isAwaitingApproval : [A]
+    isProcessed : False [A]
+
+    applicationScore : This application's score / 100 <Input>
+    approvalStatus  : ["Approved", "Disapproved"] <Input>
+    approvalComment : Comment on the approval <Input>
+
+    applicationStatus : ["Approved", "Disapproved"]
+    approvedAt: Time of approval
+
+
+
+

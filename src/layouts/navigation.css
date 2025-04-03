@@ -1,0 +1,118 @@
+:root {
+  --sideNavbarWidthLg: 20vw;
+  --sideNavbarWidthMd: 30vw;
+  --sideNavbarWidthSm: 35vw;
+  --sideNavbarWidth: 90vw;
+
+  --minimalNavbarWidthLg: 5vw;
+  --minimalNavbarWidthMd: 7vw;
+}
+
+.navbar {
+  transition: all 0.5s linear;
+}
+
+.side_navbar .nav_link:hover, .nav_link_active, .nav_link_hover:hover {
+  color: var(--secondary_color) !important;
+  background-color: var(--secondary_color_3);
+}
+
+.navbar_overlay_parent {
+  position: relative;
+  width: 100%;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Default width for large screens (lg) */
+.sideNavbarWidthControl {
+  width: var(--sideNavbarWidthLg);
+}
+.sideNavbarCloseButton {
+  display: none;
+}
+.minimalNavbarWidthControl {
+  width: var(--minimalNavbarWidthLg);
+}
+.mainContainerWidthControl {
+  width: calc(100vw - var(--sideNavbarWidthLg));
+}
+.minimalMainContainerWidthControl {
+  width: calc(100vw - var(--minimalNavbarWidthLg));
+}
+
+/* Medium screens (md) - Apply when screen width is 992px or smaller */
+@media screen and (max-width: 992px) {
+  .sideNavbarWidthControl {
+    width: var(--sideNavbarWidthMd);
+  }
+  .minimalNavbarWidthControl {
+    width: var(--minimalNavbarWidthMd);
+  }
+  .mainContainerWidthControl {
+    width: calc(100vw - var(--sideNavbarWidthMd));
+  }
+  .minimalMainContainerWidthControl {
+    width: calc(100vw - var(--minimalNavbarWidthMd));
+  }
+}
+
+/* Small screens (sm) - Apply when screen width is 768px or smaller */
+@media screen and (max-width: 768px) {
+  .sideNavbarWidthControl {
+    width: var(--sideNavbarWidthSm);
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    transform: translateX(-100%); /* Initially off-screen */
+    z-index: 1050;
+  }
+  
+  .sideNavbarWidthControl.active {
+    transform: translateX(0); /* Slide in */
+  }
+  
+  .sideNavbarWidthControl.close {
+    transform: translateX(-100%); /* Slide out */
+  }
+  
+  
+  .sideNavbarCloseButton {
+    display: inline-block;
+  }
+
+  .minimalNavbarWidthControl {
+    display: none;
+  }
+  .mainContainerWidthControl {
+
+    width: 100vw;
+  }
+  .minimalMainContainerWidthControl {
+    width: 100vw;
+  }
+}
+/* Small screens (sm) - Apply when screen width is 500px or smaller */
+@media screen and (max-width: 500px) {
+  .sideNavbarWidthControl {
+    width: var(--sideNavbarWidth);
+  }
+}
+
+
+
+.navbar_overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 250px; /* Adjust width as needed */
+  height: 100vh;
+  background: var(--dark_color);
+  transition: transform 0.3s ease-in-out;
+  transform: translateX(-100%);
+  z-index: 1050; /* Ensure it overlays the main content */
+}
+
+.navbar_overlay.active {
+  transform: translateX(0);
+}

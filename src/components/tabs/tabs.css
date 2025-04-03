@@ -1,0 +1,19 @@
+
+#navTabId .nav-link {
+    background-color: var(--light_color_3);
+    color: var(--dark_color);
+    border-bottom: 1px solid var(--dark_color);
+}
+
+#navTabId .nav-link.active {
+    font-weight: bold;
+    background-color: var(--light_color);
+    border-width: 1px;
+    border-color: var(--dark_color);
+    border-style: solid;
+    border-bottom: none;
+}
+
+#navTabId .passive {
+    opacity: 0.5;
+}

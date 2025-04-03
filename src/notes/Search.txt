@@ -1,0 +1,79 @@
+
+
+
+
+
+
+MAIN FILTER AND SEARCH
+    Scholarship Name [Filter]
+    APPLICANT
+        Name [Search]
+        referenceNumber [Search]
+
+    APPLICATION
+        Application status 
+        Review status
+        Approval Status
+
+DEFAULT IN TABLE
+    APPLICANT
+        college
+        yearOfStudy
+        firstName
+        otherNames
+        lastName
+        gender
+        programme
+        referenceNumber
+
+    APPLICATION
+        applicationStatus
+        approvedByAdminId
+        reviewedByAdminId
+
+CUSTOM TO ADD TABLE [CHECK BOX]
+    APPLICANT 
+        age
+        programmeTitle
+        createdAt
+        dateOfBirth
+        durationOfProgramme
+        educationalLevel
+        email
+        indexNumber
+        modeOfAdmission
+        nationality  
+        telecelNumber
+
+    APPLICATION
+        reviewComment
+        approvalComment
+        approvalStatus
+        reviewStatus
+        reviewedAt
+        approvedAt
+        appliedAt
+        updatedAt
+        applicationScore
+        reviewedAcademicScore
+
+STATUS AND FILTER
+    APPLICATION [CHECK BOX]
+        isApproved
+        isDisapproved
+        isPendingApproval
+        isProcessed
+        isQualified
+        isPendingReview
+        isDisqualified
+        isReviewed
+
+MANUAL CONFIGURATION ADD -> [DEFAULT TABLE]
+  approvedByAdminId
+  reviewedByAdminId
+
+
+
+
+
+

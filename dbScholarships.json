@@ -1,0 +1,391 @@
+{
+  "scholarships": [
+    {
+      "createdByAdminId": "btpeW9CAVR27b587y9ZJ",
+      "name": "Educational Pathways International (Updated)",
+      "shortName": "E. P. I.",
+      "fundingType": "Scholarship",
+      "academicYear": "2024/2025",
+      "createdAt": "2025-02-14T08:55:23.833Z",
+      "updatedAt": "2025-03-02T21:16:14.068Z",
+      "deadline": "2025-03-04T21:16:00.000Z",
+      "eligibilityYearsOfStudy": ["1", "2"],
+      "eligibilityEducationalLevel": ["Undergraduate"],
+      "requirements": [
+        "Admission Letter",
+        "Acceptance Letter",
+        "WASSCE Result",
+        "Endorsed Academic Transcript"
+      ],
+      "applicationSections": [
+        {
+          "id": "102c9306546f-3cd-c9306-e49c9-01e7-435d-ac22",
+          "sectionTitle": "Personal Information",
+          "sectionDescription": "Description for Personal information",
+          "sectionOrder": 1,
+          "sectionQuestions": [
+            {
+              "id": "dcef8fc2-cef1-490e-8a39-ebac2cab34fa",
+              "order": 1,
+              "label": "Full Name",
+              "description": "This is a Short Answer",
+              "type": "text",
+              "required": true,
+              "validation": false,
+              "regex": {
+                "pattern": "",
+                "errorMessage": "",
+                "comparismOperator": "none"
+              },
+              "options": []
+            },
+            {
+              "id": "5119b330-a08b-42c1-be4c-69ab9564920c",
+              "order": 3,
+              "label": "Age",
+              "description": "This is a number",
+              "type": "number",
+              "required": true,
+              "validation": false,
+              "regex": {
+                "pattern": "",
+                "errorMessage": "",
+                "comparismOperator": "none"
+              },
+              "options": []
+            },
+            {
+              "id": "bc567ab7-9c0f-44e0-add2-03a2eec59c22",
+              "order": 2,
+              "label": "Last Name",
+              "description": "Last Name Short Answer",
+              "type": "text",
+              "required": false,
+              "validation": false,
+              "regex": {
+                "pattern": "",
+                "errorMessage": "",
+                "comparismOperator": "none"
+              },
+              "options": []
+            },
+            {
+              "id": "032403b4-efa0-4cf1-ad90-22625dd45b61",
+              "order": 4,
+              "label": "Personal Statement",
+              "description": "Type in your Paragraph",
+              "type": "textarea",
+              "required": true,
+              "validation": false,
+              "regex": {
+                "pattern": "",
+                "errorMessage": "",
+                "comparismOperator": "none"
+              },
+              "options": []
+            },
+            {
+              "id": "7c3ce048-48c7-4465-b15a-22c1babb9b0b",
+              "order": 5,
+              "label": "Email Text",
+              "description": "This is an text",
+              "type": "text",
+              "required": true,
+              "validation": true,
+              "regex": {
+                "pattern": "/^[\\w-]+(\\.[\\w-]+)*@([\\w-]+\\.)+[a-zA-Z]{2,7}$/",
+                "comparismOperator": "matches",
+                "errorMessage": "Invalid email format. Please enter a valid email address."
+              },
+              "options": []
+            }
+          ]
+        },
+        {
+          "id": "3cde49c9-01e7-435d-ac22-102c9306546f",
+          "sectionTitle": "Background Study",
+          "sectionDescription": "Second Section description",
+          "sectionOrder": 2,
+          "sectionQuestions": [
+            {
+              "id": "af870add-44e4-4c0d-9569-d1b2c22e7cb2",
+              "order": 1,
+              "label": "College",
+              "description": "This is a dropdown",
+              "type": "select",
+              "required": true,
+              "validation": false,
+              "regex": {
+                "pattern": "",
+                "errorMessage": "",
+                "comparismOperator": "none"
+              },
+              "options": [
+                "College of Science",
+                "College of Engineering",
+                "College of HSS",
+                "College of HS",
+                "College of Health Sciences"
+              ]
+            },
+            {
+              "id": "6c3d2a6a-cf93-45d5-a7be-70d39a3bb755",
+              "order": 2,
+              "label": "Degree",
+              "description": "Description for checkbox",
+              "type": "checkbox",
+              "required": true,
+              "validation": false,
+              "regex": {
+                "pattern": "",
+                "errorMessage": "",
+                "comparismOperator": "none"
+              },
+              "options": ["Undergraduate", "Postgraduate", "Masters"]
+            },
+            {
+              "id": "9e6f1da7-83ab-48d8-bd5c-a7d314652977",
+              "order": 3,
+              "label": "Gender",
+              "description": "Radio Description",
+              "type": "radio",
+              "required": true,
+              "validation": false,
+              "regex": {
+                "pattern": "",
+                "errorMessage": "",
+                "comparismOperator": "none"
+              },
+              "options": ["Male", "Female"]
+            }
+          ]
+        },
+        {
+          "id": "a6b2e10e-cf8a-4d70-a91b-8a16f0488557",
+          "sectionTitle": "This is the Last Section",
+          "sectionDescription": "Section for time and dates",
+          "sectionOrder": 3,
+          "sectionQuestions": [
+            {
+              "id": "96a63097-52fe-477e-a559-638dc682ad02",
+              "order": 1,
+              "label": "Date",
+              "description": "Enter the date",
+              "type": "date",
+              "required": true,
+              "validation": false,
+              "regex": {
+                "pattern": "",
+                "errorMessage": "",
+                "comparismOperator": "none"
+              },
+              "options": []
+            },
+            {
+              "id": "3fdfe7f4-99c0-459b-9843-718daf9d678d",
+              "order": 2,
+              "label": "Time",
+              "description": "Set the due time",
+              "type": "time",
+              "required": false,
+              "validation": false,
+              "regex": {
+                "pattern": "",
+                "errorMessage": "",
+                "comparismOperator": "none"
+              },
+              "options": []
+            },
+            {
+              "id": "4008744b-b058-4314-a24b-79f15e9e0d77",
+              "order": 3,
+              "label": "Date Time",
+              "description": "Enter the deadline",
+              "type": "datetime-local",
+              "required": true,
+              "validation": false,
+              "regex": {
+                "pattern": "",
+                "errorMessage": "",
+                "comparismOperator": "none"
+              },
+              "options": []
+            }
+          ]
+        }
+      ],
+      "description": "<p style=\"text-align: justify;\">Educational Pathways International (EPI) is a foundation that offers a Four-year Scholarship to Brilliant but Needy Students to enable them pursue their University Education in their respective Countries.</p>\n<p style=\"text-align: justify;\">&nbsp;</p>\n<p style=\"text-align: justify;\"><strong>Eligibility</strong></p>\n<p style=\"text-align: justify;\">&nbsp;</p>\n<p style=\"text-align: justify;\">The Scholarship is open to all Ghanaian students in their 1st &amp; 2nd, who are Brilliant but Needy Students of KNUST and who are pursuing a full-time REGULAR programme.</p>\n<p style=\"text-align: justify;\">&nbsp;</p>\n<p style=\"text-align: justify;\"><strong>Requirements</strong></p>\n<p style=\"text-align: justify;\">The minimum grade for prospective continuing student applicants must be at least a Second Class Upper (CWA of 67 and above). First-year applicants should have a WASSCE result /aggregate of at least Nine (9).</p>\n<p style=\"text-align: justify;\">&nbsp;</p>\n<p style=\"text-align: justify;\"><strong>All prospective applicants are to include the following documents in their applications:</strong></p>\n<p style=\"text-align: justify;\">&nbsp;</p>\n<ul style=\"text-align: justify;\">\n<li>Admission Letter</li>\n<li>Acceptance Letter</li>\n<li>WASSCE Certificate</li>\n<li>High School Transcripts or all Terminal reports.</li>\n<li>Recommendation letters and other awards or certificates (if any).</li>\n<li>Continuing student applicants should also add their complete University Academic Transcripts, (including current - Second Semester results).</li>\n<li>CONTINUING STUDENTS who are beneficiaries of other scholarships are not eligible to apply.</li>\n</ul>\n<p>&nbsp;</p>\n<p style=\"text-align: justify;\">Application Forms can be downloaded via&nbsp;<a href=\"https://www.knust.edu.gh/sites/default/files/2025-01/Educational%20Pathway%20Int.%20Application%20Form%202024-25.pdf\"><strong>(HERE!)</strong></a></p>\n<p style=\"text-align: justify;\">&nbsp;</p>\n<h3 style=\"text-align: justify;\">Please Note</h3>\n<p>&nbsp;</p>\n<ul style=\"text-align: justify;\">\n<li>All documents must be in a sealed envelope with the Applicant’s name, programme and phone number boldly written on it.</li>\n<li>Submission of documents should be done at the Students Support and Financial Services (Room 19) at the Directorate of Student Affairs, J Harper Building.</li>\n<li>write-up should be typed in the font Times New Roman, size 12 and double-spaced.</li>\n<li>No Application will be accepted after the deadline. Only shortlisted applicants will be called for an interview.</li>\n</ul>\n<p>&nbsp;</p>\n<p style=\"text-align: justify;\">For any further enquiries, contact the Students Support and Financial Services Office.</p>\n<p style=\"text-align: justify;\">&nbsp;</p>\n<p style=\"text-align: justify;\">Closing Date for Submission: Applications are to be submitted on or before&nbsp;<strong>Friday, 7th February 2025</strong>&nbsp;by 5:30pm for both the continuing and fresh students.</p>",
+      "id": "s8qVXmr"
+    },
+    {
+      "createdByAdminId": "btpeW9CAVR27b587y9ZJ",
+      "name": "KNUST Bursary",
+      "shortName": "KNUST Bursary",
+      "fundingType": "Bursary",
+      "academicYear": "2024/2025",
+      "createdAt": "2025-02-09T00:54:52.905Z",
+      "updatedAt": "2025-02-11T08:43:03.340Z",
+      "deadline": "2025-02-08T00:54:00.000Z",
+      "eligibilityYearsOfStudy": ["1", "2", "3"],
+      "eligibilityEducationalLevel": ["Undergraduate"],
+      "requirements": ["Admission Letter", "Proof of Financial Needs"],
+      "applicationSections": [],
+      "description": "Visit knust website for description",
+      "id": "scholarship2"
+    },
+    {
+      "createdByAdminId": "btpeW9CAVR27b587y9ZJ",
+      "name": "New Scholarship",
+      "shortName": "PIE",
+      "fundingType": "Scholarship",
+      "academicYear": "2024/2025",
+      "createdAt": "2025-03-09T17:18:03.270Z",
+      "updatedAt": "2025-03-09T17:24:15.573Z",
+      "deadline": "2025-03-20T17:24:00.000Z",
+      "eligibilityYearsOfStudy": ["1", "2", "3"],
+      "eligibilityEducationalLevel": ["Undergraduate"],
+      "requirements": ["Admission Letter"],
+      "description": "No Description",
+      "applicationSections": [
+        {
+          "sectionTitle": "Personal Information",
+          "sectionDescription": "",
+          "sectionOrder": 1,
+          "sectionQuestions": [
+            {
+              "id": "921dd5a3-d6cc-408f-83c9-bbee7d4d54ad",
+              "order": 1,
+              "label": "Full Name",
+              "description": "What is your full name",
+              "type": "text",
+              "required": true,
+              "validation": false,
+              "regex": {
+                "pattern": "",
+                "errorMessage": "",
+                "comparismOperator": "none"
+              },
+              "options": []
+            }
+          ]
+        },
+        {
+          "id": "31f3ec6d-d4b0-4191-a51b-8783db3f1b21",
+          "sectionTitle": "Proof of needs",
+          "sectionDescription": "",
+          "sectionOrder": 2,
+          "sectionQuestions": [
+            {
+              "id": "5d6af826-40cb-4012-904b-4fad8987ac40",
+              "order": 1,
+              "label": "Why should you be considered for this scholarship",
+              "description": "",
+              "type": "textarea",
+              "required": true,
+              "validation": false,
+              "regex": {
+                "pattern": "",
+                "errorMessage": "",
+                "comparismOperator": "none"
+              },
+              "options": []
+            }
+          ]
+        }
+      ],
+      "id": "AqCCKGr"
+    },
+    {
+      "id": "49c1d548-ec56-43e7-a80f-2f06a842a475",
+      "createdAt": "2025-03-24T23:43:59.918Z",
+      "updatedAt": "2025-03-26T07:52:51.878Z",
+      "createdByAdminId": "btpeW9CAVR27b587y9ZJ",
+      "name": "Joan Scholarship (Updated)",
+      "shortName": "Short Name",
+      "fundingType": "Ipsam corporis ea ma",
+      "deadline": "2027-07-21T20:34:00.000Z",
+      "eligibilityEducationalLevel": ["Undergraduate", "PHD"],
+      "eligibilityYearsOfStudy": [2, 4, 5],
+      "description": "Aute adipisicing ut ",
+      "academicYear": "2025/2026",
+      "requirements": [
+        "Testimonial",
+        "Admission Letter",
+        "Wassce Result",
+        "Transcript"
+      ],
+      "updatedByAdminId": "btpeW9CAVR27b587y9ZJ",
+      "applicationSections": [
+        {
+          "id": "e8fd4abc-86ac-4e04-9bb7-4dece5444795",
+          "sectionTitle": "Personal Information",
+          "sectionDescription": "",
+          "sectionOrder": 1,
+          "sectionQuestions": [
+            {
+              "id": "559703a7-3b89-4078-a646-7b8299e5a731",
+              "order": 1,
+              "label": "First Name",
+              "description": "What is your first Name",
+              "type": "text",
+              "required": true,
+              "validation": false,
+              "regex": {
+                "pattern": "",
+                "errorMessage": "",
+                "comparismOperator": "none"
+              },
+              "options": []
+            }
+          ]
+        },
+        {
+          "id": "e0ecf3a5-5f1c-4ced-97aa-6dff4e6aee0b",
+          "sectionTitle": "Educational background",
+          "sectionDescription": "",
+          "sectionOrder": 2,
+          "sectionQuestions": [
+            {
+              "id": "9fe79bad-107f-4686-8ea1-9fa259aca1bd",
+              "order": 1,
+              "label": "Shs completed",
+              "description": "Which shs did you completed",
+              "type": "textarea",
+              "required": true,
+              "validation": false,
+              "regex": {
+                "pattern": "",
+                "errorMessage": "",
+                "comparismOperator": "none"
+              },
+              "options": []
+            }
+          ]
+        },
+        {
+          "id": "04307ac4-8c47-4cf9-9867-ff02b1a80220",
+          "sectionTitle": "Personal experience",
+          "sectionDescription": "",
+          "sectionOrder": 3,
+          "sectionQuestions": [
+            {
+              "id": "dc217f88-bc1d-47b3-a6b2-0ca02dc4e2d5",
+              "order": 1,
+              "label": "Time",
+              "description": "What time will you be free?",
+              "type": "time",
+              "required": true,
+              "validation": false,
+              "regex": {
+                "pattern": "",
+                "errorMessage": "",
+                "comparismOperator": "none"
+              },
+              "options": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

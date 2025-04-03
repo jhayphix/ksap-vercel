@@ -1,0 +1,25 @@
+SCHOLARSHIP:
+    CREATE -> Done:
+    Read -> Done:
+    Delete -> Done:
+    Update -> Done:
+
+APPLICATIONS:
+    CREATE -> Done:
+    Read -> Done:
+    Delete -> Done:
+    Update -> Done:
+
+APPLICANT:
+    CREATE -> Done:
+    Update -> Done:
+    Read -> Done:
+    Delete -> -:
+    Deactivate -> - :
+
+ADMIN:
+    CREATE -> Done:
+    Update -> Done:
+    Read -> Done:
+    Delete -> -:
+    Deactivate -> - :

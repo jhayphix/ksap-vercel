@@ -1,0 +1,63 @@
+
+Application Status:
+    Approved
+    Qualified
+    Pending
+    Rejected
+
+Review Status:
+
+    Reviewed
+    Unreviewed
+
+
+
+
+Application Status:
+
+    Approved: The applicant has been selected for the scholarship and will receive it.
+    Qualified: The applicant is under consideration, but has not yet been selected. They are in a pool of candidates that could potentially receive the scholarship.
+    Pending: The application is still being processed, and a decision has not yet been made.
+    Rejected: The applicant was not selected for the scholarship.
+
+Review Status:
+
+    Reviewed: The applicant's details and eligibility have been confirmed, and everything is in order.
+    
+    Unreviewed: The applicant's details have not been reviewed yet, or there is missing information that needs to be confirmed.
+
+
+
+
+
+
+
+
+
+// :::::::::: REVIEW
+"reviewedByAdminId": "admin1-id",
+"isReviewed": true,
+"reviewedAcademicScore": Number, [Form Value] - Number
+"applicationStatus": String, // [Form Value] - select
+"reviewComment": String, // [Form Value] - text area
+
+"isQualified": Boolean, // Based on form value || form value === qualified
+"isPending": Boolean, // Based on form value || form value === pending
+"isRejected": Boolean, // Based on form value || form value === pending
+
+// :::::::::: APPROVAL
+"approvedByAdminId": "admin1-id",
+"isApproved": true,
+"applicationStatus": "Approved", // [Form Value]
+"applicationStore": Number, // [Form Value]
+
+
+
+To add 
+"approvedByAdminId" : "admin1-id",
+"reviewedByAdminId" : "admin1-id",
+"applicationScore" : "",
+"reviewedAcademicScore" : "",
+
+
+

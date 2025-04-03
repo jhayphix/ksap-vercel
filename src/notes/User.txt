@@ -1,0 +1,64 @@
+ADMIN AUTHOMATIC FIELDS
+    externalId, createdAt, updatedAt, role, createdByAdminId, isSuperAdmin, isApprovalManager, isReviewManager, fullName
+
+ADMIN SECONDARY ADD
+    updatedByAdminId, accountStatus, deactivatedAt, deactivatedByAdminId
+
+ADMIN MANUAL FIELDS
+    [Personal Information] -> [lastName,firstName,otherNames,gender, dateOfBirth, nationality]
+    [Contact Info] -> [phoneNumber, email, authEmail, location]
+    [Assign Roles] -> [assignedRole]
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: 
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+APPLICANT AUTHOMATIC FIELDS
+    externalId, createdAt, role, accountStatus,fullName
+
+APPILCANT SECONDARY ADD
+    updatedAt, deactivatedAt, deactivatedByAdminId,
+
+APPLICANT ADD FROM AUTH 
+    uid, authDisplayName, authEmail, authPhotoURL, authPhoneNumber
+
+APPLICANT MANUAL FIELDS
+    [Personal Information] -> [lastName,firstName,otherNames,gender, dateOfBirth, age, nationality]
+    [Contact Info] -> [telecelNumber, phoneNumber, email, , ]
+    [Academic Info] -> [faculty, department,college, programmeOfStudy,educationalLevel ,indexNumber,referenceNumber ,yearOfStudy , modeOfAdmission, durationOfProgramme]
+    [GuardianDetails] -> [guardianName, guardianPhone, guardianEmail, guardianLocation, guardianRelationship, guardianOccupation]
+
+
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: 
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: 
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: 
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: 
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: 
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: 
+
+INFO
+    assignedRole ["Super Admin", "Approval Manager", "Review Manager"]
+    accountStatus ['Active', 'Inactive', 'Blocked']
+    deactivatedAt - The deactivatedAt timestamp applies to both Inactive and Blocked accounts. It records when the account was disabled, regardless of the reason.
+    
+    Super Admin – Full control over the system, including user management, settings, and approvals.
+    Approval Manager – Can create scholarships, review applications, and approve them.
+    Review Manager – Can create scholarshps and review applications but cannot approve them.
+
+ADMIN SORTED
+    accountStatus, assignedRole, authEmail, createdAt, createdByAdminId, 
+    dateOfBirth, deactivatedAt, deactivatedByAdminId, email, externalId, 
+    firstName, fullName, gender, isApprovalManager, isReviewManager, isSuperAdmin, 
+    lastName, location, nationality, otherNames, phoneNumber, 
+    role, updatedAt, updatedByAdminId
+
+APPLICANT SORTED
+    accountStatus, age, uid, authDisplayName, authEmail, 
+    authPhotoURL, authPhoneNumber, college, createdAt, dateOfBirth, 
+    deactivatedAt, deactivatedByAdminId, department, durationOfProgramme, educationalLevel, 
+    email, externalId, faculty, firstName, fullName, 
+    gender, guardianEmail, guardianLocation, guardianName, guardianOccupation, 
+    guardianPhone, guardianRelationship, indexNumber, isAdminApprovalManager, isAdminReviewManager, isAdminSuperAdmin, lastName, modeOfAdmission, nationality, otherNames, 
+    phoneNumber, programmeOfStudy, referenceNumber, role, telecelNumber, 
+    updatedAt, yearOfStudy
+

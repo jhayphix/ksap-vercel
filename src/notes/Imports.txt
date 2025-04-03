@@ -1,0 +1,24 @@
+// CONTEXTS
+
+import { ConfigContext } from "@contexts/ConfigContextProvider";
+const { setShowFlashMessage } = useContext(ConfigContext);
+
+
+import { NavigationContext } from "@contexts/NavigationContextProvider";
+const { myApplicationsRoute } = useContext(NavigationContext);
+
+
+import { ApplicationContext } from "@contexts/ApplicationContextProvider";
+const { loadApplications } = useContext(ApplicationContext);
+
+import { ScholarshipContext } from "@contexts/ScholarshipContextProvider";
+const { loadScholarships } = useContext(ScholarshipContext);
+
+import { UserContext } from "@contexts/UserContextProvider";
+const { adminStatus } = useContext(UserContext);
+
+import { AuthContext } from "@contexts/AuthContextProvider";
+const { authStatus } = useContext(AuthContext);
+
+import { TableDataContext } from "@contexts/TableDataContextProvider";
+const { getAdminTableData } = useContext(TableDataContext);

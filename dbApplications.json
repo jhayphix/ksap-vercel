@@ -1,0 +1,263 @@
+{
+  "applications": [
+    {
+      "applicantId": "h6BwMdMXu5PhkVQUIBD6",
+      "scholarshipId": "s8qVXmr",
+      "approvedByAdminId": "btpeW9CAVR27b587y9ZJ",
+      "reviewedByAdminId": "btpeW9CAVR27b587y9ZJ",
+      "applicationScore": "2",
+      "reviewedAcademicScore": 18,
+      "isApproved": true,
+      "isDisapproved": false,
+      "isPendingApproval": false,
+      "isProcessed": true,
+      "isQualified": true,
+      "isPendingReview": false,
+      "isDisqualified": false,
+      "isReviewed": true,
+      "applicationStatus": "Approved",
+      "reviewComment": "",
+      "reviewStatus": "Qualified",
+      "approvalStatus": "Approved",
+      "approvalComment": "",
+      "reviewedAt": "2025-03-29T20:29:47.420Z",
+      "approvedAt": "2025-03-29T20:30:08.087Z",
+      "appliedAt": "2025-02-16T13:58:39.738Z",
+      "updatedAt": "2025-02-16T13:58:39.738Z",
+      "progress": {
+        "lastCompletedSection": "section3",
+        "completedSections": ["section1", "section2", "section3"],
+        "percentage": 100,
+        "isCompleted": true
+      },
+      "responseSections": [
+        {
+          "id": "5a7a811e-5e58-46be-b603-5833a13fcb7c",
+          "sectionId": "section1",
+          "sectionTitle": "Personal Information",
+          "responses": [
+            {
+              "id": "8e8e1a9a-9894-49c5-be2d-dfb9c88d3355",
+              "questionId": "question1",
+              "type": "textarea",
+              "label": "Proof of finantial needs",
+              "order": 0,
+              "response": "80"
+            },
+            {
+              "id": "10e29a82-db1d-43f5-81c6-681761cb91e5",
+              "questionId": "question2",
+              "type": "text",
+              "label": "How many of these scholarships have you applied before?",
+              "order": 1,
+              "response": "hkhk"
+            },
+            {
+              "id": "69644828-0280-4c75-8677-38a4153c1a17",
+              "questionId": "question3",
+              "type": "datetime-local",
+              "label": "Date of Birth",
+              "order": 2,
+              "response": "2021-05-19T09:20"
+            },
+            {
+              "id": "d54a1583-7bff-4e7d-b86f-23fcf628d6d1",
+              "questionId": "question4",
+              "type": "radio",
+              "label": "Gender",
+              "order": 3,
+              "response": "Female"
+            }
+          ]
+        },
+        {
+          "id": "47ec6099-0013-4445-89ca-2bb2fccd0b61",
+          "sectionId": "section2",
+          "sectionTitle": "Family Infomation",
+          "responses": [
+            {
+              "id": "8e8e1a9a-9894-49c5-be2d-dfb9c88d3355",
+              "questionId": "question1",
+              "type": "textarea",
+              "label": "Proof of finantial needs",
+              "order": 0,
+              "response": "80"
+            }
+          ]
+        },
+        {
+          "id": "1df0bc26-b203-4e8b-80f2-4948e996a4b9",
+          "sectionId": "section3",
+          "sectionTitle": "Personal Statement",
+          "responses": [
+            {
+              "id": "8e8e1a9a-9894-49c5-be2d-dfb9c88d3355",
+              "questionId": "question1",
+              "type": "textarea",
+              "label": "Proof of finantial needs",
+              "order": 0,
+              "response": "80"
+            },
+            {
+              "id": "10e29a82-db1d-43f5-81c6-681761cb91e5",
+              "questionId": "question2",
+              "type": "text",
+              "label": "How many of these scholarships have you applied before?",
+              "order": 1,
+              "response": "hkhk"
+            }
+          ]
+        }
+      ],
+      "id": "application1"
+    },
+    {
+      "applicantId": "h6BwMdMXu5PhkVQUIBD6",
+      "reviewedByAdminId": "btpeW9CAVR27b587y9ZJ",
+      "approvedByAdminId": "",
+      "scholarshipId": "AqCCKGr",
+      "isApproved": false,
+      "isPendingApproval": false,
+      "isDisapproved": false,
+      "isProcessed": false,
+      "isQualified": false,
+      "isPendingReview": true,
+      "isDisqualified": false,
+      "isReviewed": true,
+      "reviewComment": "",
+      "applicationScore": "",
+      "reviewedAcademicScore": "4",
+      "applicationStatus": "Pending Review",
+      "reviewStatus": "Pending Review",
+      "approvalStatus": "Awaiting Approval",
+      "approvalComment": "",
+      "reviewedAt": "2025-03-15T18:23:08.633Z",
+      "approvedAt": "",
+      "appliedAt": "2025-03-15T18:21:55.543Z",
+      "updatedAt": "2025-03-15T18:21:55.543Z",
+      "progress": {
+        "lastCompletedSection": "31f3ec6d-d4b0-4191-a51b-8783db3f1b21",
+        "lastCompletedSectionIndex": 1,
+        "completedSections": [null, "31f3ec6d-d4b0-4191-a51b-8783db3f1b21"],
+        "percentage": 100,
+        "isCompleted": true
+      },
+      "responseSections": [
+        {
+          "id": "64b11714-2e52-40b1-8981-5f2b93d1ca8a",
+          "sectionTitle": "Personal Information",
+          "responses": [
+            {
+              "id": "cd47b2a9-1fd1-4dd3-a0e8-9dc0683ad843",
+              "questionId": "921dd5a3-d6cc-408f-83c9-bbee7d4d54ad",
+              "type": "text",
+              "label": "Full Name",
+              "order": 0,
+              "response": "Samuel Ablordeppey"
+            }
+          ]
+        },
+        {
+          "id": "2295f980-3ea7-4d47-a0af-a268e77b95e8",
+          "sectionId": "31f3ec6d-d4b0-4191-a51b-8783db3f1b21",
+          "sectionTitle": "Proof of needs",
+          "responses": [
+            {
+              "id": "d0368aa3-6c1b-4505-8afe-ca705e36ca9f",
+              "questionId": "5d6af826-40cb-4012-904b-4fad8987ac40",
+              "type": "textarea",
+              "label": "Why should you be considered for this scholarship",
+              "order": 0,
+              "response": "Nothing for this scholarship"
+            }
+          ]
+        }
+      ],
+      "id": "lNkghIF"
+    },
+    {
+      "id": "0a68d211-4e11-475f-a85d-7b8dd5cbdab1",
+      "applicantId": "h6BwMdMXu5PhkVQUIBD6",
+      "reviewedByAdminId": "",
+      "approvedByAdminId": "",
+      "scholarshipId": "49c1d548-ec56-43e7-a80f-2f06a842a475",
+      "isApproved": false,
+      "isPendingApproval": false,
+      "isDisapproved": false,
+      "isProcessed": false,
+      "isQualified": false,
+      "isPendingReview": true,
+      "isDisqualified": false,
+      "isReviewed": false,
+      "reviewComment": "",
+      "applicationScore": "",
+      "reviewedAcademicScore": "",
+      "applicationStatus": "Awaiting Review",
+      "reviewStatus": "Awaiting Review",
+      "approvalStatus": "Awaiting Approval",
+      "approvalComment": "",
+      "reviewedAt": "",
+      "approvedAt": "",
+      "appliedAt": "2025-03-28T09:32:14.072Z",
+      "updatedAt": "2025-03-29T20:39:15.141Z",
+      "progress": {
+        "completedSections": [
+          "e8fd4abc-86ac-4e04-9bb7-4dece5444795",
+          "e0ecf3a5-5f1c-4ced-97aa-6dff4e6aee0b",
+          "04307ac4-8c47-4cf9-9867-ff02b1a80220"
+        ],
+        "lastCompletedSection": "04307ac4-8c47-4cf9-9867-ff02b1a80220",
+        "lastCompletedSectionIndex": 2,
+        "percentage": 100,
+        "isCompleted": true
+      },
+      "responseSections": [
+        {
+          "id": "7cb5feb0-e874-42d9-a1ed-2e50addf9752",
+          "sectionId": "e8fd4abc-86ac-4e04-9bb7-4dece5444795",
+          "sectionTitle": "Personal Information",
+          "responses": [
+            {
+              "id": "021e2b7c-9801-4ddc-b8a3-4e97bf0bbf47",
+              "questionId": "559703a7-3b89-4078-a646-7b8299e5a731",
+              "type": "text",
+              "label": "First Name",
+              "order": 0,
+              "response": "New first Name"
+            }
+          ]
+        },
+        {
+          "id": "55a822e8-9625-4cea-9d63-9f5ff7da980a",
+          "sectionId": "e0ecf3a5-5f1c-4ced-97aa-6dff4e6aee0b",
+          "sectionTitle": "Educational background",
+          "responses": [
+            {
+              "id": "bf614ca4-eee3-487c-92d8-c60c8bac3761",
+              "questionId": "9fe79bad-107f-4686-8ea1-9fa259aca1bd",
+              "type": "textarea",
+              "label": "Shs completed",
+              "order": 0,
+              "response": "St Peters SHS (New)"
+            }
+          ]
+        },
+        {
+          "id": "29b2463e-8261-41ee-9a39-b1934c3fe2a1",
+          "sectionId": "04307ac4-8c47-4cf9-9867-ff02b1a80220",
+          "sectionTitle": "Personal experience",
+          "responses": [
+            {
+              "id": "9cefd068-f87d-4e4d-bab6-0c85893d06db",
+              "questionId": "dc217f88-bc1d-47b3-a6b2-0ca02dc4e2d5",
+              "type": "time",
+              "label": "Time",
+              "order": 0,
+              "response": "20:38"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

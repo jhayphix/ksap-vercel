@@ -1,0 +1,20 @@
+AUTO ADD
+    id,
+    createdByAdminId
+    createdAt: 
+    updatedAt: 
+
+MANUAL ADD
+    name,
+    shortName,
+    fundingType,
+    academicYear,
+    deadline:
+    eligibilityYearsOfStudy,
+    eligibilityEducationalLevel,
+    requirements,
+    description: DOMPurify.sanitize(String(description)?.replace(/"/g, "'")),
+    applicationSections,
+
+
+
