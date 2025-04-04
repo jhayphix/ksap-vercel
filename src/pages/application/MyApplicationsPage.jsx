@@ -22,10 +22,12 @@ const MyApplicationsPage = () => {
   const { loadApplications, applicationStatus, getApplicantApplications } =
     useContext(ApplicationContext);
   const { dashboardRoute } = useContext(NavigationContext);
-  const { authStatus, combinedAuthStatus } = useContext(AuthContext);
+  const { authStatus, combinedAuthStatus, authUserInfo } =
+    useContext(AuthContext);
 
   // Basic define
   const loggedInApplicantId = authStatus?.loggedInUserId;
+  const loggedInApplicantUid = authUserInfo?.uid;
   const userIsApplicantAndLoggedIn =
     combinedAuthStatus?.isUserApplicantAndLoggedIn;
 
@@ -37,10 +39,17 @@ const MyApplicationsPage = () => {
   }, []);
   const applicationsData = applicationStatus?.applications;
   const applicationIsLoading = applicationStatus?.isLoading;
+  const switchId = loggedInApplicantId
+    ? loggedInApplicantId
+    : loggedInApplicantUid;
   const applicantApplications = getApplicantApplications(
     applicationsData,
-    loggedInApplicantId
+    switchId
   );
+  console.log("Applicantions: ", applicationsData);
+  console.log("LoggedIN applicant uid", loggedInApplicantUid);
+
+  console.log("loggedInApplicantId: ", loggedInApplicantId);
 
   // ::::::::::::::::::::: RETURN
   return (

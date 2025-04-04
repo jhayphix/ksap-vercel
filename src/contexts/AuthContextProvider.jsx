@@ -87,6 +87,7 @@ const AuthContextProvider = ({ children }) => {
     //eslint-disable-next-line
   }, [authStatus]);
 
+
   // ::::::::::::::::::::: Extract
   const getCombinedAuthStatus = () => {
     const { isUserLoggedIn, isUserApplicant, isUserAdmin, isAuthUserOwner } =
@@ -347,6 +348,8 @@ const AuthContextProvider = ({ children }) => {
 
     handleSignOut,
     authenticateWithGoogle,
+
+    loadApplicantRole,
 
     isLoggingInAsAdmin,
     setIsLoggingInAsAdmin,

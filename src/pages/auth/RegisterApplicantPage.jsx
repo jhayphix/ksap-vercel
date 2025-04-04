@@ -29,8 +29,11 @@ const RegisterApplicantPage = () => {
   const { APPLICANTS_API_REF, postRequest } = APIService;
   const { registerApplicantPageEffect, HELPER, setShowFlashMessage } =
     useContext(ConfigContext);
-  const { authUserInfo, setAuthStatus } = useContext(AuthContext);
+  const { authUserInfo, setAuthStatus, loadApplicantRole } =
+    useContext(AuthContext);
   const { dashboardRoute } = useContext(NavigationContext);
+
+  const loggedINApplicantUid = authUserInfo?.uid;
 
   const navigate = useNavigate();
   const thisFormKey = "registerApplicantForm";
@@ -176,6 +179,7 @@ const RegisterApplicantPage = () => {
             "Registration successful. You have been successfully registered.",
           type: "success",
         });
+        loadApplicantRole(loggedINApplicantUid, authUserInfo);
         navigate(dashboardRoute?.path);
 
         // Reset local storage
