@@ -117,8 +117,9 @@ const UpdateApplicantPage = () => {
     // Auto-generated fields
     const metaData = {
       updatedAt: HELPER?.getISODate(),
-      fullName:
-        `${applicantFormData?.lastName} ${applicantFormData?.firstName} ${applicantFormData?.otherNames}`.trim(),
+      fullName: `${applicantFormData?.lastName?.toUpperCase()}, ${
+        applicantFormData?.firstName
+      } ${applicantFormData?.otherNames}`.trim(),
     };
 
     // Extract guardian details

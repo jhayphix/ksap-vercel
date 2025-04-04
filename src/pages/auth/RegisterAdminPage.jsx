@@ -129,8 +129,9 @@ const RegisterAdminPage = () => {
     const isReviewManager =
       adminFormData?.assignedRole?.toLowerCase() === "review manager";
 
-    const fullName =
-      `${adminFormData?.lastName} ${adminFormData?.firstName} ${adminFormData?.otherNames}`.trim();
+    const fullName = `${adminFormData?.lastName?.toUpperCase()}, ${
+      adminFormData?.firstName
+    } ${adminFormData?.otherNames}`.trim();
 
     // Final data to save
     const dataToSave = {

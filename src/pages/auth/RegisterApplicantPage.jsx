@@ -111,8 +111,9 @@ const RegisterApplicantPage = () => {
     setFormIsSubmitting(true); // Start submitting
 
     const dateOfBirth = applicantFormData?.dateOfBirth;
-    const fullName =
-      `${applicantFormData?.lastName} ${applicantFormData?.firstName} ${applicantFormData?.otherNames}`.trim();
+    const fullName = `${applicantFormData?.lastName?.toUpperCase()}, ${
+      applicantFormData?.firstName
+    } ${applicantFormData?.otherNames}`.trim();
 
     const addFromAuth = {
       uid: authUserInfo?.uid,

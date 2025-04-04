@@ -124,8 +124,9 @@ const UpdateAdminPage = () => {
         adminFormData?.assignedRole?.toLowerCase() === "approval manager",
       isReviewManager:
         adminFormData?.assignedRole?.toLowerCase() === "review manager",
-      fullName:
-        `${adminFormData?.lastName} ${adminFormData?.firstName} ${adminFormData?.otherNames}`.trim(),
+      fullName: `${adminFormData?.lastName?.toUpperCase()}, ${
+        adminFormData?.firstName
+      } ${adminFormData?.otherNames}`.trim(),
     };
 
     const dateOfBirth = adminFormData?.dateOfBirth;
