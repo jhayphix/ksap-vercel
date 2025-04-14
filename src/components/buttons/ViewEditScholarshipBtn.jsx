@@ -86,8 +86,9 @@ const ViewEditScholarshipBtn = ({ scholarshipId = "0000" }) => {
       >
         <FaEdit size={20} className="me-2" /> Edit
       </Link>
+      <hr className="my-3" />
       <button
-        className="btn dropdown-item text_danger"
+        className="btn dropdown-item text_danger text-danger"
         onClick={showDeleteScholarshipModal}
       >
         <MdDelete size={20} className="me-2" /> Delete
