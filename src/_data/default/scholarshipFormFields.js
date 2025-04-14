@@ -77,7 +77,7 @@ export const scholarshipFormSections = [
         label: "Eligibility - Educational Level",
         isRequired: true,
         hasOptions: true,
-        options: ["Undergraduate", "Postgraduate", "PHD"],
+        options: ["Undergraduate", "Masters", "PHD"],
         disabled: false,
         placeholder: "Tick the eligibility educational level",
         regexKey: "list",
