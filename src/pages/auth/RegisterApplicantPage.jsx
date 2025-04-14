@@ -168,7 +168,6 @@ const RegisterApplicantPage = () => {
     const {
       guardianName,
       guardianPhone,
-      guardianEmail,
       guardianLocation,
       guardianRelationship,
       guardianOccupation,

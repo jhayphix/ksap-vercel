@@ -103,7 +103,6 @@ const TableDataContextProvider = ({ children }) => {
 
         "Guardian Name": applicant?.guardianName,
         "Guardian Phone Number": applicant?.guardianPhone,
-        "Guardian Email": applicant?.guardianEmail,
         "Guardian Location": applicant?.guardianLocation,
         "Relationship with Guardian": applicant?.guardianRelationship,
         "Guardian Occupation": applicant?.guardianOccupation,

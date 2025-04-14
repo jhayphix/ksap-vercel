@@ -126,7 +126,6 @@ const UpdateApplicantPage = () => {
     const guardianDetails = {
       guardianName: applicantFormData?.guardianName,
       guardianPhone: applicantFormData?.guardianPhone,
-      guardianEmail: applicantFormData?.guardianEmail,
       guardianLocation: applicantFormData?.guardianLocation,
       guardianRelationship: applicantFormData?.guardianRelationship,
       guardianOccupation: applicantFormData?.guardianOccupation,
@@ -136,7 +135,6 @@ const UpdateApplicantPage = () => {
     const {
       guardianName,
       guardianPhone,
-      guardianEmail,
       guardianLocation,
       guardianRelationship,
       guardianOccupation,
