@@ -79,6 +79,7 @@ const ApplicationCard = ({ applicantApplication = {}, className }) => {
     <div className={`${className} bg_primary px-2 py-2 rounded`}>
       <div className="d-flex justify-content-between">
         <div className="d-flex">
+          {/* Scholarship Icon */}
           <div
             className="bg_secondary_3 p-2 rounded centering"
             style={{
@@ -87,8 +88,11 @@ const ApplicationCard = ({ applicantApplication = {}, className }) => {
           >
             <FaAward size={35} className="bs_text_warning" />
           </div>
+
+          {/* Scholarship Details */}
           <div className="mx-3 d-flex flex-column justify-content-between">
-            <div className="d-flex align-items-center">
+            {/* Scholarship Name and (Close and open) */}
+            <div className="d-flex flex-sm-row flex-column align-items-sm-center align-items-start">
               <h5 className="" style={{ fontSize: "1.1rem", opacity: "0.85" }}>
                 <Link
                   to={viewApplicationRoute?.getPath(applicationId)}
@@ -97,13 +101,18 @@ const ApplicationCard = ({ applicantApplication = {}, className }) => {
                   {scholarship?.name}
                 </Link>
               </h5>
-              <span className="mx-2">{" • "}</span>
+              <span className="mx-sm-2 mx-0 d-inline-block d-none">
+                {" • "}
+              </span>
               <DefaultStatusTag
+                className="d-inline-block d-none"
                 text={scholarship?.isDue ? "Closed" : "Open"}
                 color={scholarship?.isDue ? "danger" : "success"}
               />
             </div>
-            <div className="d-flex align-items-center mt-3">
+
+            {/* Application Status */}
+            <div className="d-flex flex-sm-row flex-column align-items-sm-center align-items-start mt-3">
               <p
                 className="text-muted me-3"
                 style={{
@@ -119,6 +128,8 @@ const ApplicationCard = ({ applicantApplication = {}, className }) => {
             </div>
           </div>
         </div>
+
+        {/* Action Button */}
         <div className="centering">
           <DropdownWrapper
             id="applicationCardDropdown"
