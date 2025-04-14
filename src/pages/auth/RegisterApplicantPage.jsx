@@ -137,12 +137,12 @@ const RegisterApplicantPage = () => {
 
     // Extract guardian details
     const guardianDetails = {
-      guardianName: applicantFormData?.guardianName,
-      guardianPhone: applicantFormData?.guardianPhone,
-      guardianEmail: applicantFormData?.guardianEmail,
-      guardianLocation: applicantFormData?.guardianLocation,
-      guardianRelationship: applicantFormData?.guardianRelationship,
-      guardianOccupation: applicantFormData?.guardianOccupation,
+      guardianName: applicantFormData?.guardianName || "",
+      guardianPhone: applicantFormData?.guardianPhone || "",
+      guardianEmail: applicantFormData?.guardianEmail || "",
+      guardianLocation: applicantFormData?.guardianLocation || "",
+      guardianRelationship: applicantFormData?.guardianRelationship || "",
+      guardianOccupation: applicantFormData?.guardianOccupation || "",
     };
 
     // Remove guardian-related fields from the main object
