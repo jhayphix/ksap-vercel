@@ -294,7 +294,7 @@ export const applicantFormSections = [
         isRequired: true,
         hasOptions: false,
         disabled: false,
-        placeholder: "Enter guardian's recidential address/location",
+        placeholder: "Enter guardian's recidential address",
         regexKey: "generalText",
       },
       {
