@@ -43,7 +43,7 @@ const ApplicationStatusTag = ({ applicantApplication }) => {
   
 
   return (
-    <div className="d-flex align-items-center">
+    <div className="d-flex flex-sm-row flex-column align-items-sm-center align-items-start">
       <div
         data-bs-toggle="tooltip"
         data-bs-placement="right"
