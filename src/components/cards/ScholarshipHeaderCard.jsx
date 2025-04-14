@@ -129,6 +129,8 @@ const ScholarshipHeaderCard = ({ className, scholarshipData = {} }) => {
           >
             <FaEdit size={20} className="me-2" /> Edit
           </Link>
+
+          <hr className="my-3" />
           <button
             className="btn dropdown-item text_danger"
             onClick={showDeleteScholarshipModal}

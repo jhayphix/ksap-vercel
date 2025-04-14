@@ -41,7 +41,7 @@ const DynamicFormQuestion = ({
             >
               Move Question
             </div>
-            <hr className="my-0" />
+            <hr className="my-3" />
             <div
               type="button"
               className="btn dropdown-item mt-2 text_danger fw-semibold"

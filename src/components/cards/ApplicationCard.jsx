@@ -148,6 +148,7 @@ const ApplicationCard = ({ applicantApplication = {}, className }) => {
               </Link>
             ) : null}
 
+            <hr className="my-3" />
             <button
               data-bs-toggle="tooltip"
               data-bs-placement="right"
