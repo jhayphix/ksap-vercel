@@ -290,11 +290,11 @@ export const applicantFormSections = [
         sectionId: 4,
         type: "text",
         key: "guardianLocation",
-        label: "Guardian's Recidential Address",
+        label: "Guardian's Residential Address",
         isRequired: true,
         hasOptions: false,
         disabled: false,
-        placeholder: "Enter guardian's recidential address",
+        placeholder: "Enter guardian's residential address",
         regexKey: "generalText",
       },
       {
