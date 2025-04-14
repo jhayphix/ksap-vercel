@@ -9,6 +9,7 @@ const DynamicFormSection = ({
   showRemoveSectionModal,
   updateField,
   addSection,
+  duplicateSection,
   addQuestion,
 }) => {
   return (
@@ -59,6 +60,13 @@ const DynamicFormSection = ({
               onClick={() => addSection(sectionIndex + 1)}
             >
               Add Section
+            </div>
+            <div
+              type="button"
+              className="dropdown-item fw-semibold"
+              onClick={() => duplicateSection(sectionIndex)}
+            >
+              Duplicate Section
             </div>
             <div
               type="button"

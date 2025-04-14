@@ -88,6 +88,29 @@ const DynamicFormBuilder = ({ className, setFields, applicationSections }) => {
     }
   };
 
+  const duplicateSection = (sectionIndex) => {
+    const sectionToCopy = applicationSections[sectionIndex];
+    const newSection = {
+      ...JSON.parse(JSON.stringify(sectionToCopy)),
+      id: uuidv4(),
+      sectionOrder: sectionToCopy.sectionOrder + 1,
+      sectionQuestions: sectionToCopy.sectionQuestions.map((q) => ({
+        ...q,
+        id: uuidv4(), // Generate new ID for each question
+      })),
+    };
+
+    const updatedSections = [...applicationSections];
+
+    // Increment sectionOrder of the following sections
+    for (let i = sectionIndex + 1; i < updatedSections.length; i++) {
+      updatedSections[i].sectionOrder += 1;
+    }
+
+    updatedSections.splice(sectionIndex + 1, 0, newSection);
+    setFields(updatedSections);
+  };
+
   const removeSection = (sectionIndex) => {
     setShowModal({ isActive: false });
     const newSections = [...applicationSections];
@@ -274,6 +297,7 @@ const DynamicFormBuilder = ({ className, setFields, applicationSections }) => {
             sectionIndex={sectionIndex}
             applicationSections={applicationSections}
             addSection={addSection}
+            duplicateSection={duplicateSection}
             moveSection={moveSection}
             showRemoveSectionModal={showRemoveSectionModal}
             updateField={updateField}
