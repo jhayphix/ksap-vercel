@@ -220,6 +220,32 @@ const DynamicFormBuilder = ({ className, setFields, applicationSections }) => {
     setFields(newSections);
   };
 
+  const duplicateQuestion = (sectionIndex, questionIndex) => {
+    const newSections = [...applicationSections];
+    const originalQuestion =
+      newSections[sectionIndex].sectionQuestions[questionIndex];
+    const duplicatedQuestion = {
+      ...JSON.parse(JSON.stringify(originalQuestion)),
+      id: uuidv4(),
+      order: originalQuestion.order + 1,
+    };
+
+    // Increment order of subsequent questions
+    newSections[sectionIndex].sectionQuestions = newSections[
+      sectionIndex
+    ].sectionQuestions.map((q, i) => {
+      if (i > questionIndex) return { ...q, order: q.order + 1 };
+      return q;
+    });
+
+    newSections[sectionIndex].sectionQuestions.splice(
+      questionIndex + 1,
+      0,
+      duplicatedQuestion
+    );
+    setFields(newSections);
+  };
+
   const removeQuestion = (sectionIndex, questionIndex) => {
     setShowModal({ isActive: false });
     const newSections = [...applicationSections];
@@ -317,6 +343,7 @@ const DynamicFormBuilder = ({ className, setFields, applicationSections }) => {
                 questionIndex={questionIndex}
                 updateField={updateField}
                 addQuestion={addQuestion}
+                duplicateQuestion={duplicateQuestion}
                 moveQuestion={moveQuestion}
                 removeQuestion={removeQuestion}
                 showRemoveQuestionModal={showRemoveQuestionModal}

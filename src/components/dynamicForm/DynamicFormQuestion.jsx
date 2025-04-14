@@ -8,6 +8,7 @@ const DynamicFormQuestion = ({
   questionIndex,
   updateField,
   addQuestion,
+  duplicateQuestion,
   moveQuestion,
   showRemoveQuestionModal,
   fieldTypes,
@@ -32,6 +33,13 @@ const DynamicFormQuestion = ({
               onClick={() => addQuestion(sectionIndex, questionIndex + 2)}
             >
               Add Question
+            </div>
+            <div
+              type="button"
+              className="dropdown-item fw-semibold"
+              onClick={() => duplicateQuestion(sectionIndex, questionIndex)}
+            >
+              Duplicate Question
             </div>
             <div
               type="button"
