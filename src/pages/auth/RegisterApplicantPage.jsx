@@ -147,11 +147,6 @@ const RegisterApplicantPage = () => {
         applicantFormData?.guardianPhone !== undefined
           ? applicantFormData?.guardianPhone
           : "",
-      guardianEmail:
-        applicantFormData?.guardianEmail !== null ||
-        applicantFormData?.guardianEmail !== undefined
-          ? applicantFormData?.guardianEmail
-          : "",
       guardianLocation:
         applicantFormData?.guardianLocation !== null ||
         applicantFormData?.guardianLocation !== undefined
