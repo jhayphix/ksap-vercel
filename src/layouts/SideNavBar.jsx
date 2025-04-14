@@ -16,10 +16,11 @@ const SideNavBar = ({ className, setShowMinimalNavbar, topNavbarHeight }) => {
     setShowMinimalNavbar(true);
     setCloseSideNavbar(true);
   };
-
   const signOutHandler = () => {
     handleSignOut();
   };
+
+  
 
   return (
     <div

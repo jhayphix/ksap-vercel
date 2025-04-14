@@ -11,11 +11,29 @@ import useOnlineStatus from "@layouts/useOnlineStatus";
 import { ConfigContext } from "@contexts/ConfigContextProvider";
 
 const AppLayout = ({ children }) => {
-  const { setShowFlashMessage } = useContext(ConfigContext);
-  const [showMinimalNavbar, setShowMinimalNavbar] = useState(false);
+  const { setShowFlashMessage, HELPER } = useContext(ConfigContext);
+
   const [wasOffline, setWasOffline] = useState(false); // Track previous state
   const topNavbarHeight = "2.5rem";
   const isOnline = useOnlineStatus();
+
+  const navigationStateKey = "NavigationState";
+
+  const [showMinimalNavbar, setShowMinimalNavbar] = useState(() => {
+    return HELPER?.getLocalStorage(navigationStateKey) ?? false;
+  });
+
+  // Save to localStorage whenever the state changes
+  useEffect(() => {
+    HELPER?.setLocalStorage(navigationStateKey, showMinimalNavbar);
+
+    //eslint-disable-next-line
+  }, [showMinimalNavbar]);
+
+  console.log("showMinimalNavbar: ", showMinimalNavbar);
+
+
+  
 
   useEffect(() => {
     if (!isOnline) {

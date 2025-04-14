@@ -1,5 +1,5 @@
 export const setLocalStorage = (key, data) => {
-  if (!key || !data) return;
+  if (!key) return;
   localStorage.setItem(key, JSON.stringify(data));
 };
 
