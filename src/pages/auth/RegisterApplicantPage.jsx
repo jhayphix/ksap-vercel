@@ -137,12 +137,36 @@ const RegisterApplicantPage = () => {
 
     // Extract guardian details
     const guardianDetails = {
-      guardianName: applicantFormData?.guardianName || "",
-      guardianPhone: applicantFormData?.guardianPhone || "",
-      guardianEmail: applicantFormData?.guardianEmail || "",
-      guardianLocation: applicantFormData?.guardianLocation || "",
-      guardianRelationship: applicantFormData?.guardianRelationship || "",
-      guardianOccupation: applicantFormData?.guardianOccupation || "",
+      guardianName:
+        applicantFormData?.guardianName !== null ||
+        applicantFormData?.guardianName !== undefined
+          ? applicantFormData?.guardianName
+          : "",
+      guardianPhone:
+        applicantFormData?.guardianPhone !== null ||
+        applicantFormData?.guardianPhone !== undefined
+          ? applicantFormData?.guardianPhone
+          : "",
+      guardianEmail:
+        applicantFormData?.guardianEmail !== null ||
+        applicantFormData?.guardianEmail !== undefined
+          ? applicantFormData?.guardianEmail
+          : "",
+      guardianLocation:
+        applicantFormData?.guardianLocation !== null ||
+        applicantFormData?.guardianLocation !== undefined
+          ? applicantFormData?.guardianLocation
+          : "",
+      guardianRelationship:
+        applicantFormData?.guardianRelationship !== null ||
+        applicantFormData?.guardianRelationship !== undefined
+          ? applicantFormData?.guardianRelationship
+          : "",
+      guardianOccupation:
+        applicantFormData?.guardianOccupation !== null ||
+        applicantFormData?.guardianOccupation !== undefined
+          ? applicantFormData?.guardianOccupation
+          : "",
     };
 
     // Remove guardian-related fields from the main object
