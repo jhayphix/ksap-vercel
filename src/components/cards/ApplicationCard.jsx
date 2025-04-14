@@ -114,7 +114,7 @@ const ApplicationCard = ({ applicantApplication = {}, className }) => {
             {/* Application Status */}
             <div className="d-flex flex-sm-row flex-column align-items-sm-center align-items-start mt-3">
               <p
-                className="text-muted me-3"
+                className="text-muted me-3 mb-sm-0 mb-2"
                 style={{
                   fontSize: "0.75rem",
                   fontWeight: "600",
