@@ -183,7 +183,7 @@ const RegisterApplicantPage = () => {
       guardianDetails, // Save guardian details as an object
     };
 
-    console.log("DAta to save: ", dataToSave);
+    console.log("Data to save: -> Updated", dataToSave);
 
     try {
       const response = await postRequest(APPLICANTS_API_REF, dataToSave);
