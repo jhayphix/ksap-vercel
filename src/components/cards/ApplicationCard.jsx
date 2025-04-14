@@ -96,7 +96,7 @@ const ApplicationCard = ({ applicantApplication = {}, className }) => {
               <h5 className="" style={{ fontSize: "1.1rem", opacity: "0.85" }}>
                 <Link
                   to={viewApplicationRoute?.getPath(applicationId)}
-                  className="hover_underline hover_secondary"
+                  className="hover_underline hover_text_secondary"
                 >
                   {scholarship?.name}
                 </Link>

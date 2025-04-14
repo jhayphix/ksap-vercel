@@ -9,7 +9,7 @@ const NavigableCard = ({
   hasPath = false,
   path,
   icon,
-  gradient = "1",
+  gradient = 1,
   onClick = () => {},
 }) => {
   const navigate = useNavigate();
@@ -23,14 +23,14 @@ const NavigableCard = ({
 
   return (
     <Card
-      className={`${cardStyle} custom_gradient_${gradient} text-center py-2 px-3 shadow_md cursor_pointer user_select_none`}
+      className={`${cardStyle} text-center py-2 px-3 shadow_md cursor_pointer user_select_none`}
       onClick={() => handleClick()}
       style={{ height: "100%" }}
     >
       <CardBody>
-        <div className={`text-light mb-2`}>{icon}</div>
-        <h4 className={`text-light mb-2`}>{title}</h4>
-        <p className={`text_light_2 mb-2`}>{body}</p>
+        <div className={` mb-2`}>{icon}</div>
+        <h4 className={` mb-2`}>{title}</h4>
+        <p className={` mb-2`}>{body}</p>
       </CardBody>
     </Card>
   );

@@ -31,7 +31,7 @@ const AuthSelectionPage = () => {
       body: "Access the admin dashboard and manage applications",
       hasPath: false, // if false it wont naviate
       path: "/",
-      cardStyle: "",
+      cardStyle: "bg_secondary hover_bg_secondary_3",
       transitionEffect: "left",
       icon: <MdAdminPanelSettings size={iconSize} />,
       onClick: async () => {
@@ -45,7 +45,7 @@ const AuthSelectionPage = () => {
       body: "Apply and track your application progress.",
       hasPath: false,
       path: "/",
-      cardStyle: "",
+      cardStyle: "bg_secondary_2 hover_bg_secondary_3",
       transitionEffect: "right",
       icon: <FaUserCheck size={iconSize} />,
       onClick: async () => {

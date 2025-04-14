@@ -40,10 +40,21 @@
 
 /* Hover */
 .hover_highlight:hover {
-  color: rgb(0, 158, 53) !important;
   color: var(--secondary_color) !important;
 }
-.hover_secondary:hover {
+.hover_bg_secondary:hover {
+  background-color: var(--secondary_color) !important;
+  color: var(--dark_color) !important;
+}
+.hover_bg_secondary_2:hover {
+  background-color: var(--secondary_color_2) !important;
+  color: var(--dark_color) !important;
+}
+.hover_bg_secondary_3:hover {
+  background-color: var(--secondary_color_3) !important;
+  color: var(--dark_color) !important;
+}
+.hover_text_secondary:hover {
   color: var(--secondary_color) !important;
 }
 .hover_danger:hover {
