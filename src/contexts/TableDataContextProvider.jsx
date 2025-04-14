@@ -88,7 +88,7 @@ const TableDataContextProvider = ({ children }) => {
 
         "Date of Birth": getFormatDateMMDDYYY(applicant?.dateOfBirth),
         "Phone Number": applicant?.phoneNumber,
-        "Telecel Number": applicant?.telecelNumber,
+        "Student's Telecel Number": applicant?.telecelNumber,
         age: applicant?.age,
 
         email: applicant?.email,
@@ -200,7 +200,7 @@ const TableDataContextProvider = ({ children }) => {
         "mode of admission": application?.applicant?.modeOfAdmission,
         email: application?.applicant?.email,
         nationality: application?.applicant?.nationality,
-        "telecel number": application?.applicant?.telecelNumber,
+        "Student's Telecel Number": application?.applicant?.telecelNumber,
         "phone number": application?.applicant?.phoneNumber,
         faculty: application?.applicant?.faculty,
         department: application?.applicant?.department,

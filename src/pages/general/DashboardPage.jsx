@@ -20,7 +20,7 @@ const DashboardPage = () => {
 
   const pageTitle = "KNUST SCHOLARSHIP APPLICATION PORTAL (KSAP)";
   const pageSubTitle =
-    "Below are available Scholarships for brilliant but needy students to enable them pursue University Education. Click to read details and apply:";
+    "Below are available Scholarships for brilliant but needy students to enable them pursue their University Education. Click to read details and apply:";
 
   return (
     <PageTransition effect={dashboardPageEffect}>
