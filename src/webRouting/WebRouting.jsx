@@ -79,10 +79,7 @@ const WebRouting = () => {
         {/* ✅ Protected Routes (Only Authenticated Users) */}
         <Route element={<AuthMiddleware />}>
           {/* ✅ General Protected Routes */}
-          <Route
-            path={viewApplicantProfileRoute?.path}
-            element={<ViewApplicantProfilePage />}
-          />
+
           <Route
             path={viewScholarshipRoute?.path}
             element={<ViewScholarshipPage />}
@@ -147,6 +144,10 @@ const WebRouting = () => {
 
             {/* ✅ Registered Applicants */}
             <Route element={<RegisteredMiddleware />}>
+              <Route
+                path={viewApplicantProfileRoute?.path}
+                element={<ViewApplicantProfilePage />}
+              />
               <Route
                 path={myApplicationsRoute?.path}
                 element={<MyApplicationsPage />}
