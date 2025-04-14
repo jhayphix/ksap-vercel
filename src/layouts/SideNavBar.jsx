@@ -47,7 +47,7 @@ const SideNavBar = ({ className, setShowMinimalNavbar, topNavbarHeight }) => {
       >
         <NavList />
 
-        <div>
+        <div className="mb-5">
           {userIsLoggedIn ? (
             <div
               className="ps-3 py-2 cursor_pointer  fw-medium user_select_none nav_link_hover"
