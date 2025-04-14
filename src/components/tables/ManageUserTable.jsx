@@ -115,9 +115,9 @@ const ManageUserTable = ({
   };
 
   let filteredData = tableData
-    .filter((row) =>
-      Object.values(row).some((value) =>
-        value.toString().toLowerCase().includes(search.toLowerCase())
+    ?.filter((row) =>
+      Object.values(row)?.some((value) =>
+        value?.toString()?.toLowerCase()?.includes(search?.toLowerCase())
       )
     )
     .filter((row) =>

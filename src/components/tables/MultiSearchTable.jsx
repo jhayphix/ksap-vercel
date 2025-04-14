@@ -217,9 +217,9 @@ const MultiSearchTable = ({
   };
 
   let filteredData = tableData
-    .filter((row) =>
+    ?.filter((row) =>
       Object.values(row).some((value) =>
-        value.toString().toLowerCase().includes(search.toLowerCase())
+        value?.toString()?.toLowerCase()?.includes(search?.toLowerCase())
       )
     )
     .filter((row) =>

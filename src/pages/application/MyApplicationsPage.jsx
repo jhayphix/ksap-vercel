@@ -46,10 +46,6 @@ const MyApplicationsPage = () => {
     applicationsData,
     switchId
   );
-  console.log("Applicantions: ", applicationsData);
-  console.log("LoggedIN applicant uid", loggedInApplicantUid);
-
-  console.log("loggedInApplicantId: ", loggedInApplicantId);
 
   // ::::::::::::::::::::: RETURN
   return (
