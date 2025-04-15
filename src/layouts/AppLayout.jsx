@@ -30,8 +30,6 @@ const AppLayout = ({ children }) => {
     //eslint-disable-next-line
   }, [showMinimalNavbar]);
 
-  console.log("showMinimalNavbar: ", showMinimalNavbar);
-
 
   
 
