@@ -1,4 +1,4 @@
-const externalScholarshipsData = [
+export const externalScholarshipsData = [
   {
     id: "sch-ext-001",
     name: "GETFund Scholarship",
