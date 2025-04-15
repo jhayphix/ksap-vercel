@@ -7,7 +7,10 @@ const NotFoundPage = () => {
   const { homeRoute } = useContext(NavigationContext);
 
   return (
-    <Container className="vh-100 d-flex flex-column justify-content-center align-items-center text-center">
+    <Container
+      className="d-flex flex-column justify-content-center align-items-center text-center"
+      style={{ height: "80vh" }}
+    >
       <Row>
         <Col>
           <h1 className="display-1 fw-bold text-danger">404</h1>

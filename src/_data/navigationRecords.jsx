@@ -16,7 +16,12 @@ import {
 } from "react-icons/fa";
 import { MdLogin } from "react-icons/md";
 
-import { BsPencil, BsGrid, BsBoxArrowUpRight } from "react-icons/bs";
+import {
+  BsPencil,
+  BsGrid,
+  BsBoxArrowUpRight,
+  BsGlobeAmericas,
+} from "react-icons/bs";
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 // Base Declarations
@@ -219,7 +224,7 @@ const navigationRecords = {
   createExternalScholarshipRoute: {
     title: "Add External Scholarship",
     path: `${baseRoute}/external-scholarships/new`,
-    icon: <FaPlusCircle size={iconSize} />,
+    icon: <BsGlobeAmericas size={iconSize} />,
     end: false,
   },
   updateExternalScholarshipRoute: {
