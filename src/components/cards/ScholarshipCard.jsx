@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 const ScholarshipCard = ({
   scholarshipId = "0000",
   name = "Scholarship Name",
-  deadline = "2025-02-07T23:59:59Z",
+  deadline = "",
   requirements = ["Requirement"],
 }) => {
   const { viewScholarshipRoute } = useContext(NavigationContext);

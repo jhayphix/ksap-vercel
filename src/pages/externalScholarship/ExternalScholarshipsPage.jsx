@@ -52,7 +52,8 @@ const externalScholarshipsData = [
     url: "https://mastercardfdn.org/scholars",
     deadline: "2025-08-20T23:59:59Z",
     sponsor: "Mastercard Foundation",
-    logoUrl: "https://example.com/logos/mastercard.png",
+    logoUrl:
+      "https://via.assets.so/img.jpg?w=600&h=200&tc=white&bg=#d8d8d8&txt=No+Logo",
     createdAt: "2025-04-07T14:00:00Z",
     lastUpdatedAt: "2025-04-12T14:00:00Z",
     createdByAdminId: "admin_004",

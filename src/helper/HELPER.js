@@ -79,22 +79,23 @@ const HELPER = {
   generateAcademicYears, // () Return an array
   getYearsOfStudy, // () Return an array
 
-  // DateTime
-  getISODate, // 2025-02-09T14:10:00.000Z
-  getYYYYMMDD, // 2025-02-09
-  getDDMMYYYY, // 09-02-2025
-  getMMDDYYYY, // 02-09-2025
-  getHHMM, // 14:10
-  getHHMMSS, // 14:10:30
-  getHHMMSSsss, // 14:10:30.123
-  getDatetimeLocal, // 2025-02-09T14:10
-  formatToDatetimeLocal, // // Extracts YYYY-MM-DDTHH:MM
-  formatToDateInput, // Extracts YYYY-MM-DD
-  getYYYYMMDD_HHMM, // 2025-02-09 14:10
-  getUTCString, // Sun, 09 Feb 2025 14:10:00 GMT
-  getToString, // Sun Feb 09 2025 14:10:00 GMT+0000 (Coordinated Universal Time)
-  getTimestamp, // 1733782200000 (milliseconds since epoch)
-  formatDateTime, // Customize in file  // Sun, February 9, 2025, 02:10 PM
-  formatDateMMDDYYY, // Sun, Feb 9, 2025
+  // DateTime Utility Functions Output Formats
+
+  getISODate, // → "2025-02-09T14:10:00.000Z"
+  getYYYYMMDD, // → "2025-02-09"
+  getDDMMYYYY, // → "09-02-2025"
+  getMMDDYYYY, // → "02-09-2025"
+  getHHMM, // → "14:10"
+  getHHMMSS, // → "14:10:30"
+  getHHMMSSsss, // → "14:10:30.123"
+  getDatetimeLocal, // → "2025-02-09T14:10"
+  formatToDatetimeLocal, // → "2025-02-09T14:10"
+  formatToDateInput, // → "2025-02-09"
+  getYYYYMMDD_HHMM, // → "2025-02-09 14:10"
+  getUTCString, // → "Sun, 09 Feb 2025 14:10:00 GMT"
+  getToString, // → "Sun Feb 09 2025 14:10:00 GMT+0000 (Coordinated Universal Time)"
+  getTimestamp, // → 1733782200000
+  formatDateTime, // → "Sun, Feb 9, 2025, 02:10 PM"
+  formatDateMMDDYYY, // → "Feb 09, 2025"
 };
 export default HELPER;

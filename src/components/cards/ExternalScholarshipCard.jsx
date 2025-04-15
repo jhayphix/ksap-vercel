@@ -1,11 +1,16 @@
-import { useEffect, useState } from "react";
-import { Card, Button } from "react-bootstrap";
+import { useContext, useEffect, useState } from "react";
+import { Card, Button, Badge } from "react-bootstrap";
+
+import { ConfigContext } from "@contexts/ConfigContextProvider";
+
+import DeadlineTimeTag from "@components/tags/DeadlineTimeTag";
 
 const ExternalScholarshipCard = ({ name, deadline, url, sponsor, logoUrl }) => {
-  const defaultImage = "https://via.placeholder.com/300x120?text=No+Logo";
+  const { HELPER } = useContext(ConfigContext);
+  const defaultImage =
+    "https://via.assets.so/img.jpg?w=600&h=200&tc=white&bg=#d8d8d8&txt=No+Logo";
   const [loadedImage, setLoadedImage] = useState(defaultImage);
 
-  // Preload logo image
   useEffect(() => {
     if (logoUrl) {
       const img = new Image();
@@ -18,28 +23,48 @@ const ExternalScholarshipCard = ({ name, deadline, url, sponsor, logoUrl }) => {
   }, [logoUrl]);
 
   return (
-    <Card className="h-100 shadow-sm external-scholarship-card">
+    <Card className="h-100 shadow-sm external-scholarship-card border-0">
       <Card.Img
         variant="top"
         src={loadedImage}
         alt={`${sponsor} logo`}
-        style={{ maxHeight: "120px", objectFit: "contain", padding: "1rem" }}
+        style={{
+          height: "160px",
+          width: "100%",
+          objectFit: "cover",
+          borderTopLeftRadius: "0.5rem",
+          borderTopRightRadius: "0.5rem",
+        }}
       />
 
-      <Card.Body>
-        <Card.Title className="text-truncate">{name}</Card.Title>
-        <Card.Subtitle className="mb-2 text-muted">{sponsor}</Card.Subtitle>
-        <p className="text-danger small mb-2">
-          Deadline: {new Date(deadline).toDateString()}
-        </p>
-        <Button
-          className="btn btn_secondary_2"
-          href={url}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Apply Now
-        </Button>
+      <Card.Body className="d-flex flex-column justify-content-between p-3">
+        <div>
+          <Card.Title className="fw-bold text-dark mb-2">{name}</Card.Title>
+          <Card.Subtitle
+            className="text-muted mb-2"
+            style={{ fontSize: "0.95rem" }}
+          >
+            Sponsored by {sponsor}
+          </Card.Subtitle>
+          <Badge bg="danger" className="mb-3" style={{ fontSize: "0.75rem" }}>
+            Deadline: {HELPER?.formatDateTime(deadline)}
+          </Badge>
+          <div className="">
+            <DeadlineTimeTag deadline={deadline} />
+          </div>
+        </div>
+
+        <div className="d-flex justify-content-end mt-auto">
+          <Button
+            variant="outline-primary"
+            href={url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-3 px-3 py-2"
+          >
+            Apply Now
+          </Button>
+        </div>
       </Card.Body>
     </Card>
   );
