@@ -13,6 +13,7 @@ import HeaderBanner from "@components/headers/HeaderBanner";
 import BackButton from "@components/buttons/BackButton";
 import DefaultSpinner from "@components/spinners/DefaultSpinner";
 import ApplicationCard from "@components/cards/ApplicationCard";
+import ApplicationStatusInfoCard from "@components/cards/ApplicationStatusInfoCard";
 
 // Assets
 
@@ -94,6 +95,10 @@ const MyApplicationsPage = () => {
             )}
           </div>
         )}
+
+        <div className="my-5">
+          <ApplicationStatusInfoCard />
+        </div>
       </section>
     </PageTransition>
   );
