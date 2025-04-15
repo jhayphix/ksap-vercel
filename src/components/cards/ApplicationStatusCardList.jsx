@@ -11,8 +11,6 @@ const ApplicationStatusCardList = ({
   const { HELPER } = useContext(ConfigContext);
   const scholarshipId = scholarshipData?.id;
 
-  console.log("applicationsData: ", applicationsData);
-
   // Total Applications
   const numberOfApplications = scholarshipData?.numberOfApplications;
 

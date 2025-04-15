@@ -309,8 +309,6 @@ const CreateApplicationPage = () => {
       })),
     };
 
-    console.log("dataToSave: ", dataToSave);
-
     setLoading(true); // Start loading
 
     try {
