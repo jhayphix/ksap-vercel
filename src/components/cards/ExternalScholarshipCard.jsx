@@ -46,7 +46,11 @@ const ExternalScholarshipCard = ({ name, deadline, url, sponsor, logoUrl }) => {
           >
             Sponsored by {sponsor}
           </Card.Subtitle>
-          <Badge bg="danger" className="mb-3" style={{ fontSize: "0.75rem" }}>
+          <Badge
+            bg="secondary"
+            className="mb-3"
+            style={{ fontSize: "0.75rem" }}
+          >
             Deadline: {HELPER?.formatDateTime(deadline)}
           </Badge>
           <div className="">
@@ -56,13 +60,13 @@ const ExternalScholarshipCard = ({ name, deadline, url, sponsor, logoUrl }) => {
 
         <div className="d-flex justify-content-end mt-auto">
           <Button
-            variant="outline-primary"
+            // variant="outline-primary"
             href={url}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-3 px-3 py-2"
+            className="mt-3 px-3 py-2 btn_secondary_outline_2"
           >
-            Apply Now
+            Take Action
           </Button>
         </div>
       </Card.Body>
