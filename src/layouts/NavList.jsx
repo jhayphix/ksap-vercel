@@ -21,7 +21,7 @@ const NavList = ({ showMinimalNavbar }) => {
   return (
     <nav className="py-5 side_navbar">
       <ul className="">
-        {NavLinks?.map(({ title, path, icon }, index) => {
+        {NavLinks?.map(({ title, path, icon, end }, index) => {
           return (
             <li
               className="d-flex"
@@ -32,6 +32,7 @@ const NavList = ({ showMinimalNavbar }) => {
             >
               <NavLink
                 to={path}
+                end={end}
                 className={({ isActive }) =>
                   `nav_link py-2 fw-semibold d-flex align-items-center w-100 ${
                     isActive ? "nav_link_active" : ""

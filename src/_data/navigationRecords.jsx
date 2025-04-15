@@ -54,7 +54,7 @@ const navigationRecords = {
     title: "Admin Panel",
     path: `${baseRoute}/admin-panel`,
     icon: <FaUsers size={iconSize} />,
-    end: false,
+    end: true,
   },
 
   // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -219,20 +219,20 @@ const navigationRecords = {
     title: "External Scholarships",
     path: `${baseRoute}/external-scholarships`,
     icon: <BsBoxArrowUpRight size={iconSize} />,
-    end: false,
+    end: true,
   },
+
   createExternalScholarshipRoute: {
     title: "Add External Scholarship",
     path: `${baseRoute}/external-scholarships/new`,
     icon: <BsGlobeAmericas size={iconSize} />,
     end: false,
   },
+
   updateExternalScholarshipRoute: {
     title: "Edit External Scholarship",
     path: `${baseRoute}/external-scholarships/:id/update`,
-    getPath: (externalScholarshipId) => {
-      return `${baseRoute}/external-scholarships/${externalScholarshipId}/update`;
-    },
+    getPath: (id) => `${baseRoute}/external-scholarships/${id}/update`,
     icon: <FaClipboardCheck size={iconSize} />,
     end: false,
   },
