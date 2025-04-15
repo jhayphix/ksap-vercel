@@ -10,11 +10,17 @@ import {
 } from "firebase/firestore";
 
 export const SCHOLARSHIPS_API_REF = collection(db, "scholarships");
+export const EXTERNAL_SCHOLARSHIPS_API_REF = collection(
+  db,
+  "externalScholarships"
+);
 export const APPLICATIONS_API_REF = collection(db, "applications");
 export const ADMINS_API_REF = collection(db, "admins");
 export const APPLICANTS_API_REF = collection(db, "applicants");
+
 export const DATABASE_TABLE_NAMES = {
   SCHOLARSHIPS_TABLE_NAME: "scholarships",
+  EXTERNAL_SCHOLARSHIPS_API_REF: "externalScholarships",
   APPLICATIONS_TABLE_NAME: "applications",
   APPLICANTS_TABLE_NAME: "applicants",
   ADMINS_TABLE_NAME: "admins",
