@@ -43,6 +43,11 @@ export const NavigationContext = createContext({
   scholarshipApplicantsRoute: {},
   createScholarshipRoute: {},
   updateScholarshipRoute: {},
+
+  // External Scholarships
+  externalScholarshipsRoute: {},
+  createExternalScholarshipRoute: {},
+  updateExternalScholarshipRoute: {},
 });
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -86,7 +91,14 @@ const NavigationContextProvider = ({ children }) => {
   const createScholarshipRoute = navigationData?.createScholarshipRoute;
   const updateScholarshipRoute = navigationData?.updateScholarshipRoute;
 
-  const defaultNavRoutesOnTop = [dashboardRoute];
+  // External Scholarships
+  const externalScholarshipsRoute = navigationData?.externalScholarshipsRoute;
+  const createExternalScholarshipRoute =
+    navigationData?.createExternalScholarshipRoute;
+  const updateExternalScholarshipRoute =
+    navigationData?.updateExternalScholarshipRoute;
+
+  const defaultNavRoutesOnTop = [dashboardRoute, externalScholarshipsRoute];
   const defaultNavRoutesOnBottom = [];
   const adminRoutesOnlyList = [
     adminPanelRoute,
@@ -96,6 +108,7 @@ const NavigationContextProvider = ({ children }) => {
   const superAdminRoutesOnlyList = [
     adminPanelRoute,
     createScholarshipRoute,
+    createExternalScholarshipRoute,
     registerAdminRoute,
     manageUsersRoute,
     searchApplicationRoute,
@@ -148,7 +161,10 @@ const NavigationContextProvider = ({ children }) => {
     createScholarshipRoute,
     updateScholarshipRoute,
 
-    // Custom path
+    // External Scholarships
+    externalScholarshipsRoute,
+    createExternalScholarshipRoute,
+    updateExternalScholarshipRoute,
   };
 
   return (

@@ -50,6 +50,11 @@ export const ConfigContext = createContext({
   scholarshipApplicantsPageEffect: "",
   createScholarshipPageEffect: "",
   updateScholarshipPageEffect: "",
+
+  // Scholarships
+  externalScholarshipsPageEffect: "",
+  createExternalScholarshipPageEffect: "",
+  updateExternalScholarshipPageEffect: "",
 });
 
 // ::::::::::::::::::::: PROVIDER
@@ -102,6 +107,11 @@ const ConfigContextProvider = ({ children }) => {
   const createScholarshipPageEffect = "right";
   const updateScholarshipPageEffect = "left";
 
+  // External Scholarships
+  const externalScholarshipsPageEffect = "bottom";
+  const createExternalScholarshipPageEffect = "right";
+  const updateExternalScholarshipPageEffect = "left";
+
   // ::::::::::::::::::::: CONTEXT
 
   const context = {
@@ -145,6 +155,11 @@ const ConfigContextProvider = ({ children }) => {
     scholarshipApplicantsPageEffect,
     createScholarshipPageEffect,
     updateScholarshipPageEffect,
+
+    // External Scholarships
+    externalScholarshipsPageEffect,
+    createExternalScholarshipPageEffect,
+    updateExternalScholarshipPageEffect,
   };
 
   // ::::::::::::::::::::: RETURN

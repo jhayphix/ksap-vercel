@@ -1,0 +1,154 @@
+Field Name | Type | Description
+
+id | string | Unique identifier (UUID or Firestore ID)
+name | string | Name of the external scholarship
+url | string | Direct link to the scholarship application page
+description | string | Brief info about the scholarship (who it's for, benefits, etc.)
+deadline | timestamp | Deadline for application
+location | string | (optional) Country or region targeted (e.g., "Ghana", "Africa-wide", "Global")
+sponsor | string | (optional) Scholarship provider/sponsor name
+logoUrl | string | (optional) Logo of the scholarship provider
+createdAt | timestamp | Date the entry was added
+lastUpdatedAt | timestamp | Last update timestamp
+createdByAdminId | string | Admin who added it
+lastUpdatedByAdminId | string | Admin who last modified it
+isActive | boolean | If false, hide from front-end display
+
+
+
+
+
+
+
+3. External Scholarship Card Design
+A clean and responsive card layout. Here's what it can display:
+
+✅ Card Elements:
+Logo or sponsor initials
+
+Scholarship Name
+
+Short Description or Eligibility
+
+Deadline
+
+Apply Now Button (redirects to external url)
+
+Optional: tag like Global, Africa, Women only, etc.
+
+💡 Example JSX Component (Bootstrap-based):
+
+
+import { Card, Button, Badge } from "react-bootstrap";
+
+const ExternalScholarshipCard = ({ scholarship }) => {
+  const {
+    name,
+    description,
+    deadline,
+    url,
+    sponsor,
+    logoUrl,
+    location,
+  } = scholarship;
+
+  return (
+    <Card className="h-100 shadow-sm external-scholarship-card">
+      {logoUrl && (
+        <Card.Img
+          variant="top"
+          src={logoUrl}
+          alt={`${sponsor} logo`}
+          style={{ maxHeight: "120px", objectFit: "contain", padding: "1rem" }}
+        />
+      )}
+
+      <Card.Body>
+        <Card.Title className="text-truncate">{name}</Card.Title>
+        <Card.Subtitle className="mb-2 text-muted">{sponsor}</Card.Subtitle>
+        <Card.Text className="text-truncate">
+          {description?.substring(0, 120)}...
+        </Card.Text>
+        {location && <Badge bg="info" className="mb-2">{location}</Badge>}
+        <p className="text-danger small mb-2">Deadline: {new Date(deadline).toDateString()}</p>
+        <Button
+          variant="primary"
+          href={url}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Apply Now
+        </Button>
+      </Card.Body>
+    </Card>
+  );
+};
+
+
+
+[
+  {
+    "id": "sch-ext-001",
+    "name": "GETFund Scholarship",
+    "url": "https://getfund.scholarshipgh.com",
+    "description": "A government-funded scholarship supporting Ghanaian students pursuing tertiary education locally and abroad.",
+    "deadline": "2025-06-30T23:59:59Z",
+    "eligibilityCriteria": "Must be a Ghanaian student enrolled in an accredited tertiary institution.",
+    "location": "Ghana",
+    "sponsor": "GETFund",
+    "logoUrl": "https://example.com/logos/getfund.png",
+    "createdAt": "2025-04-10T10:00:00Z",
+    "lastUpdatedAt": "2025-04-12T09:00:00Z",
+    "createdByAdminId": "admin_001",
+    "lastUpdatedByAdminId": "admin_001",
+    "isActive": true
+  },
+  {
+    "id": "sch-ext-002",
+    "name": "GNPC Scholarship",
+    "url": "https://gnpcfoundation.org/scholarship",
+    "description": "Sponsored by the Ghana National Petroleum Corporation to support brilliant but needy students at all levels of education.",
+    "deadline": "2025-05-15T23:59:59Z",
+    "eligibilityCriteria": "Open to Ghanaian students in public tertiary institutions.",
+    "location": "Ghana",
+    "sponsor": "GNPC Foundation",
+    "logoUrl": "https://example.com/logos/gnpc.png",
+    "createdAt": "2025-04-09T15:45:00Z",
+    "lastUpdatedAt": "2025-04-11T08:15:00Z",
+    "createdByAdminId": "admin_002",
+    "lastUpdatedByAdminId": "admin_002",
+    "isActive": true
+  },
+  {
+    "id": "sch-ext-003",
+    "name": "MTN Bright Scholarship",
+    "url": "https://scholarship.mtn.com.gh",
+    "description": "An MTN Ghana initiative offering scholarships to brilliant and needy students in tertiary institutions.",
+    "deadline": "2025-07-01T23:59:59Z",
+    "eligibilityCriteria": "Open to continuing students with a minimum GPA and financial need.",
+    "location": "Ghana",
+    "sponsor": "MTN Ghana Foundation",
+    "logoUrl": "https://example.com/logos/mtn.png",
+    "createdAt": "2025-04-08T12:30:00Z",
+    "lastUpdatedAt": "2025-04-12T11:00:00Z",
+    "createdByAdminId": "admin_003",
+    "lastUpdatedByAdminId": "admin_003",
+    "isActive": true
+  },
+  {
+    "id": "sch-ext-004",
+    "name": "Mastercard Foundation Scholars Program",
+    "url": "https://mastercardfdn.org/scholars",
+    "description": "Provides academically talented young people from economically disadvantaged communities in Africa with access to quality education.",
+    "deadline": "2025-08-20T23:59:59Z",
+    "eligibilityCriteria": "Open to African students with strong academic performance and leadership potential.",
+    "location": "Africa-wide",
+    "sponsor": "Mastercard Foundation",
+    "logoUrl": "https://example.com/logos/mastercard.png",
+    "createdAt": "2025-04-07T14:00:00Z",
+    "lastUpdatedAt": "2025-04-12T14:00:00Z",
+    "createdByAdminId": "admin_004",
+    "lastUpdatedByAdminId": "admin_004",
+    "isActive": true
+  }
+]

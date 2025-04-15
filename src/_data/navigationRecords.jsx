@@ -16,7 +16,7 @@ import {
 } from "react-icons/fa";
 import { MdLogin } from "react-icons/md";
 
-import { BsPencil, BsGrid } from "react-icons/bs";
+import { BsPencil, BsGrid, BsBoxArrowUpRight } from "react-icons/bs";
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 // Base Declarations
@@ -202,6 +202,31 @@ const navigationRecords = {
     path: `${baseRoute}/scholarships/:id/update`,
     getPath: (id) => {
       return `${baseRoute}/scholarships/${id}/update`;
+    },
+    icon: <FaClipboardCheck size={iconSize} />,
+    end: false,
+  },
+
+  // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+  // External Scholarships
+  // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+  externalScholarshipsRoute: {
+    title: "External Scholarships",
+    path: `${baseRoute}/external-scholarships`,
+    icon: <BsBoxArrowUpRight size={iconSize} />,
+    end: false,
+  },
+  createExternalScholarshipRoute: {
+    title: "Add External Scholarship",
+    path: `${baseRoute}/external-scholarships/new`,
+    icon: <FaPlusCircle size={iconSize} />,
+    end: false,
+  },
+  updateExternalScholarshipRoute: {
+    title: "Edit External Scholarship",
+    path: `${baseRoute}/external-scholarships/:id/update`,
+    getPath: (externalScholarshipId) => {
+      return `${baseRoute}/external-scholarships/${externalScholarshipId}/update`;
     },
     icon: <FaClipboardCheck size={iconSize} />,
     end: false,
