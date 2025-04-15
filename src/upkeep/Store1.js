@@ -5,15 +5,15 @@ const ExternalScholarshipCard = ({
   deadline,
   url,
   sponsor,
-  logoUrl,
+  coverImageUrl,
   location,
 }) => {
   return (
     <Card className="h-100 shadow-sm external-scholarship-card">
-      {logoUrl && (
+      {coverImageUrl && (
         <Card.Img
           variant="top"
-          src={logoUrl}
+          src={coverImageUrl}
           alt={`${sponsor} logo`}
           style={{ maxHeight: "120px", objectFit: "contain", padding: "1rem" }}
         />

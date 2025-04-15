@@ -5,22 +5,28 @@ import { ConfigContext } from "@contexts/ConfigContextProvider";
 
 import DeadlineTimeTag from "@components/tags/DeadlineTimeTag";
 
-const ExternalScholarshipCard = ({ name, deadline, url, sponsor, logoUrl }) => {
+const ExternalScholarshipCard = ({
+  name,
+  deadline,
+  url,
+  sponsor,
+  coverImageUrl,
+}) => {
   const { HELPER } = useContext(ConfigContext);
   const defaultImage =
     "https://via.assets.so/img.jpg?w=600&h=200&tc=white&bg=#d8d8d8&txt=No+Logo";
   const [loadedImage, setLoadedImage] = useState(defaultImage);
 
   useEffect(() => {
-    if (logoUrl) {
+    if (coverImageUrl) {
       const img = new Image();
-      img.src = logoUrl;
-      img.onload = () => setLoadedImage(logoUrl);
+      img.src = coverImageUrl;
+      img.onload = () => setLoadedImage(coverImageUrl);
       img.onerror = () => setLoadedImage(defaultImage);
     } else {
       setLoadedImage(defaultImage);
     }
-  }, [logoUrl]);
+  }, [coverImageUrl]);
 
   return (
     <Card className="h-100 shadow-sm external-scholarship-card border-0">
