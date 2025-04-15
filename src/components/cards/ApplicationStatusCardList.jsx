@@ -1,4 +1,5 @@
 import ApplicationStatusCard from "@components/cards/ApplicationStatusCard";
+import { Row, Col } from "react-bootstrap";
 import { ConfigContext } from "@contexts/ConfigContextProvider";
 import { useContext } from "react";
 
@@ -9,87 +10,131 @@ const ApplicationStatusCardList = ({
 }) => {
   const { HELPER } = useContext(ConfigContext);
   const scholarshipId = scholarshipData?.id;
+
+  console.log("applicationsData: ", applicationsData);
+
+  // Total Applications
   const numberOfApplications = scholarshipData?.numberOfApplications;
 
-  // Define status mappings
-  const statusKeys = {
-    // isApproved: "Approved",
-    isQualified: "Qualified",
-    isPendingReview: "Pending Review",
-    isDisqualified: "Disqualified",
-    isReviewed: "Reviewed",
-  };
-
-  // Dynamically populate applicationStatus array
+  // Get numbers
+  const numOfReviewed = HELPER?.getApplicationsByStatus(
+    applicationsData,
+    scholarshipId,
+    "isReviewed"
+  )?.length;
   const numOfUnreviewed = HELPER?.getApplicationsWhere(
     applicationsData,
     scholarshipId,
     "isReviewed",
     false
   )?.length;
-  const numOfApprovals = HELPER?.getApplicationsByStatus(
+
+  // Reviewing
+  const numOfQualified = HELPER?.getApplicationsByStatus(
+    applicationsData,
+    scholarshipId,
+    "isQualified"
+  )?.length;
+  const numOfPendingReview = HELPER?.getApplicationsByStatus(
+    applicationsData,
+    scholarshipId,
+    "isPendingReview"
+  )?.length;
+  const numOfDisqualified = HELPER?.getApplicationsByStatus(
+    applicationsData,
+    scholarshipId,
+    "isDisqualified"
+  )?.length;
+
+  // ::::: Approvals
+  const numOfApproved = HELPER?.getApplicationsByStatus(
     applicationsData,
     scholarshipId,
     "isApproved"
   )?.length;
-  const numOfPendingApprovals = HELPER?.getApplicationsByStatus(
+  const numOfPendingApproval = HELPER?.getApplicationsByStatus(
     applicationsData,
     scholarshipId,
     "isPendingApproval"
   )?.length;
-  const numOfDisapprovals = HELPER?.getApplicationsWhere(
+  const numOfDisapproved = HELPER?.getApplicationsWhere(
     applicationsData,
     scholarshipId,
     "isDisapproved",
     true
   )?.length;
 
-  let applicationStatus = Object.entries(statusKeys)?.map(([key, label]) => ({
-    applicationStatus: label,
-    numberOfApplications: HELPER?.getApplicationsByStatus(
-      applicationsData,
-      scholarshipId,
-      key
-    )?.length,
-  }));
-
-  applicationStatus = [
-    {
-      applicationStatus: "Approved",
-      numberOfApplications: numOfApprovals,
-    },
-    {
-      applicationStatus: "Pending Approval",
-      numberOfApplications: numOfPendingApprovals,
-    },
-    {
-      applicationStatus: "Not Approved",
-      numberOfApplications: numOfDisapprovals,
-    },
-    ...applicationStatus,
-    {
-      applicationStatus: "Unreviewed",
-      numberOfApplications: numOfUnreviewed,
-    },
-
-    {
-      applicationStatus: "Total Applications",
-      numberOfApplications: numberOfApplications,
-    },
-  ];
-
   return (
-    <div
-      className={`${className} row g-3 row-cols-lg-4 row-cols-md-4 row-cols-sm-3 row-cols-2 centering user_select_none`}
-    >
-      {applicationStatus.map((item, index) => (
-        <div className="col" key={index}>
+    <div className={`${className} user_select_none`}>
+      {/* Row 1 - Total Applications */}
+      <Row className="justify-content-center mb-3">
+        <Col md={4}>
           <ApplicationStatusCard
-            applicationStatus={item.applicationStatus}
-            numberOfApplications={item.numberOfApplications}
+            applicationStatus="Total Applications"
+            numberOfApplications={numberOfApplications}
           />
-        </div>
-      ))}
+        </Col>
+      </Row>
+
+      {/* Row 2 - Reviewed / Not Reviewed */}
+      <Row className="justify-content-center mb-3">
+        <Col md={4}>
+          <ApplicationStatusCard
+            applicationStatus="Reviewed"
+            numberOfApplications={numOfReviewed}
+          />
+        </Col>
+        <Col md={4}>
+          <ApplicationStatusCard
+            applicationStatus="Not Reviewed"
+            numberOfApplications={numOfUnreviewed}
+          />
+        </Col>
+      </Row>
+
+      {/* Row 3 - Qualified / Pending Review / Disqualified */}
+      <Row className="justify-content-center mb-3">
+        <Col md={4}>
+          <ApplicationStatusCard
+            applicationStatus="Qualified"
+            numberOfApplications={numOfQualified}
+          />
+        </Col>
+        <Col md={4}>
+          <ApplicationStatusCard
+            applicationStatus="Pending Review"
+            numberOfApplications={numOfPendingReview}
+          />
+        </Col>
+        <Col md={4}>
+          <ApplicationStatusCard
+            applicationStatus="Disqualified"
+            numberOfApplications={numOfDisqualified}
+          />
+        </Col>
+      </Row>
+
+      {/* Row 4 - Approved / Pending Approval / Not Approved */}
+      <Row className="justify-content-center">
+        <Col md={4}>
+          <ApplicationStatusCard
+            applicationStatus="Approved"
+            numberOfApplications={numOfApproved}
+          />
+        </Col>
+        <Col md={4}>
+          <ApplicationStatusCard
+            applicationStatus="Pending Approval"
+            numberOfApplications={numOfPendingApproval}
+          />
+        </Col>
+        <Col md={4}>
+          <ApplicationStatusCard
+            applicationStatus="Not Approved"
+            numberOfApplications={numOfDisapproved}
+          />
+        </Col>
+      </Row>
     </div>
   );
 };

@@ -284,7 +284,7 @@ const CreateApplicationPage = () => {
       isDisapproved: false,
       isProcessed: false,
       isQualified: false,
-      isPendingReview: true,
+      isPendingReview: false,
       isDisqualified: false,
       isReviewed: false,
       reviewComment: null,
