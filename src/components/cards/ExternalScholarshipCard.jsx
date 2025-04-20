@@ -34,7 +34,7 @@ const ExternalScholarshipCard = ({
         }}
       />
 
-      <Card.Body className="d-flex flex-column justify-content-between p-3">
+      <Card.Body className="d-flex flex-column justify-content-between p-3 bg_primary_2">
         <div>
           <Card.Title className="fw-bold text-dark mb-2">{name}</Card.Title>
           <Card.Subtitle

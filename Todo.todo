@@ -2,11 +2,19 @@
 CONCEPT:
     ✔ @Restrictions @done(25-04-02 09:28)
     ✔ @POSSIBLE-CENARIOS: @done(25-04-02 09:28)
+    ☐ @External-Scholarships
     ☐ @Add-These-To-the-database
     ☐ @FILE-HANDLING
     ☐ @WORK-ON-STRUCTURE
     ☐ @DO-THIS-BEFORE-HOSTING
     ☐ @VERSION-2
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+EXTERNAL SCHOLARSHIPS:
+    ☐ Scholarship Card
+    ☐ View Details
+    ☐ Create 
+    ☐ Update
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 MUST ADD:
