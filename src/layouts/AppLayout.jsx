@@ -107,7 +107,7 @@ const AppLayout = ({ children }) => {
             height: `calc(100vh - ${topNavbarHeight})`,
           }}
         >
-          {children}
+          <div style={{ minHeight: "85vh" }}>{children}</div>
           <Footer />
           <ScrollToTopBottom />
         </main>

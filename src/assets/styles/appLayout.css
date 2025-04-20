@@ -1,7 +1,7 @@
 /* ::::: BODY ::::: */
 body {
-  background-color: var(--primary_color);
-  color: var(--primary_text_color);
+  background-color: var(--primary_color_3);
+  color: var(--primary_text_color_3);
   scroll-behavior: smooth;
   font-size: 1rem;
   font-weight: 400;

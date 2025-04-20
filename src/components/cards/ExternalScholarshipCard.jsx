@@ -3,6 +3,7 @@ import { Card, Button } from "react-bootstrap";
 import { BsBoxArrowUpRight } from "react-icons/bs";
 
 import { ConfigContext } from "@contexts/ConfigContextProvider";
+import { AuthContext } from "@contexts/AuthContextProvider";
 
 import DeadlineTimeRemainBadge from "@components/tags/DeadlineTimeRemainBadge";
 import DefaultBadge from "@components/tags/DefaultBadge";
@@ -17,6 +18,8 @@ const ExternalScholarshipCard = ({
   imagePath,
 }) => {
   const { HELPER } = useContext(ConfigContext);
+  const { authStatus } = useContext(AuthContext);
+
   const scholarshipId = id;
 
   return (
@@ -55,7 +58,11 @@ const ExternalScholarshipCard = ({
         </div>
 
         <div className="d-flex justify-content-between mt-3">
-          <ExternalScholarshipActionBtn scholarshipId={scholarshipId} />
+          {authStatus?.isUserSuperAdmin ? (
+            <ExternalScholarshipActionBtn scholarshipId={scholarshipId} />
+          ) : (
+            <div></div>
+          )}
           <Button
             // variant="outline-primary"
             href={url}
