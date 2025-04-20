@@ -40,7 +40,7 @@ const ExternalScholarshipCard = ({
           <DefaultBadge
             className="mb-3 bg_secondary_2"
             text={`Deadline: ${HELPER?.formatDateTime(deadline)}`}
-            color="none"
+            color="warning"
           />
 
           <div className="">
