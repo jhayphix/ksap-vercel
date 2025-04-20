@@ -14,7 +14,7 @@ const ExternalScholarshipActionBtn = ({ scholarshipId = "0000" }) => {
   const { EXTERNAL_SCHOLARSHIPS_API_REF, deleteRequest, DATABASE_TABLE_NAMES } =
     APIService;
 
-  const { updateScholarshipRoute, dashboardRoute } =
+  const { updateExternalScholarshipRoute, dashboardRoute } =
     useContext(NavigationContext);
   const { setShowFlashMessage, setShowModal } = useContext(ConfigContext);
   const { loadScholarships } = useContext(ScholarshipContext);
@@ -42,7 +42,7 @@ const ExternalScholarshipActionBtn = ({ scholarshipId = "0000" }) => {
       if (success) {
         setShowFlashMessage({
           isActive: true,
-          message: "Scholarship Deleted Successfully",
+          message: "External Scholarship Deleted Successfully",
           type: "success",
         });
         navigate(dashboardRoute?.path);
@@ -50,14 +50,14 @@ const ExternalScholarshipActionBtn = ({ scholarshipId = "0000" }) => {
       } else {
         setShowFlashMessage({
           isActive: true,
-          message: "Failed to delete scholarship.",
+          message: "Failed to delete External Scholarship.",
           type: "danger",
         });
       }
     } catch (error) {
       setShowFlashMessage({
         isActive: true,
-        message: `Error deleting scholarship. Please try again:`,
+        message: `Error deleting external scholarship. Please try again:`,
         type: "error",
       });
     }
@@ -71,8 +71,8 @@ const ExternalScholarshipActionBtn = ({ scholarshipId = "0000" }) => {
       <Link
         data-bs-toggle="tooltip"
         data-bs-placement="right"
-        title={updateScholarshipRoute?.title}
-        to={updateScholarshipRoute?.getPath(scholarshipId)}
+        title={updateExternalScholarshipRoute?.title}
+        to={updateExternalScholarshipRoute?.getPath(scholarshipId)}
         className="dropdown-item cursor_pointer text_secondary"
       >
         <FaEdit size={20} className="me-2" /> Edit
