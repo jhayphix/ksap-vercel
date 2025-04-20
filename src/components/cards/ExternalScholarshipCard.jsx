@@ -9,6 +9,7 @@ import DefaultBadge from "@components/tags/DefaultBadge";
 import ExternalScholarshipActionBtn from "@components/buttons/ExternalScholarshipActionBtn";
 
 const ExternalScholarshipCard = ({
+  id,
   name,
   deadline,
   url,
@@ -16,6 +17,7 @@ const ExternalScholarshipCard = ({
   imagePath,
 }) => {
   const { HELPER } = useContext(ConfigContext);
+  const scholarshipId = id;
 
   return (
     <Card className="h-100 shadow-sm external-scholarship-card border-0">
@@ -52,14 +54,14 @@ const ExternalScholarshipCard = ({
           </div>
         </div>
 
-        <div className="d-flex justify-content-between align-items-center mt-auto">
-          <ExternalScholarshipActionBtn />
+        <div className="d-flex justify-content-between mt-3">
+          <ExternalScholarshipActionBtn scholarshipId={scholarshipId} />
           <Button
             // variant="outline-primary"
             href={url}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-3 px-3 py-2 btn_secondary_outline_2"
+            className="px-3 py-2 btn_secondary_outline_2"
           >
             <BsBoxArrowUpRight className="me-2" />
             Take Action

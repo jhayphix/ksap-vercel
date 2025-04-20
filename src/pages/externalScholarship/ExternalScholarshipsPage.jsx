@@ -50,21 +50,22 @@ const ExternalScholarshipsPage = () => {
           <div>
             <div className="row gy-3 gx-4 row-cols-lg-3 row-cols-md-2 row-cols-sm-2 row-cols-1 d-flex align-items-center  py-4">
               {externalScholarshipsData.map((scholarship) => {
-                if (!assignedImages[scholarship.id]) {
+                if (!assignedImages[scholarship?.id]) {
                   imageIndex = (imageIndex + 1) % totalImages;
-                  assignedImages[scholarship.id] = getScholarshipImagePath(
+                  assignedImages[scholarship?.id] = getScholarshipImagePath(
                     imageIndex + 1
                   );
                 }
 
                 return (
-                  <div className="col" key={scholarship.id}>
+                  <div className="col" key={scholarship?.id}>
                     <ExternalScholarshipCard
-                      name={scholarship.name}
-                      deadline={scholarship.deadline}
-                      url={scholarship.url}
-                      sponsor={scholarship.sponsor}
-                      imagePath={assignedImages[scholarship.id]}
+                      id={scholarship?.id}
+                      name={scholarship?.name}
+                      deadline={scholarship?.deadline}
+                      url={scholarship?.url}
+                      sponsor={scholarship?.sponsor}
+                      imagePath={assignedImages[scholarship?.id]}
                     />
                   </div>
                 );
