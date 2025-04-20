@@ -1,8 +1,12 @@
 import { useContext } from "react";
 import { Card, Button } from "react-bootstrap";
-import DeadlineTimeRemainBadge from "@components/tags/DeadlineTimeRemainBadge";
+import { BsBoxArrowUpRight } from "react-icons/bs";
+
 import { ConfigContext } from "@contexts/ConfigContextProvider";
+
+import DeadlineTimeRemainBadge from "@components/tags/DeadlineTimeRemainBadge";
 import DefaultBadge from "@components/tags/DefaultBadge";
+import ExternalScholarshipActionBtn from "@components/buttons/ExternalScholarshipActionBtn";
 
 const ExternalScholarshipCard = ({
   name,
@@ -48,7 +52,8 @@ const ExternalScholarshipCard = ({
           </div>
         </div>
 
-        <div className="d-flex justify-content-end align-items-center mt-auto">
+        <div className="d-flex justify-content-between align-items-center mt-auto">
+          <ExternalScholarshipActionBtn />
           <Button
             // variant="outline-primary"
             href={url}
@@ -56,6 +61,7 @@ const ExternalScholarshipCard = ({
             rel="noopener noreferrer"
             className="mt-3 px-3 py-2 btn_secondary_outline_2"
           >
+            <BsBoxArrowUpRight className="me-2" />
             Take Action
           </Button>
         </div>

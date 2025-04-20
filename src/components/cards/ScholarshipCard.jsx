@@ -1,11 +1,13 @@
+import { useContext } from "react";
 import { FaAward } from "react-icons/fa";
-import DeadlineTimeRemainBadge from "@components/tags/DeadlineTimeRemainBadge";
-import ApplyButton from "@components/buttons/ApplyButton";
+import { Link } from "react-router-dom";
+
 import { NavigationContext } from "@contexts/NavigationContextProvider";
 import { AuthContext } from "@contexts/AuthContextProvider";
-import { useContext } from "react";
-import ViewEditScholarshipBtn from "@components/buttons/ViewEditScholarshipBtn";
-import { Link } from "react-router-dom";
+
+import DeadlineTimeRemainBadge from "@components/tags/DeadlineTimeRemainBadge";
+import ApplyButton from "@components/buttons/ApplyButton";
+import ScholarshipActionBtn from "@components/buttons/ScholarshipActionBtn";
 
 const ScholarshipCard = ({
   scholarshipId = "0000",
@@ -30,7 +32,7 @@ const ScholarshipCard = ({
             <FaAward size={35} className="bs_text_warning" />
           </div>
           {authStatus?.isUserSuperAdmin ? (
-            <ViewEditScholarshipBtn scholarshipId={scholarshipId} />
+            <ScholarshipActionBtn scholarshipId={scholarshipId} />
           ) : null}
         </div>
 

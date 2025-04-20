@@ -10,7 +10,7 @@ import APIService from "@src/api/exportAPIService";
 import { ConfigContext } from "@contexts/ConfigContextProvider";
 import { ScholarshipContext } from "@contexts/ScholarshipContextProvider";
 
-const ViewEditScholarshipBtn = ({ scholarshipId = "0000" }) => {
+const ExternalScholarshipActionBtn = ({ scholarshipId = "0000" }) => {
   const { SCHOLARSHIPS_API_REF, deleteRequest, DATABASE_TABLE_NAMES } =
     APIService;
 
@@ -97,4 +97,4 @@ const ViewEditScholarshipBtn = ({ scholarshipId = "0000" }) => {
   );
 };
 
-export default ViewEditScholarshipBtn;
+export default ExternalScholarshipActionBtn;
