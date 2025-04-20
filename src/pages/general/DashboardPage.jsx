@@ -1,9 +1,9 @@
 import { useContext, useEffect } from "react";
 import { ScholarshipContext } from "@contexts/ScholarshipContextProvider";
+import { ConfigContext } from "@contexts/ConfigContextProvider";
 import HeaderBanner from "@components/headers/HeaderBanner";
 import ScholarshipCard from "@components/cards/ScholarshipCard";
 import PageTransition from "@layouts/PageTransition";
-import { ConfigContext } from "@contexts/ConfigContextProvider";
 import DefaultSpinner from "@components/spinners/DefaultSpinner";
 
 const DashboardPage = () => {

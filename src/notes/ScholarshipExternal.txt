@@ -1,13 +1,12 @@
 Field Name | Type | Description
 
 id | string | Unique identifier (UUID or Firestore ID)
+createdAt | timestamp | Date the entry was added
+createdByAdminId | string | Admin who added it
+deadline | timestamp | Deadline for application
+isActive | boolean | If false, hide from front-end display
+lastUpdatedAt | timestamp | Last update timestamp
+lastUpdatedByAdminId | string | Admin who last modified it
 name | string | Name of the external scholarship
 url | string | Direct link to the scholarship application page
-deadline | timestamp | Deadline for application
 sponsor | string | (optional) Scholarship provider/sponsor name
-logoUrl | string | (optional) Logo of the scholarship provider
-createdAt | timestamp | Date the entry was added
-lastUpdatedAt | timestamp | Last update timestamp
-createdByAdminId | string | Admin who added it
-lastUpdatedByAdminId | string | Admin who last modified it
-isActive | boolean | If false, hide from front-end display

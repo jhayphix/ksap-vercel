@@ -1,18 +1,26 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { ConfigContext } from "@contexts/ConfigContextProvider";
+import { ExternalScholarshipContext } from "@contexts/ExternalScholarshipContextProvider";
 
 import HeaderBanner from "@components/headers/HeaderBanner";
 import PageTransition from "@layouts/PageTransition";
 import DefaultSpinner from "@components/spinners/DefaultSpinner";
 import ExternalScholarshipCard from "@components/cards/ExternalScholarshipCard";
 
-const externalScholarshipsData = [];
-
 const ExternalScholarshipsPage = () => {
   // Contexts
   const { externalScholarshipsPageEffect } = useContext(ConfigContext);
+  const { loadExternalScholarships, externalScholarshipStatus } = useContext(
+    ExternalScholarshipContext
+  );
 
-  const externalScholarshipStatus = { isLoading: false };
+  // Load scholarships
+  useEffect(() => {
+    loadExternalScholarships();
+  }, [loadExternalScholarships]);
+  const externalScholarshipsData =
+    externalScholarshipStatus?.externalScholarships;
+  const externalScholarshipsIsLoading = externalScholarshipStatus?.isLoading;
 
   const pageTitle = "KNUST EXTERNAL SCHOLARSHIP PORTAL";
   const pageSubTitle =
@@ -23,7 +31,7 @@ const ExternalScholarshipsPage = () => {
       <div>
         <HeaderBanner title={pageTitle} subTitle={pageSubTitle} />
 
-        {externalScholarshipStatus?.isLoading ? (
+        {externalScholarshipsIsLoading ? (
           <DefaultSpinner />
         ) : !externalScholarshipsData ||
           (Array.isArray(externalScholarshipsData) &&
@@ -35,7 +43,7 @@ const ExternalScholarshipsPage = () => {
           <div>
             <div className="row gy-3 gx-4 row-cols-lg-3 row-cols-md-2 row-cols-sm-2 row-cols-1 d-flex align-items-center  py-4">
               {externalScholarshipsData.map(
-                ({ name, deadline, url, sponsor, coverImageUrl }, index) => (
+                ({ name, deadline, url, sponsor }, index) => (
                   <div className="col" key={index}>
                     <ExternalScholarshipCard
                       key={index}
@@ -43,7 +51,6 @@ const ExternalScholarshipsPage = () => {
                       deadline={deadline}
                       url={url}
                       sponsor={sponsor}
-                      coverImageUrl={coverImageUrl}
                     />
                   </div>
                 )

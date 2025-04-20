@@ -6,6 +6,7 @@ import ConfigContextProvider from "@contexts/ConfigContextProvider";
 import UserContextProvider from "@contexts/UserContextProvider";
 import AuthContextProvider from "@contexts/AuthContextProvider";
 import ScholarshipContextProvider from "@contexts/ScholarshipContextProvider";
+import ExternalScholarshipContextProvider from "@contexts/ExternalScholarshipContextProvider";
 import ApplicationContextProvider from "@contexts/ApplicationContextProvider";
 import TableDataContextProvider from "@contexts/TableDataContextProvider";
 
@@ -21,11 +22,13 @@ const AppContextProvider = ({ children }) => {
           <AuthContextProvider>
             <UserContextProvider>
               <ScholarshipContextProvider>
-                <ApplicationContextProvider>
-                  <TableDataContextProvider>
-                    {children}
-                  </TableDataContextProvider>
-                </ApplicationContextProvider>
+                <ExternalScholarshipContextProvider>
+                  <ApplicationContextProvider>
+                    <TableDataContextProvider>
+                      {children}
+                    </TableDataContextProvider>
+                  </ApplicationContextProvider>
+                </ExternalScholarshipContextProvider>
               </ScholarshipContextProvider>
             </UserContextProvider>
           </AuthContextProvider>
