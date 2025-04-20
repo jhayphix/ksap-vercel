@@ -1,64 +1,67 @@
-import { useEffect, useState } from "react";
-import { Card, Button, Badge } from "react-bootstrap";
-import DeadlineTimeTag from "@components/tags/DeadlineTimeTag";
+import { useContext, useEffect } from "react";
+import { ConfigContext } from "@contexts/ConfigContextProvider";
+import { ExternalScholarshipContext } from "@contexts/ExternalScholarshipContextProvider";
 
-const ExternalScholarshipCard = ({ name, deadline, url, sponsor }) => {
-  const [imagePath, setImagePath] = useState("");
+import HeaderBanner from "@components/headers/HeaderBanner";
+import PageTransition from "@layouts/PageTransition";
+import DefaultSpinner from "@components/spinners/DefaultSpinner";
+import ExternalScholarshipCard from "@components/cards/ExternalScholarshipCard";
 
+const ExternalScholarshipsPage = () => {
+  // Contexts
+  const { externalScholarshipsPageEffect } = useContext(ConfigContext);
+  const { loadExternalScholarships, externalScholarshipStatus } = useContext(
+    ExternalScholarshipContext
+  );
+
+  // Load scholarships
   useEffect(() => {
-    const randomIndex = Math.floor(Math.random() * 10) + 1; // 1 to 10
-    setImagePath(`/images/scholarships/scholarshipImage${randomIndex}.png`);
-  }, []);
+    loadExternalScholarships();
+  }, [loadExternalScholarships]);
+  const externalScholarshipsData =
+    externalScholarshipStatus?.externalScholarships;
+  const externalScholarshipsIsLoading = externalScholarshipStatus?.isLoading;
+
+  const pageTitle = "KNUST EXTERNAL SCHOLARSHIP PORTAL";
+  const pageSubTitle =
+    "Explore a list of verified external scholarships available to support students in pursuing higher education. These opportunities are not managed by KNUST but are accessible to eligible students. Click on any scholarship to view more details or apply via the official website.";
 
   return (
-    <Card className="h-100 shadow-sm external-scholarship-card border-0">
-      <Card.Img
-        variant="top"
-        src={imagePath}
-        alt={`${sponsor} image`}
-        style={{
-          height: "160px",
-          width: "100%",
-          objectFit: "cover",
-          borderTopLeftRadius: "0.5rem",
-          borderTopRightRadius: "0.5rem",
-        }}
-      />
+    <PageTransition effect={externalScholarshipsPageEffect}>
+      <div>
+        <HeaderBanner title={pageTitle} subTitle={pageSubTitle} />
 
-      <Card.Body className="d-flex flex-column justify-content-between p-3">
-        <div>
-          <Card.Title className="fw-bold text-dark mb-2">{name}</Card.Title>
-          <Card.Subtitle
-            className="text-muted mb-2"
-            style={{ fontSize: "0.95rem" }}
-          >
-            Sponsored by {sponsor}
-          </Card.Subtitle>
-          <Badge
-            bg="secondary"
-            className="mb-3"
-            style={{ fontSize: "0.75rem" }}
-          >
-            Deadline: {deadline}
-          </Badge>
-          <div>
-            <DeadlineTimeTag deadline={deadline} />
+        {externalScholarshipsIsLoading ? (
+          <DefaultSpinner />
+        ) : !externalScholarshipsData ||
+          (Array.isArray(externalScholarshipsData) &&
+            externalScholarshipsData?.length < 1) ? (
+          <div className="text-center centering fw-medium text_warning my-5">
+            No Scholarship Available
           </div>
-        </div>
-
-        <div className="d-flex justify-content-end mt-auto">
-          <Button
-            href={url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-3 px-3 py-2 btn_secondary_outline_2"
-          >
-            Take Action
-          </Button>
-        </div>
-      </Card.Body>
-    </Card>
+        ) : (
+          <div>
+            <div className="row gy-3 gx-4 row-cols-lg-3 row-cols-md-2 row-cols-sm-2 row-cols-1 d-flex align-items-center  py-4">
+              {externalScholarshipsData?.map(
+                ({ name, deadline, url, sponsor }, scholarshipIndex) => (
+                  <div className="col" key={scholarshipIndex}>
+                    <ExternalScholarshipCard
+                      key={scholarshipIndex}
+                      name={name}
+                      deadline={deadline}
+                      url={url}
+                      sponsor={sponsor}
+                      imageIndex={scholarshipIndex}
+                    />
+                  </div>
+                )
+              )}
+            </div>
+          </div>
+        )}
+      </div>
+    </PageTransition>
   );
 };
 
-export default ExternalScholarshipCard;
+export default ExternalScholarshipsPage;

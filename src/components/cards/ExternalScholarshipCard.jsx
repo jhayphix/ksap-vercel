@@ -1,16 +1,16 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { Card, Button, Badge } from "react-bootstrap";
 import DeadlineTimeTag from "@components/tags/DeadlineTimeTag";
 import { ConfigContext } from "@contexts/ConfigContextProvider";
 
-const ExternalScholarshipCard = ({ name, deadline, url, sponsor }) => {
+const ExternalScholarshipCard = ({
+  name,
+  deadline,
+  url,
+  sponsor,
+  imagePath,
+}) => {
   const { HELPER } = useContext(ConfigContext);
-  const [imagePath, setImagePath] = useState("");
-
-  useEffect(() => {
-    const randomIndex = Math.floor(Math.random() * 10) + 1; // 1 to 10
-    setImagePath(`/images/scholarships/scholarshipImage${randomIndex}.png`);
-  }, []);
 
   return (
     <Card className="h-100 shadow-sm external-scholarship-card border-0">

@@ -1,39 +1,23 @@
 import { useContext, useEffect, useState } from "react";
 import { Card, Button, Badge } from "react-bootstrap";
-
+import DeadlineTimeTag from "@components/tags/DeadlineTimeTag";
 import { ConfigContext } from "@contexts/ConfigContextProvider";
 
-import DeadlineTimeTag from "@components/tags/DeadlineTimeTag";
-
-const ExternalScholarshipCard = ({
-  name,
-  deadline,
-  url,
-  sponsor,
-  coverImageUrl,
-}) => {
+const ExternalScholarshipCard = ({ name, deadline, url, sponsor }) => {
   const { HELPER } = useContext(ConfigContext);
-  const defaultImage =
-    "https://via.assets.so/img.jpg?w=600&h=200&tc=white&bg=#d8d8d8&txt=No+Logo";
-  const [loadedImage, setLoadedImage] = useState(defaultImage);
+  const [imagePath, setImagePath] = useState("");
 
   useEffect(() => {
-    if (coverImageUrl) {
-      const img = new Image();
-      img.src = coverImageUrl;
-      img.onload = () => setLoadedImage(coverImageUrl);
-      img.onerror = () => setLoadedImage(defaultImage);
-    } else {
-      setLoadedImage(defaultImage);
-    }
-  }, [coverImageUrl]);
+    const randomIndex = Math.floor(Math.random() * 10) + 1; // 1 to 10
+    setImagePath(`/images/scholarships/scholarshipImage${randomIndex}.png`);
+  }, []);
 
   return (
     <Card className="h-100 shadow-sm external-scholarship-card border-0">
       <Card.Img
         variant="top"
-        src={loadedImage}
-        alt={`${sponsor} logo`}
+        src={imagePath}
+        alt={`${sponsor} image`}
         style={{
           height: "160px",
           width: "100%",

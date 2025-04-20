@@ -22,6 +22,13 @@ const ExternalScholarshipsPage = () => {
     externalScholarshipStatus?.externalScholarships;
   const externalScholarshipsIsLoading = externalScholarshipStatus?.isLoading;
 
+  // Work on scholarship images
+  const getScholarshipImagePath = (scholarshipImageIndex) =>
+    `/images/scholarships/scholarshipImage${scholarshipImageIndex}.png`;
+  const assignedImages = {};
+  let imageIndex = 0;
+  const totalImages = 10;
+
   const pageTitle = "KNUST EXTERNAL SCHOLARSHIP PORTAL";
   const pageSubTitle =
     "Explore a list of verified external scholarships available to support students in pursuing higher education. These opportunities are not managed by KNUST but are accessible to eligible students. Click on any scholarship to view more details or apply via the official website.";
@@ -35,26 +42,33 @@ const ExternalScholarshipsPage = () => {
           <DefaultSpinner />
         ) : !externalScholarshipsData ||
           (Array.isArray(externalScholarshipsData) &&
-            externalScholarshipsData.length < 1) ? (
+            externalScholarshipsData?.length < 1) ? (
           <div className="text-center centering fw-medium text_warning my-5">
             No Scholarship Available
           </div>
         ) : (
           <div>
             <div className="row gy-3 gx-4 row-cols-lg-3 row-cols-md-2 row-cols-sm-2 row-cols-1 d-flex align-items-center  py-4">
-              {externalScholarshipsData.map(
-                ({ name, deadline, url, sponsor }, index) => (
-                  <div className="col" key={index}>
+              {externalScholarshipsData.map((scholarship) => {
+                if (!assignedImages[scholarship.id]) {
+                  imageIndex = (imageIndex + 1) % totalImages;
+                  assignedImages[scholarship.id] = getScholarshipImagePath(
+                    imageIndex + 1
+                  );
+                }
+
+                return (
+                  <div className="col" key={scholarship.id}>
                     <ExternalScholarshipCard
-                      key={index}
-                      name={name}
-                      deadline={deadline}
-                      url={url}
-                      sponsor={sponsor}
+                      name={scholarship.name}
+                      deadline={scholarship.deadline}
+                      url={scholarship.url}
+                      sponsor={scholarship.sponsor}
+                      imagePath={assignedImages[scholarship.id]}
                     />
                   </div>
-                )
-              )}
+                );
+              })}
             </div>
           </div>
         )}
