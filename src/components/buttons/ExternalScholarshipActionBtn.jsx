@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { NavigationContext } from "@contexts/NavigationContextProvider";
 import { useContext } from "react";
-import { FaEdit } from "react-icons/fa";
+import { FaEdit, FaEye } from "react-icons/fa";
 import DropdownWrapper from "@components/dropdown/DropdownWrapper";
 import { MdDelete } from "react-icons/md";
 
@@ -14,8 +14,11 @@ const ExternalScholarshipActionBtn = ({ scholarshipId = "0000" }) => {
   const { EXTERNAL_SCHOLARSHIPS_API_REF, deleteRequest, DATABASE_TABLE_NAMES } =
     APIService;
 
-  const { updateExternalScholarshipRoute, dashboardRoute } =
-    useContext(NavigationContext);
+  const {
+    updateExternalScholarshipRoute,
+    dashboardRoute,
+    viewExternalScholarshipRoute,
+  } = useContext(NavigationContext);
   const { setShowFlashMessage, setShowModal } = useContext(ConfigContext);
   const { loadScholarships } = useContext(ScholarshipContext);
   const navigate = useNavigate();
@@ -68,6 +71,15 @@ const ExternalScholarshipActionBtn = ({ scholarshipId = "0000" }) => {
       id="viewEditScholarshipDropdown"
       className="rounded bg_secondary_3"
     >
+      <Link
+        data-bs-toggle="tooltip"
+        data-bs-placement="right"
+        title={viewExternalScholarshipRoute?.title}
+        to={viewExternalScholarshipRoute?.getPath(scholarshipId)}
+        className="dropdown-item cursor_pointer text_secondary me-4"
+      >
+        <FaEye size={20} className="me-2" /> Preview
+      </Link>
       <Link
         data-bs-toggle="tooltip"
         data-bs-placement="right"

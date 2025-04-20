@@ -222,6 +222,16 @@ const navigationRecords = {
     end: true,
   },
 
+  viewExternalScholarshipRoute: {
+    title: "Preview Scholarship",
+    path: `${baseRoute}/external-scholarships/:id`,
+    getPath: (externalScholarshipId) => {
+      return `${baseRoute}/external-scholarships/${externalScholarshipId}`;
+    },
+    icon: <FaRegBookmark size={iconSize} />,
+    end: false,
+  },
+
   createExternalScholarshipRoute: {
     title: "Add External Scholarship",
     path: `${baseRoute}/external-scholarships/new`,

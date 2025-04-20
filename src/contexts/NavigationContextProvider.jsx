@@ -46,6 +46,7 @@ export const NavigationContext = createContext({
 
   // External Scholarships
   externalScholarshipsRoute: {},
+  viewExternalScholarshipRoute: {},
   createExternalScholarshipRoute: {},
   updateExternalScholarshipRoute: {},
 });
@@ -93,6 +94,8 @@ const NavigationContextProvider = ({ children }) => {
 
   // External Scholarships
   const externalScholarshipsRoute = navigationData?.externalScholarshipsRoute;
+  const viewExternalScholarshipRoute =
+    navigationData?.viewExternalScholarshipRoute;
   const createExternalScholarshipRoute =
     navigationData?.createExternalScholarshipRoute;
   const updateExternalScholarshipRoute =
@@ -163,6 +166,7 @@ const NavigationContextProvider = ({ children }) => {
 
     // External Scholarships
     externalScholarshipsRoute,
+    viewExternalScholarshipRoute,
     createExternalScholarshipRoute,
     updateExternalScholarshipRoute,
   };
