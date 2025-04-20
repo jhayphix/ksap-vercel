@@ -48,7 +48,7 @@ const ExternalScholarshipCard = ({
           </div>
         </div>
 
-        <div className="d-flex justify-content-end mt-auto">
+        <div className="d-flex justify-content-end align-items-center mt-auto">
           <Button
             // variant="outline-primary"
             href={url}
