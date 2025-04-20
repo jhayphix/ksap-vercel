@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { MdAlarm } from "react-icons/md";
 
-const DeadlineTimeTag = ({ deadline }) => {
+const DeadlineTimeRemainBadge = ({ deadline }) => {
   const [timeLeft, setTimeLeft] = useState("");
 
   useEffect(() => {
@@ -33,8 +33,13 @@ const DeadlineTimeTag = ({ deadline }) => {
 
   return (
     <div
-      className="text-center centering fw-bold text_danger rounded bg_danger_light p-2"
-      style={{ fontSize: "0.7rem", fontWeight: "600", width: "13rem" }}
+      className="text-center centering fw-bold text_danger rounded bg_danger_light py-2"
+      style={{
+        fontSize: "0.7rem",
+        fontWeight: "600",
+        width: "13rem",
+        whiteSpace: "nowrap",
+      }}
     >
       <MdAlarm size={16} className="me-1 fw-bold" />
       {timeLeft}
@@ -42,4 +47,4 @@ const DeadlineTimeTag = ({ deadline }) => {
   );
 };
 
-export default DeadlineTimeTag;
+export default DeadlineTimeRemainBadge;

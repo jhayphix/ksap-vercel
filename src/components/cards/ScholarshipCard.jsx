@@ -1,5 +1,5 @@
 import { FaAward } from "react-icons/fa";
-import DeadlineTimeTag from "@components/tags/DeadlineTimeTag";
+import DeadlineTimeRemainBadge from "@components/tags/DeadlineTimeRemainBadge";
 import ApplyButton from "@components/buttons/ApplyButton";
 import { NavigationContext } from "@contexts/NavigationContextProvider";
 import { AuthContext } from "@contexts/AuthContextProvider";
@@ -60,7 +60,7 @@ const ScholarshipCard = ({
           ))}
         </ul>
         <div className="centering py-3">
-          <DeadlineTimeTag deadline={deadline} />
+          <DeadlineTimeRemainBadge deadline={deadline} />
         </div>
         <div className="centering">
           {authStatus?.isUserAdmin ? (

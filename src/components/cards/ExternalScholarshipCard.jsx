@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { Card, Button } from "react-bootstrap";
-import DeadlineTimeTag from "@components/tags/DeadlineTimeTag";
+import DeadlineTimeRemainBadge from "@components/tags/DeadlineTimeRemainBadge";
 import { ConfigContext } from "@contexts/ConfigContextProvider";
 import DefaultBadge from "@components/tags/DefaultBadge";
 
@@ -44,7 +44,7 @@ const ExternalScholarshipCard = ({
           />
 
           <div className="">
-            <DeadlineTimeTag deadline={deadline} />
+            <DeadlineTimeRemainBadge deadline={deadline} />
           </div>
         </div>
 
