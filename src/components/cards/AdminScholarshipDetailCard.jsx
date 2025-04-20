@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { ConfigContext } from "@contexts/ConfigContextProvider";
 import { NavigationContext } from "@contexts/NavigationContextProvider";
 
-import DefaultStatusTag from "@components/tags/DefaultStatusTag";
+import DefaultBadge from "@components/tags/DefaultBadge";
 import { MdArrowForward } from "react-icons/md";
 
 const AdminScholarshipDetailCard = ({ bgColor, className, scholarship }) => {
@@ -20,7 +20,7 @@ const AdminScholarshipDetailCard = ({ bgColor, className, scholarship }) => {
         <p style={{ fontSize: "0.7rem", opacity: "0.9" }}>
           {scholarship?.academicYear}
         </p>
-        <DefaultStatusTag
+        <DefaultBadge
           text={HELPER?.getDDMMYYYY(scholarship?.deadline)}
           color="danger"
         />
@@ -42,7 +42,7 @@ const AdminScholarshipDetailCard = ({ bgColor, className, scholarship }) => {
       </div>
       <hr className="m-0" />
       <div className="d-flex align-items-center justify-content-between pt-2">
-        <DefaultStatusTag
+        <DefaultBadge
           text={
             HELPER?.isDeadlineDue(scholarship?.deadline) ? "Closed" : "Open"
           }

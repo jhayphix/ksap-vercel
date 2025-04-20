@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import ApplicationStatusTag from "@components/tags/ApplicationStatusTag";
-import DefaultStatusTag from "@components/tags/DefaultStatusTag";
+import DefaultBadge from "@components/tags/DefaultBadge";
 
 const ApplicationHeaderCard = ({ applicantApplication }) => {
   // ::::::::::::::::::::: CONTEXTS AND STATES
@@ -53,7 +53,7 @@ const ApplicationHeaderCard = ({ applicantApplication }) => {
           <div className="d-flex align-items-center mb-2">
             <h5 className="h5 m-0">{scholarship?.name}</h5>
             <span className="mx-2">{" • "}</span>
-            <DefaultStatusTag
+            <DefaultBadge
               text={scholarship?.isDue ? "Closed" : "Open"}
               color={scholarship?.isDue ? "danger" : "success"}
             />

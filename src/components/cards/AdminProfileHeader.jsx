@@ -7,7 +7,7 @@ import { ConfigContext } from "@contexts/ConfigContextProvider";
 
 import { UserContext } from "@contexts/UserContextProvider";
 
-import DefaultStatusTag from "@components/tags/DefaultStatusTag";
+import DefaultBadge from "@components/tags/DefaultBadge";
 import { MdFiberManualRecord } from "react-icons/md";
 
 const AdminProfileHeader = ({ adminData, className }) => {
@@ -135,7 +135,7 @@ const AdminProfileHeader = ({ adminData, className }) => {
           <div className="d-flex align-items-center">
             <h2 className="h2 mb-0">{thisAdmin?.fullName}</h2>
             <MdFiberManualRecord className="mx-2" size={10} />
-            <DefaultStatusTag
+            <DefaultBadge
               text={accountStatus?.text}
               color={accountStatus?.type}
             />

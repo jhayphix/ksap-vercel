@@ -5,7 +5,7 @@ import { NavigationContext } from "@contexts/NavigationContextProvider";
 import { AuthContext } from "@contexts/AuthContextProvider";
 import { ConfigContext } from "@contexts/ConfigContextProvider";
 
-import DefaultStatusTag from "@components/tags/DefaultStatusTag";
+import DefaultBadge from "@components/tags/DefaultBadge";
 import { MdFiberManualRecord } from "react-icons/md";
 
 const ApplicantProfileHeader = ({ applicantData, className }) => {
@@ -120,7 +120,7 @@ const ApplicantProfileHeader = ({ applicantData, className }) => {
           <div className="d-flex align-items-center">
             <h2 className="h2 mb-0">{thisApplicant?.fullName}</h2>
             <MdFiberManualRecord className="mx-2" size={10} />
-            <DefaultStatusTag
+            <DefaultBadge
               text={accountStatus?.text}
               color={accountStatus?.type}
             />

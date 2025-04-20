@@ -1,4 +1,4 @@
-import DefaultStatusTag from "@components/tags/DefaultStatusTag";
+import DefaultBadge from "@components/tags/DefaultBadge";
 import { ConfigContext } from "@contexts/ConfigContextProvider";
 import { useContext, useEffect, useState } from "react";
 
@@ -40,7 +40,6 @@ const ApplicationStatusTag = ({ applicantApplication }) => {
       }
     }
   }, [applicantApplication]);
-  
 
   return (
     <div className="d-flex flex-sm-row flex-column align-items-sm-center align-items-start">
@@ -52,9 +51,9 @@ const ApplicationStatusTag = ({ applicantApplication }) => {
         style={{ fontSize: "0.8rem" }}
       >
         {Number(progress?.percentage) === 100 ? (
-          <DefaultStatusTag text={"100% Finished"} color={"success"} />
+          <DefaultBadge text={"100% Finished"} color={"success"} />
         ) : (
-          <DefaultStatusTag
+          <DefaultBadge
             text={`${Number(progress?.percentage).toFixed(2)}% Progress`}
             color={"blue"}
           />
@@ -66,7 +65,7 @@ const ApplicationStatusTag = ({ applicantApplication }) => {
         data-bs-placement="right"
         title="Application Status"
       >
-        <DefaultStatusTag
+        <DefaultBadge
           color={HELPER?.getStatusWithColor(applicationStatus)?.color}
           text={HELPER?.getStatusWithColor(applicationStatus)?.status}
         />
@@ -79,7 +78,7 @@ const ApplicationStatusTag = ({ applicantApplication }) => {
             data-bs-placement="right"
             title="Next Process"
           >
-            <DefaultStatusTag
+            <DefaultBadge
               color={HELPER?.getStatusWithColor(nextStage?.status)?.color}
               text={HELPER?.getStatusWithColor(nextStage?.status)?.status}
             />

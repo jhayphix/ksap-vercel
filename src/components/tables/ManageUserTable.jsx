@@ -6,7 +6,7 @@ import { MdVisibility, MdVisibilityOff } from "react-icons/md";
 import { ConfigContext } from "@contexts/ConfigContextProvider";
 
 import TablePagination from "@components/tables/tableTools/TablePagination";
-import DefaultStatusTag from "@components/tags/DefaultStatusTag";
+import DefaultBadge from "@components/tags/DefaultBadge";
 
 const ManageUserTable = ({
   rawData,
@@ -336,7 +336,7 @@ const ManageUserTable = ({
                                   "application status",
                                   "current application status",
                                 ].includes(key?.toLowerCase()) ? (
-                                <DefaultStatusTag
+                                <DefaultBadge
                                   color={
                                     HELPER?.getStatusWithColor(value)?.color
                                   }

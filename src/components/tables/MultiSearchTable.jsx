@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { NavigationContext } from "@contexts/NavigationContextProvider";
 import { ConfigContext } from "@contexts/ConfigContextProvider";
 import TablePagination from "@components/tables/tableTools/TablePagination";
-import DefaultStatusTag from "@components/tags/DefaultStatusTag";
+import DefaultBadge from "@components/tags/DefaultBadge";
 import { MdVisibility, MdVisibilityOff } from "react-icons/md";
 import { FaWrench } from "react-icons/fa";
 import { TableDataContext } from "@contexts/TableDataContextProvider";
@@ -470,7 +470,7 @@ const MultiSearchTable = ({
                                   "application status",
                                   "current application status",
                                 ].includes(key?.toLowerCase()) ? (
-                                <DefaultStatusTag
+                                <DefaultBadge
                                   color={
                                     HELPER?.getStatusWithColor(value)?.color
                                   }

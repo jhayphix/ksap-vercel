@@ -1,7 +1,8 @@
 import { useContext } from "react";
-import { Card, Button, Badge } from "react-bootstrap";
+import { Card, Button } from "react-bootstrap";
 import DeadlineTimeTag from "@components/tags/DeadlineTimeTag";
 import { ConfigContext } from "@contexts/ConfigContextProvider";
+import DefaultBadge from "@components/tags/DefaultBadge";
 
 const ExternalScholarshipCard = ({
   name,
@@ -36,13 +37,12 @@ const ExternalScholarshipCard = ({
           >
             Sponsored by {sponsor}
           </Card.Subtitle>
-          <Badge
-            bg="secondary"
-            className="mb-3"
-            style={{ fontSize: "0.75rem" }}
-          >
-            Deadline: {HELPER?.formatDateTime(deadline)}
-          </Badge>
+          <DefaultBadge
+            className="mb-3 bg_secondary_2"
+            text={`Deadline: ${HELPER?.formatDateTime(deadline)}`}
+            color="none"
+          />
+
           <div className="">
             <DeadlineTimeTag deadline={deadline} />
           </div>

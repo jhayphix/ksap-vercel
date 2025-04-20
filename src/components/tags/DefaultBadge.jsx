@@ -1,4 +1,4 @@
-const DefaultStatusTag = ({
+const DefaultBadge = ({
   style,
   text = "Tag",
   className,
@@ -19,4 +19,4 @@ const DefaultStatusTag = ({
   );
 };
 
-export default DefaultStatusTag;
+export default DefaultBadge;

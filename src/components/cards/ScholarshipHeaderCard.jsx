@@ -5,7 +5,7 @@ import { MdDelete } from "react-icons/md";
 
 import APIService from "@src/api/exportAPIService";
 
-import DefaultStatusTag from "@components/tags/DefaultStatusTag";
+import DefaultBadge from "@components/tags/DefaultBadge";
 import { ConfigContext } from "@contexts/ConfigContextProvider";
 import { NavigationContext } from "@contexts/NavigationContextProvider";
 
@@ -87,7 +87,7 @@ const ScholarshipHeaderCard = ({ className, scholarshipData = {} }) => {
         <div className="mb-2">
           {scholarshipData?.academicYear} Academic Year Application
           <span className="mx-2">{" • "}</span>{" "}
-          <DefaultStatusTag
+          <DefaultBadge
             text={scholarshipData?.isDue ? "Closed" : "Open"}
             color={scholarshipData?.isDue ? "danger" : "success"}
           />

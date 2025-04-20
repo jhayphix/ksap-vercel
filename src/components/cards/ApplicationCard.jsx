@@ -8,7 +8,7 @@ import { NavigationContext } from "@contexts/NavigationContextProvider";
 import { ApplicationContext } from "@contexts/ApplicationContextProvider";
 
 import ApplicationStatusTag from "@components/tags/ApplicationStatusTag";
-import DefaultStatusTag from "@components/tags/DefaultStatusTag";
+import DefaultBadge from "@components/tags/DefaultBadge";
 import DropdownWrapper from "@components/dropdown/DropdownWrapper";
 
 // API
@@ -104,7 +104,7 @@ const ApplicationCard = ({ applicantApplication = {}, className }) => {
               <span className="mx-sm-2 mx-0 d-inline-block d-none">
                 {" • "}
               </span>
-              <DefaultStatusTag
+              <DefaultBadge
                 className="d-inline-block d-none"
                 text={scholarship?.isDue ? "Closed" : "Open"}
                 color={scholarship?.isDue ? "danger" : "success"}
