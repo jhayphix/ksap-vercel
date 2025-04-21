@@ -6,6 +6,7 @@
 
 
 
+
 .dropdown-item {
   display: flex;
   align-items: center;
@@ -49,6 +50,9 @@
 
 .user_select_none {
   user-select: none;
+}
+.disable_card {
+  opacity: 0.5;
 }
 
 /* Cursor */

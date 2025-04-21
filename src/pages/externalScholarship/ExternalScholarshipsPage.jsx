@@ -22,6 +22,8 @@ const ExternalScholarshipsPage = () => {
     externalScholarshipStatus?.externalScholarships;
   const externalScholarshipsIsLoading = externalScholarshipStatus?.isLoading;
 
+  console.log("External scholarships: ", externalScholarshipsData);
+
   // Work on scholarship images
   const getScholarshipImagePath = (scholarshipImageIndex) =>
     `/images/scholarships/scholarshipImage${scholarshipImageIndex}.png`;
@@ -63,6 +65,7 @@ const ExternalScholarshipsPage = () => {
                       id={scholarship?.id}
                       name={scholarship?.name}
                       deadline={scholarship?.deadline}
+                      isActive={scholarship?.isActive}
                       url={scholarship?.url}
                       sponsor={scholarship?.sponsor}
                       imagePath={assignedImages[scholarship?.id]}
