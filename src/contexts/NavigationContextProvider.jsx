@@ -101,6 +101,7 @@ const NavigationContextProvider = ({ children }) => {
   const updateExternalScholarshipRoute =
     navigationData?.updateExternalScholarshipRoute;
 
+  // Nav Links
   const defaultNavRoutesOnTop = [dashboardRoute, externalScholarshipsRoute];
   const defaultNavRoutesOnBottom = [];
   const adminRoutesOnlyList = [

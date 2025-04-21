@@ -53,6 +53,7 @@ export const ConfigContext = createContext({
 
   // Scholarships
   externalScholarshipsPageEffect: "",
+  viewExternalScholarshipsPageEffect: "",
   createExternalScholarshipPageEffect: "",
   updateExternalScholarshipPageEffect: "",
 });
@@ -109,6 +110,7 @@ const ConfigContextProvider = ({ children }) => {
 
   // External Scholarships
   const externalScholarshipsPageEffect = "bottom";
+  const viewExternalScholarshipsPageEffect = "flip";
   const createExternalScholarshipPageEffect = "right";
   const updateExternalScholarshipPageEffect = "left";
 
@@ -160,6 +162,7 @@ const ConfigContextProvider = ({ children }) => {
     externalScholarshipsPageEffect,
     createExternalScholarshipPageEffect,
     updateExternalScholarshipPageEffect,
+    viewExternalScholarshipsPageEffect,
   };
 
   // ::::::::::::::::::::: RETURN
