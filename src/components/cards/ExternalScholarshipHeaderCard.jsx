@@ -1,9 +1,7 @@
-import { useNavigate, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { FaEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
-
-import APIService from "@src/api/exportAPIService";
 
 import DefaultBadge from "@components/tags/DefaultBadge";
 import { ConfigContext } from "@contexts/ConfigContextProvider";
@@ -14,19 +12,12 @@ import { AuthContext } from "@contexts/AuthContextProvider";
 import { ExternalScholarshipContext } from "@contexts/ExternalScholarshipContextProvider";
 
 const ScholarshipHeaderCard = ({ className, externalScholarshipData = {} }) => {
-  const { EXTERNAL_SCHOLARSHIPS_API_REF, deleteRequest, DATABASE_TABLE_NAMES } =
-    APIService;
-
-  const { setShowFlashMessage, setShowModal, HELPER } =
-    useContext(ConfigContext);
-  const { updateScholarshipRoute, dashboardRoute } =
-    useContext(NavigationContext);
+  const { HELPER } = useContext(ConfigContext);
+  const { updateScholarshipRoute } = useContext(NavigationContext);
   const { authStatus } = useContext(AuthContext);
   const { showDeleteExternalScholarshipModal } = useContext(
     ExternalScholarshipContext
   );
-
-  const navigate = useNavigate();
 
   const scholarshipId = externalScholarshipData?.id;
   const scholarshipCreatedAt = externalScholarshipData?.createdAt;
@@ -40,9 +31,39 @@ const ScholarshipHeaderCard = ({ className, externalScholarshipData = {} }) => {
   const scholarshipSponsor = externalScholarshipData?.sponsor;
   const scholarshipUrl = externalScholarshipData?.url;
 
+  const scholarshipIsDue = new Date(scholarshipDeadline) <= new Date();
+
   const handleDeleteScholarship = () => {
     showDeleteExternalScholarshipModal(scholarshipId, scholarshipName);
   };
+
+  const scholarshipDetailsObj = [
+    {
+      label: "Sponsor",
+      value: scholarshipSponsor,
+    },
+    {
+      label: "Status",
+      value: (
+        <DefaultBadge
+          text={scholarshipIsDue ? "Closed" : "Open"}
+          color={scholarshipIsDue ? "danger" : "success"}
+        />
+      ),
+    },
+    {
+      label: "Deadline",
+      value: HELPER?.formatDateTime(scholarshipDeadline),
+    },
+    {
+      label: "Published At",
+      value: HELPER?.formatDateTime(scholarshipCreatedAt),
+    },
+    {
+      label: "Last Published At",
+      value: HELPER?.formatDateTime(scholarshipLastUpdatedAt),
+    },
+  ];
 
   return (
     <div
@@ -52,36 +73,15 @@ const ScholarshipHeaderCard = ({ className, externalScholarshipData = {} }) => {
         <h4 className="h4 mb-2">{scholarshipName}</h4>
 
         <div className="mb-2">
-          {externalScholarshipData?.academicYear} Academic Year Application
-          <span className="mx-2">{" • "}</span>{" "}
-          <DefaultBadge
-            text={externalScholarshipData?.isDue ? "Closed" : "Open"}
-            color={externalScholarshipData?.isDue ? "danger" : "success"}
-          />
+          <span style={{ fontWeight: "500" }}>Sponser : </span>
+          {scholarshipSponsor}
         </div>
-        <div className="mb-2 d-flex align-items-center">
-          {externalScholarshipData?.fundingType}
-          <span className="mx-2">{" • "}</span>
-          {Array.isArray(externalScholarshipData?.eligibilityEducationalLevel)
-            ? externalScholarshipData?.eligibilityEducationalLevel?.join(", ")
-            : externalScholarshipData?.eligibilityEducationalLevel}
-        </div>
-        <div className="mb-2">
-          <span style={{ fontWeight: "500" }}>
-            Eligibility Years of Study :{" "}
-          </span>
-          {Array.isArray(externalScholarshipData?.eligibilityYearsOfStudy)
-            ? externalScholarshipData?.eligibilityYearsOfStudy?.join(", ")
-            : externalScholarshipData?.eligibilityYearsOfStudy}
-        </div>
-        <div className="mb-2">
-          <span style={{ fontWeight: "500" }}>Last Published : </span>
-          {HELPER?.formatDateTime(externalScholarshipData?.updatedAt)}
-        </div>
-        <div className="mb-2">
-          <span style={{ fontWeight: "500" }}>Deadline : </span>
-          {HELPER?.formatDateTime(externalScholarshipData?.deadline)}
-        </div>
+        {scholarshipDetailsObj?.map(({ label, value }, index) => (
+          <div className="mb-2" key={index}>
+            <span style={{ fontWeight: "500" }}>{label}: </span>
+            {value}
+          </div>
+        ))}
       </div>
 
       {authStatus?.isUserSuperAdmin ? (

@@ -43,10 +43,6 @@ const ViewExternalScholarshipPage = () => {
     externalScholarshipStatus?.externalScholarship;
   const externalScholarshipIsLoading = externalScholarshipStatus?.isLoading;
 
-  // Page variables
-  const pageTitle = externalScholarshipData?.name || "External Scholarship";
-  const pageSubTitle = `View complete information about this external scholarship`;
-
   return (
     <PageTransition effect={viewExternalScholarshipsPageEffect}>
       <div>
@@ -55,7 +51,10 @@ const ViewExternalScholarshipPage = () => {
           btnRole="link"
           btnPath={externalScholarshipsRoute?.path}
         />
-        <HeaderBanner title={pageTitle} subTitle={pageSubTitle} />
+        <HeaderBanner
+          title={externalScholarshipData?.name || "External Scholarship"}
+          subTitle={`View complete information about this external scholarship`}
+        />
 
         {externalScholarshipIsLoading ? (
           <DefaultSpinner />
