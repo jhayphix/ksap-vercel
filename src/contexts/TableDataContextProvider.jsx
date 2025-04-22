@@ -132,6 +132,7 @@ const TableDataContextProvider = ({ children }) => {
     "application status",
     "current application status",
   ];
+
   const getApplicationsTableData = useCallback(
     (
       scholarshipApplicationsData,
@@ -148,76 +149,102 @@ const TableDataContextProvider = ({ children }) => {
         );
       }
 
-      const applicationTableData = filteredData?.map((application) => ({
-        id: application?.id,
-        name:
-          application?.applicant?.lastName +
-          " " +
-          application?.applicant?.firstName +
-          " " +
-          application?.applicant?.otherNames,
-        "reference number": application?.applicant?.referenceNumber,
-        "educational level": application?.applicant?.educationalLevel,
-        gender: application?.applicant?.gender,
-        "year of study": application?.applicant?.yearOfStudy,
+      console.log("filteredData: ", filteredData);
 
-        "current application status": application?.applicationStatus,
-        "programme of study": application?.applicant?.programmeOfStudy,
-        "applied at": getFormatDateTime(application?.appliedAt),
+      const applicationTableData = filteredData?.map((application) => {
+        // Flatten the responses into a single object with a "Form" indicator in the label
+        const responses = application?.responseSections?.reduce(
+          (acc, section) => {
+            section.responses?.forEach((response) => {
+              // Adding "Form" to the label (you could change "Form" to any other appropriate term)
+              const labelWithIndicator = `Form ${response.label}`;
 
-        // Others
+              // Add the formatted label and response to the accumulator
+              acc[labelWithIndicator] = Array.isArray(response.response)
+                ? response.response.join(", ")
+                : response.response;
+            });
+            return acc;
+          },
+          {}
+        );
 
-        college: application?.applicant?.college,
-        age: application?.applicant?.age,
-        "index number": application?.applicant?.indexNumber,
+        // Combine the applicant and application data with the responses
+        return {
+          id: application?.id,
+          name:
+            application?.applicant?.lastName +
+            " " +
+            application?.applicant?.firstName +
+            " " +
+            application?.applicant?.otherNames,
+          "reference number": application?.applicant?.referenceNumber,
+          "educational level": application?.applicant?.educationalLevel,
+          gender: application?.applicant?.gender,
+          "year of study": application?.applicant?.yearOfStudy,
 
-        // Others from application
-        "approval status": application?.approvalStatus,
-        "approved by": getAdminReturn(
-          adminsData,
-          application?.approvedByAdminId
-        )?.fullName,
-        "review status": application?.reviewStatus,
-        "reviewed by": getAdminReturn(
-          adminsData,
-          application?.reviewedByAdminId
-        )?.fullName,
-        "application score": application?.applicationScore,
-        "reviewed academic score": application?.reviewedAcademicScore,
+          "current application status": application?.applicationStatus,
+          "programme of study": application?.applicant?.programmeOfStudy,
+          "applied at": getFormatDateTime(application?.appliedAt),
 
-        "review comment": application?.reviewComment,
-        "approval comment": application?.approvalComment,
+          // Others
+          college: application?.applicant?.college,
+          age: application?.applicant?.age,
+          "index number": application?.applicant?.indexNumber,
 
-        "reviewed at": getFormatDateTime(application?.reviewedAt),
-        "approved at": getFormatDateTime(application?.approvedAt),
-        "updated at": getFormatDateTime(application?.updatedAt),
+          // Others from application
+          "approval status": application?.approvalStatus,
+          "approved by": getAdminReturn(
+            adminsData,
+            application?.approvedByAdminId
+          )?.fullName,
+          "review status": application?.reviewStatus,
+          "reviewed by": getAdminReturn(
+            adminsData,
+            application?.reviewedByAdminId
+          )?.fullName,
+          "application score": application?.applicationScore,
+          "reviewed academic score": application?.reviewedAcademicScore,
 
-        "date of birth": HELPER?.getDDMMYYYY(
-          application?.applicant?.dateOfBirth
-        ),
-        "duration of programme": application?.applicant?.durationOfProgramme,
-        "mode of admission": application?.applicant?.modeOfAdmission,
-        email: application?.applicant?.email,
-        nationality: application?.applicant?.nationality,
-        "Student's Telecel Number": application?.applicant?.telecelNumber,
-        "phone number": application?.applicant?.phoneNumber,
-        faculty: application?.applicant?.faculty,
-        department: application?.applicant?.department,
-        role: application?.applicant?.role,
+          "review comment": application?.reviewComment,
+          "approval comment": application?.approvalComment,
 
-        "user registed at": getFormatDateTime(
-          application?.applicant?.createdAt
-        ),
-        "user updated at": getFormatDateTime(application?.applicant?.updatedAt),
-        "Account status": application?.applicant?.accountStatus,
-        "Account Deactivated At": getFormatDateTime(
-          application?.applicant?.deactivatedAt
-        ),
-        "Account Deactivated By": getAdminReturn(
-          adminsData,
-          application?.applicant?.deactivatedByAdminId
-        )?.fullName,
-      }));
+          "reviewed at": getFormatDateTime(application?.reviewedAt),
+          "approved at": getFormatDateTime(application?.approvedAt),
+          "updated at": getFormatDateTime(application?.updatedAt),
+
+          "date of birth": HELPER?.getDDMMYYYY(
+            application?.applicant?.dateOfBirth
+          ),
+          "duration of programme": application?.applicant?.durationOfProgramme,
+          "mode of admission": application?.applicant?.modeOfAdmission,
+          email: application?.applicant?.email,
+          nationality: application?.applicant?.nationality,
+          "Student's Telecel Number": application?.applicant?.telecelNumber,
+          "phone number": application?.applicant?.phoneNumber,
+          faculty: application?.applicant?.faculty,
+          department: application?.applicant?.department,
+          role: application?.applicant?.role,
+
+          "user registed at": getFormatDateTime(
+            application?.applicant?.createdAt
+          ),
+          "user updated at": getFormatDateTime(
+            application?.applicant?.updatedAt
+          ),
+          "Account status": application?.applicant?.accountStatus,
+          "Account Deactivated At": getFormatDateTime(
+            application?.applicant?.deactivatedAt
+          ),
+          "Account Deactivated By": getAdminReturn(
+            adminsData,
+            application?.applicant?.deactivatedByAdminId
+          )?.fullName,
+
+          // Add the responses as key-value pairs (label: response)
+          ...responses, // This adds all responses as individual columns in the table data
+        };
+      });
 
       return applicationTableData;
     },
