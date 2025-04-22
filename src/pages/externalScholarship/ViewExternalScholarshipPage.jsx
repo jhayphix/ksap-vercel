@@ -1,6 +1,5 @@
 import { useContext, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import DOMPurify from "dompurify";
 
 import PageTransition from "@layouts/PageTransition";
 import { ConfigContext } from "@contexts/ConfigContextProvider";
@@ -10,38 +9,43 @@ import { AuthContext } from "@contexts/AuthContextProvider";
 
 import HeaderBanner from "@components/headers/HeaderBanner";
 import BackButton from "@components/buttons/BackButton";
-import ApplyButton from "@components/buttons/ApplyButton";
-import ScholarshipDetails from "@components/cards/ScholarshipDetails";
+import ExternalScholarshipDetailsCard from "@components/cards/ExternalScholarshipDetailsCard";
 import DefaultSpinner from "@components/spinners/DefaultSpinner";
-import SectionHeaderCard from "@components/cards/SectionHeaderCard";
 
 const ViewExternalScholarshipPage = () => {
   // Contexts
   const { viewExternalScholarshipsPageEffect } = useContext(ConfigContext);
-  const { createApplicationRoute, dashboardRoute } =
-    useContext(NavigationContext);
+  const { externalScholarshipsRoute } = useContext(NavigationContext);
 
-  const { getScholarship, scholarshipStatus } = useContext(ScholarshipContext);
+  const {
+    getExternalScholarship,
+    loadExternalScholarships,
+    externalScholarshipStatus,
+  } = useContext(ScholarshipContext);
   const { authStatus } = useContext(AuthContext);
 
   // Params
   const pageParams = useParams();
   const scholarshipId = pageParams?.id;
 
+  // Load scholarships
+  useEffect(() => {
+    loadExternalScholarships();
+  }, [loadExternalScholarships]);
+  const externalScholarshipsData =
+    externalScholarshipStatus?.externalScholarships;
+
   // Get Scholarship
   useEffect(() => {
-    getScholarship(scholarshipId);
-  }, [getScholarship, scholarshipId]);
-  const scholarshipData = scholarshipStatus?.scholarship;
-  const scholarshipIsLoading = scholarshipStatus?.isLoading;
+    getExternalScholarship(externalScholarshipsData, scholarshipId);
+  }, [externalScholarshipsData, getExternalScholarship, scholarshipId]);
+  const externalScholarshipData =
+    externalScholarshipStatus?.externalScholarships;
+  const externalScholarshipIsLoading = externalScholarshipStatus?.isLoading;
 
   // Page variables
-  const pageTitle = scholarshipData?.name || "Scholarship";
-  const pageSubTitle = `Call for Applications for ${
-    scholarshipData?.name || "..."
-  } ${scholarshipData?.fundingType || ""} for the ${
-    scholarshipData?.academicYear || "..."
-  } Academic Year`;
+  const pageTitle = externalScholarshipData?.name || "External Scholarship";
+  const pageSubTitle = `View complete information about this external scholarship`;
 
   return (
     <PageTransition effect={viewExternalScholarshipsPageEffect}>
@@ -49,47 +53,20 @@ const ViewExternalScholarshipPage = () => {
         <BackButton
           className="mb-3"
           btnRole="link"
-          btnPath={dashboardRoute?.path}
+          btnPath={externalScholarshipsRoute?.path}
         />
         <HeaderBanner title={pageTitle} subTitle={pageSubTitle} />
 
-        {scholarshipIsLoading ? (
+        {externalScholarshipIsLoading ? (
           <DefaultSpinner />
         ) : (
           <div className="row mt-3 pt-1 pb-4 centering has_dangerous_html">
             {authStatus?.isUserAdmin && (
-              <ScholarshipDetails
+              <ExternalScholarshipDetailsCard
                 className="col-lg-9 col-md-10 col-12 mb-5"
-                scholarshipData={scholarshipData}
+                scholarshipData={externalScholarshipData}
               />
             )}
-
-            <div className="col-lg-9 col-md-10 col-12">
-              <SectionHeaderCard title="Scholarship Description" />
-              <div className=" py-4 px-md-5 px-3 rounded bg_light">
-                <div
-                  dangerouslySetInnerHTML={{
-                    __html: DOMPurify.sanitize(scholarshipData?.description),
-                  }}
-                  className="mb-4 has_dangerous_html"
-                  style={{ fontSize: "1rem" }}
-                />
-                {authStatus?.isUserAdmin ? (
-                  " "
-                ) : (
-                  <div className="row centering">
-                    <ApplyButton
-                      className="col-lg-4 col-md-4 col-sm-6 col-11"
-                      deadline={scholarshipData?.deadline}
-                      path={createApplicationRoute?.getPath(
-                        scholarshipData?.id
-                      )}
-                      scholarshipId={scholarshipId}
-                    />
-                  </div>
-                )}
-              </div>
-            </div>
           </div>
         )}
       </div>

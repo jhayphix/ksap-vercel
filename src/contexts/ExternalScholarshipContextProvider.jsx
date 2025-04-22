@@ -17,6 +17,7 @@ export const ExternalScholarshipContext = createContext({
   setExternalScholarshipStatus: () => {},
 
   loadExternalScholarships: () => {},
+  getExternalScholarship: () => {},
 });
 
 // ::::::::::::::::::::: PROVIDER
@@ -30,6 +31,7 @@ const ExternalScholarshipContextProvider = ({ children }) => {
     error: "",
     isLoading: false,
     externalScholarships: [],
+    externalScholarship: {},
   });
 
   // ::::::::::::::::::::: FETCH SCHOLARSHIPS
@@ -67,7 +69,52 @@ const ExternalScholarshipContextProvider = ({ children }) => {
     //eslint-disable-next-line
   }, []); // Empty array to ensure it's only created once
 
-  // ::::::::::::::::::::: CREATE SCHOLARSHIPS
+  // ::::::::::::::::::::: GET EXTERNAL SCHOLARSHIP
+  const getExternalScholarship = useCallback(
+    async (externalScholarshipsData, externalScholarshipId) => {
+      setExternalScholarshipStatus((prevState) => ({
+        ...prevState,
+        isLoading: true,
+      }));
+      try {
+        const foundExternalScholarship = externalScholarshipsData.find(
+          (scholarship) => scholarship?.id === externalScholarshipId
+        );
+
+        setExternalScholarshipStatus((prevState) => ({
+          ...prevState,
+          isLoading: false,
+        }));
+
+        if (foundExternalScholarship) {
+          setExternalScholarshipStatus((prevState) => ({
+            ...prevState,
+            externalScholarship: foundExternalScholarship,
+          }));
+        } else {
+          setShowFlashMessage({
+            isActive: true,
+            message: `External scholarship not found!`,
+            type: "danger",
+          });
+        }
+      } catch (error) {
+        setShowFlashMessage({
+          isActive: true,
+          message: `Error fetching external scholarship`,
+          type: "danger",
+        });
+        setExternalScholarshipStatus((prevState) => ({
+          ...prevState,
+          isLoading: false,
+        }));
+
+        return null;
+      }
+    },
+    //eslint-disable-next-line
+    []
+  );
 
   // ::::::::::::::::::::: CONTEXTS AND RETURN
 
@@ -78,6 +125,7 @@ const ExternalScholarshipContextProvider = ({ children }) => {
 
     // Scholarship Api Handlers
     loadExternalScholarships,
+    getExternalScholarship,
   };
   return (
     <ExternalScholarshipContext.Provider value={context}>
