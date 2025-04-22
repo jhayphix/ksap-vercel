@@ -59,7 +59,10 @@ const ExternalScholarshipCard = ({
 
         <div className="d-flex justify-content-between mt-3">
           {authStatus?.isUserSuperAdmin ? (
-            <ExternalScholarshipActionBtn scholarshipId={scholarshipId} />
+            <ExternalScholarshipActionBtn
+              scholarshipId={scholarshipId}
+              scholarshipName={name}
+            />
           ) : (
             <div></div>
           )}

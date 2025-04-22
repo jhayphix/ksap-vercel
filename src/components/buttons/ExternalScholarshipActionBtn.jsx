@@ -1,68 +1,22 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { NavigationContext } from "@contexts/NavigationContextProvider";
 import { useContext } from "react";
 import { FaEdit, FaEye } from "react-icons/fa";
 import DropdownWrapper from "@components/dropdown/DropdownWrapper";
 import { MdDelete } from "react-icons/md";
 
-import APIService from "@src/api/exportAPIService";
+import { ExternalScholarshipContext } from "@contexts/ExternalScholarshipContextProvider";
 
-import { ConfigContext } from "@contexts/ConfigContextProvider";
-import { ScholarshipContext } from "@contexts/ScholarshipContextProvider";
+const ExternalScholarshipActionBtn = ({ scholarshipId, scholarshipName }) => {
+  const { updateExternalScholarshipRoute, viewExternalScholarshipRoute } =
+    useContext(NavigationContext);
+  const { showDeleteExternalScholarshipModal } = useContext(
+    ExternalScholarshipContext
+  );
 
-const ExternalScholarshipActionBtn = ({ scholarshipId = "0000" }) => {
-  const { EXTERNAL_SCHOLARSHIPS_API_REF, deleteRequest, DATABASE_TABLE_NAMES } =
-    APIService;
-
-  const {
-    updateExternalScholarshipRoute,
-    dashboardRoute,
-    viewExternalScholarshipRoute,
-  } = useContext(NavigationContext);
-  const { setShowFlashMessage, setShowModal } = useContext(ConfigContext);
-  const { loadScholarships } = useContext(ScholarshipContext);
-  const navigate = useNavigate();
-
-  const showDeleteScholarshipModal = () => {
-    setShowModal({
-      isActive: true,
-      title: `Delete Scholarship"`,
-      message: `Are you sure you want delete this external scholarship?`,
-      action: deleteScholarshipHandler,
-    });
-  };
-
-  const deleteScholarshipHandler = async () => {
-    setShowModal({ isActive: false });
-
-    try {
-      const success = await deleteRequest(
-        EXTERNAL_SCHOLARSHIPS_API_REF,
-        scholarshipId,
-        DATABASE_TABLE_NAMES?.SCHOLARSHIPS_TABLE_NAME
-      );
-
-      if (success) {
-        setShowFlashMessage({
-          isActive: true,
-          message: "External Scholarship Deleted Successfully",
-          type: "success",
-        });
-        navigate(dashboardRoute?.path);
-        loadScholarships();
-      } else {
-        setShowFlashMessage({
-          isActive: true,
-          message: "Failed to delete External Scholarship.",
-          type: "danger",
-        });
-      }
-    } catch (error) {
-      setShowFlashMessage({
-        isActive: true,
-        message: `Error deleting external scholarship. Please try again:`,
-        type: "error",
-      });
+  const handleDeleteScholarship = () => {
+    if (scholarshipId) {
+      showDeleteExternalScholarshipModal(scholarshipId, scholarshipName);
     }
   };
 
@@ -92,7 +46,7 @@ const ExternalScholarshipActionBtn = ({ scholarshipId = "0000" }) => {
       <hr className="my-3" />
       <button
         className="btn dropdown-item text_danger text-danger"
-        onClick={showDeleteScholarshipModal}
+        onClick={() => handleDeleteScholarship()}
       >
         <MdDelete size={20} className="me-2" /> Delete
       </button>

@@ -1,11 +1,13 @@
 // React modules
 import { createContext, useState, useCallback, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 
 // API
 import APIService from "@src/api/exportAPIService";
 
 // Context
 import { ConfigContext } from "@contexts/ConfigContextProvider";
+import { NavigationContext } from "@contexts/NavigationContextProvider";
 
 // Components
 
@@ -23,10 +25,20 @@ export const ExternalScholarshipContext = createContext({
 // ::::::::::::::::::::: PROVIDER
 
 const ExternalScholarshipContextProvider = ({ children }) => {
-  const { EXTERNAL_SCHOLARSHIPS_API_REF, getRequest } = APIService;
-  // ::::::::::::::::::::: CONTEXTS AND STATES
+  const {
+    EXTERNAL_SCHOLARSHIPS_API_REF,
+    getRequest,
+    deleteRequest,
+    DATABASE_TABLE_NAMES,
+  } =
+    // ::::::::::::::::::::: CONTEXTS AND STATES
 
-  const { setShowFlashMessage } = useContext(ConfigContext);
+    APIService;
+
+  const navigate = useNavigate();
+  const { setShowFlashMessage, setShowModal } = useContext(ConfigContext);
+  const { externalScholarshipsRoute } = useContext(NavigationContext);
+
   const [externalScholarshipStatus, setExternalScholarshipStatus] = useState({
     error: "",
     isLoading: false,
@@ -116,6 +128,51 @@ const ExternalScholarshipContextProvider = ({ children }) => {
     []
   );
 
+  // ::::::::::::::::::::: DELETE
+  const showDeleteExternalScholarshipModal = (
+    scholarshipId,
+    scholarshipName
+  ) => {
+    setShowModal({
+      isActive: true,
+      title: `Delete External Scholarship - "${scholarshipName}"`,
+      message: `Are you sure you want to delete External Scholarship - "${scholarshipName}"?`,
+      action: (scholarshipId) => deleteExternalScholarship(scholarshipId),
+    });
+  };
+  const deleteExternalScholarship = async (scholarshipId) => {
+    setShowModal({ isActive: false });
+
+    try {
+      const success = await deleteRequest(
+        EXTERNAL_SCHOLARSHIPS_API_REF,
+        scholarshipId,
+        DATABASE_TABLE_NAMES?.EXTERNAL_SCHOLARSHIPS_API_REF
+      );
+
+      if (success) {
+        setShowFlashMessage({
+          isActive: true,
+          message: "External Scholarship Deleted Successfully",
+          type: "success",
+        });
+        navigate(externalScholarshipsRoute?.path);
+      } else {
+        setShowFlashMessage({
+          isActive: true,
+          message: "Failed to delete external scholarship.",
+          type: "danger",
+        });
+      }
+    } catch (error) {
+      setShowFlashMessage({
+        isActive: true,
+        message: `Error deleting external scholarship. Please try again:`,
+        type: "error",
+      });
+    }
+  };
+
   // ::::::::::::::::::::: CONTEXTS AND RETURN
 
   const context = {
@@ -126,6 +183,8 @@ const ExternalScholarshipContextProvider = ({ children }) => {
     // Scholarship Api Handlers
     loadExternalScholarships,
     getExternalScholarship,
+    deleteExternalScholarship,
+    showDeleteExternalScholarshipModal,
   };
   return (
     <ExternalScholarshipContext.Provider value={context}>

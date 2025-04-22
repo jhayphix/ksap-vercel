@@ -11,109 +11,76 @@ import { NavigationContext } from "@contexts/NavigationContextProvider";
 
 import DropdownWrapper from "@components/dropdown/DropdownWrapper";
 import { AuthContext } from "@contexts/AuthContextProvider";
+import { ExternalScholarshipContext } from "@contexts/ExternalScholarshipContextProvider";
 
-const ScholarshipHeaderCard = ({ className, scholarshipData = {} }) => {
+const ScholarshipHeaderCard = ({ className, externalScholarshipData = {} }) => {
   const { EXTERNAL_SCHOLARSHIPS_API_REF, deleteRequest, DATABASE_TABLE_NAMES } =
     APIService;
 
-  const navigate = useNavigate();
   const { setShowFlashMessage, setShowModal, HELPER } =
     useContext(ConfigContext);
   const { updateScholarshipRoute, dashboardRoute } =
     useContext(NavigationContext);
   const { authStatus } = useContext(AuthContext);
+  const { showDeleteExternalScholarshipModal } = useContext(
+    ExternalScholarshipContext
+  );
 
-  const scholarshipId = scholarshipData?.id;
+  const navigate = useNavigate();
 
-  const showDeleteScholarshipModal = () => {
-    setShowModal({
-      isActive: true,
-      title: `Delete ${scholarshipData?.type || "Scholarship"} "${
-        scholarshipData?.name
-      }"`,
-      message: `Are you sure you want to delete ${
-        scholarshipData?.type || "Scholarship"
-      } "${scholarshipData?.name}"?`,
-      action: deleteScholarshipHandler,
-    });
+  const scholarshipId = externalScholarshipData?.id;
+  const scholarshipCreatedAt = externalScholarshipData?.createdAt;
+  const scholarshipCreatedByAdminId = externalScholarshipData?.createdByAdminId;
+  const scholarshipDeadline = externalScholarshipData?.deadline;
+  const scholarshipIsActive = externalScholarshipData?.isActive;
+  const scholarshipLastUpdatedAt = externalScholarshipData?.lastUpdatedAt;
+  const scholarshipLastUpdatedByAdminId =
+    externalScholarshipData?.lastUpdatedByAdminId;
+  const scholarshipName = externalScholarshipData?.name;
+  const scholarshipSponsor = externalScholarshipData?.sponsor;
+  const scholarshipUrl = externalScholarshipData?.url;
+
+  const handleDeleteScholarship = () => {
+    showDeleteExternalScholarshipModal(scholarshipId, scholarshipName);
   };
 
-  const deleteScholarshipHandler = async () => {
-    setShowModal({ isActive: false });
-
-    try {
-      const success = await deleteRequest(
-        EXTERNAL_SCHOLARSHIPS_API_REF,
-        scholarshipId,
-        DATABASE_TABLE_NAMES?.EXTERNAL_SCHOLARSHIPS_API_REF
-      );
-
-      if (success) {
-        setShowFlashMessage({
-          isActive: true,
-          message: "Scholarship Deleted Successfully",
-          type: "success",
-        });
-        navigate(dashboardRoute?.path);
-      } else {
-        setShowFlashMessage({
-          isActive: true,
-          message: "Failed to delete scholarship.",
-          type: "danger",
-        });
-      }
-    } catch (error) {
-      setShowFlashMessage({
-        isActive: true,
-        message: `Error deleting scholarship. Please try again:`,
-        type: "error",
-      });
-    }
-  };
   return (
     <div
       className={`${className} bg_light rounded py-3 px-4 d-flex justify-content-between align-items-start`}
     >
       <div>
-        <h4 className="h4 mb-2">
-          {scholarshipData?.name}{" "}
-          {scholarshipData?.shortName && (
-            <span className="h5 mb-2 d-inline-block">
-              ( {scholarshipData?.shortName} )
-            </span>
-          )}
-        </h4>
+        <h4 className="h4 mb-2">{scholarshipName}</h4>
 
         <div className="mb-2">
-          {scholarshipData?.academicYear} Academic Year Application
+          {externalScholarshipData?.academicYear} Academic Year Application
           <span className="mx-2">{" • "}</span>{" "}
           <DefaultBadge
-            text={scholarshipData?.isDue ? "Closed" : "Open"}
-            color={scholarshipData?.isDue ? "danger" : "success"}
+            text={externalScholarshipData?.isDue ? "Closed" : "Open"}
+            color={externalScholarshipData?.isDue ? "danger" : "success"}
           />
         </div>
         <div className="mb-2 d-flex align-items-center">
-          {scholarshipData?.fundingType}
+          {externalScholarshipData?.fundingType}
           <span className="mx-2">{" • "}</span>
-          {Array.isArray(scholarshipData?.eligibilityEducationalLevel)
-            ? scholarshipData?.eligibilityEducationalLevel?.join(", ")
-            : scholarshipData?.eligibilityEducationalLevel}
+          {Array.isArray(externalScholarshipData?.eligibilityEducationalLevel)
+            ? externalScholarshipData?.eligibilityEducationalLevel?.join(", ")
+            : externalScholarshipData?.eligibilityEducationalLevel}
         </div>
         <div className="mb-2">
           <span style={{ fontWeight: "500" }}>
             Eligibility Years of Study :{" "}
           </span>
-          {Array.isArray(scholarshipData?.eligibilityYearsOfStudy)
-            ? scholarshipData?.eligibilityYearsOfStudy?.join(", ")
-            : scholarshipData?.eligibilityYearsOfStudy}
+          {Array.isArray(externalScholarshipData?.eligibilityYearsOfStudy)
+            ? externalScholarshipData?.eligibilityYearsOfStudy?.join(", ")
+            : externalScholarshipData?.eligibilityYearsOfStudy}
         </div>
         <div className="mb-2">
           <span style={{ fontWeight: "500" }}>Last Published : </span>
-          {HELPER?.formatDateTime(scholarshipData?.updatedAt)}
+          {HELPER?.formatDateTime(externalScholarshipData?.updatedAt)}
         </div>
         <div className="mb-2">
           <span style={{ fontWeight: "500" }}>Deadline : </span>
-          {HELPER?.formatDateTime(scholarshipData?.deadline)}
+          {HELPER?.formatDateTime(externalScholarshipData?.deadline)}
         </div>
       </div>
 
@@ -133,7 +100,7 @@ const ScholarshipHeaderCard = ({ className, scholarshipData = {} }) => {
           <hr className="my-3" />
           <button
             className="btn dropdown-item text_danger"
-            onClick={showDeleteScholarshipModal}
+            onClick={() => handleDeleteScholarship()}
           >
             <MdDelete size={20} className="me-2" /> Delete
           </button>
