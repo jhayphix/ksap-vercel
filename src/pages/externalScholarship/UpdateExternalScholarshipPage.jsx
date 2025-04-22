@@ -130,6 +130,7 @@ const UpdateExternalScholarshipPage = () => {
     };
 
     const deadline = externalScholarshipFormData?.dealine;
+    const scholarshipName = externalScholarshipFormData?.name;
     const dataToSave = {
       ...externalScholarshipData,
       ...externalScholarshipFormData,
@@ -148,23 +149,23 @@ const UpdateExternalScholarshipPage = () => {
       if (response) {
         setShowFlashMessage({
           isActive: true,
-          message:
-            "Profile updated successfully. Your information has been successfully saved.",
+          message: `External Scholarship ${
+            " - " + scholarshipName
+          } updated successfully!`,
           type: "success",
         });
         navigate(viewExternalScholarshipRoute?.getPath(externalScholarshipId));
       } else {
         setShowFlashMessage({
           isActive: true,
-          message:
-            "Profile update failed. Please review the details and try again.",
+          message: `Failed to update external scholarship.`,
           type: "danger",
         });
       }
     } catch (error) {
       setShowFlashMessage({
         isActive: true,
-        message: `An unexpected error occurred while processing the profile update. Please try again later.`,
+        message: `An unexpected error occurred while updating scholarship. Please try again later.`,
         type: "error",
       });
     } finally {
