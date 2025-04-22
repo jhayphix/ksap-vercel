@@ -20,7 +20,7 @@ export const APPLICANTS_API_REF = collection(db, "applicants");
 
 export const DATABASE_TABLE_NAMES = {
   SCHOLARSHIPS_TABLE_NAME: "scholarships",
-  EXTERNAL_SCHOLARSHIPS_API_REF: "externalScholarships",
+  EXTERNAL_SCHOLARSHIPS_TABLE_NAME: "externalScholarships",
   APPLICATIONS_TABLE_NAME: "applications",
   APPLICANTS_TABLE_NAME: "applicants",
   ADMINS_TABLE_NAME: "admins",

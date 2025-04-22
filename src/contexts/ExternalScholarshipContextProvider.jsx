@@ -157,7 +157,7 @@ const ExternalScholarshipContextProvider = ({ children }) => {
       const success = await deleteRequest(
         EXTERNAL_SCHOLARSHIPS_API_REF,
         scholarshipId,
-        DATABASE_TABLE_NAMES?.EXTERNAL_SCHOLARSHIPS_API_REF
+        DATABASE_TABLE_NAMES?.EXTERNAL_SCHOLARSHIPS_TABLE_NAME
       );
 
       if (success) {
