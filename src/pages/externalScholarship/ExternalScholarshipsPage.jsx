@@ -45,10 +45,11 @@ const ExternalScholarshipsPage = () => {
   );
 
   const inactiveScholarships = externalScholarshipsData?.filter(
-    (scholarship) =>
-      !scholarship?.isActive || new Date(scholarship?.deadline) <= new Date()
+    (scholarship) => !scholarship?.isActive
   );
-  
+  const expiredScholarships = externalScholarshipsData?.filter(
+    (scholarship) => new Date(scholarship?.deadline) <= new Date()
+  );
 
   return (
     <PageTransition effect={externalScholarshipsPageEffect}>
@@ -83,13 +84,13 @@ const ExternalScholarshipsPage = () => {
             </div>
 
             {/* Inactive Scholarships */}
-            {inactiveScholarships.length > 0 && (
+            {expiredScholarships.length > 0 && (
               <>
                 <div className="text-muted text-uppercase text-center fw-semibold mt-5 mb-5 px-1 h6">
                   Expired External Scholarships
                 </div>
                 <div className="row gy-3 gx-4 row-cols-lg-3 row-cols-md-2 row-cols-sm-2 row-cols-1 d-flex align-items-center pb-4">
-                  {inactiveScholarships?.map((scholarship) => (
+                  {expiredScholarships?.map((scholarship) => (
                     <div className="col" key={scholarship?.id}>
                       <ExternalScholarshipCard
                         id={scholarship?.id}
@@ -98,6 +99,7 @@ const ExternalScholarshipsPage = () => {
                         url={scholarship?.url}
                         sponsor={scholarship?.sponsor}
                         imagePath={assignImage(scholarship?.id)}
+                        isActive={scholarship?.isActive}
                       />
                     </div>
                   ))}
