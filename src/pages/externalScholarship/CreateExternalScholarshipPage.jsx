@@ -26,27 +26,27 @@ import exportDefaultData from "@data/default/exportDefaultData";
 import APIService from "@src/api/exportAPIService";
 
 const CreateExternalScholarshipPage = () => {
-  const { ADMINS_API_REF, postRequest } = APIService;
+  const { EXTERNAL_SCHOLARSHIPS_API_REF, postRequest } = APIService;
   const { createExternalScholarshipPageEffect, HELPER, setShowFlashMessage } =
     useContext(ConfigContext);
-  const { dashboardRoute } = useContext(NavigationContext);
+  const { externalScholarshipsRoute } = useContext(NavigationContext);
   const { authStatus } = useContext(AuthContext);
 
   const navigate = useNavigate();
-  const thisFormKey = "registerAdminForm";
-  const adminFormSections = exportDefaultData?.externalScholarshipFormFields;
+  const thisFormKey = "createExternalScholarshipFormKey";
+  const externalScholarshipFormSections =
+    exportDefaultData?.externalScholarshipFormFields;
 
   // States
-  const [adminFormData, setAdminFormData] = useState(
-    HELPER?.getLocalStorage(thisFormKey) || {}
-  );
+  const [externalScholarshipFormData, setExternalScholarshipFormData] =
+    useState(HELPER?.getLocalStorage(thisFormKey) || {});
   const [formIsSubmitting, setFormIsSubmitting] = useState(false);
   const [submitIsDisabled, setSubmitIsDisabled] = useState(true);
 
   // Local storage store
   useEffect(() => {
     const storedData = HELPER?.getLocalStorage(thisFormKey) || {};
-    setAdminFormData(storedData);
+    setExternalScholarshipFormData(storedData);
   }, [HELPER, thisFormKey]);
 
   const saveToLocalStorage = useMemo(
@@ -58,13 +58,13 @@ const CreateExternalScholarshipPage = () => {
   );
 
   useEffect(() => {
-    saveToLocalStorage(adminFormData);
-  }, [adminFormData, saveToLocalStorage]);
+    saveToLocalStorage(externalScholarshipFormData);
+  }, [externalScholarshipFormData, saveToLocalStorage]);
 
   // Form change
   const handleFormChange = (e) => {
     const { name, value } = e.target;
-    setAdminFormData((prev) => ({
+    setExternalScholarshipFormData((prev) => ({
       ...prev,
       [name]: value,
     }));
@@ -75,9 +75,9 @@ const CreateExternalScholarshipPage = () => {
     const updatedErrors = [];
     let formHasErrors = false;
 
-    adminFormSections?.forEach((section) => {
+    externalScholarshipFormSections?.forEach((section) => {
       section?.sectionFields?.forEach((field) => {
-        const thisFieldValue = adminFormData?.[field?.key];
+        const thisFieldValue = externalScholarshipFormData?.[field?.key];
         const thisFieldValidation = HELPER?.validateField(
           field?.regexKey,
           thisFieldValue,
@@ -100,7 +100,7 @@ const CreateExternalScholarshipPage = () => {
     });
 
     setSubmitIsDisabled(formHasErrors); // Disable submit if errors exist
-  }, [adminFormData, adminFormSections, HELPER]);
+  }, [externalScholarshipFormData, externalScholarshipFormSections, HELPER]);
 
   // Form Submit
   const handleFormSubmit = async (e) => {
@@ -120,23 +120,27 @@ const CreateExternalScholarshipPage = () => {
       deactivatedByAdminId: null,
     };
 
-    const dateOfBirth = adminFormData?.dateOfBirth;
+    const dateOfBirth = externalScholarshipFormData?.dateOfBirth;
 
     const isSuperAdmin =
-      adminFormData?.assignedRole?.toLowerCase() === "super admin";
+      externalScholarshipFormData?.assignedRole?.toLowerCase() ===
+      "super admin";
     const isApprovalManager =
-      adminFormData?.assignedRole?.toLowerCase() === "approval manager";
+      externalScholarshipFormData?.assignedRole?.toLowerCase() ===
+      "approval manager";
     const isReviewManager =
-      adminFormData?.assignedRole?.toLowerCase() === "review manager";
+      externalScholarshipFormData?.assignedRole?.toLowerCase() ===
+      "review manager";
 
-    const fullName = `${adminFormData?.lastName?.toUpperCase()}, ${
-      adminFormData?.firstName
-    } ${adminFormData?.otherNames}`.trim();
+    const fullName =
+      `${externalScholarshipFormData?.lastName?.toUpperCase()}, ${
+        externalScholarshipFormData?.firstName
+      } ${externalScholarshipFormData?.otherNames}`.trim();
 
     // Final data to save
     const dataToSave = {
       ...autoAdd,
-      ...adminFormData,
+      ...externalScholarshipFormData,
       fullName,
       isSuperAdmin,
       isApprovalManager,
@@ -145,7 +149,10 @@ const CreateExternalScholarshipPage = () => {
     };
 
     try {
-      const response = await postRequest(ADMINS_API_REF, dataToSave);
+      const response = await postRequest(
+        EXTERNAL_SCHOLARSHIPS_API_REF,
+        dataToSave
+      );
 
       if (response) {
         setShowFlashMessage({
@@ -154,7 +161,7 @@ const CreateExternalScholarshipPage = () => {
             "Registration successful. Admin have been successfully registered.",
           type: "success",
         });
-        navigate(dashboardRoute?.path);
+        navigate(externalScholarshipsRoute?.path);
 
         // Reset local storage
         HELPER?.setLocalStorage(thisFormKey, {});
@@ -181,17 +188,18 @@ const CreateExternalScholarshipPage = () => {
     <PageTransition effect={createExternalScholarshipPageEffect}>
       <section>
         <BackButton className="mb-3" />
-        <HeaderBanner title={`Register Account`} className="mb-3" />
+        <HeaderBanner title={`Create External Scholarship`} className="mb-3" />
 
         <form className={``} onSubmit={handleFormSubmit}>
-          {adminFormSections?.map((section, sectionIndex) => {
+          {externalScholarshipFormSections?.map((section, sectionIndex) => {
             return (
               <div key={sectionIndex}>
                 <SectionHeaderCard title={section?.sectionName} />
                 <FormContainerWrapper className="mb-5">
                   <div className="row row-cols-1 row-cols-md-2 row-cols-lg-2 row-cols-xxl-3 g-3">
                     {section?.sectionFields?.map((field, fieldIndex) => {
-                      const thisFieldValue = adminFormData?.[field?.key];
+                      const thisFieldValue =
+                        externalScholarshipFormData?.[field?.key];
                       const thisFieldValidation = HELPER?.validateField(
                         field?.regexKey,
                         thisFieldValue,
