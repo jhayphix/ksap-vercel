@@ -40,6 +40,7 @@ import UpdateScholarshipPage from "@pages/scholarship/UpdateScholarshipPage";
 import ExternalScholarshipsPage from "@pages/externalScholarship/ExternalScholarshipsPage";
 import ViewExternalScholarshipPage from "@pages/externalScholarship/ViewExternalScholarshipPage";
 import CreateExternalScholarshipPage from "@pages/externalScholarship/CreateExternalScholarshipPage";
+import UpdateExternalScholarshipPage from "@pages/externalScholarship/UpdateExternalScholarshipPage";
 
 import NotFoundPage from "@pages/notFound/NotFoundPage";
 
@@ -71,6 +72,7 @@ const WebRouting = () => {
     externalScholarshipsRoute,
     viewExternalScholarshipRoute,
     createExternalScholarshipRoute,
+    updateExternalScholarshipRoute,
   } = useContext(NavigationContext);
 
   return (
@@ -152,6 +154,10 @@ const WebRouting = () => {
               <Route
                 path={createExternalScholarshipRoute?.path}
                 element={<CreateExternalScholarshipPage />}
+              />
+              <Route
+                path={updateExternalScholarshipRoute?.path}
+                element={<UpdateExternalScholarshipPage />}
               />
             </Route>
           </Route>

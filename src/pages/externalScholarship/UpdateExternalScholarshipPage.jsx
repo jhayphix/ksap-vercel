@@ -6,7 +6,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import PageTransition from "@layouts/PageTransition";
 import { ConfigContext } from "@contexts/ConfigContextProvider";
 import { NavigationContext } from "@contexts/NavigationContextProvider";
-import { UserContext } from "@contexts/UserContextProvider";
+import { ExternalScholarshipContext } from "@contexts/ExternalScholarshipContextProvider";
 import { AuthContext } from "@contexts/AuthContextProvider";
 
 // Components
@@ -34,7 +34,7 @@ const UpdateExternalScholarshipPage = () => {
     externalScholarshipStatus,
     getExternalScholarship,
     loadExternalScholarships,
-  } = useContext(UserContext);
+  } = useContext(ExternalScholarshipContext);
   const { authStatus } = useContext(AuthContext);
 
   const navigate = useNavigate();
@@ -56,6 +56,7 @@ const UpdateExternalScholarshipPage = () => {
   }, [externalScholarshipId, getExternalScholarship, externalScholarshipsData]);
   const externalScholarshipData =
     externalScholarshipStatus?.externalScholarship;
+  const scholarshipToEditName = externalScholarshipData?.name;
 
   // States
   const [formIsSubmitting, setFormIsSubmitting] = useState(false);
@@ -67,12 +68,12 @@ const UpdateExternalScholarshipPage = () => {
   // Load
   useEffect(() => {
     if (externalScholarshipData) {
-      const deadline = HELPER?.formatToDateInput(
+      const transformDeadline = HELPER?.getDatetimeLocal(
         externalScholarshipData?.deadline
       );
       setExternalScholarshipFormData({
         ...externalScholarshipData,
-        deadline: deadline,
+        deadline: transformDeadline,
       });
     }
   }, [externalScholarshipData, HELPER]);
@@ -177,7 +178,12 @@ const UpdateExternalScholarshipPage = () => {
     <PageTransition effect={updateExternalScholarshipPageEffect}>
       <section>
         <BackButton className="mb-3" />
-        <HeaderBanner title={`Edit Account`} className="mb-3" />
+        <HeaderBanner
+          title={`Edit External Scholarship ${
+            scholarshipToEditName ? " - " + scholarshipToEditName : ""
+          }`}
+          className="mb-3"
+        />
 
         <form className={``} onSubmit={handleFormSubmit}>
           {externalScholarshipFormSections?.map((section, sectionIndex) => {
