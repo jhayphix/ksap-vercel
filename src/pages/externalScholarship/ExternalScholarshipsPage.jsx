@@ -40,11 +40,15 @@ const ExternalScholarshipsPage = () => {
   };
 
   const activeScholarships = externalScholarshipsData?.filter(
-    (scholarship) => scholarship.isActive
+    (scholarship) =>
+      scholarship?.isActive && new Date(scholarship?.deadline) > new Date()
   );
+
   const inactiveScholarships = externalScholarshipsData?.filter(
-    (scholarship) => !scholarship.isActive
+    (scholarship) =>
+      !scholarship?.isActive || new Date(scholarship?.deadline) <= new Date()
   );
+  
 
   return (
     <PageTransition effect={externalScholarshipsPageEffect}>
