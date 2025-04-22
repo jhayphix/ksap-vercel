@@ -4,7 +4,6 @@ id | string | Unique identifier (UUID or Firestore ID)
 createdAt | timestamp | Date the entry was added
 createdByAdminId | string | Admin who added it
 deadline | timestamp | Deadline for application
-isActive | boolean | If false, hide from front-end display
 lastUpdatedAt | timestamp | Last update timestamp
 lastUpdatedByAdminId | string | Admin who last modified it
 name | string | Name of the external scholarship

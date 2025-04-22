@@ -194,19 +194,11 @@ const UserContextProvider = ({ children }) => {
       if (admin) {
         return admin;
       } else {
-        setShowFlashMessage({
-          isActive: true,
-          message: "Admin not found!",
-          type: "warning",
-        });
+        console.error("Admin not found!")
         return {};
       }
     } catch (error) {
-      setShowFlashMessage({
-        isActive: true,
-        message: "An error occurred while retrieving the admin!",
-        type: "error",
-      });
+      console.error("An error occurred while retrieving the admin!")
       return {};
     }
 

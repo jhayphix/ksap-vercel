@@ -40,13 +40,9 @@ const ExternalScholarshipsPage = () => {
   };
 
   const activeScholarships = externalScholarshipsData?.filter(
-    (scholarship) =>
-      scholarship?.isActive && new Date(scholarship?.deadline) > new Date()
+    (scholarship) => new Date(scholarship?.deadline) > new Date()
   );
 
-  const inactiveScholarships = externalScholarshipsData?.filter(
-    (scholarship) => !scholarship?.isActive
-  );
   const expiredScholarships = externalScholarshipsData?.filter(
     (scholarship) => new Date(scholarship?.deadline) <= new Date()
   );
@@ -83,7 +79,7 @@ const ExternalScholarshipsPage = () => {
               ))}
             </div>
 
-            {/* Inactive Scholarships */}
+            {/* Expired Scholarships */}
             {expiredScholarships.length > 0 && (
               <>
                 <div className="text-muted text-uppercase text-center fw-semibold mt-5 mb-5 px-1 h6">
@@ -99,7 +95,6 @@ const ExternalScholarshipsPage = () => {
                         url={scholarship?.url}
                         sponsor={scholarship?.sponsor}
                         imagePath={assignImage(scholarship?.id)}
-                        isActive={scholarship?.isActive}
                       />
                     </div>
                   ))}

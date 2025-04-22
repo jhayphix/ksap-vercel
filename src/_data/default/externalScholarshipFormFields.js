@@ -38,18 +38,6 @@ export const externalScholarshipFormFields = [
         regexKey: "generalText",
       },
       {
-        sectionId: 1,
-        type: "select",
-        key: "isActive",
-        label: "Active",
-        isRequired: true,
-        hasOptions: true,
-        disabled: false,
-        options: ["True", "False"],
-        placeholder: "Select the status of the external scholarship",
-        regexKey: "select",
-      },
-      {
         sectionId: 2,
         type: "datetime-local",
         key: "deadline",

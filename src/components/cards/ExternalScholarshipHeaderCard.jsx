@@ -25,7 +25,6 @@ const ScholarshipHeaderCard = ({ className, externalScholarshipData = {} }) => {
 
   const scholarshipDeadline = externalScholarshipData?.deadline;
   const scholarshipIsDue = new Date(scholarshipDeadline) <= new Date();
-  const scholarshipIsActive = externalScholarshipData?.isActive;
 
   const scholarshipCreatedAt = externalScholarshipData?.createdAt;
   const scholarshipCreatedByAdminId = externalScholarshipData?.createdByAdminId;
@@ -54,16 +53,6 @@ const ScholarshipHeaderCard = ({ className, externalScholarshipData = {} }) => {
             />
           ),
         },
-        {
-          label: "Listing Status",
-          value: (
-            <DefaultBadge
-              text={scholarshipIsActive === true ? "Active" : "Inactive"}
-              color={scholarshipIsActive === true ? "success" : "warning"}
-            />
-          ),
-        },
-
         {
           label: "Scholarship URL",
           value: (

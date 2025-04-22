@@ -16,20 +16,14 @@ const ExternalScholarshipCard = ({
   url,
   sponsor,
   imagePath,
-  isActive,
 }) => {
   const { HELPER } = useContext(ConfigContext);
   const { authStatus } = useContext(AuthContext);
 
   const scholarshipId = id;
 
-  const cardFade = isActive ? "0.5" : 1;
-
   return (
-    <Card
-      className={`h-100 shadow-sm external-scholarship-card border-0`}
-      style={{ opacity: cardFade }}
-    >
+    <Card className={`h-100 shadow-sm external-scholarship-card border-0`}>
       <Card.Img
         variant="top"
         src={imagePath}
