@@ -117,7 +117,7 @@ const ScholarshipHeaderCard = ({ className, externalScholarshipData = {} }) => {
             {sectionDetails?.map(({ label, value }, index) => (
               <div className="mb-2" key={index}>
                 <span style={{ fontWeight: "500" }}>{label}: </span>
-                {value}
+                {value ? value : "N/A"}
               </div>
             ))}
           </div>
