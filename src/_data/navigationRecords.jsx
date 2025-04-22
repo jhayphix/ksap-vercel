@@ -80,18 +80,18 @@ const navigationRecords = {
   },
   updateApplicantRoute: {
     title: "Update Profile",
-    path: `${baseRoute}/applicant/:applicantId/update`,
+    path: `${baseRoute}/applicant/:applicantId/edit`,
     getPath: (applicantId) => {
-      return `${baseRoute}/applicant/${applicantId}/update`;
+      return `${baseRoute}/applicant/${applicantId}/edit`;
     },
     icon: <FaUserPlus size={iconSize} />,
     end: false,
   },
   updateAdminRoute: {
     title: "Update Profile (Admin)",
-    path: `${baseRoute}/admin/:adminId/update`,
+    path: `${baseRoute}/admin/:adminId/edit`,
     getPath: (adminId) => {
-      return `${baseRoute}/admin/${adminId}/update`;
+      return `${baseRoute}/admin/${adminId}/edit`;
     },
     icon: <FaUserPlus size={iconSize} />,
     end: false,
@@ -204,9 +204,9 @@ const navigationRecords = {
   },
   updateScholarshipRoute: {
     title: "Edit Scholarship",
-    path: `${baseRoute}/scholarships/:id/update`,
+    path: `${baseRoute}/scholarships/:id/edit`,
     getPath: (id) => {
-      return `${baseRoute}/scholarships/${id}/update`;
+      return `${baseRoute}/scholarships/${id}/edit`;
     },
     icon: <FaClipboardCheck size={iconSize} />,
     end: false,
@@ -226,7 +226,7 @@ const navigationRecords = {
     title: "Preview Scholarship",
     path: `${baseRoute}/external-scholarships/view/:id`,
     getPath: (externalScholarshipId) => {
-      return `${baseRoute}/external-scholarships/${externalScholarshipId}`;
+      return `${baseRoute}/external-scholarships/view/${externalScholarshipId}`;
     },
     icon: <FaRegBookmark size={iconSize} />,
     end: false,
@@ -241,8 +241,8 @@ const navigationRecords = {
 
   updateExternalScholarshipRoute: {
     title: "Edit External Scholarship",
-    path: `${baseRoute}/external-scholarships/update/:id`,
-    getPath: (id) => `${baseRoute}/external-scholarships/${id}/update`,
+    path: `${baseRoute}/external-scholarships/edit/:id`,
+    getPath: (id) => `${baseRoute}/external-scholarships/edit/${id}`,
     icon: <FaClipboardCheck size={iconSize} />,
     end: false,
   },

@@ -28,7 +28,7 @@ export const externalScholarshipFormFields = [
       },
       {
         sectionId: 1,
-        type: "url",
+        type: "text",
         key: "url",
         label: "External Scholarship URL",
         isRequired: true,

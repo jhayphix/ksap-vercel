@@ -119,7 +119,7 @@ export const formatDateTime = (
 ) => {
   const validDate = convertToDate(date);
   return validDate
-    ? validDate.toLocaleString("en-US", {
+    ? validDate.toLocaleString("en-GB", {
         weekday: dateObj?.weekday ?? undefined,
         year: dateObj?.year ?? undefined,
         month: dateObj?.month ?? undefined,
@@ -135,7 +135,7 @@ export const formatDateTime = (
 export const formatDateMMDDYYY = (date) => {
   const validDate = convertToDate(date);
   return validDate
-    ? validDate.toLocaleDateString("en-US", {
+    ? validDate.toLocaleDateString("en-GB", {
         month: "short",
         day: "2-digit",
         year: "numeric",
