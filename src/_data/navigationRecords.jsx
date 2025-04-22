@@ -224,7 +224,7 @@ const navigationRecords = {
 
   viewExternalScholarshipRoute: {
     title: "Preview Scholarship",
-    path: `${baseRoute}/external-scholarships/:id`,
+    path: `${baseRoute}/external-scholarships/view/:id`,
     getPath: (externalScholarshipId) => {
       return `${baseRoute}/external-scholarships/${externalScholarshipId}`;
     },
@@ -236,12 +236,12 @@ const navigationRecords = {
     title: "Add External Scholarship",
     path: `${baseRoute}/external-scholarships/new`,
     icon: <BsGlobeAmericas size={iconSize} />,
-    end: false,
+    end: true,
   },
 
   updateExternalScholarshipRoute: {
     title: "Edit External Scholarship",
-    path: `${baseRoute}/external-scholarships/:id/update`,
+    path: `${baseRoute}/external-scholarships/update/:id`,
     getPath: (id) => `${baseRoute}/external-scholarships/${id}/update`,
     icon: <FaClipboardCheck size={iconSize} />,
     end: false,

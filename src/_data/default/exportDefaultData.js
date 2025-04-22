@@ -1,6 +1,7 @@
 import { applicantFormSections } from "@data/default/applicantFormFields";
 import { adminFormSections } from "@data/default/adminFormFields";
 import { scholarshipFormSections } from "@data/default/scholarshipFormFields";
+import { externalScholarshipFormFields } from "@data/default/externalScholarshipFormFields";
 import academicProgrammesRecords from "@data/default/academicProgrammesRecords";
 import {
   allUndergraduateProgrammes,
@@ -16,6 +17,7 @@ const exportDefaultData = {
   allPostgraduateProgrammes,
   allAcademicProgrammes,
   scholarshipFormSections,
+  externalScholarshipFormFields,
 };
 
 export default exportDefaultData;
