@@ -9,3 +9,16 @@ lastUpdatedByAdminId | string | Admin who last modified it
 name | string | Name of the external scholarship
 url | string | Direct link to the scholarship application page
 sponsor | string | (optional) Scholarship provider/sponsor name
+
+
+
+externalId
+createdAt
+createdByAdminId
+lastUpdatedAt
+lastUpdatedByAdminId
+
+name
+url
+deadline
+sponsor

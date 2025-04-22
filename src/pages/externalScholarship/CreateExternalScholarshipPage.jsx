@@ -112,40 +112,17 @@ const CreateExternalScholarshipPage = () => {
       externalId: uuidv4(),
       createdByAdminId: authStatus?.loggedInUserId,
       createdAt: HELPER?.getISODate(),
-      updatedByAdminId: authStatus?.loggedInUserId,
-      updatedAt: HELPER?.getISODate(),
-      role: "Admin",
-      accountStatus: "Active",
-      deactivatedAt: null,
-      deactivatedByAdminId: null,
+      lastUpdatedByAdminId: authStatus?.loggedInUserId,
+      lastUpdatedAt: HELPER?.getISODate(),
     };
 
-    const dateOfBirth = externalScholarshipFormData?.dateOfBirth;
-
-    const isSuperAdmin =
-      externalScholarshipFormData?.assignedRole?.toLowerCase() ===
-      "super admin";
-    const isApprovalManager =
-      externalScholarshipFormData?.assignedRole?.toLowerCase() ===
-      "approval manager";
-    const isReviewManager =
-      externalScholarshipFormData?.assignedRole?.toLowerCase() ===
-      "review manager";
-
-    const fullName =
-      `${externalScholarshipFormData?.lastName?.toUpperCase()}, ${
-        externalScholarshipFormData?.firstName
-      } ${externalScholarshipFormData?.otherNames}`.trim();
+    const deadline = externalScholarshipFormData?.deadline;
 
     // Final data to save
     const dataToSave = {
       ...autoAdd,
       ...externalScholarshipFormData,
-      fullName,
-      isSuperAdmin,
-      isApprovalManager,
-      isReviewManager,
-      dateOfBirth: HELPER?.getISODate(dateOfBirth),
+      deadline: HELPER?.getISODate(deadline),
     };
 
     try {
@@ -157,8 +134,7 @@ const CreateExternalScholarshipPage = () => {
       if (response) {
         setShowFlashMessage({
           isActive: true,
-          message:
-            "Registration successful. Admin have been successfully registered.",
+          message: "External Scholarship created successfully!.",
           type: "success",
         });
         navigate(externalScholarshipsRoute?.path);
@@ -168,15 +144,14 @@ const CreateExternalScholarshipPage = () => {
       } else {
         setShowFlashMessage({
           isActive: true,
-          message:
-            "Registration unsuccessful. Please verify the Admin details and try again.",
+          message: "Failed to create external scholarship.",
           type: "danger",
         });
       }
     } catch (error) {
       setShowFlashMessage({
         isActive: true,
-        message: `An unexpected error occurred while processing the registration. Please try again later.`,
+        message: `An unexpected error occurred while creating external scholarship. Please try again later.`,
         type: "error",
       });
     } finally {
@@ -242,8 +217,8 @@ const CreateExternalScholarshipPage = () => {
           })}
           <div className="mt-5 mb-4 text-center">
             <SubmitFormButton
-              name="Register Admin"
-              processingName="Registering Account..."
+              name="Create External Scholarship"
+              processingName="Creating External Scholarship..."
               disabled={submitIsDisabled}
               isLoading={formIsSubmitting}
             />
