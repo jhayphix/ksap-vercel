@@ -13,7 +13,7 @@ export const externalScholarshipFormFields = [
         hasOptions: false,
         disabled: false,
         placeholder: "Enter the external scholarship name",
-        regexKey: "name",
+        regexKey: "generalText",
       },
       {
         sectionId: 1,
@@ -24,7 +24,7 @@ export const externalScholarshipFormFields = [
         hasOptions: false,
         disabled: false,
         placeholder: "Enter the external scholarship sponsor",
-        regexKey: "name",
+        regexKey: "generalText",
       },
       {
         sectionId: 1,
