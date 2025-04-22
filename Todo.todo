@@ -12,6 +12,7 @@ CONCEPT:
 MUST ADD:
     ☐ Reference form implementation ( Download and upload form)
     ☐ Print summary of application
+    ☐ When submitting ( createdByAdminId ... anything with admin id) add the admin full name so no need to get it
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 UPDATE THE DATABASE:

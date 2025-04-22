@@ -152,12 +152,12 @@ const TableDataContextProvider = ({ children }) => {
       console.log("filteredData: ", filteredData);
 
       const applicationTableData = filteredData?.map((application) => {
-        // Flatten the responses into a single object with a "Form" indicator in the label
+        // Flatten the responses into a single object with a "x" indicator in the label
         const responses = application?.responseSections?.reduce(
           (acc, section) => {
             section.responses?.forEach((response) => {
-              // Adding "Form" to the label (you could change "Form" to any other appropriate term)
-              const labelWithIndicator = `Form ${response.label}`;
+              // Adding "x" to the label (you could change "x" to any other appropriate term)
+              const labelWithIndicator = `x ${response.label}`;
 
               // Add the formatted label and response to the accumulator
               acc[labelWithIndicator] = Array.isArray(response.response)
