@@ -45,7 +45,10 @@ const ExternalScholarshipsPage = () => {
   return (
     <PageTransition effect={externalScholarshipsPageEffect}>
       <div>
-        <HeaderBanner title="KNUST EXTERNAL SCHOLARSHIP PORTAL" subTitle="Explore verified external scholarships available to eligible students. These opportunities are independent of KNUST and can be accessed via their official websites." />
+        <HeaderBanner
+          title="KNUST EXTERNAL SCHOLARSHIP PORTAL"
+          subTitle="Explore verified external scholarships available to eligible students. These opportunities are independent of KNUST and can be accessed via their official websites."
+        />
 
         {externalScholarshipsIsLoading ? (
           <DefaultSpinner />
@@ -75,7 +78,7 @@ const ExternalScholarshipsPage = () => {
             {inactiveScholarships.length > 0 && (
               <>
                 <div className="text-muted text-uppercase text-center fw-semibold mt-5 mb-5 px-1 h6">
-                   Inactive Scholarships
+                  Expired External Scholarships
                 </div>
                 <div className="row gy-3 gx-4 row-cols-lg-3 row-cols-md-2 row-cols-sm-2 row-cols-1 d-flex align-items-center pb-4">
                   {inactiveScholarships?.map((scholarship) => (

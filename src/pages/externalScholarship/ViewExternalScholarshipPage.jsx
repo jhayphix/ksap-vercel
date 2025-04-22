@@ -9,7 +9,7 @@ import { AuthContext } from "@contexts/AuthContextProvider";
 
 import HeaderBanner from "@components/headers/HeaderBanner";
 import BackButton from "@components/buttons/BackButton";
-import ExternalScholarshipDetailsCard from "@components/cards/ExternalScholarshipDetailsCard";
+import ExternalScholarshipHeaderCard from "@components/cards/ExternalScholarshipHeaderCard";
 import DefaultSpinner from "@components/spinners/DefaultSpinner";
 
 const ViewExternalScholarshipPage = () => {
@@ -40,7 +40,7 @@ const ViewExternalScholarshipPage = () => {
     getExternalScholarship(externalScholarshipsData, scholarshipId);
   }, [externalScholarshipsData, getExternalScholarship, scholarshipId]);
   const externalScholarshipData =
-    externalScholarshipStatus?.externalScholarships;
+    externalScholarshipStatus?.externalScholarship;
   const externalScholarshipIsLoading = externalScholarshipStatus?.isLoading;
 
   // Page variables
@@ -62,7 +62,7 @@ const ViewExternalScholarshipPage = () => {
         ) : (
           <div className="row mt-3 pt-1 pb-4 centering has_dangerous_html">
             {authStatus?.isUserAdmin && (
-              <ExternalScholarshipDetailsCard
+              <ExternalScholarshipHeaderCard
                 className="col-lg-9 col-md-10 col-12 mb-5"
                 externalScholarshipData={externalScholarshipData}
               />
