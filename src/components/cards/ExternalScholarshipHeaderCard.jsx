@@ -43,13 +43,26 @@ const ScholarshipHeaderCard = ({ className, externalScholarshipData = {} }) => {
       value: scholarshipSponsor,
     },
     {
-      label: "Status",
+      label: "Deadline Status",
       value: (
         <DefaultBadge
           text={scholarshipIsDue ? "Closed" : "Open"}
           color={scholarshipIsDue ? "danger" : "success"}
         />
       ),
+    },
+    {
+      label: "Listing Status",
+      value: (
+        <DefaultBadge
+          text={scholarshipIsActive === true ? "Active" : "Inactive"}
+          color={scholarshipIsActive === true ? "success" : "warning"}
+        />
+      ),
+    },
+    {
+      label: "Scholarship URL",
+      value: scholarshipUrl,
     },
     {
       label: "Deadline",
@@ -70,12 +83,7 @@ const ScholarshipHeaderCard = ({ className, externalScholarshipData = {} }) => {
       className={`${className} bg_light rounded py-3 px-4 d-flex justify-content-between align-items-start`}
     >
       <div>
-        <h4 className="h4 mb-2">{scholarshipName}</h4>
-
-        <div className="mb-2">
-          <span style={{ fontWeight: "500" }}>Sponser : </span>
-          {scholarshipSponsor}
-        </div>
+        <h4 className="h4 mb-3">{scholarshipName}</h4>
         {scholarshipDetailsObj?.map(({ label, value }, index) => (
           <div className="mb-2" key={index}>
             <span style={{ fontWeight: "500" }}>{label}: </span>
