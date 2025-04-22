@@ -39,42 +39,70 @@ const ScholarshipHeaderCard = ({ className, externalScholarshipData = {} }) => {
 
   const scholarshipDetailsObj = [
     {
-      label: "Sponsor",
-      value: scholarshipSponsor,
+      sectionName: "Details",
+      sectionDetails: [
+        {
+          label: "Sponsor",
+          value: scholarshipSponsor,
+        },
+        {
+          label: "Deadline Status",
+          value: (
+            <DefaultBadge
+              text={scholarshipIsDue ? "Closed" : "Open"}
+              color={scholarshipIsDue ? "danger" : "success"}
+            />
+          ),
+        },
+        {
+          label: "Listing Status",
+          value: (
+            <DefaultBadge
+              text={scholarshipIsActive === true ? "Active" : "Inactive"}
+              color={scholarshipIsActive === true ? "success" : "warning"}
+            />
+          ),
+        },
+
+        {
+          label: "Scholarship URL",
+          value: (
+            <a
+              href={scholarshipUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-primary text-decoration-underline cursor_pointer"
+            >
+              {scholarshipUrl}
+            </a>
+          ),
+        },
+        {
+          label: "Deadline",
+          value: HELPER?.formatDateTime(scholarshipDeadline),
+        },
+      ],
     },
     {
-      label: "Deadline Status",
-      value: (
-        <DefaultBadge
-          text={scholarshipIsDue ? "Closed" : "Open"}
-          color={scholarshipIsDue ? "danger" : "success"}
-        />
-      ),
-    },
-    {
-      label: "Listing Status",
-      value: (
-        <DefaultBadge
-          text={scholarshipIsActive === true ? "Active" : "Inactive"}
-          color={scholarshipIsActive === true ? "success" : "warning"}
-        />
-      ),
-    },
-    {
-      label: "Scholarship URL",
-      value: scholarshipUrl,
-    },
-    {
-      label: "Deadline",
-      value: HELPER?.formatDateTime(scholarshipDeadline),
-    },
-    {
-      label: "Published At",
-      value: HELPER?.formatDateTime(scholarshipCreatedAt),
-    },
-    {
-      label: "Last Published At",
-      value: HELPER?.formatDateTime(scholarshipLastUpdatedAt),
+      sectionName: "Meta Data",
+      sectionDetails: [
+        {
+          label: "Published By",
+          value: scholarshipCreatedByAdminId,
+        },
+        {
+          label: "Published At",
+          value: HELPER?.formatDateTime(scholarshipCreatedAt),
+        },
+        {
+          label: "Last Updated By",
+          value: scholarshipLastUpdatedByAdminId,
+        },
+        {
+          label: "Last Updated At",
+          value: HELPER?.formatDateTime(scholarshipLastUpdatedAt),
+        },
+      ],
     },
   ];
 
@@ -83,11 +111,15 @@ const ScholarshipHeaderCard = ({ className, externalScholarshipData = {} }) => {
       className={`${className} bg_light rounded py-3 px-4 d-flex justify-content-between align-items-start`}
     >
       <div>
-        <h4 className="h4 mb-3">{scholarshipName}</h4>
-        {scholarshipDetailsObj?.map(({ label, value }, index) => (
-          <div className="mb-2" key={index}>
-            <span style={{ fontWeight: "500" }}>{label}: </span>
-            {value}
+        <h4 className="h4 mb-4">{scholarshipName}</h4>
+        {scholarshipDetailsObj?.map(({ sectionDetails }, sectionIndex) => (
+          <div className="mb-5" key={sectionIndex}>
+            {sectionDetails?.map(({ label, value }, index) => (
+              <div className="mb-2" key={index}>
+                <span style={{ fontWeight: "500" }}>{label}: </span>
+                {value}
+              </div>
+            ))}
           </div>
         ))}
       </div>
