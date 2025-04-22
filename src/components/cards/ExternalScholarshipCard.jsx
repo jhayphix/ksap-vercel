@@ -28,6 +28,7 @@ const ExternalScholarshipCard = ({
         variant="top"
         src={imagePath}
         alt={`${sponsor} image`}
+        className="user_select_none"
         style={{
           height: "160px",
           width: "100%",

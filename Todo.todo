@@ -1,8 +1,5 @@
 
 CONCEPT:
-    ✔ @Restrictions @done(25-04-02 09:28)
-    ✔ @POSSIBLE-CENARIOS: @done(25-04-02 09:28)
-    ☐ @External-Scholarships
     ☐ @Add-These-To-the-database
     ☐ @FILE-HANDLING
     ☐ @WORK-ON-STRUCTURE
@@ -10,12 +7,6 @@ CONCEPT:
     ☐ @VERSION-2
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-EXTERNAL SCHOLARSHIPS:
-    ✔ Scholarship Card @done(25-04-21 14:16)
-        ✔ Card being inactive @started(25-04-21 14:02) @done(25-04-21 14:16) @lasted(14m31s)
-    ☐ View Details @started(25-04-21 14:16)
-    ☐ Create 
-    ☐ Update
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 MUST ADD:
@@ -53,6 +44,14 @@ VERSION 2:
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 Archive:
+  ✔ @Restrictions @done(25-04-02 09:28) @project(CONCEPT)
+  ✔ @POSSIBLE-CENARIOS: @done(25-04-02 09:28) @project(CONCEPT)
+  ✔ @External-Scholarships @done(25-04-22 16:31) @project(CONCEPT)
+  ✔ Scholarship Card @done(25-04-21 14:16) @project(EXTERNAL SCHOLARSHIPS)
+  ✔ Card being inactive @started(25-04-21 14:02) @done(25-04-21 14:16) @lasted(14m31s) @project(EXTERNAL SCHOLARSHIPS)
+  ✔ View Details @started(25-04-21 14:16) @done(25-04-22 16:31) @lasted(1d2h15m19s) @project(EXTERNAL SCHOLARSHIPS)
+  ✔ Create @done(25-04-22 16:31) @project(EXTERNAL SCHOLARSHIPS)
+  ✔ Update @done(25-04-22 16:31) @project(EXTERNAL SCHOLARSHIPS)
   ✔ For admin (Fix super admin) @done(25-04-02 09:28) @project(POSSIBLE CENARIOS)
   ✔ Super admin create scholarship @done(25-04-02 09:11) @project(POSSIBLE CENARIOS)
   ✔ Applicant apply for scholarship @done(25-04-02 09:28) @project(POSSIBLE CENARIOS)
