@@ -137,7 +137,7 @@ const ExternalScholarshipContextProvider = ({ children }) => {
       isActive: true,
       title: `Delete External Scholarship - "${scholarshipName}"`,
       message: `Are you sure you want to delete External Scholarship - "${scholarshipName}"?`,
-      action: (scholarshipId) => deleteExternalScholarship(scholarshipId),
+      action: () => deleteExternalScholarship(scholarshipId),
     });
   };
   const deleteExternalScholarship = async (scholarshipId) => {
@@ -157,6 +157,7 @@ const ExternalScholarshipContextProvider = ({ children }) => {
           type: "success",
         });
         navigate(externalScholarshipsRoute?.path);
+        loadExternalScholarships();
       } else {
         setShowFlashMessage({
           isActive: true,

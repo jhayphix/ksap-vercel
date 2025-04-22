@@ -39,8 +39,12 @@ const ExternalScholarshipsPage = () => {
     return assignedImages[id];
   };
 
-  const activeScholarships = externalScholarshipsData?.filter((s) => s.isActive);
-  const inactiveScholarships = externalScholarshipsData?.filter((s) => !s.isActive);
+  const activeScholarships = externalScholarshipsData?.filter(
+    (scholarship) => scholarship.isActive
+  );
+  const inactiveScholarships = externalScholarshipsData?.filter(
+    (scholarship) => !scholarship.isActive
+  );
 
   return (
     <PageTransition effect={externalScholarshipsPageEffect}>
