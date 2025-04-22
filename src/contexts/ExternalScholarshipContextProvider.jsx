@@ -84,10 +84,19 @@ const ExternalScholarshipContextProvider = ({ children }) => {
   // ::::::::::::::::::::: GET EXTERNAL SCHOLARSHIP
   const getExternalScholarship = useCallback(
     async (externalScholarshipsData, externalScholarshipId) => {
+      if (
+        !Array.isArray(externalScholarshipsData) ||
+        externalScholarshipsData.length === 0 ||
+        !externalScholarshipId
+      ) {
+        return;
+      }
+
       setExternalScholarshipStatus((prevState) => ({
         ...prevState,
         isLoading: true,
       }));
+
       try {
         const foundExternalScholarship = externalScholarshipsData.find(
           (scholarship) => scholarship?.id === externalScholarshipId
@@ -124,9 +133,10 @@ const ExternalScholarshipContextProvider = ({ children }) => {
         return null;
       }
     },
-    //eslint-disable-next-line
+    // eslint-disable-next-line
     []
   );
+  
 
   // ::::::::::::::::::::: DELETE
   const showDeleteExternalScholarshipModal = (
