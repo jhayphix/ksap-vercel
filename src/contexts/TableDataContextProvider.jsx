@@ -149,8 +149,6 @@ const TableDataContextProvider = ({ children }) => {
         );
       }
 
-      console.log("filteredData: ", filteredData);
-
       const applicationTableData = filteredData?.map((application) => {
         // Flatten the responses into a single object with a "Form" indicator in the label
         const responses = application?.responseSections?.reduce(

@@ -102,6 +102,7 @@ const CreateExternalScholarshipPage = () => {
     setSubmitIsDisabled(formHasErrors); // Disable submit if errors exist
   }, [externalScholarshipFormData, externalScholarshipFormSections, HELPER]);
 
+
   // Form Submit
   const handleFormSubmit = async (e) => {
     e.preventDefault();
