@@ -1,8 +1,11 @@
 import ScholarshipHeaderCard from "@components/cards/ScholarshipHeaderCard";
 import SectionHeaderCard from "@components/cards/SectionHeaderCard";
 
-const ExternalScholarshipDetailsCard = ({ scholarshipData, className }) => {
-  const { requirements, applicationSections } = scholarshipData || {}; // Ensure scholarshipData is not undefined
+const ExternalScholarshipDetailsCard = ({
+  externalScholarshipData,
+  className,
+}) => {
+  const { requirements, applicationSections } = externalScholarshipData || {}; // Ensure externalScholarshipData is not undefined
 
   const getSectionLabel = (sectionIndex) => {
     return `Section ${sectionIndex + 1} of ${applicationSections?.length}`;
@@ -12,7 +15,7 @@ const ExternalScholarshipDetailsCard = ({ scholarshipData, className }) => {
       {/* Scholarship Details */}
       <ScholarshipHeaderCard
         className="mb-5"
-        scholarshipData={scholarshipData}
+        externalScholarshipData={externalScholarshipData}
       />
 
       <div className="bg_light py-4 px-4 mb-5 rounded">

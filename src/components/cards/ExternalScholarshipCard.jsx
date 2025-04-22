@@ -13,7 +13,6 @@ const ExternalScholarshipCard = ({
   id,
   name,
   deadline,
-  isActive,
   url,
   sponsor,
   imagePath,
@@ -24,11 +23,7 @@ const ExternalScholarshipCard = ({
   const scholarshipId = id;
 
   return (
-    <Card
-      className={` ${
-        isActive ? " " : "disable_card"
-      } h-100 shadow-sm external-scholarship-card border-0`}
-    >
+    <Card className={`h-100 shadow-sm external-scholarship-card border-0`}>
       <Card.Img
         variant="top"
         src={imagePath}

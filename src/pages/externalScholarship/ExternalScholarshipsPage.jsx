@@ -7,71 +7,92 @@ import PageTransition from "@layouts/PageTransition";
 import DefaultSpinner from "@components/spinners/DefaultSpinner";
 import ExternalScholarshipCard from "@components/cards/ExternalScholarshipCard";
 
+// ...
+
 const ExternalScholarshipsPage = () => {
-  // Contexts
   const { externalScholarshipsPageEffect } = useContext(ConfigContext);
   const { loadExternalScholarships, externalScholarshipStatus } = useContext(
     ExternalScholarshipContext
   );
 
-  // Load scholarships
   useEffect(() => {
     loadExternalScholarships();
   }, [loadExternalScholarships]);
-  const externalScholarshipsData =
-    externalScholarshipStatus?.externalScholarships;
+
+  const externalScholarshipsData = externalScholarshipStatus?.externalScholarships;
   const externalScholarshipsIsLoading = externalScholarshipStatus?.isLoading;
 
-  // Work on scholarship images
-  const getScholarshipImagePath = (scholarshipImageIndex) =>
-    `/images/scholarships/scholarshipImage${scholarshipImageIndex}.png`;
+  const getScholarshipImagePath = (index) =>
+    `/images/scholarships/scholarshipImage${index}.png`;
+
   const assignedImages = {};
   let imageIndex = 0;
   const totalImages = 10;
 
-  const pageTitle = "KNUST EXTERNAL SCHOLARSHIP PORTAL";
-  const pageSubTitle =
-    "Explore a list of verified external scholarships available to support students in pursuing higher education. These opportunities are not managed by KNUST but are accessible to eligible students. Click on any scholarship to view more details or apply via the official website.";
+  
+
+  const assignImage = (id) => {
+    if (!assignedImages[id]) {
+      imageIndex = (imageIndex + 1) % totalImages;
+      assignedImages[id] = getScholarshipImagePath(imageIndex + 1);
+    }
+    return assignedImages[id];
+  };
+
+  const activeScholarships = externalScholarshipsData?.filter((s) => s.isActive);
+  const inactiveScholarships = externalScholarshipsData?.filter((s) => !s.isActive);
 
   return (
     <PageTransition effect={externalScholarshipsPageEffect}>
       <div>
-        <HeaderBanner title={pageTitle} subTitle={pageSubTitle} />
+        <HeaderBanner title="KNUST EXTERNAL SCHOLARSHIP PORTAL" subTitle="Explore verified external scholarships available to eligible students. These opportunities are independent of KNUST and can be accessed via their official websites." />
 
         {externalScholarshipsIsLoading ? (
           <DefaultSpinner />
-        ) : !externalScholarshipsData ||
-          (Array.isArray(externalScholarshipsData) &&
-            externalScholarshipsData?.length < 1) ? (
+        ) : !externalScholarshipsData || externalScholarshipsData.length < 1 ? (
           <div className="text-center centering fw-medium text_warning my-5">
             No Scholarship Available
           </div>
         ) : (
           <div>
-            <div className="row gy-3 gx-4 row-cols-lg-3 row-cols-md-2 row-cols-sm-2 row-cols-1 d-flex align-items-center  py-4">
-              {externalScholarshipsData.map((scholarship) => {
-                if (!assignedImages[scholarship?.id]) {
-                  imageIndex = (imageIndex + 1) % totalImages;
-                  assignedImages[scholarship?.id] = getScholarshipImagePath(
-                    imageIndex + 1
-                  );
-                }
-
-                return (
-                  <div className="col" key={scholarship?.id}>
-                    <ExternalScholarshipCard
-                      id={scholarship?.id}
-                      name={scholarship?.name}
-                      deadline={scholarship?.deadline}
-                      isActive={scholarship?.isActive}
-                      url={scholarship?.url}
-                      sponsor={scholarship?.sponsor}
-                      imagePath={assignedImages[scholarship?.id]}
-                    />
-                  </div>
-                );
-              })}
+            {/* Active Scholarships */}
+            <div className="row gy-3 gx-4 row-cols-lg-3 row-cols-md-2 row-cols-sm-2 row-cols-1 d-flex align-items-center py-4">
+              {activeScholarships?.map((scholarship) => (
+                <div className="col" key={scholarship?.id}>
+                  <ExternalScholarshipCard
+                    id={scholarship?.id}
+                    name={scholarship?.name}
+                    deadline={scholarship?.deadline}
+                    url={scholarship?.url}
+                    sponsor={scholarship?.sponsor}
+                    imagePath={assignImage(scholarship?.id)}
+                  />
+                </div>
+              ))}
             </div>
+
+            {/* Inactive Scholarships */}
+            {inactiveScholarships.length > 0 && (
+              <>
+                <div className="text-muted text-uppercase text-center fw-semibold mt-5 mb-5 px-1 h6">
+                   Inactive Scholarships
+                </div>
+                <div className="row gy-3 gx-4 row-cols-lg-3 row-cols-md-2 row-cols-sm-2 row-cols-1 d-flex align-items-center pb-4">
+                  {inactiveScholarships?.map((scholarship) => (
+                    <div className="col" key={scholarship?.id}>
+                      <ExternalScholarshipCard
+                        id={scholarship?.id}
+                        name={scholarship?.name}
+                        deadline={scholarship?.deadline}
+                        url={scholarship?.url}
+                        sponsor={scholarship?.sponsor}
+                        imagePath={assignImage(scholarship?.id)}
+                      />
+                    </div>
+                  ))}
+                </div>
+              </>
+            )}
           </div>
         )}
       </div>

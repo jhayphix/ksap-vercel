@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 
 import PageTransition from "@layouts/PageTransition";
 import { ConfigContext } from "@contexts/ConfigContextProvider";
-import { ScholarshipContext } from "@contexts/ScholarshipContextProvider";
+import { ExternalScholarshipContext } from "@contexts/ExternalScholarshipContextProvider";
 import { NavigationContext } from "@contexts/NavigationContextProvider";
 import { AuthContext } from "@contexts/AuthContextProvider";
 
@@ -21,7 +21,7 @@ const ViewExternalScholarshipPage = () => {
     getExternalScholarship,
     loadExternalScholarships,
     externalScholarshipStatus,
-  } = useContext(ScholarshipContext);
+  } = useContext(ExternalScholarshipContext);
   const { authStatus } = useContext(AuthContext);
 
   // Params
@@ -64,7 +64,7 @@ const ViewExternalScholarshipPage = () => {
             {authStatus?.isUserAdmin && (
               <ExternalScholarshipDetailsCard
                 className="col-lg-9 col-md-10 col-12 mb-5"
-                scholarshipData={externalScholarshipData}
+                externalScholarshipData={externalScholarshipData}
               />
             )}
           </div>
