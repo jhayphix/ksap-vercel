@@ -50,7 +50,9 @@ const SearchApplicationPage = () => {
 
   // Get a scholarship
   useEffect(() => {
-    getScholarship(scholarshipId);
+    if (scholarshipId) {
+      getScholarship(scholarshipId);
+    }
   }, [getScholarship, scholarshipId]);
   const scholarshipData = scholarshipStatus?.scholarship || {};
 

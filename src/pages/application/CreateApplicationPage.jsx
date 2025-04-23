@@ -53,7 +53,9 @@ const CreateApplicationPage = () => {
 
   const [loading, setLoading] = useState(false); // Loading state
   useEffect(() => {
-    getScholarship(scholarshipId);
+    if (scholarshipId) {
+      getScholarship(scholarshipId);
+    }
   }, [getScholarship, scholarshipId]);
 
   const scholarshipData = scholarshipStatus?.scholarship || {};
