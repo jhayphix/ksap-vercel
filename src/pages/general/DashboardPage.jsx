@@ -17,6 +17,9 @@ const DashboardPage = () => {
     loadScholarships();
   }, [loadScholarships]);
   const scholarshipsData = scholarshipStatus?.scholarships;
+  const scholarshipErrorMessage = scholarshipStatus?.error;
+
+  console.log("scholarshipStatus: ", scholarshipStatus);
 
   const pageTitle = "KNUST SCHOLARSHIP APPLICATION PORTAL (KSAP)";
   const pageSubTitle =
@@ -29,6 +32,10 @@ const DashboardPage = () => {
 
         {scholarshipStatus?.isLoading ? (
           <DefaultSpinner />
+        ) : scholarshipErrorMessage ? (
+          <div className="text-center centering fw-medium text-danger my-5">
+            {scholarshipErrorMessage}
+          </div>
         ) : !scholarshipsData ||
           (Array.isArray(scholarshipsData) && scholarshipsData.length < 1) ? (
           <div className="text-center centering fw-medium text_warning my-5">
@@ -36,7 +43,7 @@ const DashboardPage = () => {
           </div>
         ) : (
           <div>
-            <div className="row g-0 row-cols-lg-3 row-cols-md-2 row-cols-sm-2 row-cols-1 d-flex align-items-center  py-4">
+            <div className="row g-0 row-cols-lg-3 row-cols-md-2 row-cols-sm-2 row-cols-1 d-flex align-items-center py-4">
               {scholarshipsData.map(
                 ({ id, name, deadline, requirements }, index) => (
                   <ScholarshipCard

@@ -7,6 +7,10 @@ CONCEPT:
     ☐ @VERSION-2
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+CHECK ERRORS:
+    Scholarships:
+        ☐ Load scholarships
+        ☐ Redefine get scholarship
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 MUST ADD:

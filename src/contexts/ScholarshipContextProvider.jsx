@@ -34,7 +34,7 @@ const ScholarshipContextProvider = ({ children }) => {
 
   const { setShowFlashMessage } = useContext(ConfigContext);
   const [scholarshipStatus, setScholarshipStatus] = useState({
-    error: "",
+    error: null,
     isLoading: false,
     scholarships: [],
     scholarshipsOnly: [],
@@ -55,8 +55,25 @@ const ScholarshipContextProvider = ({ children }) => {
       const scholarships = await getRequest(SCHOLARSHIPS_API_REF);
       const applications = await getRequest(APPLICATIONS_API_REF);
 
-      // Count applications for each scholarship
-      const scholarshipsWithApplicationCount = scholarships?.map(
+      if (!Array.isArray(scholarships)) {
+        const errorMessage = "Scholarships data is invalid.";
+        setScholarshipStatus((prevState) => ({
+          ...prevState,
+          error: errorMessage,
+        }));
+        throw new Error(errorMessage);
+      }
+
+      if (!Array.isArray(applications)) {
+        const errorMessage = "Applications data is invalid.";
+        setScholarshipStatus((prevState) => ({
+          ...prevState,
+          error: errorMessage,
+        }));
+        throw new Error(errorMessage);
+      }
+
+      const scholarshipsWithApplicationCount = scholarships.map(
         (scholarship) => {
           const scholarshipApplications = applications.filter(
             (application) => application.scholarshipId === scholarship.id
@@ -64,7 +81,7 @@ const ScholarshipContextProvider = ({ children }) => {
           return {
             ...scholarship,
             applications: scholarshipApplications,
-            numberOfApplications: scholarshipApplications?.length, // Add application count
+            numberOfApplications: scholarshipApplications.length,
           };
         }
       );
@@ -72,24 +89,28 @@ const ScholarshipContextProvider = ({ children }) => {
       setScholarshipStatus((prevState) => ({
         ...prevState,
         scholarshipsOnly: scholarships,
-        scholarships: scholarshipsWithApplicationCount, // Include the modified scholarships
+        scholarships: scholarshipsWithApplicationCount,
         isLoading: false,
+        error: null,
       }));
     } catch (error) {
       setShowFlashMessage({
         isActive: true,
-        message: `Failed to fetch scholarships:`,
+        message: "Failed to load scholarships. Please try again later.",
         type: "danger",
       });
+
       setScholarshipStatus((prevState) => ({
         ...prevState,
         isLoading: false,
-        error: `Failed to fetch scholarships:`,
+        error:
+          error?.message ||
+          "Failed to load scholarships. Please try again later.",
       }));
     }
-
-    //eslint-disable-next-line
-  }, []); // Empty array to ensure it's only created once
+    // eslint-disable-next-line
+  }, []);
+  
 
   // ::::::::::::::::::::: GET SCHOLARSHIP
   const getScholarship = useCallback(async (id) => {
