@@ -17,6 +17,7 @@ const DashboardPage = () => {
     loadScholarships();
   }, [loadScholarships]);
   const scholarshipsData = scholarshipStatus?.scholarships;
+  const scholarshipIsLoading = scholarshipStatus?.isLoading;
   const scholarshipErrorMessage = scholarshipStatus?.error;
 
   return (
@@ -27,7 +28,7 @@ const DashboardPage = () => {
           subTitle={`Below are available Scholarships for brilliant but needy students to enable them pursue their University Education. Click to read details and apply:`}
         />
 
-        {scholarshipStatus?.isLoading ? (
+        {scholarshipIsLoading ? (
           <DefaultSpinner />
         ) : scholarshipErrorMessage ? (
           <div className="text-center centering fw-medium text-danger my-5">

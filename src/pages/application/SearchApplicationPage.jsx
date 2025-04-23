@@ -11,6 +11,7 @@ import { UserContext } from "@contexts/UserContextProvider";
 // Components
 import HeaderBanner from "@components/headers/HeaderBanner";
 import MultiSearchTable from "@components/tables/MultiSearchTable";
+import DefaultSpinner from "@components/spinners/DefaultSpinner";
 
 // Assets
 
@@ -55,8 +56,9 @@ const SearchApplicationPage = () => {
     }
   }, [getScholarship, scholarshipId]);
   const scholarshipData = scholarshipStatus?.scholarship || {};
-
   const scholarshipApplicationsData = scholarshipData?.applications;
+  const scholarshipIsLoading = scholarshipStatus?.isLoading;
+  const scholarshipErrorMessage = scholarshipStatus?.error;
 
   return (
     <PageTransition effect={SearchApplicationPageEffect}>
@@ -89,13 +91,27 @@ const SearchApplicationPage = () => {
           </div>
         </div>
 
-        <MultiSearchTable
-          rawData={scholarshipApplicationsData}
-          adminsData={adminsData}
-          className="mb-4"
-          canDownload={true}
-          tableName={activeScholarship?.label}
-        />
+        {scholarshipIsLoading ? (
+          <DefaultSpinner />
+        ) : scholarshipErrorMessage ? (
+          <div className="text-center centering fw-medium text-danger my-5">
+            {scholarshipErrorMessage}
+          </div>
+        ) : !scholarshipApplicationsData ||
+          (Array.isArray(scholarshipApplicationsData) &&
+            scholarshipApplicationsData.length < 1) ? (
+          <div className="text-center centering fw-medium text_warning my-5">
+            No Scholarship Applications Available
+          </div>
+        ) : (
+          <MultiSearchTable
+            rawData={scholarshipApplicationsData}
+            adminsData={adminsData}
+            className="mb-4"
+            canDownload={true}
+            tableName={activeScholarship?.label}
+          />
+        )}
       </section>
     </PageTransition>
   );
