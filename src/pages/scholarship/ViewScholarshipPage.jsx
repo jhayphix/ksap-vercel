@@ -35,14 +35,7 @@ const ViewScholarshipPage = () => {
   }, [getScholarship, scholarshipId]);
   const scholarshipData = scholarshipStatus?.scholarship;
   const scholarshipIsLoading = scholarshipStatus?.isLoading;
-
-  // Page variables
-  const pageTitle = scholarshipData?.name || "Scholarship";
-  const pageSubTitle = `Call for Applications for ${
-    scholarshipData?.name || "..."
-  } ${scholarshipData?.fundingType || ""} for the ${
-    scholarshipData?.academicYear || "..."
-  } Academic Year`;
+  const scholarshipErrorMessage = scholarshipStatus?.error;
 
   return (
     <PageTransition effect={viewScholarshipPageEffect}>
@@ -52,10 +45,21 @@ const ViewScholarshipPage = () => {
           btnRole="link"
           btnPath={dashboardRoute?.path}
         />
-        <HeaderBanner title={pageTitle} subTitle={pageSubTitle} />
+        <HeaderBanner
+          title={scholarshipData?.name || "Scholarship"}
+          subTitle={`Call for Applications for ${
+            scholarshipData?.name || "..."
+          } ${scholarshipData?.fundingType || ""} for the ${
+            scholarshipData?.academicYear || "..."
+          } Academic Year`}
+        />
 
         {scholarshipIsLoading ? (
           <DefaultSpinner />
+        ) : scholarshipErrorMessage ? (
+          <div className="text-center centering fw-medium text-danger my-5">
+            {scholarshipErrorMessage}
+          </div>
         ) : (
           <div className="row mt-3 pt-1 pb-4 centering has_dangerous_html">
             {authStatus?.isUserAdmin && (

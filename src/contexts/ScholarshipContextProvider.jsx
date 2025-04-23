@@ -30,6 +30,7 @@ const ScholarshipContextProvider = ({ children }) => {
     APPLICANTS_API_REF,
     getRequest,
   } = APIService;
+
   // ::::::::::::::::::::: CONTEXTS AND STATES
 
   const { setShowFlashMessage } = useContext(ConfigContext);
