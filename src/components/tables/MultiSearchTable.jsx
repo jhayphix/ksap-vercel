@@ -123,6 +123,7 @@ const MultiSearchTable = ({
     activeApplicationStatus?.searchKeyValue,
   ]); // Dependencies ensure recomputation only when needed
 
+  //eslint-disable-next-line
   const exampleData = useMemo(
     () => [
       {
@@ -136,8 +137,8 @@ const MultiSearchTable = ({
   ); // Memoized static data
 
   const tableData = useMemo(
-    () => dataFilteredByStatus || exampleData,
-    [dataFilteredByStatus, exampleData]
+    () => dataFilteredByStatus || [],
+    [dataFilteredByStatus]
   );
 
   // Add and remove column
