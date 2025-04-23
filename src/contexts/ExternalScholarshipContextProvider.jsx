@@ -108,67 +108,62 @@ const ExternalScholarshipContextProvider = ({ children }) => {
         const errorMessage = "External Scholarship ID is missing or invalid.";
         setExternalScholarshipStatus((prevState) => ({
           ...prevState,
-          isLoading: false, // <-- add this
           error: errorMessage,
         }));
-        throw new Error(errorMessage);
+        return;
       }
 
       if (!Array.isArray(externalScholarshipsData)) {
         const errorMessage = "External Scholarships data is invalid.";
         setExternalScholarshipStatus((prevState) => ({
           ...prevState,
-          isLoading: false, // <-- add this
           error: errorMessage,
         }));
-        throw new Error(errorMessage); // <-- also throw to stop further execution
+        return;
       }
 
       try {
-        const foundExternalScholarship = externalScholarshipsData.find(
+        const foundExternalScholarship = externalScholarshipsData?.find(
           (scholarship) => scholarship?.id === externalScholarshipId
         );
 
-        if (foundExternalScholarship) {
+        if (!foundExternalScholarship) {
+          const errorMessage = `External scholarship not found!`;
           setExternalScholarshipStatus((prevState) => ({
             ...prevState,
-            externalScholarship: foundExternalScholarship,
-            error: null,
+            error: errorMessage,
+            isLoading: false,
           }));
-          setShowFlashMessage({
-            isActive: false,
-          });
-        } else {
-          const errorMessage = `External scholarship not found!`;
           setShowFlashMessage({
             isActive: true,
             message: errorMessage,
             type: "danger",
           });
 
-          setExternalScholarshipStatus((prevState) => ({
-            ...prevState,
-            error: errorMessage,
-          }));
           throw new Error(errorMessage);
         }
 
         setExternalScholarshipStatus((prevState) => ({
           ...prevState,
+          externalScholarship: foundExternalScholarship,
           isLoading: false,
+          error: null,
         }));
+        setShowFlashMessage({
+          isActive: false,
+        });
       } catch (error) {
         const errorMessage = `Error fetching external scholarship`;
-        setShowFlashMessage({
-          isActive: true,
-          message: errorMessage,
-          type: "danger",
-        });
         setExternalScholarshipStatus((prevState) => ({
           ...prevState,
           isLoading: false,
           error: errorMessage,
         }));
+        setShowFlashMessage({
+          isActive: true,
+          message: errorMessage,
+          type: "danger",
+        });
       }
     },
     // eslint-disable-next-line

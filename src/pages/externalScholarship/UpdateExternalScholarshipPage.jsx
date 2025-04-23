@@ -51,7 +51,7 @@ const UpdateExternalScholarshipPage = () => {
     externalScholarshipStatus?.externalScholarships;
 
   useEffect(() => {
-    if (externalScholarshipId) {
+    if (externalScholarshipId && externalScholarshipsData) {
       getExternalScholarship(externalScholarshipsData, externalScholarshipId);
     }
   }, [externalScholarshipId, getExternalScholarship, externalScholarshipsData]);
@@ -60,8 +60,6 @@ const UpdateExternalScholarshipPage = () => {
   const scholarshipToEditName = externalScholarshipData?.name;
   const externalScholarshipsIsLoading = externalScholarshipStatus?.isLoading;
   const externalScholarshipErrorMessage = externalScholarshipStatus?.error;
-
-  console.log("externalScholarshipsIsLoading: ", externalScholarshipStatus);
 
   // States
   const [formIsSubmitting, setFormIsSubmitting] = useState(false);
