@@ -9,8 +9,11 @@ CONCEPT:
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 CHECK ERRORS:
     Scholarships:
-        ☐ Get scholarship.
+        ✔ Get scholarship. @done(25-04-23 14:33)
     External scholarships:
+        ☐ Load scholarship
+        ☐ Get external scholarship
+        ☐ Error
     Applications:
     Admins:
     Applicants:

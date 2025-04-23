@@ -40,7 +40,7 @@ const ExternalScholarshipContextProvider = ({ children }) => {
   const { externalScholarshipsRoute } = useContext(NavigationContext);
 
   const [externalScholarshipStatus, setExternalScholarshipStatus] = useState({
-    error: "",
+    error: null,
     isLoading: false,
     externalScholarships: [],
     externalScholarship: {},
@@ -60,21 +60,35 @@ const ExternalScholarshipContextProvider = ({ children }) => {
         EXTERNAL_SCHOLARSHIPS_API_REF
       );
 
+      if (!Array.isArray(externalScholarships)) {
+        const errorMessage = "External Scholarships data is invalid.";
+        setExternalScholarshipStatus((prevState) => ({
+          ...prevState,
+          error: errorMessage,
+        }));
+        throw new Error(errorMessage);
+      }
+
       setExternalScholarshipStatus((prevState) => ({
         ...prevState,
         isLoading: false,
         externalScholarships,
+        error: null,
       }));
     } catch (error) {
+      const errorMessage =
+        error?.message ||
+        "Failed to fetch external scholarships: Please try again later.";
+
       setShowFlashMessage({
         isActive: true,
-        message: `Failed to fetch external scholarships:`,
+        message: errorMessage,
         type: "danger",
       });
       setExternalScholarshipStatus((prevState) => ({
         ...prevState,
         isLoading: false,
-        error: `Failed to fetch external scholarships:`,
+        error: errorMessage,
       }));
     }
 

@@ -21,6 +21,7 @@ const ExternalScholarshipsPage = () => {
 
   const externalScholarshipsData = externalScholarshipStatus?.externalScholarships;
   const externalScholarshipsIsLoading = externalScholarshipStatus?.isLoading;
+  const externalScholarshipErrorMessage = externalScholarshipStatus?.error;
 
   const getScholarshipImagePath = (index) =>
     `/images/scholarships/scholarshipImage${index}.png`;
@@ -28,8 +29,6 @@ const ExternalScholarshipsPage = () => {
   const assignedImages = {};
   let imageIndex = 0;
   const totalImages = 10;
-
-  
 
   const assignImage = (id) => {
     if (!assignedImages[id]) {
@@ -57,6 +56,10 @@ const ExternalScholarshipsPage = () => {
 
         {externalScholarshipsIsLoading ? (
           <DefaultSpinner />
+        ) : externalScholarshipErrorMessage ? (
+          <div className="text-center centering fw-medium text-danger my-5">
+            {externalScholarshipErrorMessage}
+          </div>
         ) : !externalScholarshipsData || externalScholarshipsData.length < 1 ? (
           <div className="text-center centering fw-medium text_warning my-5">
             No Scholarship Available
