@@ -10,7 +10,7 @@ import APIService from "@src/api/exportAPIService";
 import { ConfigContext } from "@contexts/ConfigContextProvider";
 import { ScholarshipContext } from "@contexts/ScholarshipContextProvider";
 
-const ScholarshipActionBtn = ({ scholarshipId = "0000" }) => {
+const ScholarshipActionBtn = ({ scholarshipId }) => {
   const { SCHOLARSHIPS_API_REF, deleteRequest, DATABASE_TABLE_NAMES } =
     APIService;
 

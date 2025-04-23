@@ -165,15 +165,7 @@ const ApplicationContextProvider = ({ children }) => {
           application: {
             ...application,
             description: DOMPurify.sanitize(application?.description),
-            applicant: {
-              ...applicant,
-              fullName:
-                applicant?.lastName +
-                " " +
-                applicant?.firstName +
-                " " +
-                applicant?.otherNames,
-            },
+            applicant: applicant,
             scholarship: {
               ...scholarship,
               description: DOMPurify.sanitize(scholarship?.description),

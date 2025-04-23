@@ -119,19 +119,22 @@ const ScholarshipContextProvider = ({ children }) => {
     }));
 
     if (!id) {
+      const errorMessage = "Scholarship ID is missing or invalid.";
+      setScholarshipStatus((prevState) => ({
+        ...prevState,
+        error: errorMessage,
+      }));
       setShowFlashMessage({
         isActive: true,
-        message: "Scholarship ID is missing or invalid",
+        message: errorMessage,
         type: "danger",
       });
-      return;
+      throw new Error(errorMessage);
     }
 
     try {
       setShowFlashMessage({
         isActive: false,
-        message: "",
-        type: "",
       });
 
       const scholarships = await getRequest(SCHOLARSHIPS_API_REF);
@@ -160,17 +163,7 @@ const ScholarshipContextProvider = ({ children }) => {
 
             return {
               ...application,
-              applicant: applicant
-                ? {
-                    ...applicant,
-                    fullName:
-                      (applicant?.lastName || "") +
-                      " " +
-                      (applicant?.firstName || "") +
-                      " " +
-                      (applicant?.otherNames || ""),
-                  }
-                : null,
+              applicant: applicant,
             };
           });
 

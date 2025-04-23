@@ -10,7 +10,7 @@ import ApplyButton from "@components/buttons/ApplyButton";
 import ScholarshipActionBtn from "@components/buttons/ScholarshipActionBtn";
 
 const ScholarshipCard = ({
-  scholarshipId = "0000",
+  scholarshipId,
   name = "Scholarship Name",
   deadline = "",
   requirements = ["Requirement"],
