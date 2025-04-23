@@ -71,7 +71,6 @@ const UpdateScholarshipPage = () => {
   const scholarshipDataOnly = scholarshipStatus?.scholarshipOnly;
   const scholarshipIsLoading = scholarshipStatus?.isLoading;
   const scholarshipErrorMessage = scholarshipStatus?.error;
-  console.log("scholarshipErrorMessage: ", scholarshipErrorMessage);
 
   // States
   const [scholarshipFormData, setScholarshipFormData] = useState(

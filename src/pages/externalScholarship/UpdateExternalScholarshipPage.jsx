@@ -58,6 +58,7 @@ const UpdateExternalScholarshipPage = () => {
     externalScholarshipStatus?.externalScholarship;
   const scholarshipToEditName = externalScholarshipData?.name;
 
+
   // States
   const [formIsSubmitting, setFormIsSubmitting] = useState(false);
   const [submitIsDisabled, setSubmitIsDisabled] = useState(true);

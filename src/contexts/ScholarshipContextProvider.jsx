@@ -183,6 +183,7 @@ const ScholarshipContextProvider = ({ children }) => {
               : false,
           },
           isLoading: false,
+          error: null,
         }));
       } else {
         const errorMessage = "Scholarship not found.";
