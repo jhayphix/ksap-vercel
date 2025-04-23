@@ -68,15 +68,7 @@ const ApplicationContextProvider = ({ children }) => {
 
         return {
           ...app,
-          applicant: {
-            ...applicant,
-            fullName:
-              applicant?.lastName +
-              " " +
-              applicant?.firstName +
-              " " +
-              applicant?.otherNames,
-          },
+          applicant: applicant,
           scholarship: {
             ...scholarship,
             isDue: scholarship?.deadline

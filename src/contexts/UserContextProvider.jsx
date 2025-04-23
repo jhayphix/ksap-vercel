@@ -62,9 +62,6 @@ const UserContextProvider = ({ children }) => {
               admin
                 ? {
                     ...flattenObject(admin),
-                    fullName: `${admin?.lastName} ${admin?.firstName} ${
-                      admin?.otherNames || ""
-                    }`.trim(),
                   }
                 : null
             )
@@ -76,9 +73,6 @@ const UserContextProvider = ({ children }) => {
               admin
                 ? {
                     ...admin,
-                    fullName: `${admin?.lastName} ${admin?.firstName} ${
-                      admin?.otherNames || ""
-                    }`.trim(),
                   }
                 : null
             )
