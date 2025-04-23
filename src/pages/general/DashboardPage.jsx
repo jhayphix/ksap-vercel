@@ -35,7 +35,7 @@ const DashboardPage = () => {
             {scholarshipErrorMessage}
           </div>
         ) : !scholarshipsData ||
-          (Array.isArray(scholarshipsData) && scholarshipsData.length < 1) ? (
+          (Array.isArray(scholarshipsData) && scholarshipsData?.length < 1) ? (
           <div className="text-center centering fw-medium text_warning my-5">
             No Scholarship Available
           </div>

@@ -99,7 +99,7 @@ const SearchApplicationPage = () => {
           </div>
         ) : !scholarshipApplicationsData ||
           (Array.isArray(scholarshipApplicationsData) &&
-            scholarshipApplicationsData.length < 1) ? (
+            scholarshipApplicationsData?.length < 1) ? (
           <div className="text-center centering fw-medium text_warning my-5">
             No Scholarship Applications Available
           </div>
