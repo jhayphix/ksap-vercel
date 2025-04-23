@@ -72,15 +72,15 @@ const ScholarshipContextProvider = ({ children }) => {
         throw new Error(errorMessage);
       }
 
-      const scholarshipsWithApplicationCount = scholarships.map(
+      const scholarshipsWithApplicationCount = scholarships?.map(
         (scholarship) => {
-          const scholarshipApplications = applications.filter(
-            (application) => application.scholarshipId === scholarship.id
+          const scholarshipApplications = applications?.filter(
+            (application) => application?.scholarshipId === scholarship?.id
           );
           return {
             ...scholarship,
             applications: scholarshipApplications,
-            numberOfApplications: scholarshipApplications.length,
+            numberOfApplications: scholarshipApplications?.length,
           };
         }
       );
@@ -93,18 +93,19 @@ const ScholarshipContextProvider = ({ children }) => {
         error: null,
       }));
     } catch (error) {
+      const errorMessage =
+        error?.message ||
+        "Failed to load scholarships. Please try again later.";
       setShowFlashMessage({
         isActive: true,
-        message: "Failed to load scholarships. Please try again later.",
+        message: errorMessage,
         type: "danger",
       });
 
       setScholarshipStatus((prevState) => ({
         ...prevState,
         isLoading: false,
-        error:
-          error?.message ||
-          "Failed to load scholarships. Please try again later.",
+        error: errorMessage,
       }));
     }
     // eslint-disable-next-line
@@ -183,26 +184,29 @@ const ScholarshipContextProvider = ({ children }) => {
           isLoading: false,
         }));
       } else {
+        const errorMessage = "Scholarship not found.";
         setScholarshipStatus((prevState) => ({
           ...prevState,
           isLoading: false,
-          error: "Scholarship not found.",
+          error: errorMessage,
         }));
         setShowFlashMessage({
           isActive: true,
-          message: `Scholarship not found.`,
+          message: errorMessage,
           type: "danger",
         });
+        throw new Error(errorMessage);
       }
     } catch (error) {
+      const errorMessage = error?.message || "Scholarship not found.";
       setScholarshipStatus((prevState) => ({
         ...prevState,
         isLoading: false,
-        error: `Failed to fetch scholarship:`,
+        error: errorMessage,
       }));
       setShowFlashMessage({
         isActive: true,
-        message: `Failed to fetch scholarship:`,
+        message: errorMessage,
         type: "danger",
       });
     }
