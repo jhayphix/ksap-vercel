@@ -40,6 +40,7 @@ const AppLayout = ({ children }) => {
         isActive: true,
         message: "No internet. You're offline!",
         type: "error",
+        hideCloseBtn: true,
       });
     } else if (wasOffline) {
       // Only show the restored message if they were offline before

@@ -8,6 +8,7 @@ const FlashMessage = ({ className }) => {
   const isActive = showFlashMessage?.isActive;
   const message = showFlashMessage?.message;
   const type = showFlashMessage?.type;
+  const hideCloseBtn = showFlashMessage?.hideCloseBtn || false;
 
   // Close flash message and update sessionStorage
   const closeFlashMessage = () => {
@@ -75,7 +76,7 @@ const FlashMessage = ({ className }) => {
             <span>{message}</span>
             <button
               type="button"
-              className="btn-close"
+              className={`btn-close ${hideCloseBtn === true ? "d-none" : ""}`}
               aria-label="Close"
               onClick={() => {
                 closeFlashMessage();
