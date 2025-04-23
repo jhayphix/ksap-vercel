@@ -43,7 +43,6 @@ const ScholarshipContextProvider = ({ children }) => {
   });
 
   // ::::::::::::::::::::: FETCH SCHOLARSHIPS
-
   const loadScholarships = useCallback(async () => {
     setScholarshipStatus((prevState) => ({
       ...prevState,
@@ -110,7 +109,6 @@ const ScholarshipContextProvider = ({ children }) => {
     }
     // eslint-disable-next-line
   }, []);
-  
 
   // ::::::::::::::::::::: GET SCHOLARSHIP
   const getScholarship = useCallback(async (id) => {

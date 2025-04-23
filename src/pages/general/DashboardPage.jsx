@@ -19,16 +19,13 @@ const DashboardPage = () => {
   const scholarshipsData = scholarshipStatus?.scholarships;
   const scholarshipErrorMessage = scholarshipStatus?.error;
 
-  console.log("scholarshipStatus: ", scholarshipStatus);
-
-  const pageTitle = "KNUST SCHOLARSHIP APPLICATION PORTAL (KSAP)";
-  const pageSubTitle =
-    "Below are available Scholarships for brilliant but needy students to enable them pursue their University Education. Click to read details and apply:";
-
   return (
     <PageTransition effect={dashboardPageEffect}>
       <div>
-        <HeaderBanner title={pageTitle} subTitle={pageSubTitle} />
+        <HeaderBanner
+          title={`KNUST SCHOLARSHIP APPLICATION PORTAL (KSAP)`}
+          subTitle={`Below are available Scholarships for brilliant but needy students to enable them pursue their University Education. Click to read details and apply:`}
+        />
 
         {scholarshipStatus?.isLoading ? (
           <DefaultSpinner />
