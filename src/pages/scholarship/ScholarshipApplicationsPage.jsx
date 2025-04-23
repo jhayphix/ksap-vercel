@@ -48,8 +48,6 @@ const ScholarshipApplicationsPage = () => {
   const scholarshipIsLoading = scholarshipStatus?.isLoading;
   const scholarshipErrorMessage = scholarshipStatus?.error;
 
-  console.log("scholarshipErrorMessage: ", scholarshipErrorMessage);
-
   useEffect(() => {
     loadApplications();
 

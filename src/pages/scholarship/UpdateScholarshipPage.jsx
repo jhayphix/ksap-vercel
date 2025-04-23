@@ -70,6 +70,8 @@ const UpdateScholarshipPage = () => {
   // const scholarshipData = scholarshipStatus?.scholarship;
   const scholarshipDataOnly = scholarshipStatus?.scholarshipOnly;
   const scholarshipIsLoading = scholarshipStatus?.isLoading;
+  const scholarshipErrorMessage = scholarshipStatus?.error;
+  console.log("scholarshipErrorMessage: ", scholarshipErrorMessage);
 
   // States
   const [scholarshipFormData, setScholarshipFormData] = useState(
@@ -257,6 +259,10 @@ const UpdateScholarshipPage = () => {
 
         {scholarshipIsLoading ? (
           <DefaultSpinner />
+        ) : scholarshipErrorMessage ? (
+          <div className="text-center centering fw-medium text-danger my-5">
+            {scholarshipErrorMessage}
+          </div>
         ) : !userIsAdminAndLoggedIn ? (
           <div className="text-center text_warning fw-bold my-5">
             You must login as an admin to update scholarship
