@@ -77,6 +77,10 @@ const ScholarshipApplicationsPage = () => {
         <div className="mb-5">
           {scholarshipIsLoading || applicationIsLoading ? (
             <DefaultSpinner />
+          ) : scholarshipErrorMessage ? (
+            <div className="text-center centering fw-medium text-danger my-5">
+              {scholarshipErrorMessage}
+            </div>
           ) : (
             <>
               <ApplicationStatusCardList
