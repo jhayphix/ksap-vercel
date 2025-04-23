@@ -189,9 +189,9 @@ const navigationRecords = {
   },
   scholarshipApplicantsRoute: {
     title: "Scholarship Applicants",
-    path: `${baseRoute}/scholarships/:id/applicants`,
+    path: `${baseRoute}/scholarships/applications/:id`,
     getPath: (scholarshipId) => {
-      return `${baseRoute}/scholarships/${scholarshipId}/applicants`;
+      return `${baseRoute}/scholarships/applications/${scholarshipId}`;
     },
     icon: <FaUsers size={iconSize} />,
     end: false,

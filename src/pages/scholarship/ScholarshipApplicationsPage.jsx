@@ -46,7 +46,9 @@ const ScholarshipApplicationsPage = () => {
   }, [getScholarship, scholarshipId]);
   const scholarshipData = scholarshipStatus?.scholarship || {};
   const scholarshipIsLoading = scholarshipStatus?.isLoading;
-  // const numberOfApplications = scholarshipData?.numberOfApplications;
+  const scholarshipErrorMessage = scholarshipStatus?.error;
+
+  console.log("scholarshipErrorMessage: ", scholarshipErrorMessage);
 
   useEffect(() => {
     loadApplications();
