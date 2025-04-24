@@ -129,7 +129,6 @@ const UserContextProvider = ({ children }) => {
       isActive: false,
     });
 
-
     try {
       if (!Array.isArray(adminId)) {
         const errorMessage = "Admin Id is invalid.";
@@ -148,7 +147,7 @@ const UserContextProvider = ({ children }) => {
         }));
         throw new Error(errorMessage);
       }
-      
+
       const admin =
         admins?.find(
           (admin) =>
@@ -157,35 +156,34 @@ const UserContextProvider = ({ children }) => {
             String(admin?.id)?.toLowerCase() === String(adminId)?.toLowerCase()
         ) || null;
 
-      if (admin) {
+      if (!admin) {
+        const errorMessage = "Something went wrong! Admin not found.";
         setAdminStatus((prevState) => ({
           ...prevState,
-          admin,
-          isLoading: false,
+          error: errorMessage,
         }));
-      } else {
-        setAdminStatus((prevState) => ({
-          ...prevState,
-          isLoading: false,
-          error: "Something went wrong! Admin not found.",
-        }));
-        setShowFlashMessage({
-          isActive: true,
-          message: "Something went wrong! Admin not found.",
-          type: "danger",
-        });
+        throw new Error(errorMessage);
       }
+
+      setAdminStatus((prevState) => ({
+        ...prevState,
+        admin,
+        isLoading: false,
+      }));
     } catch (error) {
+      const errorMessage =
+        error?.message || "Failed to fetch admin. Please try again later.";
+      setShowFlashMessage({
+        isActive: true,
+        message: errorMessage,
+        type: "danger",
+      });
+
       setAdminStatus((prevState) => ({
         ...prevState,
         isLoading: false,
-        error: `Failed to fetch admin.`,
+        error: errorMessage,
       }));
-      setShowFlashMessage({
-        isActive: true,
-        message: `Failed to fetch admin:`,
-        type: "danger",
-      });
     }
 
     //eslint-disable-next-line
@@ -232,7 +230,7 @@ const UserContextProvider = ({ children }) => {
 
       if (!Array.isArray(applicantsOnly)) {
         const errorMessage = "Applicants data is invalid.";
-        setAdminStatus((prevState) => ({
+        setApplicantStatus((prevState) => ({
           ...prevState,
           error: errorMessage,
         }));
@@ -297,24 +295,29 @@ const UserContextProvider = ({ children }) => {
       isLoading: true,
       error: null,
     }));
-
-    // If ID is missing, show error flash message
-    if (!applicantId || !applicants) {
-      setShowFlashMessage({
-        isActive: true,
-        message: "Applicant ID or Applicants are missing or invalid",
-        type: "danger",
-      });
-      return;
-    }
+    // Reset any previous flash message
+    setShowFlashMessage({
+      isActive: false,
+    });
 
     try {
-      // Reset any previous flash message
-      setShowFlashMessage({
-        isActive: false,
-        message: "",
-        type: "",
-      });
+      if (!Array.isArray(applicantId)) {
+        const errorMessage = "Applicant Id is invalid.";
+        setApplicantStatus((prevState) => ({
+          ...prevState,
+          error: errorMessage,
+        }));
+        throw new Error(errorMessage);
+      }
+
+      if (!Array.isArray(applicants)) {
+        const errorMessage = "Applicants data is invalid.";
+        setApplicantStatus((prevState) => ({
+          ...prevState,
+          error: errorMessage,
+        }));
+        throw new Error(errorMessage);
+      }
 
       const applicant =
         applicants?.find(
@@ -325,35 +328,35 @@ const UserContextProvider = ({ children }) => {
               String(applicantId)?.toLowerCase()
         ) || null;
 
-      if (applicant) {
+      if (!applicant) {
+        const errorMessage = "Something went wrong! Applicant not found.";
         setApplicantStatus((prevState) => ({
           ...prevState,
-          applicant,
-          isLoading: false,
+          error: errorMessage,
         }));
-      } else {
-        setApplicantStatus((prevState) => ({
-          ...prevState,
-          isLoading: false,
-          error: "Something went wrong! Applicant not found.",
-        }));
-        setShowFlashMessage({
-          isActive: true,
-          message: "Something went wrong! Applicant not found.",
-          type: "danger",
-        });
+        throw new Error(errorMessage);
       }
+
+      setApplicantStatus((prevState) => ({
+        ...prevState,
+        applicant,
+        isLoading: false,
+        error: null,
+      }));
     } catch (error) {
+      const errorMessage =
+        error?.message || "Failed to fetch applicant. Please try again later.";
+      setShowFlashMessage({
+        isActive: true,
+        message: errorMessage,
+        type: "danger",
+      });
+
       setApplicantStatus((prevState) => ({
         ...prevState,
         isLoading: false,
-        error: `Failed to fetch applicant.`,
+        error: errorMessage,
       }));
-      setShowFlashMessage({
-        isActive: true,
-        message: `Failed to fetch applicant:`,
-        type: "danger",
-      });
     }
 
     //eslint-disable-next-line
