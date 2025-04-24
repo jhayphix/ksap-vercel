@@ -120,21 +120,23 @@ const ScholarshipContextProvider = ({ children }) => {
       error: null,
     }));
 
-    if (!id) {
-      const errorMessage = "Scholarship ID is missing or invalid.";
-      setScholarshipStatus((prevState) => ({
-        ...prevState,
-        error: errorMessage,
-      }));
-      setShowFlashMessage({
-        isActive: true,
-        message: errorMessage,
-        type: "danger",
-      });
-      throw new Error(errorMessage);
-    }
+    
 
     try {
+      if (!id) {
+        const errorMessage = "Scholarship ID is missing or invalid.";
+        setScholarshipStatus((prevState) => ({
+          ...prevState,
+          error: errorMessage,
+        }));
+        setShowFlashMessage({
+          isActive: true,
+          message: errorMessage,
+          type: "danger",
+        });
+        throw new Error(errorMessage);
+      }
+
       setShowFlashMessage({
         isActive: false,
       });

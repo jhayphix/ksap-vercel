@@ -10,11 +10,14 @@ CONCEPT:
 CHECK ERRORS:
     Scholarships:
         ✔ Get scholarship. @done(25-04-23 14:33)
-    External scholarships:
-        ☐ Load scholarship
-        ☐ Get external scholarship
-        ☐ Error
+    ✔ External scholarships: @done(25-04-24 12:37)
+        ✔ Load scholarship @done(25-04-24 12:38)
+        ✔ Get external scholarship @done(25-04-24 12:38)
+        ✔ Error @done(25-04-24 12:38)
     Applications:
+        ☐ Load
+        ☐ Get
+        ☐ Error
     Admins:
     Applicants:
 
