@@ -37,8 +37,8 @@ const SideNavBar = ({ className, setShowMinimalNavbar, topNavbarHeight }) => {
       >
         <BrandName />
         <IoMdClose
-          side={50}
-          className="sideNavbarCloseButton"
+          side={70}
+          className="sideNavbarCloseButton border border-secondary p-1 rounded"
           onClick={() => handleNavClose()}
         />
       </div>
