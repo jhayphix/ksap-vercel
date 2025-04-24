@@ -15,6 +15,7 @@ import ApplicationHeaderCard from "@components/cards/ApplicationHeaderCard";
 import ApplicationSectionCard from "@components/cards/ApplicationSectionCard";
 import DefaultNavTab from "@components/tabs/DefaultNavTab";
 import ApplicationProcessingForm from "@components/evaluationForm/ApplicationProcessingForm";
+import HeaderBanner from "@components/headers/HeaderBanner";
 
 // Assets
 
@@ -46,13 +47,14 @@ const EvaluateApplicationPage = () => {
 
     // eslint-disable-next-line
   }, []);
-  const applicationIsLoading = applicationStatus?.isLoading;
 
   useEffect(() => {
     getApplication(applicationId);
 
     //eslint-disable-next-line
   }, [applicationId]);
+  const applicationIsLoading = applicationStatus?.isLoading;
+  const applicationErrorMessage = applicationStatus?.error;
   const applicantApplication = applicationStatus?.application || {};
   const applicantApplicationOnly = applicationStatus?.applicationOnly;
   const applicationSections = applicantApplication?.responseSections || [];
@@ -71,6 +73,13 @@ const EvaluateApplicationPage = () => {
 
         {applicationIsLoading ? (
           <DefaultSpinner />
+        ) : applicationErrorMessage ? (
+          <>
+            <HeaderBanner title={"Evaluate Application"} />
+            <div className="text-center centering fw-medium text-danger my-5">
+              {applicationErrorMessage}
+            </div>
+          </>
         ) : (
           <>
             <div className="centering mb-4">
