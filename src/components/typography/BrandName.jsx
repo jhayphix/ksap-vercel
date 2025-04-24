@@ -3,13 +3,13 @@ import { Link } from "react-router-dom";
 import { NavigationContext } from "@contexts/NavigationContextProvider";
 import { FaAward } from "react-icons/fa";
 
-const BrandName = ({ showName = true }) => {
+const BrandName = ({ showName = true, className }) => {
   const { homeRoute } = useContext(NavigationContext);
   return (
     <Link
       to={homeRoute?.path}
       id="brand_name"
-      className="cursor_pointer d-flex align-items-center"
+      className={`cursor_pointer d-flex align-items-center ${className}`}
     >
       {" "}
       <FaAward size={24} className="bs_text_warning me-1" />{" "}
