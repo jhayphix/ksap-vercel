@@ -1,14 +1,17 @@
-import BrandName from "@components/typography/BrandName";
-import NavList from "@layouts/NavList";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
+
 import { FaSignOutAlt } from "react-icons/fa";
 import { IoMdClose } from "react-icons/io";
+import NavList from "@layouts/NavList";
+import BrandName from "@components/typography/BrandName";
 
 import { AuthContext } from "@contexts/AuthContextProvider";
 
 const SideNavBar = ({ className, setShowMinimalNavbar, topNavbarHeight }) => {
   const { authStatus, handleSignOut } = useContext(AuthContext);
   const [closeSideNavbar, setCloseSideNavbar] = useState(false);
+
+  const sideNavbarRef = useRef(null);
 
   const userIsLoggedIn = authStatus?.isUserLoggedIn;
 
@@ -20,10 +23,27 @@ const SideNavBar = ({ className, setShowMinimalNavbar, topNavbarHeight }) => {
     handleSignOut();
   };
 
-  
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        sideNavbarRef.current &&
+        !sideNavbarRef.current.contains(event.target)
+      ) {
+        handleNavClose();
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+
+    //eslint-disable-next-line
+  }, []);
 
   return (
     <div
+      ref={sideNavbarRef}
       className={`${className} ${
         closeSideNavbar && "close"
       } bg_secondary user_select_none `}
@@ -38,7 +58,7 @@ const SideNavBar = ({ className, setShowMinimalNavbar, topNavbarHeight }) => {
       >
         <BrandName className="" />
         <IoMdClose
-          style={{ fontSize: "3rem" }} // Increase as needed
+          style={{ fontSize: "2.5rem" }} // Increase as needed
           className="sideNavbarCloseButton"
           onClick={() => handleNavClose()}
         />
