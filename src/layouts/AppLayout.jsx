@@ -14,7 +14,7 @@ const AppLayout = ({ children }) => {
   const { setShowFlashMessage, HELPER } = useContext(ConfigContext);
 
   const [wasOffline, setWasOffline] = useState(false); // Track previous state
-  const topNavbarHeight = "2.5rem";
+  const topNavbarHeight = "3.5rem";
   const isOnline = useOnlineStatus();
 
   const navigationStateKey = "NavigationState";

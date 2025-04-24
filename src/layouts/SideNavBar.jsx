@@ -32,7 +32,8 @@ const SideNavBar = ({ className, setShowMinimalNavbar, topNavbarHeight }) => {
       <div
         className="d-flex align-items-center justify-content-between px-3"
         style={{
-          height: "2.8rem",
+          // height: "2.8rem",
+          height: topNavbarHeight,
         }}
       >
         <BrandName />
