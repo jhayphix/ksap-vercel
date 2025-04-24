@@ -64,7 +64,7 @@ const SideNavBar = ({ className, setShowMinimalNavbar, topNavbarHeight }) => {
       >
         <BrandName className="" />
         <IoMdClose
-          style={{ fontSize: "2.5rem" }} // Increase as needed
+          style={{ fontSize: "2rem" }} // Increase as needed
           className="sideNavbarCloseButton"
           onClick={() => handleNavClose()}
         />
