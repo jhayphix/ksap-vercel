@@ -36,7 +36,6 @@ const ViewApplicationPage = () => {
 
     // eslint-disable-next-line
   }, []);
-  const applicationIsLoading = applicationStatus?.isLoading;
 
   useEffect(() => {
     getApplication(applicationId);
@@ -45,6 +44,8 @@ const ViewApplicationPage = () => {
   }, [applicationId]);
   const applicantApplication = applicationStatus?.application || {};
   const applicationSections = applicantApplication?.responseSections || [];
+  const applicationIsLoading = applicationStatus?.isLoading;
+  const applicationErrorMessage = applicationStatus?.error;
 
   // ::::::::::::::::::::: RETURN IF LODING
 
@@ -60,6 +61,10 @@ const ViewApplicationPage = () => {
 
         {applicationIsLoading ? (
           <DefaultSpinner />
+        ) : applicationErrorMessage ? (
+          <div className="text-center centering fw-medium text-danger my-5">
+            {applicationErrorMessage}
+          </div>
         ) : (
           <div className="row centering">
             <div className="col-lg-9 col-md-10 col-12">
