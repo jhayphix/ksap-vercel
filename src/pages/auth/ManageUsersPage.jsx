@@ -8,13 +8,14 @@ import { ConfigContext } from "@contexts/ConfigContextProvider";
 import { UserContext } from "@contexts/UserContextProvider";
 import { TableDataContext } from "@contexts/TableDataContextProvider";
 import { NavigationContext } from "@contexts/NavigationContextProvider";
+import { AuthContext } from "@contexts/AuthContextProvider";
 
 // Components
 import HeaderBanner from "@components/headers/HeaderBanner";
 import BackButton from "@components/buttons/BackButton";
 import DefaultNavTab from "@components/tabs/DefaultNavTab";
 import ManageUserTable from "@components/tables/ManageUserTable";
-import { AuthContext } from "@contexts/AuthContextProvider";
+import DefaultSpinner from "@components/spinners/DefaultSpinner";
 
 // Assets
 
@@ -41,6 +42,8 @@ const ManageUsersPage = () => {
     loadAdmins();
   }, [loadAdmins]);
   const adminsData = adminStatus?.adminsFlattened;
+  const adminsIsLoading = adminStatus?.isLoading;
+  const adminsErrorMessage = adminStatus?.error;
 
   useEffect(() => {
     if (adminsData?.length > 0) {
@@ -54,6 +57,8 @@ const ManageUsersPage = () => {
     loadApplicants();
   }, [loadApplicants]);
   const applicantsData = applicantStatus?.applicantsFlattened;
+  const applicantsIsLoading = applicantStatus?.isLoading;
+  const applicantsErrorMessage = applicantStatus?.error;
 
   useEffect(() => {
     if (applicantsData?.length > 0) {
@@ -97,9 +102,20 @@ const ManageUsersPage = () => {
           />
         </div>
 
-        <div className="pt-5">
-          {activeTab === actionRoutes[0] ? (
-            <div>
+        {activeTab === actionRoutes[0] &&
+          (adminsIsLoading ? (
+            <DefaultSpinner />
+          ) : adminsErrorMessage ? (
+            <div className="text-center centering fw-medium text-danger my-5">
+              {adminsErrorMessage}
+            </div>
+          ) : !adminsTableData ||
+            (Array.isArray(adminsTableData) && adminsTableData?.length < 1) ? (
+            <div className="text-center centering fw-medium text_warning my-5">
+              No Admin Available
+            </div>
+          ) : (
+            <div className="pt-5">
               <ManageUserTable
                 rawData={adminsTableData}
                 route={viewAdminProfileRoute}
@@ -109,17 +125,33 @@ const ManageUsersPage = () => {
                 tableName={tableNames?.admins}
               />
             </div>
+          ))}
+
+        {activeTab === actionRoutes[1] &&
+          (applicantsIsLoading ? (
+            <DefaultSpinner />
+          ) : applicantsErrorMessage ? (
+            <div className="text-center centering fw-medium text-danger my-5">
+              {applicantsErrorMessage}
+            </div>
+          ) : !applicantsTableData ||
+            (Array.isArray(applicantsTableData) &&
+              applicantsTableData?.length < 1) ? (
+            <div className="text-center centering fw-medium text_warning my-5">
+              No Applicant Available
+            </div>
           ) : (
-            <ManageUserTable
-              rawData={applicantsTableData}
-              route={viewApplicantProfileRoute}
-              defColumns={applicantsTableDefaultColumns}
-              className="mb-4"
-              canDownload={true}
-              tableName={tableNames?.applicants}
-            />
-          )}
-        </div>
+            <div className="pt-5">
+              <ManageUserTable
+                rawData={applicantsTableData}
+                route={viewApplicantProfileRoute}
+                defColumns={applicantsTableDefaultColumns}
+                className="mb-4"
+                canDownload={true}
+                tableName={tableNames?.applicants}
+              />
+            </div>
+          ))}
       </section>
     </PageTransition>
   );
