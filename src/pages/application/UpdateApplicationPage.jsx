@@ -70,6 +70,7 @@ const UpdateApplicationPage = () => {
     //eslint-disable-next-line
   }, [applicationId, thisSectionIndex]);
   const applicationIsLoading = applicationStatus?.isLoading;
+  const applicationErrorMessage = applicationStatus?.error;
   const applicantApplication = applicationStatus?.application || {};
   const applicantApplicationOnly = applicationStatus?.applicationOnly || {};
 
@@ -476,6 +477,10 @@ const UpdateApplicationPage = () => {
         />
         {applicationIsLoading ? (
           <DefaultSpinner />
+        ) : applicationErrorMessage ? (
+          <div className="text-center centering fw-medium text-danger my-5">
+            {applicationErrorMessage}
+          </div>
         ) : (
           <div className={`row centering g-0 mb-5`}>
             {updateLoading ? (
