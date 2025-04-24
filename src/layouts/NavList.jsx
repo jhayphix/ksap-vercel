@@ -3,20 +3,24 @@ import { NavLink } from "react-router-dom";
 import { NavigationContext } from "@contexts/NavigationContextProvider";
 import { AuthContext } from "@contexts/AuthContextProvider";
 
-const NavList = ({ showMinimalNavbar }) => {
+const NavList = ({ showMinimalNavbar, onClick }) => {
   const { navLinksByUserType } = useContext(NavigationContext);
   const { authStatus } = useContext(AuthContext);
 
+  const handleNavClose = () => {
+    onClick();
+  };
+
   let NavLinks = [];
-   if (authStatus?.isUserSuperAdmin) {
-     NavLinks = navLinksByUserType?.superAdminRoutesOnly;
-   } else if (authStatus?.isUserAdmin) {
-     NavLinks = navLinksByUserType?.adminRoutesOnly;
-   } else if (authStatus?.isUserApplicant) {
-     NavLinks = navLinksByUserType?.applicantRoutesOnly;
-   } else {
-     NavLinks = navLinksByUserType?.default;
-   }
+  if (authStatus?.isUserSuperAdmin) {
+    NavLinks = navLinksByUserType?.superAdminRoutesOnly;
+  } else if (authStatus?.isUserAdmin) {
+    NavLinks = navLinksByUserType?.adminRoutesOnly;
+  } else if (authStatus?.isUserApplicant) {
+    NavLinks = navLinksByUserType?.applicantRoutesOnly;
+  } else {
+    NavLinks = navLinksByUserType?.default;
+  }
 
   return (
     <nav className="py-5 side_navbar">
@@ -29,6 +33,7 @@ const NavList = ({ showMinimalNavbar }) => {
               data-bs-placement="right"
               title={title}
               key={index}
+              onClick={() => handleNavClose()}
             >
               <NavLink
                 to={path}

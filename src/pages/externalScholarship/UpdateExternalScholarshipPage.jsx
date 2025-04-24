@@ -51,9 +51,9 @@ const UpdateExternalScholarshipPage = () => {
     externalScholarshipStatus?.externalScholarships;
 
   useEffect(() => {
-    if (externalScholarshipId && externalScholarshipsData) {
-      getExternalScholarship(externalScholarshipsData, externalScholarshipId);
-    }
+    // if (externalScholarshipId && externalScholarshipsData) {
+    getExternalScholarship(externalScholarshipsData, externalScholarshipId);
+    // }
   }, [externalScholarshipId, getExternalScholarship, externalScholarshipsData]);
   const externalScholarshipData =
     externalScholarshipStatus?.externalScholarship;

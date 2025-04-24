@@ -37,7 +37,7 @@ const SideNavBar = ({ className, setShowMinimalNavbar, topNavbarHeight }) => {
       >
         <BrandName />
         <IoMdClose
-          side={30}
+          side={50}
           className="sideNavbarCloseButton"
           onClick={() => handleNavClose()}
         />
@@ -46,7 +46,7 @@ const SideNavBar = ({ className, setShowMinimalNavbar, topNavbarHeight }) => {
         className="d-flex flex-column justify-content-between "
         style={{ height: `calc(90vh - ${topNavbarHeight})` }}
       >
-        <NavList />
+        <NavList onClick={handleNavClose} />
 
         <div className="mb-5">
           {userIsLoggedIn ? (
