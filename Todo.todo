@@ -15,11 +15,17 @@ CHECK ERRORS:
         ✔ Get external scholarship @done(25-04-24 12:38)
         ✔ Error @done(25-04-24 12:38)
     Applications:
+        ✔ Load @done(25-04-24 14:08)
+        ✔ Get @done(25-04-24 14:08)
+        ✔ Error @done(25-04-24 14:08)
+    Admins:
         ☐ Load
         ☐ Get
         ☐ Error
-    Admins:
     Applicants:
+        ☐ Load
+        ☐ Get
+        ☐ Error
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 MUST ADD:

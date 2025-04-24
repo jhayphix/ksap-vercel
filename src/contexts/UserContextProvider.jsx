@@ -21,7 +21,7 @@ const UserContextProvider = ({ children }) => {
   const { setShowFlashMessage } = useContext(ConfigContext);
 
   const [adminStatus, setAdminStatus] = useState({
-    error: "",
+    error: null,
     isLoading: false,
     admins: [],
     adminsOnly: [],
@@ -29,7 +29,7 @@ const UserContextProvider = ({ children }) => {
     admin: {},
   });
   const [applicantStatus, setApplicantStatus] = useState({
-    error: "",
+    error: null,
     isLoading: false,
     applicants: [],
     applicantsFlattened: [],
@@ -56,9 +56,19 @@ const UserContextProvider = ({ children }) => {
 
     try {
       const adminsOnly = await getRequest(ADMINS_API_REF);
+
+      if (!Array.isArray(adminsOnly)) {
+        const errorMessage = "Admins data is invalid.";
+        setAdminStatus((prevState) => ({
+          ...prevState,
+          error: errorMessage,
+        }));
+        throw new Error(errorMessage);
+      }
+
       const adminsFlattened = Array.isArray(adminsOnly)
         ? adminsOnly
-            .map((admin) =>
+            ?.map((admin) =>
               admin
                 ? {
                     ...flattenObject(admin),
@@ -85,18 +95,22 @@ const UserContextProvider = ({ children }) => {
         adminsOnly,
         adminsFlattened,
         isLoading: false,
+        error: null,
       }));
     } catch (error) {
+      const errorMessage =
+        error?.message || "Failed to load admins. Please try again later.";
+      setShowFlashMessage({
+        isActive: true,
+        message: errorMessage,
+        type: "danger",
+      });
+
       setAdminStatus((prevState) => ({
         ...prevState,
         isLoading: false,
-        error: "Failed to fetch admins.",
+        error: errorMessage,
       }));
-      setShowFlashMessage({
-        isActive: true,
-        message: `Error fetching admins:`,
-        type: "error",
-      });
     }
 
     // eslint-disable-next-line
@@ -110,25 +124,31 @@ const UserContextProvider = ({ children }) => {
       isLoading: true,
       error: null,
     }));
+    // Reset any previous flash message
+    setShowFlashMessage({
+      isActive: false,
+    });
 
-    // If ID is missing, show error flash message
-    if (!adminId || !admins) {
-      setShowFlashMessage({
-        isActive: true,
-        message: "Admin ID or Admins are missing or invalid",
-        type: "danger",
-      });
-      return;
-    }
 
     try {
-      // Reset any previous flash message
-      setShowFlashMessage({
-        isActive: false,
-        message: "",
-        type: "",
-      });
+      if (!Array.isArray(adminId)) {
+        const errorMessage = "Admin Id is invalid.";
+        setAdminStatus((prevState) => ({
+          ...prevState,
+          error: errorMessage,
+        }));
+        throw new Error(errorMessage);
+      }
 
+      if (!Array.isArray(admins)) {
+        const errorMessage = "Admins data is invalid.";
+        setAdminStatus((prevState) => ({
+          ...prevState,
+          error: errorMessage,
+        }));
+        throw new Error(errorMessage);
+      }
+      
       const admin =
         admins?.find(
           (admin) =>
@@ -188,11 +208,11 @@ const UserContextProvider = ({ children }) => {
       if (admin) {
         return admin;
       } else {
-        console.error("Admin not found!")
+        console.error("Admin not found!");
         return {};
       }
     } catch (error) {
-      console.error("An error occurred while retrieving the admin!")
+      console.error("An error occurred while retrieving the admin!");
       return {};
     }
 
@@ -209,6 +229,16 @@ const UserContextProvider = ({ children }) => {
 
     try {
       const applicantsOnly = await getRequest(APPLICANTS_API_REF);
+
+      if (!Array.isArray(applicantsOnly)) {
+        const errorMessage = "Applicants data is invalid.";
+        setAdminStatus((prevState) => ({
+          ...prevState,
+          error: errorMessage,
+        }));
+        throw new Error(errorMessage);
+      }
+
       const applicantsFlattened = Array.isArray(applicantsOnly)
         ? applicantsOnly
             .map((applicant) =>
@@ -241,16 +271,19 @@ const UserContextProvider = ({ children }) => {
         isLoading: false,
       }));
     } catch (error) {
+      const errorMessage =
+        error?.message || "Failed to load applicants. Please try again later.";
+      setShowFlashMessage({
+        isActive: true,
+        message: errorMessage,
+        type: "danger",
+      });
+
       setApplicantStatus((prevState) => ({
         ...prevState,
         isLoading: false,
-        error: "Failed to fetch applicants.",
+        error: errorMessage,
       }));
-      setShowFlashMessage({
-        isActive: true,
-        message: `Error fetching applicants:`,
-        type: "error",
-      });
     }
 
     // eslint-disable-next-line
