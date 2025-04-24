@@ -37,6 +37,7 @@ const ViewAdminProfilePage = () => {
   const adminData = adminStatus?.admin || null;
 
   const adminIsLoading = adminStatus?.isLoading;
+  const adminErrorMessage = adminStatus?.error;
 
   return (
     <PageTransition effect={viewAdminProfilePageEffect}>
@@ -50,12 +51,12 @@ const ViewAdminProfilePage = () => {
 
         {adminIsLoading ? (
           <DefaultSpinner />
-        ) : adminData ? (
-          <AdminProfileComponent adminData={adminData} />
-        ) : (
-          <div className="text-center fw-bold text-danger my-5">
-            Admin Not Found
+        ) : adminErrorMessage ? (
+          <div className="text-center centering fw-medium text-danger my-5">
+            {adminErrorMessage}
           </div>
+        ) : (
+          <AdminProfileComponent adminData={adminData} />
         )}
       </section>
     </PageTransition>

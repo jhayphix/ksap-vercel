@@ -130,7 +130,7 @@ const UserContextProvider = ({ children }) => {
     });
 
     try {
-      if (!Array.isArray(adminId)) {
+      if (!adminId) {
         const errorMessage = "Admin Id is invalid.";
         setAdminStatus((prevState) => ({
           ...prevState,
@@ -301,7 +301,7 @@ const UserContextProvider = ({ children }) => {
     });
 
     try {
-      if (!Array.isArray(applicantId)) {
+      if (!applicantId) {
         const errorMessage = "Applicant Id is invalid.";
         setApplicantStatus((prevState) => ({
           ...prevState,

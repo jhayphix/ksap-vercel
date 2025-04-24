@@ -43,7 +43,7 @@ const UpdateAdminPage = () => {
   const adminsOnlyData = adminStatus?.adminsFlattened;
 
   useEffect(() => {
-    if (adminId) {
+    if (adminId && adminsOnlyData) {
       getAdmin(adminsOnlyData, adminId);
     }
   }, [adminId, getAdmin, adminsOnlyData]);
@@ -176,7 +176,7 @@ const UpdateAdminPage = () => {
     <PageTransition effect={updateAdminPageEffect}>
       <section>
         <BackButton className="mb-3" />
-        <HeaderBanner title={`Edit Account`} className="mb-3" />
+        <HeaderBanner title={`Edit Admin Account`} className="mb-3" />
 
         <form className={``} onSubmit={handleFormSubmit}>
           {adminFormSections?.map((section, sectionIndex) => {
