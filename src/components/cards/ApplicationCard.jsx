@@ -81,7 +81,7 @@ const ApplicationCard = ({ applicantApplication = {}, className }) => {
         <div className="d-flex">
           {/* Scholarship Icon */}
           <div
-            className="bg_secondary_3 p-2 rounded centering"
+            className="bg_secondary_3 p-2 rounded centering d-none d-sm-inline-block"
             style={{
               width: "3.5rem",
             }}
