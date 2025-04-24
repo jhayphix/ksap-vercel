@@ -19,6 +19,12 @@ const SideNavBar = ({ className, setShowMinimalNavbar, topNavbarHeight }) => {
     setShowMinimalNavbar(true);
     setCloseSideNavbar(true);
   };
+  const handleMobileNavClose = () => {
+    if (window.innerWidth < 768) {
+      handleNavClose();
+    }
+  };
+
   const signOutHandler = () => {
     handleSignOut();
   };
@@ -29,7 +35,7 @@ const SideNavBar = ({ className, setShowMinimalNavbar, topNavbarHeight }) => {
         sideNavbarRef.current &&
         !sideNavbarRef.current.contains(event.target)
       ) {
-        handleNavClose();
+        handleMobileNavClose();
       }
     };
 
@@ -67,7 +73,7 @@ const SideNavBar = ({ className, setShowMinimalNavbar, topNavbarHeight }) => {
         className="d-flex flex-column justify-content-between "
         style={{ height: `calc(90vh - ${topNavbarHeight})` }}
       >
-        <NavList onClick={handleNavClose} />
+        <NavList handleMobileNavClose={handleMobileNavClose} />
 
         <div className="mb-5">
           {userIsLoggedIn ? (
