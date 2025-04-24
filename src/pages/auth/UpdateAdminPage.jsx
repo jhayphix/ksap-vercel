@@ -17,6 +17,7 @@ import FormFieldWrapper from "@components/dynamicForm/wrappers/FormFieldWrapper"
 import SubmitFormButton from "@components/buttons/SubmitFormButton";
 import QuickSwitchFormFields from "@components/dynamicForm/switchFields/QuickSwitchFormFields";
 import SectionHeaderCard from "@components/cards/SectionHeaderCard";
+import DefaultSpinner from "@components/spinners/DefaultSpinner";
 
 // Assets
 import exportDefaultData from "@data/default/exportDefaultData";
@@ -48,6 +49,8 @@ const UpdateAdminPage = () => {
     }
   }, [adminId, getAdmin, adminsOnlyData]);
   const adminOnlyData = adminStatus?.admin;
+  const adminIsLoading = adminStatus?.isLoading;
+  const adminErrorMessage = adminStatus?.error;
 
   // States
   const [formIsSubmitting, setFormIsSubmitting] = useState(false);
@@ -178,64 +181,75 @@ const UpdateAdminPage = () => {
         <BackButton className="mb-3" />
         <HeaderBanner title={`Edit Admin Account`} className="mb-3" />
 
-        <form className={``} onSubmit={handleFormSubmit}>
-          {adminFormSections?.map((section, sectionIndex) => {
-            return (
-              <div key={sectionIndex}>
-                <SectionHeaderCard title={section?.sectionName} />
-                <FormContainerWrapper className="mb-5">
-                  <div className="row row-cols-1 row-cols-md-2 row-cols-lg-2 row-cols-xxl-3 g-3">
-                    {section?.sectionFields?.map((field, fieldIndex) => {
-                      const thisFieldValue = adminFormData?.[field?.key];
-                      const thisFieldValidation = HELPER?.validateField(
-                        field?.regexKey,
-                        thisFieldValue,
-                        field?.label,
-                        field?.isRequired
-                      );
-                      const thisFieldHasError =
-                        thisFieldValue === undefined || thisFieldValue === null
-                          ? null
-                          : thisFieldValidation?.hasError;
-                      return (
-                        <div className="col" key={fieldIndex}>
-                          <FormFieldWrapper
-                            key={fieldIndex}
-                            className={``}
-                            label={field?.label}
-                            isRequired={field?.isRequired}
-                            description={field?.placeholder}
-                            hasError={thisFieldHasError}
-                            errorMessage={thisFieldValidation?.message}
-                          >
-                            <QuickSwitchFormFields
-                              fieldType={field?.type}
-                              fieldKey={field?.key}
-                              fieldIsRequired={field?.isRequired}
-                              fieldOptions={field?.options}
-                              fieldPlaceholder={field?.placeholder}
-                              hasError={thisFieldHasError}
-                              fieldValue={thisFieldValue}
-                              handleFormChange={handleFormChange}
-                            />
-                          </FormFieldWrapper>
-                        </div>
-                      );
-                    })}
-                  </div>
-                </FormContainerWrapper>
-              </div>
-            );
-          })}
-          <div className="mt-5 mb-4 text-center">
-            <SubmitFormButton
-              name="Edit Account"
-              processingName="Updating Account..."
-              disabled={submitIsDisabled}
-              isLoading={formIsSubmitting}
-            />
+        {adminIsLoading ? (
+          <DefaultSpinner />
+        ) : adminErrorMessage ? (
+          <div className="text-center centering fw-medium text-danger my-5">
+            {adminErrorMessage}
           </div>
-        </form>
+        ) : (
+          <>
+            <form className={``} onSubmit={handleFormSubmit}>
+              {adminFormSections?.map((section, sectionIndex) => {
+                return (
+                  <div key={sectionIndex}>
+                    <SectionHeaderCard title={section?.sectionName} />
+                    <FormContainerWrapper className="mb-5">
+                      <div className="row row-cols-1 row-cols-md-2 row-cols-lg-2 row-cols-xxl-3 g-3">
+                        {section?.sectionFields?.map((field, fieldIndex) => {
+                          const thisFieldValue = adminFormData?.[field?.key];
+                          const thisFieldValidation = HELPER?.validateField(
+                            field?.regexKey,
+                            thisFieldValue,
+                            field?.label,
+                            field?.isRequired
+                          );
+                          const thisFieldHasError =
+                            thisFieldValue === undefined ||
+                            thisFieldValue === null
+                              ? null
+                              : thisFieldValidation?.hasError;
+                          return (
+                            <div className="col" key={fieldIndex}>
+                              <FormFieldWrapper
+                                key={fieldIndex}
+                                className={``}
+                                label={field?.label}
+                                isRequired={field?.isRequired}
+                                description={field?.placeholder}
+                                hasError={thisFieldHasError}
+                                errorMessage={thisFieldValidation?.message}
+                              >
+                                <QuickSwitchFormFields
+                                  fieldType={field?.type}
+                                  fieldKey={field?.key}
+                                  fieldIsRequired={field?.isRequired}
+                                  fieldOptions={field?.options}
+                                  fieldPlaceholder={field?.placeholder}
+                                  hasError={thisFieldHasError}
+                                  fieldValue={thisFieldValue}
+                                  handleFormChange={handleFormChange}
+                                />
+                              </FormFieldWrapper>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </FormContainerWrapper>
+                  </div>
+                );
+              })}
+              <div className="mt-5 mb-4 text-center">
+                <SubmitFormButton
+                  name="Edit Account"
+                  processingName="Updating Account..."
+                  disabled={submitIsDisabled}
+                  isLoading={formIsSubmitting}
+                />
+              </div>
+            </form>
+          </>
+        )}
       </section>
     </PageTransition>
   );
