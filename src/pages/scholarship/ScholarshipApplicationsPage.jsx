@@ -55,6 +55,7 @@ const ScholarshipApplicationsPage = () => {
   }, [scholarshipId]);
   const applicationsData = applicationStatus?.applications;
   const applicationIsLoading = applicationStatus?.isLoading;
+  const applicationErrorMessage = scholarshipStatus?.error;
 
   const scholarshipApplicationsData = scholarshipData?.applications;
 
@@ -78,6 +79,10 @@ const ScholarshipApplicationsPage = () => {
           ) : scholarshipErrorMessage ? (
             <div className="text-center centering fw-medium text-danger my-5">
               {scholarshipErrorMessage}
+            </div>
+          ) : applicationErrorMessage ? (
+            <div className="text-center centering fw-medium text-danger my-5">
+              {applicationErrorMessage}
             </div>
           ) : (
             <>
