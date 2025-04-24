@@ -51,6 +51,32 @@ const ApplicationContextProvider = ({ children }) => {
       const applications = await getRequest(APPLICATIONS_API_REF);
       const applicants = await getRequest(APPLICANTS_API_REF);
 
+      if (!Array.isArray(scholarships)) {
+        const errorMessage = "Scholarships data is invalid.";
+        setApplicationStatus((prevState) => ({
+          ...prevState,
+          error: errorMessage,
+        }));
+        throw new Error(errorMessage);
+      }
+      if (!Array.isArray(applicants)) {
+        const errorMessage = "Applicants data is invalid.";
+        setApplicationStatus((prevState) => ({
+          ...prevState,
+          error: errorMessage,
+        }));
+        throw new Error(errorMessage);
+      }
+
+      if (!Array.isArray(applications)) {
+        const errorMessage = "Applications data is invalid.";
+        setApplicationStatus((prevState) => ({
+          ...prevState,
+          error: errorMessage,
+        }));
+        throw new Error(errorMessage);
+      }
+
       // Map applications and attach the corresponding scholarship with isDue
       const enrichedApplications = applications?.map((app) => {
         const scholarship =
@@ -85,14 +111,15 @@ const ApplicationContextProvider = ({ children }) => {
         isLoading: false,
       }));
     } catch (error) {
+      const errorMessage = error?.message || "Failed to fetch applications.";
       setApplicationStatus((prevState) => ({
         ...prevState,
         isLoading: false,
-        error: `Failed to fetch applications.`,
+        error: errorMessage,
       }));
       setShowFlashMessage({
         isActive: true,
-        message: `Error fetching applications:`,
+        message: errorMessage,
         type: "danger",
       });
     }
@@ -109,26 +136,55 @@ const ApplicationContextProvider = ({ children }) => {
       error: null,
     }));
 
-    // If ID is missing, show error flash message
-    if (!id) {
-      setShowFlashMessage({
-        isActive: true,
-        message: "Application ID is missing or invalid",
-        type: "danger",
-      });
-      return;
-    }
+    // Reset any previous flash message
+    setShowFlashMessage({
+      isActive: false,
+    });
 
     try {
-      // Reset any previous flash message
-      setShowFlashMessage({
-        isActive: false,
-        message: "",
-        type: "",
-      });
+      if (!id) {
+        const errorMessage = "Application ID is missing or invalid.";
+        setApplicationStatus((prevState) => ({
+          ...prevState,
+          error: errorMessage,
+        }));
+        setShowFlashMessage({
+          isActive: true,
+          message: errorMessage,
+          type: "danger",
+        });
+        throw new Error(errorMessage);
+      }
+
       const scholarships = await getRequest(SCHOLARSHIPS_API_REF);
       const applications = await getRequest(APPLICATIONS_API_REF);
       const applicants = await getRequest(APPLICANTS_API_REF);
+
+      if (!Array.isArray(scholarships)) {
+        const errorMessage = "Scholarships data is invalid.";
+        setApplicationStatus((prevState) => ({
+          ...prevState,
+          error: errorMessage,
+        }));
+        throw new Error(errorMessage);
+      }
+      if (!Array.isArray(applicants)) {
+        const errorMessage = "Applicants data is invalid.";
+        setApplicationStatus((prevState) => ({
+          ...prevState,
+          error: errorMessage,
+        }));
+        throw new Error(errorMessage);
+      }
+
+      if (!Array.isArray(applications)) {
+        const errorMessage = "Applications data is invalid.";
+        setApplicationStatus((prevState) => ({
+          ...prevState,
+          error: errorMessage,
+        }));
+        throw new Error(errorMessage);
+      }
 
       const application =
         applications?.find(
@@ -169,26 +225,29 @@ const ApplicationContextProvider = ({ children }) => {
           isLoading: false,
         }));
       } else {
+        const errorMessage = "Application not found.";
         setApplicationStatus((prevState) => ({
           ...prevState,
           isLoading: false,
-          error: "Application not found.",
+          error: errorMessage,
         }));
         setShowFlashMessage({
           isActive: true,
-          message: "Application not found.",
+          message: errorMessage,
           type: "danger",
         });
+        throw new Error(errorMessage);
       }
     } catch (error) {
+      const errorMessage = error?.message || "Failed to fetch application.";
       setApplicationStatus((prevState) => ({
         ...prevState,
         isLoading: false,
-        error: `Failed to fetch application.`,
+        error: errorMessage,
       }));
       setShowFlashMessage({
         isActive: true,
-        message: `Failed to fetch application:`,
+        message: errorMessage,
         type: "danger",
       });
     }

@@ -23,14 +23,11 @@ const MyApplicationsPage = () => {
   const { loadApplications, applicationStatus, getApplicantApplications } =
     useContext(ApplicationContext);
   const { dashboardRoute } = useContext(NavigationContext);
-  const { authStatus, combinedAuthStatus, authUserInfo } =
-    useContext(AuthContext);
+  const { authStatus, authUserInfo } = useContext(AuthContext);
 
   // Basic define
   const loggedInApplicantId = authStatus?.loggedInUserId;
   const loggedInApplicantUid = authUserInfo?.uid;
-  const userIsApplicantAndLoggedIn =
-    combinedAuthStatus?.isUserApplicantAndLoggedIn;
 
   // ::::::::::::::::::::: LOAD APPLICAITONS
   useEffect(() => {
@@ -40,6 +37,7 @@ const MyApplicationsPage = () => {
   }, []);
   const applicationsData = applicationStatus?.applications;
   const applicationIsLoading = applicationStatus?.isLoading;
+  const applicationErrorMessage = applicationStatus?.error;
   const switchId = loggedInApplicantId
     ? loggedInApplicantId
     : loggedInApplicantUid;
@@ -61,38 +59,27 @@ const MyApplicationsPage = () => {
 
         {applicationIsLoading ? (
           <DefaultSpinner />
+        ) : applicationErrorMessage ? (
+          <div className="text-center centering fw-medium text-danger my-5">
+            {applicationErrorMessage}
+          </div>
+        ) : !applicantApplications ||
+          (Array.isArray(applicantApplications) &&
+            applicantApplications?.length < 1) ? (
+          <div className="text-center centering fw-medium text_warning my-5">
+            No Application Available
+          </div>
         ) : (
           <div className="my-5 row centering">
-            {applicationStatus?.error?.length > 3 ? (
-              <div className="text-center text-danger fw-medium my-5">
-                {applicationStatus?.error}
-              </div>
-            ) : (
-              ""
-            )}
-
-            {applicantApplications?.length <= 0 ? (
-              <div className="text-center">
-                {" "}
-                {userIsApplicantAndLoggedIn ? (
-                  "No existing applications found"
-                ) : (
-                  <span className="text_warning fw-bold">
-                    You must login as an applicant to see your applications
-                  </span>
-                )}{" "}
-              </div>
-            ) : (
-              applicantApplications?.map((applicantApplication, index) => {
-                return (
-                  <div key={index} className="mb-3 col-lg-8 col-12">
-                    <ApplicationCard
-                      applicantApplication={applicantApplication}
-                    />
-                  </div>
-                );
-              })
-            )}
+            {applicantApplications?.map((applicantApplication, index) => {
+              return (
+                <div key={index} className="mb-3 col-lg-8 col-12">
+                  <ApplicationCard
+                    applicantApplication={applicantApplication}
+                  />
+                </div>
+              );
+            })}
           </div>
         )}
 
