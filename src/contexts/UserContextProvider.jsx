@@ -294,10 +294,9 @@ const UserContextProvider = ({ children }) => {
     // Clear any previous flash message and set loading state
     setApplicantStatus((prevState) => ({
       ...prevState,
-      isLoading: true,
       error: null,
     }));
-    // Reset any previous flash message
+
     setShowFlashMessage({
       isActive: false,
     });
@@ -342,7 +341,6 @@ const UserContextProvider = ({ children }) => {
       setApplicantStatus((prevState) => ({
         ...prevState,
         applicant,
-        isLoading: false,
         error: null,
       }));
     } catch (error) {
@@ -356,7 +354,6 @@ const UserContextProvider = ({ children }) => {
 
       setApplicantStatus((prevState) => ({
         ...prevState,
-        isLoading: false,
         error: errorMessage,
       }));
     }

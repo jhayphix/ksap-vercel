@@ -29,12 +29,18 @@ const ViewApplicantProfilePage = () => {
   useEffect(() => {
     loadApplicants();
   }, [loadApplicants]);
-  const applicants = applicantStatus?.applicants;
+  const applicantsData = applicantStatus?.applicants;
 
   // Get Applicant
   useEffect(() => {
-    getApplicant(applicants, applicantId);
-  }, [getApplicant, applicants, applicantId]);
+    if (
+      Array.isArray(applicantsData) &&
+      applicantsData?.length > 0 &&
+      applicantId
+    ) {
+      getApplicant(applicantsData, applicantId);
+    }
+  }, [getApplicant, applicantsData, applicantId]);
   const applicantData = applicantStatus?.applicant || null;
 
   const applicantIsLoading = applicantStatus?.isLoading;
