@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Card, Button } from "react-bootstrap";
 import { BsBoxArrowUpRight } from "react-icons/bs";
 
@@ -22,21 +22,33 @@ const ExternalScholarshipCard = ({
 
   const scholarshipId = id;
 
+  // ✅ NEW: Track image loading
+  const [imageLoaded, setImageLoaded] = useState(false);
+
   return (
     <Card className={`h-100 shadow-sm external-scholarship-card border-0`}>
-      <Card.Img
-        variant="top"
-        src={imagePath}
-        alt={`${sponsor} image`}
-        className="user_select_none"
-        style={{
-          height: "160px",
-          width: "100%",
-          objectFit: "cover",
-          borderTopLeftRadius: "0.5rem",
-          borderTopRightRadius: "0.5rem",
-        }}
-      />
+      {/* ✅ Image Container with shimmer effect */}
+      <div
+        style={{ position: "relative", height: "160px", overflow: "hidden" }}
+      >
+        {!imageLoaded && <div className="image-loading-shimmer" />}{" "}
+        {/* ✅ Skeleton */}
+        <Card.Img
+          variant="top"
+          src={imagePath}
+          alt={`${sponsor} image`}
+          className="user_select_none"
+          onLoad={() => setImageLoaded(true)} // ✅ Set loaded
+          style={{
+            height: "160px",
+            width: "100%",
+            objectFit: "cover",
+            borderTopLeftRadius: "0.5rem",
+            borderTopRightRadius: "0.5rem",
+            display: imageLoaded ? "block" : "none", // ✅ Hide until loaded
+          }}
+        />
+      </div>
 
       <Card.Body className="d-flex flex-column justify-content-between p-3 bg_primary_2">
         <div>
@@ -52,7 +64,6 @@ const ExternalScholarshipCard = ({
             text={`Deadline: ${HELPER?.formatDateTime(deadline)}`}
             color="warning"
           />
-
           <div className="">
             <DeadlineTimeRemainBadge deadline={deadline} />
           </div>
@@ -68,7 +79,6 @@ const ExternalScholarshipCard = ({
             <div></div>
           )}
           <Button
-            // variant="outline-primary"
             href={url}
             target="_blank"
             rel="noopener noreferrer"
