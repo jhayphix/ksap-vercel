@@ -54,7 +54,7 @@ const MoveQuestionModal = ({ section = [], sectionIndex, moveQuestion }) => {
                       <div className="">
                         <button
                           type="button"
-                          className="btn btn-sm btn-secondary me-3"
+                          className="btn  btn-secondary me-3"
                           onClick={() =>
                             moveQuestion(sectionIndex, questionIndex, -1)
                           }
@@ -64,7 +64,7 @@ const MoveQuestionModal = ({ section = [], sectionIndex, moveQuestion }) => {
                         </button>
                         <button
                           type="button"
-                          className="btn btn-sm btn-secondary"
+                          className="btn  btn-secondary"
                           onClick={() =>
                             moveQuestion(sectionIndex, questionIndex, 1)
                           }

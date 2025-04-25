@@ -144,7 +144,7 @@ const ApplicantProfileHeader = ({ applicantData, className }) => {
           {OwnerAndSuperAdminOnly ? (
             <div className="d-flex align-items-center">
               <Link
-                className="btn btn-sm btn_secondary_2"
+                className="btn  btn_secondary_2"
                 to={updateApplicantRoute?.getPath(applicantId)}
               >
                 Edit Profile

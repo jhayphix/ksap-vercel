@@ -262,7 +262,7 @@ const DynamicFormQuestion = ({
                 {option}
                 <button
                   type="button"
-                  className="btn btn-sm text_danger fw-bold"
+                  className="btn  text_danger fw-bold"
                   onClick={() =>
                     handleRemoveOption(sectionIndex, questionIndex, optionIndex)
                   }

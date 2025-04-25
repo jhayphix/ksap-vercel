@@ -35,7 +35,7 @@ const TopNavBar = ({
             <ProfileMenu />
           ) : (
             <button
-              className="btn btn_secondary_2 btn-sm"
+              className="btn btn_secondary_2 "
               onClick={() => navigate(authSelectionRoute?.path)}
             >
               Login

@@ -159,7 +159,7 @@ const AdminProfileHeader = ({ adminData, className }) => {
           {isUserSuperAdmin ? (
             <div className="d-flex align-items-center">
               <Link
-                className="btn btn-sm btn_secondary_2"
+                className="btn btn_secondary_2"
                 to={updateAdminRoute?.getPath(adminId)}
               >
                 Edit Profile

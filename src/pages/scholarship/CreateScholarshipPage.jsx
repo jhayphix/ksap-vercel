@@ -312,7 +312,7 @@ const CreateScholarshipPage = () => {
               </div>
               <div className="mt-5 mb-4 d-flex align-items-center justify-content-between">
                 <div
-                  className="btn btn-sm btn-danger"
+                  className="btn  btn-danger"
                   role="button"
                   onClick={() => showClearFormModal()}
                 >

@@ -53,7 +53,7 @@ const MoveSectionModal = ({ applicationSections = [], moveSection }) => {
                       <div className="">
                         <button
                           type="button"
-                          className="btn btn-sm btn-secondary me-3"
+                          className="btn  btn-secondary me-3"
                           onClick={() => moveSection(sectionIndex, -1)}
                           disabled={sectionIndex === 0}
                         >
@@ -61,7 +61,7 @@ const MoveSectionModal = ({ applicationSections = [], moveSection }) => {
                         </button>
                         <button
                           type="button"
-                          className="btn btn-sm btn-secondary"
+                          className="btn  btn-secondary"
                           onClick={() => moveSection(sectionIndex, 1)}
                           disabled={
                             sectionIndex === applicationSections.length - 1

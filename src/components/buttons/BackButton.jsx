@@ -15,7 +15,7 @@ const BackButton = ({
         <Link
           role="button"
           to={btnPath}
-          className={`btn btn-sm px-2 btn_secondary_2 d-flex align-items-center`}
+          className={`btn px-2 btn_secondary_2 d-flex align-items-center`}
         >
           <FaArrowLeft className="me-2" />
           {btnName}
@@ -26,7 +26,7 @@ const BackButton = ({
     return (
       <button
         onClick={() => navigate(-1)}
-        className={`${className} btn btn-sm btn_secondary_2 d-flex align-items-center`}
+        className={`${className} btn btn_secondary_2 d-flex align-items-center`}
       >
         <FaArrowLeft className="me-2" />
         Back

@@ -89,7 +89,7 @@ const TextAreaToList = ({ props }) => {
         />
         <div
           role="button"
-          className="btn btn_secondary_2 btn-sm ms-2"
+          className="btn btn_secondary_2  ms-2"
           onClick={handleAddItem}
         >
           Add Item
@@ -102,21 +102,21 @@ const TextAreaToList = ({ props }) => {
 
             <div
               role="button"
-              className="btn btn-sm btn-outline-secondary ms-1"
+              className="btn  btn-outline-secondary ms-1"
               onClick={() => moveItem(index, -1)}
             >
               <MdArrowUpward size={20} />
             </div>
             <div
               role="button"
-              className="btn btn-sm btn-outline-secondary ms-1"
+              className="btn  btn-outline-secondary ms-1"
               onClick={() => moveItem(index, 1)}
             >
               <MdArrowDownward size={20} />
             </div>
             <div
               role="button"
-              className="btn btn-sm btn-outline-danger ms-2"
+              className="btn  btn-outline-danger ms-2"
               onClick={() => showModalToDeleteItem(index)}
             >
               <MdClose size={20} />

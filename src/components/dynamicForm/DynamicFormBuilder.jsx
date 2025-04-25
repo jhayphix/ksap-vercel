@@ -358,7 +358,7 @@ const DynamicFormBuilder = ({ className, setFields, applicationSections }) => {
 
           <button
             type="button"
-            className="btn btn_secondary_3 btn-sm mt-3"
+            className="btn btn_secondary_3  mt-3"
             onClick={() => addQuestion(sectionIndex)}
           >
             + Add Question
