@@ -46,6 +46,8 @@ const ViewApplicantProfilePage = () => {
   const applicantIsLoading = applicantStatus?.isLoading;
   const applicantErrorMessage = applicantStatus?.error;
 
+  console.log("applicantStatus: ", applicantStatus);
+
   return (
     <PageTransition effect={viewApplicantProfilePageEffect}>
       <section className="pb-5">

@@ -31,6 +31,7 @@ const UserContextProvider = ({ children }) => {
   const [applicantStatus, setApplicantStatus] = useState({
     error: null,
     isLoading: false,
+    getApplicantIsLoading: "Initial",
     applicants: [],
     applicantsFlattened: [],
     applicantsOnly: [],
@@ -122,7 +123,6 @@ const UserContextProvider = ({ children }) => {
     setAdminStatus((prevState) => ({
       ...prevState,
       isLoading: true,
-      getAdminIsLoading: true,
       error: null,
     }));
 
@@ -170,7 +170,7 @@ const UserContextProvider = ({ children }) => {
       setAdminStatus((prevState) => ({
         ...prevState,
         admin,
-        isLoading: false,
+        error: null,
       }));
     } catch (error) {
       const errorMessage =
@@ -183,7 +183,6 @@ const UserContextProvider = ({ children }) => {
 
       setAdminStatus((prevState) => ({
         ...prevState,
-        isLoading: false,
         error: errorMessage,
       }));
     }
@@ -354,6 +353,7 @@ const UserContextProvider = ({ children }) => {
 
       setApplicantStatus((prevState) => ({
         ...prevState,
+        getApplicantIsLoading: "Turn to false in catch...",
         error: errorMessage,
       }));
     }
