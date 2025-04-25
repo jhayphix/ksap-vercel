@@ -16,6 +16,7 @@ import FormFieldWrapper from "@components/dynamicForm/wrappers/FormFieldWrapper"
 import SubmitFormButton from "@components/buttons/SubmitFormButton";
 import QuickSwitchFormFields from "@components/dynamicForm/switchFields/QuickSwitchFormFields";
 import SectionHeaderCard from "@components/cards/SectionHeaderCard";
+import DefaultSpinner from "@components/spinners/DefaultSpinner";
 
 // Assets
 import exportDefaultData from "@data/default/exportDefaultData";
@@ -41,11 +42,11 @@ const UpdateApplicantPage = () => {
   const applicantsOnlyFlattenedData = applicantStatus?.applicantsFlattened;
 
   useEffect(() => {
-    if (applicantId) {
-      getApplicant(applicantsOnlyFlattenedData, applicantId);
-    }
+    getApplicant(applicantsOnlyFlattenedData, applicantId);
   }, [applicantId, getApplicant, applicantsOnlyFlattenedData]);
   const applicantOnlyFlattenedData = applicantStatus?.applicant;
+  const applicantIsLoading = applicantStatus?.isLoading;
+  const applicantErrorMessage = applicantStatus?.error;
 
   // States
   const [formIsSubmitting, setFormIsSubmitting] = useState(false);
@@ -190,64 +191,76 @@ const UpdateApplicantPage = () => {
         <BackButton className="mb-3" />
         <HeaderBanner title={`Edit Account`} className="mb-3" />
 
-        <form className={``} onSubmit={handleFormSubmit}>
-          {updateApplicantFormSections?.map((section, sectionIndex) => {
-            return (
-              <div key={sectionIndex}>
-                <SectionHeaderCard title={section?.sectionName} />
-                <FormContainerWrapper className="mb-5">
-                  <div className="row row-cols-1 row-cols-md-2 row-cols-lg-2 row-cols-xxl-3 g-3">
-                    {section?.sectionFields?.map((field, fieldIndex) => {
-                      const thisFieldValue = applicantFormData?.[field?.key];
-                      const thisFieldValidation = HELPER?.validateField(
-                        field?.regexKey,
-                        thisFieldValue,
-                        field?.label,
-                        field?.isRequired
-                      );
-                      const thisFieldHasError =
-                        thisFieldValue === undefined || thisFieldValue === null
-                          ? null
-                          : thisFieldValidation?.hasError;
-                      return (
-                        <div className="col" key={fieldIndex}>
-                          <FormFieldWrapper
-                            key={fieldIndex}
-                            className={``}
-                            label={field?.label}
-                            isRequired={field?.isRequired}
-                            description={field?.placeholder}
-                            hasError={thisFieldHasError}
-                            errorMessage={thisFieldValidation?.message}
-                          >
-                            <QuickSwitchFormFields
-                              fieldType={field?.type}
-                              fieldKey={field?.key}
-                              fieldIsRequired={field?.isRequired}
-                              fieldOptions={field?.options}
-                              fieldPlaceholder={field?.placeholder}
-                              hasError={thisFieldHasError}
-                              fieldValue={thisFieldValue}
-                              handleFormChange={handleFormChange}
-                            />
-                          </FormFieldWrapper>
-                        </div>
-                      );
-                    })}
-                  </div>
-                </FormContainerWrapper>
-              </div>
-            );
-          })}
-          <div className="mt-5 mb-4 text-center">
-            <SubmitFormButton
-              name="Edit Account"
-              processingName="Updating Account..."
-              disabled={submitIsDisabled}
-              isLoading={formIsSubmitting}
-            />
+        {applicantIsLoading ? (
+          <DefaultSpinner />
+        ) : applicantErrorMessage ? (
+          <div className="text-center centering fw-medium text-danger my-5">
+            {applicantErrorMessage}
           </div>
-        </form>
+        ) : (
+          <>
+            <form className={``} onSubmit={handleFormSubmit}>
+              {updateApplicantFormSections?.map((section, sectionIndex) => {
+                return (
+                  <div key={sectionIndex}>
+                    <SectionHeaderCard title={section?.sectionName} />
+                    <FormContainerWrapper className="mb-5">
+                      <div className="row row-cols-1 row-cols-md-2 row-cols-lg-2 row-cols-xxl-3 g-3">
+                        {section?.sectionFields?.map((field, fieldIndex) => {
+                          const thisFieldValue =
+                            applicantFormData?.[field?.key];
+                          const thisFieldValidation = HELPER?.validateField(
+                            field?.regexKey,
+                            thisFieldValue,
+                            field?.label,
+                            field?.isRequired
+                          );
+                          const thisFieldHasError =
+                            thisFieldValue === undefined ||
+                            thisFieldValue === null
+                              ? null
+                              : thisFieldValidation?.hasError;
+                          return (
+                            <div className="col" key={fieldIndex}>
+                              <FormFieldWrapper
+                                key={fieldIndex}
+                                className={``}
+                                label={field?.label}
+                                isRequired={field?.isRequired}
+                                description={field?.placeholder}
+                                hasError={thisFieldHasError}
+                                errorMessage={thisFieldValidation?.message}
+                              >
+                                <QuickSwitchFormFields
+                                  fieldType={field?.type}
+                                  fieldKey={field?.key}
+                                  fieldIsRequired={field?.isRequired}
+                                  fieldOptions={field?.options}
+                                  fieldPlaceholder={field?.placeholder}
+                                  hasError={thisFieldHasError}
+                                  fieldValue={thisFieldValue}
+                                  handleFormChange={handleFormChange}
+                                />
+                              </FormFieldWrapper>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </FormContainerWrapper>
+                  </div>
+                );
+              })}
+              <div className="mt-5 mb-4 text-center">
+                <SubmitFormButton
+                  name="Edit Account"
+                  processingName="Updating Account..."
+                  disabled={submitIsDisabled}
+                  isLoading={formIsSubmitting}
+                />
+              </div>
+            </form>
+          </>
+        )}
       </section>
     </PageTransition>
   );

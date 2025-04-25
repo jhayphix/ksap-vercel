@@ -38,6 +38,7 @@ const ViewApplicantProfilePage = () => {
   const applicantData = applicantStatus?.applicant || null;
 
   const applicantIsLoading = applicantStatus?.isLoading;
+  const applicantErrorMessage = applicantStatus?.error;
 
   return (
     <PageTransition effect={viewApplicantProfilePageEffect}>
@@ -51,12 +52,12 @@ const ViewApplicantProfilePage = () => {
 
         {applicantIsLoading ? (
           <DefaultSpinner />
-        ) : applicantData ? (
-          <ApplicantProfileComponent applicantData={applicantData} />
-        ) : (
-          <div className="text-center fw-bold text-danger my-5">
-            Applicant Not Found
+        ) : applicantErrorMessage ? (
+          <div className="text-center centering fw-medium text-danger my-5">
+            {applicantErrorMessage}
           </div>
+        ) : (
+          <ApplicantProfileComponent applicantData={applicantData} />
         )}
       </section>
     </PageTransition>

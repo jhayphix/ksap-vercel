@@ -8,20 +8,20 @@ CONCEPT:
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 CHECK ERRORS:
-    Scholarships:
+    ✔ Scholarships: @done(25-04-25 08:03)
         ✔ Get scholarship. @done(25-04-23 14:33)
     ✔ External scholarships: @done(25-04-24 12:37)
         ✔ Load scholarship @done(25-04-24 12:38)
         ✔ Get external scholarship @done(25-04-24 12:38)
         ✔ Error @done(25-04-24 12:38)
-    Applications:
+    ✔ Applications: @done(25-04-25 08:03)
         ✔ Load @done(25-04-24 14:08)
         ✔ Get @done(25-04-24 14:08)
         ✔ Error @done(25-04-24 14:08)
-    Admins:
-        ☐ Load
-        ☐ Get
-        ☐ Error
+    ✔ Admins: @done(25-04-25 08:03)
+        ✔ Load @done(25-04-25 08:03)
+        ✔ Get @done(25-04-25 08:03)
+        ✔ Error @done(25-04-25 08:03)
     Applicants:
         ☐ Load
         ☐ Get
