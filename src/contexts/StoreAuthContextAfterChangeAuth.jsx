@@ -7,7 +7,6 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
   signInWithRedirect,
-  getRedirectResult,
 } from "firebase/auth";
 
 import { ConfigContext } from "@contexts/ConfigContextProvider";
@@ -113,7 +112,6 @@ const AuthContextProvider = ({ children }) => {
 
   // Handle Google Authentication
   // ::::::::::::::::::::: Handle Google Authentication
-
   const authenticateWithGoogle = async () => {
     try {
       provider.setCustomParameters({
@@ -122,15 +120,41 @@ const AuthContextProvider = ({ children }) => {
 
       const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
+      let userCredential;
+
       if (isMobile) {
         await signInWithRedirect(auth, provider); // 🔄 Mobile: redirect flow
         return; // Redirecting, so exit early
       } else {
-        const userCredential = await signInWithPopup(auth, provider); // 💻 Desktop: popup
-
-        const user = userCredential.user;
-        handleUserLogin(user);
+        userCredential = await signInWithPopup(auth, provider); // 💻 Desktop: popup
       }
+
+      const user = userCredential.user;
+
+      setAuthStatus((prev) => ({
+        ...prev,
+        isUserLoggedIn: true,
+      }));
+
+      setAuthUserInfo((prevState) => ({
+        ...prevState,
+        uid: user.uid,
+        authDisplayName: user.displayName,
+        authEmail: user.email,
+        authPhotoURL: user.photoURL,
+        authPhoneNumber: user.phoneNumber,
+      }));
+
+      setIsLoggingInAsAdmin(false);
+      setIsLoggingInAsApplicant(false); // ✅ Reset only after success
+
+      setShowFlashMessage({
+        isActive: true,
+        message: "Login successful! Welcome back!",
+        type: "success",
+      });
+
+      navigate(dashboardRoute?.path); // Redirect to dashboard
     } catch (error) {
       console.error("Error during authentication:", error.message);
 
@@ -142,62 +166,6 @@ const AuthContextProvider = ({ children }) => {
 
       navigate(authSelectionRoute?.path);
     }
-  };
-
-  // UseEffect to handle the result after redirect (for mobile)
-  useEffect(() => {
-    const handleRedirectResult = async () => {
-      try {
-        const result = await getRedirectResult(auth); // Get the result after redirect
-        if (result) {
-          const user = result.user;
-          handleUserLogin(user); // Log the user in after successful authentication
-        }
-      } catch (error) {
-        console.error("Error during redirect authentication:", error.message);
-
-        setShowFlashMessage({
-          isActive: true,
-          message: "Authentication failed. Please try again.",
-          type: "error",
-        });
-
-        navigate(authSelectionRoute?.path);
-      }
-    };
-
-    if (window.location.href.includes("redirect")) {
-      handleRedirectResult(); // Only call this when redirected back to your app
-    }
-
-    //eslint-disable-next-line
-  }, []);
-
-  const handleUserLogin = (user) => {
-    setAuthStatus((prev) => ({
-      ...prev,
-      isUserLoggedIn: true,
-    }));
-
-    setAuthUserInfo((prevState) => ({
-      ...prevState,
-      uid: user.uid,
-      authDisplayName: user.displayName,
-      authEmail: user.email,
-      authPhotoURL: user.photoURL,
-      authPhoneNumber: user.phoneNumber,
-    }));
-
-    setIsLoggingInAsAdmin(false);
-    setIsLoggingInAsApplicant(false); // ✅ Reset only after success
-
-    setShowFlashMessage({
-      isActive: true,
-      message: "Login successful! Welcome back!",
-      type: "success",
-    });
-
-    navigate(dashboardRoute?.path); // Redirect to dashboard
   };
 
   // ::::::::::::::::::::: On Effect, assign role
