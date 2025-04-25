@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import { NavigationContext } from "@contexts/NavigationContextProvider";
 import { AuthContext } from "@contexts/AuthContextProvider";
 
-const NavList = ({ showMinimalNavbar, handleMobileNavClose }) => {
+const NavList = ({ showMinimalNavbar, handleMobileNavClose = () => {} }) => {
   const { navLinksByUserType } = useContext(NavigationContext);
   const { authStatus } = useContext(AuthContext);
 
