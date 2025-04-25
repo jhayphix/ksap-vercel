@@ -100,7 +100,6 @@ const ExternalScholarshipContextProvider = ({ children }) => {
     async (externalScholarshipsData, externalScholarshipId) => {
       setExternalScholarshipStatus((prevState) => ({
         ...prevState,
-        isLoading: true,
         error: null,
       }));
 
@@ -132,7 +131,6 @@ const ExternalScholarshipContextProvider = ({ children }) => {
           setExternalScholarshipStatus((prevState) => ({
             ...prevState,
             error: errorMessage,
-            isLoading: false,
           }));
           setShowFlashMessage({
             isActive: true,
@@ -146,7 +144,6 @@ const ExternalScholarshipContextProvider = ({ children }) => {
         setExternalScholarshipStatus((prevState) => ({
           ...prevState,
           externalScholarship: foundExternalScholarship,
-          isLoading: false,
           error: null,
         }));
         setShowFlashMessage({
@@ -156,7 +153,6 @@ const ExternalScholarshipContextProvider = ({ children }) => {
         const errorMessage = `Error fetching external scholarship`;
         setExternalScholarshipStatus((prevState) => ({
           ...prevState,
-          isLoading: false,
           error: errorMessage,
         }));
         setShowFlashMessage({
