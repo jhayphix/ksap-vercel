@@ -166,12 +166,13 @@ const AuthContextProvider = ({ children }) => {
       }
     };
 
+    // Only call getRedirectResult when the redirect is complete
     if (window.location.href.includes("redirect")) {
-      handleRedirectResult(); // Only call this when redirected back to your app
+      handleRedirectResult();
     }
-
-    //eslint-disable-next-line
-  }, []);
+  }, [navigate, authSelectionRoute, setShowFlashMessage]);
+  
+  
 
   const handleUserLogin = (user) => {
     setAuthStatus((prev) => ({
