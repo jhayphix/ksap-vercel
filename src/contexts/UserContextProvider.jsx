@@ -121,7 +121,6 @@ const UserContextProvider = ({ children }) => {
     // Clear any previous flash message and set loading state
     setAdminStatus((prevState) => ({
       ...prevState,
-      isLoading: true,
       error: null,
     }));
 
