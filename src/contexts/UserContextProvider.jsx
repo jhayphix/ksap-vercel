@@ -31,7 +31,6 @@ const UserContextProvider = ({ children }) => {
   const [applicantStatus, setApplicantStatus] = useState({
     error: null,
     isLoading: false,
-    getApplicantIsLoading: "Initial",
     applicants: [],
     applicantsFlattened: [],
     applicantsOnly: [],
