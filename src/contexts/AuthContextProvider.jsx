@@ -3,7 +3,11 @@ import { createContext, useState, useEffect, useContext, useMemo } from "react";
 
 import { auth } from "@src/firebaseConfig";
 import { onAuthStateChanged } from "firebase/auth";
-import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import {
+  GoogleAuthProvider,
+  signInWithPopup,
+  signInWithRedirect,
+} from "firebase/auth";
 
 import { ConfigContext } from "@contexts/ConfigContextProvider";
 import { NavigationContext } from "@contexts/NavigationContextProvider";
@@ -87,7 +91,6 @@ const AuthContextProvider = ({ children }) => {
     //eslint-disable-next-line
   }, [authStatus]);
 
-
   // ::::::::::::::::::::: Extract
   const getCombinedAuthStatus = () => {
     const { isUserLoggedIn, isUserApplicant, isUserAdmin, isAuthUserOwner } =
@@ -111,8 +114,22 @@ const AuthContextProvider = ({ children }) => {
   // ::::::::::::::::::::: Handle Google Authentication
   const authenticateWithGoogle = async () => {
     try {
-      const result = await signInWithPopup(auth, provider);
-      const user = result.user;
+      provider.setCustomParameters({
+        prompt: "select_account", // Always show account selector
+      });
+
+      const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+      let userCredential;
+
+      if (isMobile) {
+        await signInWithRedirect(auth, provider); // 🔄 Mobile: redirect flow
+        return; // Redirecting, so exit early
+      } else {
+        userCredential = await signInWithPopup(auth, provider); // 💻 Desktop: popup
+      }
+
+      const user = userCredential.user;
 
       setAuthStatus((prev) => ({
         ...prev,
@@ -250,7 +267,6 @@ const AuthContextProvider = ({ children }) => {
       });
     }
   };
-  
 
   // ::::::::::::::::::::: LOAD APPLICANT ROLE
   const loadApplicantRole = async (uid, userInfoFromAuth) => {
@@ -319,7 +335,7 @@ const AuthContextProvider = ({ children }) => {
       setAuthStatus(defAuthStatus); // Reset auth status
       setIsLoggingInAsAdmin(false);
       setIsLoggingInAsApplicant(false);
-      setAuthUserInfo(null)
+      setAuthUserInfo(null);
 
       // Wait briefly before navigating to allow state updates
       setTimeout(() => {
@@ -338,7 +354,6 @@ const AuthContextProvider = ({ children }) => {
       });
     }
   };
-  
 
   const context = {
     authStatus,
