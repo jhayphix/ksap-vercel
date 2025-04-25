@@ -143,11 +143,12 @@ const AuthContextProvider = ({ children }) => {
 
       navigate(dashboardRoute?.path); // Redirect to dashboard
     } catch (error) {
-      console.error("Error during authentication:", error.message);
+      const errorMessage =
+        error.message || "Error during authentication. Please try again";
 
       setShowFlashMessage({
         isActive: true,
-        message: "Authentication failed. Please try again.",
+        message: errorMessage,
         type: "error",
       });
 
@@ -246,10 +247,11 @@ const AuthContextProvider = ({ children }) => {
       });
       navigate(authSelectionRoute?.path);
     } catch (error) {
-      console.error("Error loading user role:", error);
+      const errorMessage =
+        error?.message || "An error occurred while verifying user role.";
       setShowFlashMessage({
         isActive: true,
-        message: "An error occurred while verifying user role.",
+        message: errorMessage,
         type: "error",
       });
     }
@@ -303,11 +305,12 @@ const AuthContextProvider = ({ children }) => {
 
       navigate(registerApplicantRoute?.path);
     } catch (error) {
-      console.error("Error loading applicant role:", error);
+      const errorMessage =
+        error.message ||
+        "An error occurred while verifying applicant role. Please try again.";
       setShowFlashMessage({
         isActive: true,
-        message:
-          "An error occurred while verifying applicant role. Please try again.",
+        message: errorMessage,
         type: "error",
       });
     }
