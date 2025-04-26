@@ -39,8 +39,6 @@ const ViewAdminProfilePage = () => {
   const adminIsLoading = adminStatus?.isLoading;
   const adminErrorMessage = adminStatus?.error;
 
-  console.log("adminStatus: ", adminStatus);
-
   return (
     <PageTransition effect={viewAdminProfilePageEffect}>
       <section className="pb-5">

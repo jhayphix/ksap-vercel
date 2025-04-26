@@ -202,15 +202,14 @@ const UserContextProvider = ({ children }) => {
             String(admin?.id)?.toLowerCase() === String(adminId)?.toLowerCase()
         ) || null;
 
-      if (admin) {
-        return admin;
-      } else {
-        console.error("Admin not found!");
-        return {};
-      }
+      if (!admin) return {};
+
+      return admin;
     } catch (error) {
-      console.error("An error occurred while retrieving the admin!");
-      return {};
+      const errorMessage =
+        error.message ||
+        "An error occurred while retrieving the admin!.";
+      console.error(errorMessage);
     }
 
     //eslint-disable-next-line
