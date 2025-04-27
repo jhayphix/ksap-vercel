@@ -7,25 +7,6 @@ CONCEPT:
     ☐ @VERSION-2
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-CHECK ERRORS:
-    ✔ Scholarships: @done(25-04-25 08:03)
-        ✔ Get scholarship. @done(25-04-23 14:33)
-    ✔ External scholarships: @done(25-04-24 12:37)
-        ✔ Load scholarship @done(25-04-24 12:38)
-        ✔ Get external scholarship @done(25-04-24 12:38)
-        ✔ Error @done(25-04-24 12:38)
-    ✔ Applications: @done(25-04-25 08:03)
-        ✔ Load @done(25-04-24 14:08)
-        ✔ Get @done(25-04-24 14:08)
-        ✔ Error @done(25-04-24 14:08)
-    ✔ Admins: @done(25-04-25 08:03)
-        ✔ Load @done(25-04-25 08:03)
-        ✔ Get @done(25-04-25 08:03)
-        ✔ Error @done(25-04-25 08:03)
-    Applicants:
-        ☐ Load
-        ☐ Get
-        ☐ Error
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 MUST ADD:
@@ -63,6 +44,25 @@ VERSION 2:
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 Archive:
+  ✔ CHECK ERRORS: @done(25-04-27 15:35)
+  ✔ Scholarships: @done(25-04-25 08:03)
+  ✔ Get scholarship. @done(25-04-23 14:33)
+  ✔ External scholarships: @done(25-04-24 12:37)
+  ✔ Load scholarship @done(25-04-24 12:38)
+  ✔ Get external scholarship @done(25-04-24 12:38)
+  ✔ Error @done(25-04-24 12:38)
+  ✔ Applications: @done(25-04-25 08:03)
+  ✔ Load @done(25-04-24 14:08)
+  ✔ Get @done(25-04-24 14:08)
+  ✔ Error @done(25-04-24 14:08)
+  ✔ Admins: @done(25-04-25 08:03)
+  ✔ Load @done(25-04-25 08:03)
+  ✔ Get @done(25-04-25 08:03)
+  ✔ Error @done(25-04-25 08:03)
+  ✔ Applicants: @done(25-04-27 15:35)
+  ✔ Load @done(25-04-27 15:35)
+  ✔ Get @done(25-04-27 15:35)
+  ✔ Error @done(25-04-27 15:35)
   ✔ @Restrictions @done(25-04-02 09:28) @project(CONCEPT)
   ✔ @POSSIBLE-CENARIOS: @done(25-04-02 09:28) @project(CONCEPT)
   ✔ @External-Scholarships @done(25-04-22 16:31) @project(CONCEPT)
