@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_API_REF = "http://localhost:8000/api/";
+const BASE_API_REF = "http://localhost:8000/api";
 export const SCHOLARSHIPS_API_REF = `${BASE_API_REF}/scholarships`;
 export const APPLICATIONS_API_REF = `${BASE_API_REF}/applications`;
 export const ADMINS_API_REF = `${BASE_API_REF}/admins`;
@@ -14,7 +14,10 @@ export const APPLICANTS_API_REF = `${BASE_API_REF}/applicants`;
 export const getRequest = async (url) => {
   try {
     const response = await axios.get(url);
-    return response.data;
+    return response.data.data?.map((doc) => ({
+      ...doc,
+      id: doc._id, // Renamed from documentId for clarity
+    }));
   } catch (error) {
     console.error("GET request error:", error);
     throw error;
