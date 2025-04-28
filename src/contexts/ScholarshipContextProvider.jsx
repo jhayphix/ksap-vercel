@@ -53,8 +53,8 @@ const ScholarshipContextProvider = ({ children }) => {
 
     try {
       const scholarships = await getRequest(SCHOLARSHIPS_API_REF);
-      console.log("Scholarships: ", scholarships);
       const applications = await getRequest(APPLICATIONS_API_REF);
+      console.log("applications: ", applications);
 
       if (!Array.isArray(scholarships)) {
         const errorMessage = "Scholarships data is invalid.";

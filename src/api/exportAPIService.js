@@ -8,7 +8,7 @@ const SERVICES_API = {
   firebase: API_FIREBASE_SERVICES,
 };
 
-const ACTIVE_SERVICE = "firebase";
+const ACTIVE_SERVICE = "custom";
 
 const APIService = SERVICES_API[ACTIVE_SERVICE] || API_JSON_SERVER_SERVICES;
 
