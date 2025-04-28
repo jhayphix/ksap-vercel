@@ -113,8 +113,8 @@ const CreateExternalScholarshipPage = () => {
       externalId: uuidv4(),
       createdByAdminId: authStatus?.loggedInUserId,
       createdAt: HELPER?.getISODate(),
-      lastUpdatedByAdminId: authStatus?.loggedInUserId,
-      lastUpdatedAt: HELPER?.getISODate(),
+      updatedByAdminId: authStatus?.loggedInUserId,
+      updatedAt: HELPER?.getISODate(),
     };
 
     const deadline = externalScholarshipFormData?.deadline;

@@ -129,8 +129,8 @@ const UpdateExternalScholarshipPage = () => {
 
     // Auto-generated fields
     const metaData = {
-      lastUpdatedByAdminId: authStatus?.loggedInUserId,
-      lastUpdatedAt: HELPER?.getISODate(),
+      updatedByAdminId: authStatus?.loggedInUserId,
+      updatedAt: HELPER?.getISODate(),
     };
 
     const deadline = externalScholarshipFormData?.dealine;

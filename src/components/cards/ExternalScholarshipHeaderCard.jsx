@@ -30,11 +30,10 @@ const ScholarshipHeaderCard = ({ className, externalScholarshipData = {} }) => {
   const scholarshipCreatedByAdminId = externalScholarshipData?.createdByAdminId;
   const scholarshipCreatedBy =
     getAdminReturn(adminsData, scholarshipCreatedByAdminId) || {};
-  const scholarshipLastUpdatedAt = externalScholarshipData?.lastUpdatedAt;
-  const scholarshipLastUpdatedByAdminId =
-    externalScholarshipData?.lastUpdatedByAdminId;
-  const scholarshipLastUpdatedBy =
-    getAdminReturn(adminsData, scholarshipLastUpdatedByAdminId) || {};
+  const scholarshipUpdatedAt = externalScholarshipData?.updatedAt;
+  const scholarshipUpdatedByAdminId = externalScholarshipData?.updatedByAdminId;
+  const scholarshipUpdatedBy =
+    getAdminReturn(adminsData, scholarshipUpdatedByAdminId) || {};
 
   const scholarshipDetailsObj = [
     {
@@ -85,11 +84,11 @@ const ScholarshipHeaderCard = ({ className, externalScholarshipData = {} }) => {
         },
         {
           label: "Last Updated By",
-          value: scholarshipLastUpdatedBy?.fullName || "N/A",
+          value: scholarshipUpdatedBy?.fullName || "N/A",
         },
         {
           label: "Last Updated At",
-          value: HELPER?.formatDateTime(scholarshipLastUpdatedAt),
+          value: HELPER?.formatDateTime(scholarshipUpdatedAt),
         },
       ],
     },
