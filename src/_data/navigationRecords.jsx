@@ -80,7 +80,7 @@ const navigationRecords = {
   },
   updateApplicantRoute: {
     title: "Update Profile",
-    path: `${baseRoute}/applicant/:applicantId/edit`,
+    path: `${baseRoute}/applicant/:id/edit`,
     getPath: (applicantId) => {
       return `${baseRoute}/applicant/${applicantId}/edit`;
     },
@@ -89,7 +89,7 @@ const navigationRecords = {
   },
   updateAdminRoute: {
     title: "Update Profile (Admin)",
-    path: `${baseRoute}/admin/:adminId/edit`,
+    path: `${baseRoute}/admin/:id/edit`,
     getPath: (adminId) => {
       return `${baseRoute}/admin/${adminId}/edit`;
     },
@@ -98,7 +98,7 @@ const navigationRecords = {
   },
   viewAdminProfileRoute: {
     title: "Admin Profile",
-    path: `${baseRoute}/admin/profile/:adminId`,
+    path: `${baseRoute}/admin/profile/:id`,
     getPath: (adminId) => {
       return `${baseRoute}/admin/profile/${adminId}`;
     },
@@ -108,7 +108,7 @@ const navigationRecords = {
 
   viewApplicantProfileRoute: {
     title: "Applicant Profile",
-    path: `${baseRoute}/applicant/profile/:applicantId`,
+    path: `${baseRoute}/applicant/profile/:id`,
     getPath: (applicantId) => {
       return `${baseRoute}/applicant/profile/${applicantId}`;
     },

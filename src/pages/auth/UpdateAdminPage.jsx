@@ -35,7 +35,7 @@ const UpdateAdminPage = () => {
 
   const navigate = useNavigate();
   const params = useParams();
-  const adminId = params?.adminId;
+  const adminId = params?.id;
   const adminFormSections = exportDefaultData?.adminFormSections;
 
   useEffect(() => {

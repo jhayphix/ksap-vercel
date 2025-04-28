@@ -22,7 +22,7 @@ const ViewAdminProfilePage = () => {
 
   //   Base variables
   const params = useParams();
-  const adminId = params?.adminId;
+  const adminId = params?.id;
 
   //   Load Admins
   useEffect(() => {

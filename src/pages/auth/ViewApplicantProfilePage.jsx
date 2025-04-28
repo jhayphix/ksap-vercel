@@ -23,7 +23,7 @@ const ViewApplicantProfilePage = () => {
 
   //   Base variables
   const params = useParams();
-  const applicantId = params?.applicantId;
+  const applicantId = params?.id;
 
   //   Load Applicants
   useEffect(() => {

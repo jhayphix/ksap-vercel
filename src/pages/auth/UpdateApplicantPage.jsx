@@ -33,7 +33,7 @@ const UpdateApplicantPage = () => {
 
   const navigate = useNavigate();
   const params = useParams();
-  const applicantId = params?.applicantId;
+  const applicantId = params?.id;
   const updateApplicantFormSections = exportDefaultData?.applicantFormSections;
 
   useEffect(() => {
