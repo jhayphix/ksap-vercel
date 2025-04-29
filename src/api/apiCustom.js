@@ -1,6 +1,7 @@
 import axios from "axios";
 
 const BASE_API_REF = "https://ksap-api.onrender.com/api";
+// const BASE_API_REF = "http://localhost:5000/api";
 export const SCHOLARSHIPS_API_REF = `${BASE_API_REF}/scholarships`;
 export const APPLICATIONS_API_REF = `${BASE_API_REF}/applications`;
 export const ADMINS_API_REF = `${BASE_API_REF}/admins`;
