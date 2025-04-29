@@ -168,8 +168,7 @@ const CreateScholarshipPage = () => {
     setShowModal({
       isActive: true,
       title: "Clear Form",
-      message:
-        "Are you sure you want to clear the form? This action will remove all entered data.",
+      message: "This will delete all entered data.",
       action: () => {
         resetFormData();
       },

@@ -24,7 +24,7 @@ const ScholarshipActionBtn = ({ scholarshipId }) => {
     setShowModal({
       isActive: true,
       title: `Delete Scholarship"`,
-      message: `Are you sure you want delete this scholarship?`,
+      message: `This will delete this scholarship?`,
       action: deleteScholarshipHandler,
     });
   };

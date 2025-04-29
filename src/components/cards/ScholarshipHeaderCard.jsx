@@ -31,9 +31,9 @@ const ScholarshipHeaderCard = ({ className, scholarshipData = {} }) => {
       title: `Delete ${scholarshipData?.type || "Scholarship"} "${
         scholarshipData?.name
       }"`,
-      message: `Are you sure you want to delete ${
-        scholarshipData?.type || "Scholarship"
-      } "${scholarshipData?.name}"?`,
+      message: `This will delete ${scholarshipData?.type || "Scholarship"} "${
+        scholarshipData?.name
+      }"?`,
       action: deleteScholarshipHandler,
     });
   };

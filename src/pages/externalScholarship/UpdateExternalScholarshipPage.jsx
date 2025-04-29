@@ -133,7 +133,7 @@ const UpdateExternalScholarshipPage = () => {
       updatedAt: HELPER?.getISODate(),
     };
 
-    const deadline = externalScholarshipFormData?.dealine;
+    const deadline = externalScholarshipFormData?.deadline;
     const scholarshipName = externalScholarshipFormData?.name;
     const dataToSave = {
       ...externalScholarshipData,

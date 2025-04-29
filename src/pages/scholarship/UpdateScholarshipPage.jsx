@@ -181,8 +181,7 @@ const UpdateScholarshipPage = () => {
     setShowModal({
       isActive: true,
       title: "Reset Form",
-      message:
-        "Are you sure you want to reset this form? This action will reset the form to it previously saved state.",
+      message: "This will delete/reset the form to it previously saved state.",
       action: () => {
         resetFormData();
       },

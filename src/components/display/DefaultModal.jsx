@@ -46,7 +46,7 @@ const DefaultModal = () => {
             className="modal-dialog modal-dialog-centered"
             onClick={(e) => e.stopPropagation()} // Prevent clicks inside modal from propagating
           >
-            <div className="modal-content">
+            <div className="modal-content bg_secondary">
               <div className="modal-header">
                 <h5 className="modal-title" id="exampleModalLabel">
                   {modalTitle}
@@ -62,7 +62,7 @@ const DefaultModal = () => {
               <div className="modal-footer">
                 <button
                   type="button"
-                  className="btn btn-primary"
+                  className="btn btn-outline-light"
                   onClick={handleCloseModal}
                 >
                   Cancel

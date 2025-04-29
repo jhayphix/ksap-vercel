@@ -36,7 +36,7 @@ const ApplicationCard = ({ applicantApplication = {}, className }) => {
     setShowModal({
       isActive: true,
       title: `Delete Application`,
-      message: `Are you sure you want to delete this application for "${applicantApplication?.scholarship?.name}"?`,
+      message: `This will delete application "${applicantApplication?.scholarship?.name}"?`,
       action: deleteApplicationHandler,
     });
   };

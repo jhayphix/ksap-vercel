@@ -174,8 +174,8 @@ const ExternalScholarshipContextProvider = ({ children }) => {
   ) => {
     setShowModal({
       isActive: true,
-      title: `Delete External Scholarship - "${scholarshipName}"`,
-      message: `Are you sure you want to delete External Scholarship - "${scholarshipName}"?`,
+      title: `Delete External Scholarship`,
+      message: `This will delete "${scholarshipName}"?`,
       action: () => deleteExternalScholarship(scholarshipId),
     });
   };

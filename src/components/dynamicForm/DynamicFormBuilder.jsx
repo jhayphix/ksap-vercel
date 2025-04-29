@@ -127,7 +127,7 @@ const DynamicFormBuilder = ({ className, setFields, applicationSections }) => {
     setShowModal({
       isActive: true,
       title: "Remove Section",
-      message: `Are you sure you want to remove this Section ${
+      message: `This will delete this Section ${
         sectionIndex + 1
       } "${sectionTitle}"`,
       action: () => {
@@ -266,7 +266,7 @@ const DynamicFormBuilder = ({ className, setFields, applicationSections }) => {
     setShowModal({
       isActive: true,
       title: "Remove Question",
-      message: `Are you sure you want to remove this Question "${questionName}"`,
+      message: `This will delete this Question "${questionName}"`,
       action: () => {
         removeQuestion(sectionIndex, questionIndex);
       },

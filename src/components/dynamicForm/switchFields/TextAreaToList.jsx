@@ -55,7 +55,7 @@ const TextAreaToList = ({ props }) => {
     setShowModal({
       isActive: true,
       title: "Clear Form",
-      message: "Are you sure you want to delete this item?",
+      message: "This will delete this item?",
       action: () => {
         handleDeleteItem(itemIndex);
       },
