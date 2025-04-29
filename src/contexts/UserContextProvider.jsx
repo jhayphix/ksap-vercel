@@ -56,6 +56,7 @@ const UserContextProvider = ({ children }) => {
 
     try {
       const adminsOnly = await getRequest(ADMINS_API_REF);
+      console.log("adminsOnly: ", adminsOnly);
 
       if (!Array.isArray(adminsOnly)) {
         const errorMessage = "Admins data is invalid.";
@@ -207,8 +208,7 @@ const UserContextProvider = ({ children }) => {
       return admin;
     } catch (error) {
       const errorMessage =
-        error.message ||
-        "An error occurred while retrieving the admin!.";
+        error.message || "An error occurred while retrieving the admin!.";
       console.error(errorMessage);
     }
 
@@ -225,6 +225,7 @@ const UserContextProvider = ({ children }) => {
 
     try {
       const applicantsOnly = await getRequest(APPLICANTS_API_REF);
+      console.log("applicantsOnly:", applicantsOnly);
 
       if (!Array.isArray(applicantsOnly)) {
         const errorMessage = "Applicants data is invalid.";
