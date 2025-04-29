@@ -2,20 +2,20 @@
 SCHOLARSHIP AND APPLICATION:
     ✔ Create scholarship @done(25-04-29 22:08)
     ✔ Read scholarship @done(25-04-29 22:11)
-    ☐ Update scholarship : Issues, array not displaying well
+    ✔ Update scholarship : Issues, array not displaying well @done(25-04-29 22:42)
 
-    ☐ Create application
-    ☐ Read application
-    ☐ Update application
-    ☐ Delete application
+    ✔ Create application @done(25-04-29 22:42)
+    ✔ Read application @done(25-04-29 22:42)
+    ✔ Update application @done(25-04-29 22:42)
+    ✔ Delete application @done(25-04-29 22:42)
 
-    ☐ Delete scholarship
+    ✔ Delete scholarship @done(25-04-29 22:44)
 
 EXTERNAL SCHOLARSHIP:
-    ☐ Create external scholarship
-    ☐ Read external scholarship
-    ☐ Update external scholarship
-    ☐ Delete external scholarship
+    ✔ Create external scholarship @done(25-04-29 22:46)
+    ✔ Read external scholarship @done(25-04-29 22:46)
+    ✔ Update external scholarship @done(25-04-29 22:47)
+    ✔ Delete external scholarship @done(25-04-29 22:47)
 
 ADMIN:
     ☐ Create admin
@@ -35,6 +35,7 @@ UPDATE:
     ☐ Delete scholarship the hard way
     ☐ Deactivate and activate admin
     ☐ Deactivate and activate applicant
+    ☐ Update scholarship, array (eligibility of study not showing)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 FILE HANDLING:
