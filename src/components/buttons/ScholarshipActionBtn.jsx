@@ -10,7 +10,7 @@ import APIService from "@src/api/exportAPIService";
 import { ConfigContext } from "@contexts/ConfigContextProvider";
 import { ScholarshipContext } from "@contexts/ScholarshipContextProvider";
 
-const ScholarshipActionBtn = ({ scholarshipId }) => {
+const ScholarshipActionBtn = ({ scholarshipId, scholarshipName }) => {
   const { SCHOLARSHIPS_API_REF, deleteRequest, DATABASE_TABLE_NAMES } =
     APIService;
 
@@ -24,7 +24,7 @@ const ScholarshipActionBtn = ({ scholarshipId }) => {
     setShowModal({
       isActive: true,
       title: `Delete Scholarship"`,
-      message: `This will delete this scholarship?`,
+      message: `This will delete this scholarship - "${scholarshipName}"?`,
       action: deleteScholarshipHandler,
     });
   };

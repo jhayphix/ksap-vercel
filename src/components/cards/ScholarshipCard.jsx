@@ -17,6 +17,8 @@ const ScholarshipCard = ({
 }) => {
   const { viewScholarshipRoute } = useContext(NavigationContext);
   const { authStatus } = useContext(AuthContext);
+
+  const scholarshipName = name;
   // Return
   return (
     <div className="px-sm-3 pb-5 px-0" style={{ Height: "auto" }}>
@@ -32,7 +34,10 @@ const ScholarshipCard = ({
             <FaAward size={35} className="bs_text_warning" />
           </div>
           {authStatus?.isUserSuperAdmin ? (
-            <ScholarshipActionBtn scholarshipId={scholarshipId} />
+            <ScholarshipActionBtn
+              scholarshipId={scholarshipId}
+              scholarshipName={scholarshipName}
+            />
           ) : null}
         </div>
 

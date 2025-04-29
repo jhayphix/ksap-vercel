@@ -11,13 +11,14 @@ const ScholarshipHeaderCard = ({ className, scholarshipData = {} }) => {
   const { authStatus } = useContext(AuthContext);
 
   const scholarshipId = scholarshipData?.id;
+  const scholarshipName = scholarshipData?.name;
   return (
     <div
       className={`${className} bg_light rounded py-3 px-4 d-flex justify-content-between align-items-start`}
     >
       <div>
         <h4 className="h4 mb-2">
-          {scholarshipData?.name}{" "}
+          {scholarshipName}{" "}
           {scholarshipData?.shortName && (
             <span className="h5 mb-2 d-inline-block">
               ( {scholarshipData?.shortName} )
@@ -60,7 +61,10 @@ const ScholarshipHeaderCard = ({ className, scholarshipData = {} }) => {
 
       {authStatus?.isUserSuperAdmin ? (
         <>
-          <ScholarshipActionBtn scholarshipId={scholarshipId} />
+          <ScholarshipActionBtn
+            scholarshipId={scholarshipId}
+            scholarshipName={scholarshipName}
+          />
         </>
       ) : (
         ""
