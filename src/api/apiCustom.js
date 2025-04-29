@@ -5,6 +5,8 @@ export const SCHOLARSHIPS_API_REF = `${BASE_API_REF}/scholarships`;
 export const APPLICATIONS_API_REF = `${BASE_API_REF}/applications`;
 export const ADMINS_API_REF = `${BASE_API_REF}/admins`;
 export const APPLICANTS_API_REF = `${BASE_API_REF}/applicants`;
+export const EXTERNAL_SCHOLARSHIPS_API_REF = `${BASE_API_REF}/external-scholarships`;
+
 
 /**
  * Sends a GET request to retrieve data from the API.
