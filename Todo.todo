@@ -1,8 +1,8 @@
 
 SCHOLARSHIP AND APPLICATION:
-    ☐ Create scholarship
-    ☐ Read scholarship
-    ☐ Update scholarship
+    ✔ Create scholarship @done(25-04-29 22:08)
+    ✔ Read scholarship @done(25-04-29 22:11)
+    ☐ Update scholarship : Issues, array not displaying well
 
     ☐ Create application
     ☐ Read application
@@ -29,6 +29,12 @@ APPLICANT:
     ☐ Update applicant
     ☐ Delete applicant
     
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+UPDATE:
+    ☐ Delete scholarship the hard way
+    ☐ Deactivate and activate admin
+    ☐ Deactivate and activate applicant
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 FILE HANDLING:

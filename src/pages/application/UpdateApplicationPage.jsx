@@ -466,7 +466,7 @@ const UpdateApplicationPage = () => {
         <BackButton
           className="mb-3"
           btnRole="link"
-          btnName="Scholarships"
+          btnName="My Applications"
           btnPath={myApplicationsRoute?.path}
         />
         <HeaderBanner
