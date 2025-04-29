@@ -338,7 +338,7 @@ const UpdateScholarshipPage = () => {
                 </div>
                 <SubmitFormButton
                   name="Update Scholarship"
-                  processingName="Creating Scholarship..."
+                  processingName="Updating Scholarship..."
                   disabled={submitIsDisabled}
                   isLoading={formIsSubmitting}
                   isCentered={false}

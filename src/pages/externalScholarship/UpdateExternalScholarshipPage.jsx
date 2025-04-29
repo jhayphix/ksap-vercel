@@ -250,7 +250,7 @@ const UpdateExternalScholarshipPage = () => {
               <div className="mt-5 mb-4 text-center">
                 <SubmitFormButton
                   name="Edit Account"
-                  processingName="Updating Account..."
+                  processingName="Updating External Scholarship..."
                   disabled={submitIsDisabled}
                   isLoading={formIsSubmitting}
                 />

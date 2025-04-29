@@ -280,7 +280,7 @@ const RegisterApplicantPage = () => {
           <div className="mt-5 mb-4 text-center">
             <SubmitFormButton
               name="Register Account"
-              processingName="Creating Account..."
+              processingName="Registering Account..."
               disabled={submitIsDisabled}
               isLoading={formIsSubmitting}
             />
