@@ -1,40 +1,18 @@
 
 CONCEPT:
-    ☐ @Add-These-To-the-database
     ☐ @FILE-HANDLING
     ☐ @WORK-ON-STRUCTURE
     ☐ @DO-THIS-BEFORE-HOSTING
     ☐ @VERSION-2
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+FILE HANDLING:
+    ☐ Add file question select to create scholarship and update scholarship
+    ☐ Add file to where selected in create and update applcation
+    ☐ Work on storing application
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-MUST ADD:
     ☐ Reference form implementation ( Download and upload form)
     ☐ Print summary of application
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-UPDATE THE DATABASE:
-    ☐ Somethings like with updatedAt should be last updated at
-    ☐ Also the lastUpdateAtTime should be there instead of converting it each time
-    ☐ createdByAdminId , then the createdByAdmin ( having the full name of the admin) instead of converting it each time
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-FILE HANDLING:
-    ☐ Work on documents update where needed
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-WORK ON STRUCTURE:
-    ☐ Work on queries and queries outside context
-    ☐ Create a resusable CRUD for all and display correct axios errors
-    ☐ Change Helper to a context
-    ☐ Change some queries
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-DO THIS BEFORE HOSTING:
-    ☐ Change && to ? : 
-    ☐ If none on scholarship and applicants display " You have no scholarship ... existing application ... "
-    ☐ Delete all console output (console.log...)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 VERSION 2:
@@ -42,6 +20,17 @@ VERSION 2:
     ☐ Generating of award letter
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+CLEAN UP: DO THIS BEFORE HOSTING:
+    ☐ Change && to ? : 
+    ☐ Delete all console output (console.log...)
+
+CLEAN UP: WORK ON STRUCTURE:
+    ☐ Work on queries and queries outside context
+    ☐ Create a resusable CRUD for all and display correct axios errors
+    ☐ Change Helper to a context
+    ☐ Change some queries
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 
 Archive:
   ✔ CHECK ERRORS: @done(25-04-27 15:35)
