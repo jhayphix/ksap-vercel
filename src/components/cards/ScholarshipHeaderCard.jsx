@@ -1,75 +1,16 @@
-import { useNavigate, Link } from "react-router-dom";
 import { useContext } from "react";
-import { FaEdit } from "react-icons/fa";
-import { MdDelete } from "react-icons/md";
 
-import APIService from "@src/api/exportAPIService";
+import { AuthContext } from "@contexts/AuthContextProvider";
+import { ConfigContext } from "@contexts/ConfigContextProvider";
 
 import DefaultBadge from "@components/tags/DefaultBadge";
-import { ConfigContext } from "@contexts/ConfigContextProvider";
-import { NavigationContext } from "@contexts/NavigationContextProvider";
-
-import DropdownWrapper from "@components/dropdown/DropdownWrapper";
-import { AuthContext } from "@contexts/AuthContextProvider";
+import ScholarshipActionBtn from "@components/buttons/ScholarshipActionBtn";
 
 const ScholarshipHeaderCard = ({ className, scholarshipData = {} }) => {
-  const { SCHOLARSHIPS_API_REF, deleteRequest, DATABASE_TABLE_NAMES } =
-    APIService;
-
-  const navigate = useNavigate();
-  const { setShowFlashMessage, setShowModal, HELPER } =
-    useContext(ConfigContext);
-  const { updateScholarshipRoute, dashboardRoute } =
-    useContext(NavigationContext);
+  const { HELPER } = useContext(ConfigContext);
   const { authStatus } = useContext(AuthContext);
 
   const scholarshipId = scholarshipData?.id;
-
-  const showDeleteScholarshipModal = () => {
-    setShowModal({
-      isActive: true,
-      title: `Delete ${scholarshipData?.type || "Scholarship"} "${
-        scholarshipData?.name
-      }"`,
-      message: `This will delete ${scholarshipData?.type || "Scholarship"} "${
-        scholarshipData?.name
-      }"?`,
-      action: deleteScholarshipHandler,
-    });
-  };
-
-  const deleteScholarshipHandler = async () => {
-    setShowModal({ isActive: false });
-
-    try {
-      const success = await deleteRequest(
-        SCHOLARSHIPS_API_REF,
-        scholarshipId,
-        DATABASE_TABLE_NAMES?.SCHOLARSHIPS_TABLE_NAME
-      );
-
-      if (success) {
-        setShowFlashMessage({
-          isActive: true,
-          message: "Scholarship Deleted Successfully",
-          type: "success",
-        });
-        navigate(dashboardRoute?.path);
-      } else {
-        setShowFlashMessage({
-          isActive: true,
-          message: "Failed to delete scholarship.",
-          type: "danger",
-        });
-      }
-    } catch (error) {
-      setShowFlashMessage({
-        isActive: true,
-        message: `Error deleting scholarship. Please try again:`,
-        type: "error",
-      });
-    }
-  };
   return (
     <div
       className={`${className} bg_light rounded py-3 px-4 d-flex justify-content-between align-items-start`}
@@ -118,26 +59,9 @@ const ScholarshipHeaderCard = ({ className, scholarshipData = {} }) => {
       </div>
 
       {authStatus?.isUserSuperAdmin ? (
-        <DropdownWrapper
-          id="scholarshipHeaderCardDropdown"
-          className="bg_secondary_3 rounded"
-        >
-          <Link
-            role="button"
-            to={updateScholarshipRoute?.getPath(scholarshipId)}
-            className="btn dropdown-item"
-          >
-            <FaEdit size={20} className="me-2" /> Edit
-          </Link>
-
-          <hr className="my-3" />
-          <button
-            className="btn dropdown-item text_danger"
-            onClick={showDeleteScholarshipModal}
-          >
-            <MdDelete size={20} className="me-2" /> Delete
-          </button>
-        </DropdownWrapper>
+        <>
+          <ScholarshipActionBtn scholarshipId={scholarshipId} />
+        </>
       ) : (
         ""
       )}
