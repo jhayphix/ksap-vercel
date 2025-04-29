@@ -1,35 +1,10 @@
 
-SCHOLARSHIP AND APPLICATION:
-    ✔ Create scholarship @done(25-04-29 22:08)
-    ✔ Read scholarship @done(25-04-29 22:11)
-    ✔ Update scholarship : Issues, array not displaying well @done(25-04-29 22:42)
 
-    ✔ Create application @done(25-04-29 22:42)
-    ✔ Read application @done(25-04-29 22:42)
-    ✔ Update application @done(25-04-29 22:42)
-    ✔ Delete application @done(25-04-29 22:42)
 
-    ✔ Delete scholarship @done(25-04-29 22:44)
 
-EXTERNAL SCHOLARSHIP:
-    ✔ Create external scholarship @done(25-04-29 22:46)
-    ✔ Read external scholarship @done(25-04-29 22:46)
-    ✔ Update external scholarship @done(25-04-29 22:47)
-    ✔ Delete external scholarship @done(25-04-29 22:47)
 
-ADMIN:
-    ☐ Create admin
-    ☐ Read admin
-    ☐ Update admin
-    ☐ Delete admin
 
-APPLICANT:
-    ☐ Create applicant
-    ☐ Read applicant
-    ☐ Update applicant
-    ☐ Delete applicant
     
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 UPDATE:
     ☐ Delete scholarship the hard way
@@ -63,8 +38,31 @@ CLEAN UP: WORK ON STRUCTURE:
     ☐ Change some queries
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-
 Archive:
+  ✔ SCHOLARSHIP AND APPLICATION: @done(25-04-29 23:44)
+  ✔ Create scholarship @done(25-04-29 22:08)
+  ✔ Read scholarship @done(25-04-29 22:11)
+  ✔ Update scholarship : Issues, array not displaying well @done(25-04-29 22:42)
+  ✔ Create application @done(25-04-29 22:42)
+  ✔ Read application @done(25-04-29 22:42)
+  ✔ Update application @done(25-04-29 22:42)
+  ✔ Delete application @done(25-04-29 22:42)
+  ✔ Delete scholarship @done(25-04-29 22:44)
+  ✔ EXTERNAL SCHOLARSHIP: @done(25-04-29 23:44)
+  ✔ Create external scholarship @done(25-04-29 22:46)
+  ✔ Read external scholarship @done(25-04-29 22:46)
+  ✔ Update external scholarship @done(25-04-29 22:47)
+  ✔ Delete external scholarship @done(25-04-29 22:47)
+  ✔ ADMIN: @done(25-04-29 23:44)
+  ✔ Create admin @done(25-04-29 23:44)
+  ✔ Read admin @done(25-04-29 23:44)
+  ✔ Update admin @done(25-04-29 23:44)
+  ✔ Delete admin @done(25-04-29 23:44)
+  ✔ APPLICANT: @done(25-04-29 23:44)
+  ✔ Create applicant @done(25-04-29 23:44)
+  ✔ Read applicant @done(25-04-29 23:44)
+  ✔ Update applicant @done(25-04-29 23:44)
+  ✔ Delete applicant @done(25-04-29 23:44)
   ✔ CHECK ERRORS: @done(25-04-27 15:35)
   ✔ Scholarships: @done(25-04-25 08:03)
   ✔ Get scholarship. @done(25-04-23 14:33)

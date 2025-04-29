@@ -144,6 +144,8 @@ const RegisterAdminPage = () => {
       dateOfBirth: HELPER?.getISODate(dateOfBirth),
     };
 
+    console.log("dataToSave: ", dataToSave);
+
 
     try {
       const response = await postRequest(ADMINS_API_REF, dataToSave);
