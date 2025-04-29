@@ -1,9 +1,34 @@
 
-CONCEPT:
-    ☐ @FILE-HANDLING
-    ☐ @WORK-ON-STRUCTURE
-    ☐ @DO-THIS-BEFORE-HOSTING
-    ☐ @VERSION-2
+SCHOLARSHIP AND APPLICATION:
+    ☐ Create scholarship
+    ☐ Read scholarship
+    ☐ Update scholarship
+
+    ☐ Create application
+    ☐ Read application
+    ☐ Update application
+    ☐ Delete application
+
+    ☐ Delete scholarship
+
+EXTERNAL SCHOLARSHIP:
+    ☐ Create external scholarship
+    ☐ Read external scholarship
+    ☐ Update external scholarship
+    ☐ Delete external scholarship
+
+ADMIN:
+    ☐ Create admin
+    ☐ Read admin
+    ☐ Update admin
+    ☐ Delete admin
+
+APPLICANT:
+    ☐ Create applicant
+    ☐ Read applicant
+    ☐ Update applicant
+    ☐ Delete applicant
+    
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 FILE HANDLING:
