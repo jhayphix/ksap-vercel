@@ -10,6 +10,7 @@ import { ApplicationContext } from "@contexts/ApplicationContextProvider";
 import ApplicationStatusTag from "@components/tags/ApplicationStatusTag";
 import DefaultBadge from "@components/tags/DefaultBadge";
 import DropdownWrapper from "@components/dropdown/DropdownWrapper";
+import ApplicationActionBtn from "@components/buttons/ApplicationActionBtn";
 
 // API
 import APIService from "@src/api/exportAPIService";
@@ -30,13 +31,16 @@ const ApplicationCard = ({ applicantApplication = {}, className }) => {
   const lastCompletedSectionIndex =
     applicantApplication?.progress?.lastCompletedSectionIndex;
   const scholarship = applicantApplication?.scholarship;
-  const isDeadlineDue = HELPER?.isDeadlineDue(scholarship?.deadline);
+  const scholarshipDeadline = scholarship?.deadline;
+  const isDeadlineDue = HELPER?.isDeadlineDue(scholarshipDeadline);
+  const thisApplicationScholarshipName =
+    applicantApplication?.scholarship?.name;
 
   const showDeleteApplicationModal = () => {
     setShowModal({
       isActive: true,
       title: `Delete Application`,
-      message: `This will delete application "${applicantApplication?.scholarship?.name}"?`,
+      message: `This will delete application for "${thisApplicationScholarshipName}"?`,
       action: deleteApplicationHandler,
     });
   };
@@ -131,45 +135,12 @@ const ApplicationCard = ({ applicantApplication = {}, className }) => {
 
         {/* Action Button */}
         <div className="centering">
-          <DropdownWrapper
-            id="applicationCardDropdown"
-            className="rounded bg_secondary_3"
-          >
-            <Link
-              data-bs-toggle="tooltip"
-              data-bs-placement="right"
-              title={viewApplicationRoute?.title}
-              to={viewApplicationRoute?.getPath(applicationId)}
-              className="dropdown-item cursor_pointer me-4"
-            >
-              <FaEye size={20} className="me-2" /> Preview
-            </Link>
-            {!isDeadlineDue ? (
-              <Link
-                data-bs-toggle="tooltip"
-                data-bs-placement="right"
-                title={updateApplicationRoute?.title}
-                to={updateApplicationRoute?.getPath(
-                  applicationId,
-                  lastCompletedSectionIndex
-                )}
-                className="dropdown-item cursor_pointer"
-              >
-                <FaEdit size={20} className="me-2" /> Edit
-              </Link>
-            ) : null}
-
-            <hr className="my-3" />
-            <button
-              data-bs-toggle="tooltip"
-              data-bs-placement="right"
-              title={"Delete application"}
-              onClick={showDeleteApplicationModal}
-              className="dropdown-item cursor_pointer text_danger"
-            >
-              <MdDelete size={20} className="me-2" /> Delete
-            </button>
-          </DropdownWrapper>
+          <ApplicationActionBtn
+            applicationId={applicationId}
+            isDeadlineDue={isDeadlineDue}
+            lastCompletedSectionIndex={lastCompletedSectionIndex}
+            applicationScholarshipName={thisApplicationScholarshipName}
+          />
         </div>
       </div>
     </div>

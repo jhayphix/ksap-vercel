@@ -1,10 +1,4 @@
 
-
-
-
-
-
-    
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 UPDATE:
     ✔ Delete scholarship the hard way @done(25-04-30 01:17)
@@ -28,7 +22,6 @@ VERSION 2:
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 CLEAN UP: DO THIS BEFORE HOSTING:
-    ☐ Change && to ? : 
     ☐ Delete all console output (console.log...)
 
 CLEAN UP: WORK ON STRUCTURE:
