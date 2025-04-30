@@ -1,31 +1,19 @@
 import { useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { FaAward, FaEdit, FaEye } from "react-icons/fa";
-import { MdDelete } from "react-icons/md";
+import { Link } from "react-router-dom";
+import { FaAward } from "react-icons/fa";
 
 import { ConfigContext } from "@contexts/ConfigContextProvider";
 import { NavigationContext } from "@contexts/NavigationContextProvider";
-import { ApplicationContext } from "@contexts/ApplicationContextProvider";
 
 import ApplicationStatusTag from "@components/tags/ApplicationStatusTag";
 import DefaultBadge from "@components/tags/DefaultBadge";
-import DropdownWrapper from "@components/dropdown/DropdownWrapper";
 import ApplicationActionBtn from "@components/buttons/ApplicationActionBtn";
 
 // API
-import APIService from "@src/api/exportAPIService";
 
 const ApplicationCard = ({ applicantApplication = {}, className }) => {
-  const { APPLICATIONS_API_REF, deleteRequest, DATABASE_TABLE_NAMES } =
-    APIService;
-
-  const { HELPER, setShowModal, setShowFlashMessage } =
-    useContext(ConfigContext);
-  const { viewApplicationRoute, updateApplicationRoute, myApplicationsRoute } =
-    useContext(NavigationContext);
-  const { loadApplications } = useContext(ApplicationContext);
-
-  const navigate = useNavigate();
+  const { HELPER } = useContext(ConfigContext);
+  const { viewApplicationRoute } = useContext(NavigationContext);
 
   const applicationId = applicantApplication?.id;
   const lastCompletedSectionIndex =
@@ -35,49 +23,6 @@ const ApplicationCard = ({ applicantApplication = {}, className }) => {
   const isDeadlineDue = HELPER?.isDeadlineDue(scholarshipDeadline);
   const thisApplicationScholarshipName =
     applicantApplication?.scholarship?.name;
-
-  const showDeleteApplicationModal = () => {
-    setShowModal({
-      isActive: true,
-      title: `Delete Application`,
-      message: `This will delete application for "${thisApplicationScholarshipName}"?`,
-      action: deleteApplicationHandler,
-    });
-  };
-
-  const deleteApplicationHandler = async () => {
-    setShowModal({ isActive: false });
-
-    try {
-      const success = await deleteRequest(
-        APPLICATIONS_API_REF,
-        applicationId,
-        DATABASE_TABLE_NAMES?.APPLICATIONS_TABLE_NAME
-      );
-
-      if (success) {
-        setShowFlashMessage({
-          isActive: true,
-          message: "Application Deleted Successfully",
-          type: "success",
-        });
-        navigate(myApplicationsRoute?.path);
-        loadApplications();
-      } else {
-        setShowFlashMessage({
-          isActive: true,
-          message: "Failed to delete scholarship.",
-          type: "danger",
-        });
-      }
-    } catch (error) {
-      setShowFlashMessage({
-        isActive: true,
-        message: `Error deleting scholarship. Please try again:`,
-        type: "error",
-      });
-    }
-  };
 
   return (
     <div className={`${className} bg_primary px-2 py-2 rounded`}>
