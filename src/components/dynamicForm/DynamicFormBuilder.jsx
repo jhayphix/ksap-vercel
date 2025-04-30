@@ -181,7 +181,6 @@ const DynamicFormBuilder = ({ className, setFields, applicationSections }) => {
     }
 
     setFields(newSections);
-    console.log("Question: ", question?.fileUploadConfig);
   };
 
   // ::::::::::::::::::::: CRUD QUESTIONS

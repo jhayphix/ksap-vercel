@@ -90,6 +90,7 @@ const DynamicFileConfig = ({
           <div className="mb-3 d-flex">
             <label className="form-label me-2">Maximum File Size</label>
             <select
+              style={{ width: "10rem" }}
               className="form-select"
               value={question?.fileUploadConfig?.maxFileSize || ""}
               onChange={(e) =>

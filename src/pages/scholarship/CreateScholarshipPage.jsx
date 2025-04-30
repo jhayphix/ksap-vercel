@@ -137,11 +137,6 @@ const CreateScholarshipPage = () => {
     setSubmitIsDisabled(formHasErrors); // Disable submit if errors exist
   }, [scholarshipFormData, scholarshipFormSections, HELPER]);
 
-  // console.log(
-  //   "applicationSections: ",
-  //   applicationSections[0].sectionQuestions[0]
-  // );
-
   // Clear form
   const resetFormData = (withMessage = true) => {
     HELPER?.setLocalStorage(thisFormKey, {});
