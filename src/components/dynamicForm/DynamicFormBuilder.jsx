@@ -195,8 +195,18 @@ const DynamicFormBuilder = ({ className, setFields, applicationSections }) => {
         required: false,
         validation: false,
         regex: { pattern: "", errorMessage: "", comparismOperator: "none" },
+        fileUploadConfig: {},
         options: [],
       };
+
+        // If the question type is 'file', initialize fileUploadConfig
+  if (newQuestion.type === "file") {
+    newQuestion.fileUploadConfig = {
+      restrictFileTypes: false,
+      allowedFileTypes: [],
+      maxFileSize: ""
+    };
+  }
 
       // Sort the updated list
       newSections[sectionIndex].sectionQuestions = [
@@ -215,6 +225,7 @@ const DynamicFormBuilder = ({ className, setFields, applicationSections }) => {
         required: false,
         validation: false,
         regex: { pattern: "", errorMessage: "", comparismOperator: "none" },
+        fileUploadConfig: {},
         options: [],
       });
     }

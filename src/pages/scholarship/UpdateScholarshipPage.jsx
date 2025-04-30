@@ -79,8 +79,6 @@ const UpdateScholarshipPage = () => {
   const [formIsSubmitting, setFormIsSubmitting] = useState(false);
   const [submitIsDisabled, setSubmitIsDisabled] = useState(true);
 
-  console.warn("scholarshipFormData: ", scholarshipFormData);
-
   // Application Sections
   const [applicationSections, setApplicationSections] = useState(
     scholarshipDataOnly &&

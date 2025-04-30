@@ -1,5 +1,6 @@
 import MoveQuestionModal from "@components/dynamicForm/MoveQuestionModal";
 import DropdownWrapper from "@components/dropdown/DropdownWrapper";
+import DynamicFileConfig from "./DynamicFileConfig";
 
 const DynamicFormQuestion = ({
   sectionIndex,
@@ -17,7 +18,6 @@ const DynamicFormQuestion = ({
   handleRemoveOption,
   optionFieldTypes = [],
 }) => {
-
   const questionType = question?.type;
   const questionLabel = question?.label;
   const questionDescription = question?.description;
@@ -140,6 +140,7 @@ const DynamicFormQuestion = ({
         </div>
         <div className="d-flex align-items-center mx-5">
           <input
+            id="questionIsRequiredInputId"
             type="checkbox"
             checked={questionRequired || false}
             onChange={(e) =>
@@ -152,11 +153,17 @@ const DynamicFormQuestion = ({
               )
             }
           />
-          <label className="show_label ms-2">Required</label>
+          <label
+            className="show_label ms-2 cursor_pointer"
+            htmlFor="questionIsRequiredInputId"
+          >
+            Required
+          </label>
         </div>
 
         <div className="d-flex align-items-center">
           <input
+            id="questionValidationInputId"
             type="checkbox"
             checked={questionValidation || false}
             onChange={(e) =>
@@ -169,7 +176,12 @@ const DynamicFormQuestion = ({
               )
             }
           />
-          <label className="ms-2 show_label">Validation</label>
+          <label
+            className="ms-2 show_label cursor_pointer"
+            htmlFor="questionValidationInputId"
+          >
+            Validation
+          </label>
         </div>
       </div>
       {questionValidation && (
@@ -247,6 +259,15 @@ const DynamicFormQuestion = ({
           </div>
         </div>
       )}
+
+      {/* File config */}
+      <DynamicFileConfig
+        question={question}
+        sectionIndex={sectionIndex}
+        questionIndex={questionIndex}
+        updateField={updateField}
+      />
+
       {/* Options Input Field (Only for Checkbox, Radio, and Select) */}
       {optionFieldTypes?.includes(questionType) && (
         <div className="mt-3">
