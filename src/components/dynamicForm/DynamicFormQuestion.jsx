@@ -115,7 +115,7 @@ const DynamicFormQuestion = ({
         />
       </div>
 
-      <div className="d-flex align-items-center justify-content-between mt-4">
+      <div className="d-flex flex-wrap gap-2 align-items-center justify-content-between mt-4">
         <div className="">
           <label className="form-label">Question Type</label>
           <select
@@ -138,7 +138,7 @@ const DynamicFormQuestion = ({
             ))}
           </select>
         </div>
-        <div className="form-check form-switch mx-3">
+        <div className="form-check form-switch">
           <input
             className="form-check-input"
             id="questionIsRequiredInputId"
