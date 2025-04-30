@@ -17,6 +17,15 @@ const DynamicFormQuestion = ({
   handleRemoveOption,
   optionFieldTypes = [],
 }) => {
+
+  const questionType = question?.type;
+  const questionLabel = question?.label;
+  const questionDescription = question?.description;
+  const questionRequired = question?.required;
+  const questionValidation = question?.validation;
+  const questionOptions = question?.options;
+  const questionRegex = question?.regex;
+
   return (
     <div>
       <MoveQuestionModal
@@ -57,7 +66,7 @@ const DynamicFormQuestion = ({
                 showRemoveQuestionModal(
                   sectionIndex,
                   questionIndex,
-                  question?.label
+                  questionLabel
                 )
               }
             >
@@ -74,7 +83,7 @@ const DynamicFormQuestion = ({
           className="form-control"
           style={{ fontWeight: "500" }}
           placeholder="Question"
-          value={question?.label || ""}
+          value={questionLabel || ""}
           onChange={(e) =>
             updateField(
               sectionIndex,
@@ -93,7 +102,7 @@ const DynamicFormQuestion = ({
           type="text"
           className="form-control"
           placeholder="Question Description"
-          value={question?.description || ""}
+          value={questionDescription || ""}
           onChange={(e) =>
             updateField(
               sectionIndex,
@@ -111,7 +120,7 @@ const DynamicFormQuestion = ({
           <label className="form-label">Question Type</label>
           <select
             className="form-select"
-            value={question?.type || "text"}
+            value={questionType || "text"}
             onChange={(e) =>
               updateField(
                 sectionIndex,
@@ -132,7 +141,7 @@ const DynamicFormQuestion = ({
         <div className="d-flex align-items-center mx-5">
           <input
             type="checkbox"
-            checked={question?.required || false}
+            checked={questionRequired || false}
             onChange={(e) =>
               updateField(
                 sectionIndex,
@@ -149,7 +158,7 @@ const DynamicFormQuestion = ({
         <div className="d-flex align-items-center">
           <input
             type="checkbox"
-            checked={question?.validation || false}
+            checked={questionValidation || false}
             onChange={(e) =>
               updateField(
                 sectionIndex,
@@ -163,20 +172,20 @@ const DynamicFormQuestion = ({
           <label className="ms-2 show_label">Validation</label>
         </div>
       </div>
-      {question?.validation && (
+      {questionValidation && (
         <div className="mt-2 row gy-3 d-flex align-items-center ">
           <div className="col-4 ">
             <label className="form-label">Comparison Operator</label>
             <select
               className="form-select"
-              value={question?.regex?.comparismOperator || "none"}
+              value={questionRegex?.comparismOperator || "none"}
               onChange={(e) =>
                 updateField(
                   sectionIndex,
                   questionIndex,
                   "regex",
                   {
-                    ...question?.regex,
+                    ...questionRegex,
                     comparismOperator: e.target.value,
                   },
                   question
@@ -199,14 +208,14 @@ const DynamicFormQuestion = ({
               type="text"
               className="form-control"
               placeholder="Enter regex pattern"
-              value={question?.regex?.pattern || ""}
+              value={questionRegex?.pattern || ""}
               onChange={(e) =>
                 updateField(
                   sectionIndex,
                   questionIndex,
                   "regex",
                   {
-                    ...question?.regex,
+                    ...questionRegex,
                     pattern: e.target.value,
                   },
                   question
@@ -221,14 +230,14 @@ const DynamicFormQuestion = ({
               type="text"
               className="form-control"
               placeholder="Error message"
-              value={question?.regex?.errorMessage || ""}
+              value={questionRegex?.errorMessage || ""}
               onChange={(e) =>
                 updateField(
                   sectionIndex,
                   questionIndex,
                   "regex",
                   {
-                    ...question?.regex,
+                    ...questionRegex,
                     errorMessage: e.target.value,
                   },
                   question
@@ -239,7 +248,7 @@ const DynamicFormQuestion = ({
         </div>
       )}
       {/* Options Input Field (Only for Checkbox, Radio, and Select) */}
-      {optionFieldTypes?.includes(question?.type) && (
+      {optionFieldTypes?.includes(questionType) && (
         <div className="mt-3">
           <label className="form-label">Options</label>
           <input
@@ -254,7 +263,7 @@ const DynamicFormQuestion = ({
           {/* Display Added Options */}
           <ul className="mt-4 has_scrollbar px-2" style={{ height: "10rem" }}>
             <h6 className="mb-3"> Question Options</h6>
-            {question?.options?.map((option, optionIndex) => (
+            {questionOptions?.map((option, optionIndex) => (
               <li
                 key={optionIndex}
                 className="d-flex justify-content-between mb-2 border-bottom border-muted"

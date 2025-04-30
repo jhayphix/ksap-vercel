@@ -13,11 +13,12 @@ const fieldTypes = [
   "checkbox",
   "radio",
 
-  // "email",
   "number",
   "date",
   "time",
   "datetime-local",
+  "file",
+  // "email",
   // "password",
 ];
 
@@ -25,14 +26,15 @@ const fieldTypesMap = {
   text: "Short Answer",
   textarea: "Paragraph",
   number: "Number",
-  // email: "Email",
-  // password: "Password",
   date: "Date",
   time: "Time",
   "datetime-local": "Date and Time",
   select: "Dropdown",
   checkbox: "Checkboxes",
   radio: "Multiple Choice",
+  file: "File upload",
+  // email: "Email",
+  // password: "Password",
 };
 const optionFieldTypes = ["checkbox", "radio", "select"]; // Fields that need options
 
