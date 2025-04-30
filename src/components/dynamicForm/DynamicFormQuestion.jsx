@@ -115,7 +115,7 @@ const DynamicFormQuestion = ({
         />
       </div>
 
-      <div className="d-flex align-items-center mt-4">
+      <div className="d-flex align-items-center justify-content-between mt-4">
         <div className="">
           <label className="form-label">Question Type</label>
           <select
@@ -138,8 +138,9 @@ const DynamicFormQuestion = ({
             ))}
           </select>
         </div>
-        <div className="d-flex align-items-center mx-5">
+        <div className="form-check form-switch mx-3">
           <input
+            className="form-check-input"
             id="questionIsRequiredInputId"
             type="checkbox"
             checked={questionRequired || false}
@@ -154,15 +155,16 @@ const DynamicFormQuestion = ({
             }
           />
           <label
-            className="show_label ms-2 cursor_pointer"
+            className="form-check-label show_label ms-2 cursor_pointer"
             htmlFor="questionIsRequiredInputId"
           >
             Required
           </label>
         </div>
 
-        <div className="d-flex align-items-center">
+        <div className="form-check form-switch">
           <input
+            className="form-check-input"
             id="questionValidationInputId"
             type="checkbox"
             checked={questionValidation || false}
@@ -177,7 +179,7 @@ const DynamicFormQuestion = ({
             }
           />
           <label
-            className="ms-2 show_label cursor_pointer"
+            className="form-check-label ms-2 show_label cursor_pointer"
             htmlFor="questionValidationInputId"
           >
             Validation
