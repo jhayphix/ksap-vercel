@@ -6,8 +6,6 @@ const ScholarshipDetails = ({ scholarshipData, className }) => {
 
   const applicationSectionsLength = applicationSections?.length;
 
-  console.log("applicationSections: ", applicationSections);
-
   const getSectionLabel = (sectionIndex) => {
     return `Section ${sectionIndex + 1} of ${applicationSectionsLength}`;
   };
@@ -63,34 +61,18 @@ const ScholarshipDetails = ({ scholarshipData, className }) => {
                         </span>
                       </div>
 
+                      {/* Validation */}
                       {question?.validation ? (
-                        <div className="ps-4 mt-3 border-start border-success border-4">
-                          <div className="text-success">
+                        <div className="ps-4 mt-3 text-secondary border-start border-secondary border-4">
+                          <div className="">
                             <strong>Regex Pattern:</strong>{" "}
                             {question?.regex?.pattern}
                           </div>
-                          <div className="text-success">
+                          <div className="">
                             <strong>Comparism Operator:</strong>{" "}
                             {question?.regex?.comparismOperator}
                           </div>
-                          <div className="text-success">
-                            <strong>Error Message</strong> "
-                            {question?.regex?.errorMessage}"
-                          </div>
-                        </div>
-                      ) : null}
-
-                      {question?.validation ? (
-                        <div className="ps-4 mt-3 border-start border-success border-4">
-                          <div className="text-success">
-                            <strong>Regex Pattern:</strong>{" "}
-                            {question?.regex?.pattern}
-                          </div>
-                          <div className="text-success">
-                            <strong>Comparism Operator:</strong>{" "}
-                            {question?.regex?.comparismOperator}
-                          </div>
-                          <div className="text-success">
+                          <div className="">
                             <strong>Error Message</strong> "
                             {question?.regex?.errorMessage}"
                           </div>
@@ -99,13 +81,47 @@ const ScholarshipDetails = ({ scholarshipData, className }) => {
 
                       {/* Options */}
                       {question?.options?.length > 0 ? (
-                        <div className="ps-4 mt-3 border-start border-success border-4">
-                          <div className="text-success">
+                        <div className="ps-4 mt-3 border-start border-secondary border-4">
+                          <div className="text-secondary">
                             <strong className="text-dark mb-1">Options</strong>{" "}
                             <div className="ms-3">
                               {question?.options?.map((option, optionIndex) => {
                                 return <div key={optionIndex}>{option}</div>;
                               })}
+                            </div>
+                          </div>
+                        </div>
+                      ) : null}
+
+                      {/* File Upload Config */}
+                      {question?.type === "file" &&
+                      question?.fileUploadConfig ? (
+                        <div className="ps-4 mt-3 border-start border-secondary border-4">
+                          <div className="text-secondary">
+                            <strong className="text-dark d-block mb-2">
+                              File Upload Settings
+                            </strong>
+                            <div className="ms-3">
+                              <div>
+                                <strong>Allow only specific file types:</strong>{" "}
+                                {question?.fileUploadConfig?.restrictFileTypes
+                                  ? "Yes"
+                                  : "No"}
+                              </div>
+                              {question?.fileUploadConfig?.restrictFileTypes &&
+                              question?.fileUploadConfig?.allowedFileTypes
+                                ?.length > 0 ? (
+                                <div>
+                                  <strong>Allowed File Types:</strong>{" "}
+                                  {question?.fileUploadConfig?.allowedFileTypes.join(
+                                    ", "
+                                  )}
+                                </div>
+                              ) : null}
+                              <div>
+                                <strong>Max File Size:</strong>{" "}
+                                {question?.fileUploadConfig?.maxFileSize}
+                              </div>
                             </div>
                           </div>
                         </div>
