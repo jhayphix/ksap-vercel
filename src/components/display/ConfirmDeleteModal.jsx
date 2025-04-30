@@ -16,8 +16,11 @@ const ConfirmDeleteModal = ({ itemName, onConfirm, onCancel }) => {
   return (
     <div>
       <p>
-        To confirm deletion, type " <strong>{itemName}</strong> " exactly as it
-        appears:
+        To confirm deletion, type{" "}
+        <span className="bg_danger_light text_danger rounded px-2 fw-medium">
+          {itemName}
+        </span>{" "}
+        exactly as it appears:
       </p>
       <input
         type="text"
