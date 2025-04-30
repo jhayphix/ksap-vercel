@@ -29,7 +29,9 @@ const ConfirmDeleteModal = ({ itemName, onConfirm, onCancel }) => {
         }}
         placeholder="Enter name"
       />
-      {error && <p className="text-danger mt-2">{error}</p>}
+      {error && (
+        <p className="text-danger bg_danger_light px-2 rounded mt-2">{error}</p>
+      )}
 
       <div className="mt-3 d-flex justify-content-end">
         <button className="btn btn-outline-light me-2" onClick={onCancel}>
