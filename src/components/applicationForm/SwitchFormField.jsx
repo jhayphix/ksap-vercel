@@ -1,3 +1,5 @@
+import FileUploadField from "@components/applicationForm/FileUploadField";
+
 const SwitchFormField = ({
   hasError,
   question,
@@ -16,6 +18,17 @@ const SwitchFormField = ({
         value={applicationFormData?.[questionId]?.response ?? ""}
         onChange={handleFormChange(thisSection, question, questionIndex)}
         required={question?.required}
+      />
+    );
+  } else if (question?.type === "file") {
+    return (
+      <FileUploadField
+        question={question}
+        questionIndex={questionIndex}
+        section={thisSection}
+        formData={applicationFormData}
+        onChange={handleFormChange}
+        hasError={hasError}
       />
     );
   } else if (question?.type === "select") {

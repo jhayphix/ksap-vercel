@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { ConfigContext } from "@contexts/ConfigContextProvider";
-import TextAreaToList from "./TextAreaToList";
+import TextAreaToList from "@components/dynamicForm/switchFields/TextAreaToList.jsx";
 
 const QuickSwitchFormFields = ({
   fieldType = "text",

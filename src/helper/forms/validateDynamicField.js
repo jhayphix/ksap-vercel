@@ -16,7 +16,9 @@ const validateDynamicField = (question, value) => {
   }
 
   const processedValue = Array.isArray(value)
-    ? value.map((v) => v?.trim()).filter(Boolean) // Trim and remove empty values
+    ? value?.map((v) => v?.trim())?.filter(Boolean) // Trim and remove empty values
+    : question?.type === "file"
+    ? value
     : value?.trim();
 
   let hasError = false;
@@ -32,7 +34,7 @@ const validateDynamicField = (question, value) => {
   } else if (hasValidation) {
     if (
       regexPattern &&
-      regexPattern.trim() !== "" &&
+      regexPattern?.trim() !== "" &&
       typeof processedValue === "string"
     ) {
       // ✅ Remove surrounding slashes if regex is stored as a string
