@@ -135,8 +135,26 @@ const FileUploadField = ({
       )}
 
       {/* Show file name for other files */}
-      {!previewUrl && fileResponse instanceof File && (
+      {/* {!previewUrl && fileResponse instanceof File && (
         <div className="mt-2 text-muted small">{fileResponse?.name}</div>
+      )} */}
+
+      {/* Preview Word/Excel or other files as download link */}
+      {!previewUrl && fileResponse instanceof File && (
+        <div className="mt-2 text-muted small">
+          <i className="bi bi-file-earmark-text me-1"></i>{" "}
+          {/* Bootstrap icon or replace with any */}
+          {fileResponse?.name}
+          <br />
+          <a
+            href={URL.createObjectURL(fileResponse)}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="small text-primary"
+          >
+            Download Uploaded File
+          </a>
+        </div>
       )}
 
       {/* File config info */}
