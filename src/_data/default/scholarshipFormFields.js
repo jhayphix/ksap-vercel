@@ -89,7 +89,7 @@ export const scholarshipFormSections = [
         label: "Eligibility - Year of Study",
         isRequired: true,
         hasOptions: true,
-        options: [1, 2, 3, 4, 5, 6],
+        options: ["1", "2", "3", "4", "5", "6"],
         disabled: false,
         placeholder: "Tick the eligibility years of study",
         regexKey: "list",

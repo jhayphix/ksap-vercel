@@ -97,7 +97,7 @@ const QuickSwitchFormFields = ({
                     target: { name: fieldKey, value: newValue },
                   });
                 }}
-              />{" "}
+              />
               {option}
             </label>
           </div>
