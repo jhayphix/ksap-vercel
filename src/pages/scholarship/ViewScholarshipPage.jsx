@@ -37,8 +37,6 @@ const ViewScholarshipPage = () => {
   const scholarshipIsLoading = scholarshipStatus?.isLoading;
   const scholarshipErrorMessage = scholarshipStatus?.error;
 
-  console.log("scholarshipData: ", scholarshipData);
-
   return (
     <PageTransition effect={viewScholarshipPageEffect}>
       <div>
@@ -82,7 +80,7 @@ const ViewScholarshipPage = () => {
                   style={{ fontSize: "1rem" }}
                 />
                 {authStatus?.isUserAdmin ? (
-                  " "
+                  <div></div>
                 ) : (
                   <div className="row centering">
                     <ApplyButton

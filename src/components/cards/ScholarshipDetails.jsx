@@ -4,8 +4,12 @@ import SectionHeaderCard from "@components/cards/SectionHeaderCard";
 const ScholarshipDetails = ({ scholarshipData, className }) => {
   const { requirements, applicationSections } = scholarshipData || {}; // Ensure scholarshipData is not undefined
 
+  const applicationSectionsLength = applicationSections?.length;
+
+  console.log("applicationSections: ", applicationSections);
+
   const getSectionLabel = (sectionIndex) => {
-    return `Section ${sectionIndex + 1} of ${applicationSections?.length}`;
+    return `Section ${sectionIndex + 1} of ${applicationSectionsLength}`;
   };
   return (
     <div className={`${className} px-0`}>
@@ -32,7 +36,7 @@ const ScholarshipDetails = ({ scholarshipData, className }) => {
       </div>
       <div className="rounded">
         {/* Render Fields Dynamically (Without Description) */}
-        {applicationSections?.length > 0 ? (
+        {applicationSectionsLength > 0 ? (
           <>
             {applicationSections?.map((section, sectionIndex) => (
               <div key={sectionIndex} className="mb-5">
@@ -58,6 +62,24 @@ const ScholarshipDetails = ({ scholarshipData, className }) => {
                           {question?.required ? "*" : null}
                         </span>
                       </div>
+
+                      {question?.validation ? (
+                        <div className="ps-4 mt-3 border-start border-success border-4">
+                          <div className="text-success">
+                            <strong>Regex Pattern:</strong>{" "}
+                            {question?.regex?.pattern}
+                          </div>
+                          <div className="text-success">
+                            <strong>Comparism Operator:</strong>{" "}
+                            {question?.regex?.comparismOperator}
+                          </div>
+                          <div className="text-success">
+                            <strong>Error Message</strong> "
+                            {question?.regex?.errorMessage}"
+                          </div>
+                        </div>
+                      ) : null}
+
                       {question?.validation ? (
                         <div className="ps-4 mt-3 border-start border-success border-4">
                           <div className="text-success">

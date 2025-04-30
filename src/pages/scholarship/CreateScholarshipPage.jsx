@@ -164,11 +164,6 @@ const CreateScholarshipPage = () => {
     });
   };
 
-  console.log(
-    "applicationSections: ",
-    applicationSections[0]?.sectionQuestions[0]
-  );
-
   const showClearFormModal = () => {
     setShowModal({
       isActive: true,
@@ -206,8 +201,6 @@ const CreateScholarshipPage = () => {
       description: cleanedDescription,
       applicationSections: applicationSections,
     };
-
-    console.log("dataToSave: ", dataToSave);
 
     try {
       const response = await postRequest(SCHOLARSHIPS_API_REF, dataToSave);
