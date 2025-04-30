@@ -156,8 +156,22 @@ const DynamicFormBuilder = ({ className, setFields, applicationSections }) => {
   const updateField = (sectionIndex, questionIndex, key, value, question) => {
     const newSections = [...applicationSections];
 
-    if (key === "type" && !optionFieldTypes?.includes(value)) {
-      question.options = []; // Reset options when changing to non-option applicationSections
+    // Reset options if type is changed and the new type is not an option field
+    if (key === "type") {
+      if (!optionFieldTypes?.includes(value)) {
+        question.options = [];
+      }
+
+      // Handle fileUploadConfig init/reset when switching to/from file type
+      if (value === "file") {
+        question.fileUploadConfig = {
+          restrictFileTypes: false,
+          allowedFileTypes: [],
+          maxFileSize: "5MB",
+        };
+      } else {
+        question.fileUploadConfig = {};
+      }
     }
 
     if (questionIndex === null) {
@@ -167,6 +181,7 @@ const DynamicFormBuilder = ({ className, setFields, applicationSections }) => {
     }
 
     setFields(newSections);
+    console.log("Question: ", question?.fileUploadConfig);
   };
 
   // ::::::::::::::::::::: CRUD QUESTIONS
@@ -199,14 +214,14 @@ const DynamicFormBuilder = ({ className, setFields, applicationSections }) => {
         options: [],
       };
 
-        // If the question type is 'file', initialize fileUploadConfig
-  if (newQuestion.type === "file") {
-    newQuestion.fileUploadConfig = {
-      restrictFileTypes: false,
-      allowedFileTypes: [],
-      maxFileSize: ""
-    };
-  }
+      // If the question type is 'file', initialize fileUploadConfig
+      if (newQuestion.type === "file") {
+        newQuestion.fileUploadConfig = {
+          restrictFileTypes: false,
+          allowedFileTypes: [],
+          maxFileSize: "",
+        };
+      }
 
       // Sort the updated list
       newSections[sectionIndex].sectionQuestions = [
@@ -328,7 +343,10 @@ const DynamicFormBuilder = ({ className, setFields, applicationSections }) => {
   // ::::::::::::::::::::: RETURN
 
   return (
-    <div id="dynamicFormBuilder" className={`${className} has_dropdown_light`}>
+    <div
+      id="dynamicFormBuilderId"
+      className={`${className} has_dropdown_light`}
+    >
       {applicationSections?.map((section, sectionIndex) => (
         <div key={sectionIndex} className="mb-5 pb-3 rounded">
           <DynamicFormSection

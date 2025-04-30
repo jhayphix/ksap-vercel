@@ -7,46 +7,48 @@ const DynamicFileConfig = ({
   const questionType = question?.type;
 
   return (
-    <div>
+    <div id="dynamicFormBuilderShowLabelId">
       {/* File Upload Config */}
       {questionType === "file" && (
         <div className="mt-4">
-          <h6 className="mb-3">File Upload Configuration</h6>
-          <div className="form-check form-switch mb-3">
-            <input
-              className="form-check-input"
-              type="checkbox"
-              id={`restrictFileTypesSwitch-${sectionIndex}-${questionIndex}`}
-              checked={question?.fileUploadConfig?.restrictFileTypes || false}
-              onChange={(e) =>
-                updateField(
-                  sectionIndex,
-                  questionIndex,
-                  "fileUploadConfig",
-                  {
-                    ...question.fileUploadConfig,
-                    restrictFileTypes: e.target.checked,
-                    allowedFileTypes: e.target.checked
-                      ? question?.fileUploadConfig?.allowedFileTypes || []
-                      : [],
-                  },
-                  question
-                )
-              }
-            />
+          <h5 className="mb-3 text-center">File Upload Configuration</h5>
+          <div className="d-flex align-items-center justify-content-start mb-4">
             <label
-              className="form-check-label"
+              className="form-check-label me-3"
               htmlFor={`restrictFileTypesSwitch-${sectionIndex}-${questionIndex}`}
             >
               Allow only specific file types
             </label>
+            <div className="form-check form-switch m-0">
+              <input
+                className="form-check-input"
+                type="checkbox"
+                id={`restrictFileTypesSwitch-${sectionIndex}-${questionIndex}`}
+                checked={question?.fileUploadConfig?.restrictFileTypes || false}
+                onChange={(e) =>
+                  updateField(
+                    sectionIndex,
+                    questionIndex,
+                    "fileUploadConfig",
+                    {
+                      ...question.fileUploadConfig,
+                      restrictFileTypes: e.target.checked,
+                      allowedFileTypes: e.target.checked
+                        ? question?.fileUploadConfig?.allowedFileTypes || []
+                        : [],
+                    },
+                    question
+                  )
+                }
+              />
+            </div>
           </div>
 
           {question?.fileUploadConfig?.restrictFileTypes && (
             <div className="mb-3">
-              <label className="form-label">Allowed File Types</label>
+              <h6 className="form-label mb-3">Allowed File Types</h6>
               <div className="d-flex gap-3">
-                {["pdf", "document", "image"].map((type) => (
+                {["Pdf", "Document", "Image"].map((type) => (
                   <div key={type} className="form-check">
                     <input
                       className="form-check-input"
@@ -77,7 +79,7 @@ const DynamicFileConfig = ({
                       className="form-check-label"
                       htmlFor={`fileType-${type}-${sectionIndex}-${questionIndex}`}
                     >
-                      {type.toUpperCase()}
+                      {type}
                     </label>
                   </div>
                 ))}
@@ -85,8 +87,8 @@ const DynamicFileConfig = ({
             </div>
           )}
 
-          <div className="mb-3">
-            <label className="form-label">Maximum File Size</label>
+          <div className="mb-3 d-flex">
+            <label className="form-label me-2">Maximum File Size</label>
             <select
               className="form-select"
               value={question?.fileUploadConfig?.maxFileSize || ""}
@@ -106,9 +108,9 @@ const DynamicFileConfig = ({
               <option value="" disabled>
                 Select max file size
               </option>
-              <option value="1Mb">1 MB</option>
-              <option value="5Mb">5 MB</option>
-              <option value="10Mb">10 MB</option>
+              <option value="1MB">1 MB</option>
+              <option value="5MB">5 MB</option>
+              <option value="10MB">10 MB</option>
             </select>
           </div>
         </div>

@@ -5,13 +5,13 @@
   }
 
 
-#dynamicFormBuilder input, #dynamicFormBuilder select, #dynamicFormBuilder textarea {
+#dynamicFormBuilderId input, #dynamicFormBuilderId select, #dynamicFormBuilderId textarea {
     border: none;
     border-radius: none;
     border-bottom: 2px solid var(--gray_color_3);
 }
 
-#dynamicFormBuilder input:focus, #dynamicFormBuilder select:focus, #dynamicFormBuilder textarea:focus {
+#dynamicFormBuilderId input:focus, #dynamicFormBuilderId select:focus, #dynamicFormBuilderId textarea:focus {
     outline: none !important;
     box-shadow: none !important;
     border-color: var(--secondary_color) !important;
@@ -19,11 +19,15 @@
 }
 
 
-#dynamicFormBuilder label {
+#dynamicFormBuilderId label {
     display: none;
 }
+#dynamicFormBuilderShowLabelId label {
+    display: inline;
+    font-weight: 400;
+}
 
-#dynamicFormBuilder label.show_label {
+#dynamicFormBuilderId label.show_label {
     display: inline-block;
 }
 
