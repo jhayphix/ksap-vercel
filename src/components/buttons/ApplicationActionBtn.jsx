@@ -9,6 +9,8 @@ import APIService from "@src/api/exportAPIService";
 import { ConfigContext } from "@contexts/ConfigContextProvider";
 import { ApplicationContext } from "@contexts/ApplicationContextProvider";
 
+import ConfirmDeleteModal from "@components/display/ConfirmDeleteModal";
+
 const ApplicationActionBtn = ({
   applicationId,
   isDeadlineDue,
@@ -26,47 +28,112 @@ const ApplicationActionBtn = ({
 
   const navigate = useNavigate();
 
+  //   const showDeleteApplicationModal = () => {
+  //     setShowModal({
+  //       isActive: true,
+  //       title: `Delete Application`,
+  //       message: `This will delete application for "${applicationScholarshipName}"?`,
+  //       action: deleteApplicationHandler,
+  //     });
+  //   };
+
+  //   const deleteApplicationHandler = async () => {
+  //     setShowModal({ isActive: false });
+
+  //     try {
+  //       const success = await deleteRequest(
+  //         APPLICATIONS_API_REF,
+  //         applicationId,
+  //         DATABASE_TABLE_NAMES?.APPLICATIONS_TABLE_NAME
+  //       );
+
+  //       if (success) {
+  //         setShowFlashMessage({
+  //           isActive: true,
+  //           message: "Application Deleted Successfully",
+  //           type: "success",
+  //         });
+  //         navigate(myApplicationsRoute?.path);
+  //         loadApplications();
+  //       } else {
+  //         setShowFlashMessage({
+  //           isActive: true,
+  //           message: "Failed to delete scholarship.",
+  //           type: "danger",
+  //         });
+  //       }
+  //     } catch (error) {
+  //       setShowFlashMessage({
+  //         isActive: true,
+  //         message: `Error deleting scholarship. Please try again:`,
+  //         type: "error",
+  //       });
+  //     }
+  //   };
+
   const showDeleteApplicationModal = () => {
     setShowModal({
       isActive: true,
       title: `Delete Application`,
-      message: `This will delete application for "${applicationScholarshipName}"?`,
-      action: deleteApplicationHandler,
+      message: (
+        <ConfirmDeleteModal
+          itemName={applicationScholarshipName}
+          onConfirm={async (confirmed) => {
+            if (!confirmed) return;
+
+            try {
+              const success = await deleteRequest(
+                APPLICATIONS_API_REF,
+                applicationId,
+                DATABASE_TABLE_NAMES?.APPLICATIONS_TABLE_NAME
+              );
+              setShowModal({ isActive: false });
+              if (success) {
+                setShowFlashMessage({
+                  isActive: true,
+                  message: "Application Deleted Successfully",
+                  type: "success",
+                });
+                navigate(myApplicationsRoute?.path);
+                loadApplications();
+              } else {
+                setShowModal({
+                  isActive: true,
+                  title: "Delete Application",
+                  message: (
+                    <ConfirmDeleteModal
+                      itemName={applicationScholarshipName}
+                      onConfirm={() => setShowModal({ isActive: false })}
+                      onCancel={() => setShowModal({ isActive: false })}
+                    />
+                  ),
+                });
+              }
+            } catch (error) {
+              setShowModal({
+                isActive: true,
+                title: "Delete Application",
+                message: (
+                  <div>
+                    <p className="text-danger mb-3">
+                      Error deleting Application: {error.message}
+                    </p>
+                    <ConfirmDeleteModal
+                      itemName={applicationScholarshipName}
+                      onConfirm={() => setShowModal({ isActive: false })}
+                      onCancel={() => setShowModal({ isActive: false })}
+                    />
+                  </div>
+                ),
+                action: () => {},
+              });
+            }
+          }}
+          onCancel={() => setShowModal({ isActive: false })}
+        />
+      ),
+      action: null,
     });
-  };
-
-  const deleteApplicationHandler = async () => {
-    setShowModal({ isActive: false });
-
-    try {
-      const success = await deleteRequest(
-        APPLICATIONS_API_REF,
-        applicationId,
-        DATABASE_TABLE_NAMES?.APPLICATIONS_TABLE_NAME
-      );
-
-      if (success) {
-        setShowFlashMessage({
-          isActive: true,
-          message: "Application Deleted Successfully",
-          type: "success",
-        });
-        navigate(myApplicationsRoute?.path);
-        loadApplications();
-      } else {
-        setShowFlashMessage({
-          isActive: true,
-          message: "Failed to delete scholarship.",
-          type: "danger",
-        });
-      }
-    } catch (error) {
-      setShowFlashMessage({
-        isActive: true,
-        message: `Error deleting scholarship. Please try again:`,
-        type: "error",
-      });
-    }
   };
 
   return (

@@ -16,7 +16,7 @@ const ConfirmDeleteModal = ({ itemName, onConfirm, onCancel }) => {
   return (
     <div>
       <p>
-        To confirm deletion, type <strong>{itemName}</strong> exactly as it
+        To confirm deletion, type " <strong>{itemName}</strong> " exactly as it
         appears:
       </p>
       <input
