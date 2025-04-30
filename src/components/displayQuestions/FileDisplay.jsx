@@ -1,14 +1,16 @@
 import { Link } from "react-router-dom";
 
 const FileDisplay = ({ question = {}, className }) => {
+  const questionResponse = question?.response;
+
   return (
     <div className={`${className}`}>
       <p className="text mb-2 text-muted" style={{ fontWeight: "600" }}>
         {question?.label}
       </p>
-      {question?.response ? (
+      {questionResponse ? (
         <Link
-          to={question?.response}
+          to={questionResponse}
           target="_blank"
           rel="noopener noreferrer"
           className="text-primary fw-bold text-decoration-underline"
