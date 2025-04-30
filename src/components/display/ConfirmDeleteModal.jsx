@@ -27,7 +27,7 @@ const ConfirmDeleteModal = ({ itemName, onConfirm, onCancel }) => {
           setInputValue(e.target.value);
           setError(null);
         }}
-        placeholder="Enter name"
+        placeholder="Enter name here"
       />
       {error && (
         <p className="text-danger bg_danger_light px-2 rounded mt-2">{error}</p>
