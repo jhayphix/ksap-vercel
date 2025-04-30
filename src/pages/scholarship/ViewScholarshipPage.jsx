@@ -37,6 +37,8 @@ const ViewScholarshipPage = () => {
   const scholarshipIsLoading = scholarshipStatus?.isLoading;
   const scholarshipErrorMessage = scholarshipStatus?.error;
 
+  console.log("scholarshipData: ", scholarshipData);
+
   return (
     <PageTransition effect={viewScholarshipPageEffect}>
       <div>

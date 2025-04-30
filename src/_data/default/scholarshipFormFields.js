@@ -15,7 +15,7 @@ export const scholarshipFormSections = [
         hasOptions: false,
         disabled: false,
         placeholder: "Enter scholarship name",
-        regexKey: "name",
+        regexKey: "generalText",
       },
       {
         sectionId: 1,
@@ -26,7 +26,7 @@ export const scholarshipFormSections = [
         hasOptions: false,
         disabled: false,
         placeholder: "Enter scholarship short name",
-        regexKey: "name",
+        regexKey: "generalText",
       },
       {
         sectionId: 1,
