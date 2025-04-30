@@ -3,12 +3,12 @@ import { ConfigContext } from "@contexts/ConfigContextProvider";
 
 const DefaultModal = () => {
   // ---------------------------- Context
-  const { showModel, setShowModal } = useContext(ConfigContext);
+  const { showModal, setShowModal } = useContext(ConfigContext);
 
-  const modalIsActive = showModel?.isActive;
-  const modalTitle = showModel?.title;
-  const modalMessage = showModel?.message;
-  const modalAction = showModel?.action;
+  const modalIsActive = showModal?.isActive;
+  const modalTitle = showModal?.title;
+  const modalMessage = showModal?.message;
+  const modalAction = showModal?.action;
 
   const handleCloseModal = () => {
     setShowModal((prev) => ({
@@ -40,7 +40,7 @@ const DefaultModal = () => {
             width: "100%",
             height: "100%",
           }}
-          onClick={handleCloseModal} // Close modal on backdrop click
+          // onClick={handleCloseModal}
         >
           <div
             className="modal-dialog modal-dialog-centered"
@@ -58,22 +58,32 @@ const DefaultModal = () => {
                   onClick={handleCloseModal} // Close modal
                 ></button>
               </div>
-              <div className="modal-body">{modalMessage}</div>
+              <div className="modal-body">
+                {typeof modalMessage === "string" ? (
+                  <p>{modalMessage}</p>
+                ) : (
+                  modalMessage
+                )}
+              </div>
               <div className="modal-footer">
-                <button
-                  type="button"
-                  className="btn btn-outline-light"
-                  onClick={handleCloseModal}
-                >
-                  Cancel
-                </button>
-                <button
-                  type="button"
-                  className="btn btn-danger"
-                  onClick={handleModalAction}
-                >
-                  Confirm
-                </button>
+                {modalAction && (
+                  <>
+                    <button
+                      type="button"
+                      className="btn btn-outline-light"
+                      onClick={handleCloseModal}
+                    >
+                      Cancel
+                    </button>
+                    <button
+                      type="button"
+                      className="btn btn-danger"
+                      onClick={handleModalAction}
+                    >
+                      Confirm
+                    </button>
+                  </>
+                )}
               </div>
             </div>
           </div>

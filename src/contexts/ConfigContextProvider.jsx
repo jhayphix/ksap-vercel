@@ -16,7 +16,7 @@ export const ConfigContext = createContext({
   // ---------------------------- States
   showFlashMessage: {},
   setShowFlashMessage: () => {},
-  showModel: {},
+  showModal: {},
   setShowModal: () => {},
 
   // ---------------------------- Functions
@@ -67,7 +67,7 @@ const ConfigContextProvider = ({ children }) => {
     message: "Flash Message",
     type: "secondary",
   });
-  const [showModel, setShowModal] = useState({
+  const [showModal, setShowModal] = useState({
     isActive: false,
     title: "Modal Title",
     message: "Modal Message",
@@ -122,7 +122,7 @@ const ConfigContextProvider = ({ children }) => {
     // ---------------------------- States
     showFlashMessage,
     setShowFlashMessage,
-    showModel,
+    showModal,
     setShowModal,
 
     // ---------------------------- Functions
