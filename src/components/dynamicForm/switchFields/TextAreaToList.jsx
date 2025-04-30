@@ -16,7 +16,9 @@ const TextAreaToList = ({ props }) => {
   } = props;
 
   const [inputValue, setInputValue] = useState("");
-  const [list, setList] = useState(Array.isArray(fieldValue) ? fieldValue : []);
+  const [list, setList] = useState(
+    Array.isArray(fieldValue) ? fieldValue : ["This is a default"]
+  );
 
   useEffect(() => {
     if (
@@ -25,6 +27,8 @@ const TextAreaToList = ({ props }) => {
       fieldValue?.length < 1
     ) {
       setList([]);
+    }else {
+      setList(fieldValue)
     }
   }, [fieldValue]);
 
