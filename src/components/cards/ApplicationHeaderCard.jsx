@@ -1,15 +1,29 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+
+import { ConfigContext } from "@contexts/ConfigContextProvider";
+
 import ApplicationStatusTag from "@components/tags/ApplicationStatusTag";
 import DefaultBadge from "@components/tags/DefaultBadge";
+import ApplicationActionBtn from "@components/buttons/ApplicationActionBtn";
 
 const ApplicationHeaderCard = ({ applicantApplication }) => {
   // ::::::::::::::::::::: CONTEXTS AND STATES
+  const { HELPER } = useContext(ConfigContext);
   const [loadedImage, setLoadedImage] = useState("");
 
   // ::::::::::::::::::::: BASE VAR
 
   const scholarship = applicantApplication?.scholarship || {};
+  const scholarshipDeadline = scholarship?.deadline;
   const thisApplicant = applicantApplication?.applicant || {};
+
+  const applicationId = applicantApplication?.id;
+  const isDeadlineDue = HELPER?.isDeadlineDue(scholarshipDeadline);
+  const lastCompletedSectionIndex =
+    applicantApplication?.progress?.lastCompletedSectionIndex;
+
+  const thisApplicationScholarshipName =
+    applicantApplication?.scholarship?.name;
 
   // ::::::::::::::::::::: PRELOAD IMAGE LOGIC
   const photoURL = thisApplicant?.authPhotoURL; // Pass in the real profile picture url
@@ -62,6 +76,14 @@ const ApplicationHeaderCard = ({ applicantApplication }) => {
             {scholarship?.academicYear} Academic Year Application
           </p>
           <ApplicationStatusTag applicantApplication={applicantApplication} />
+          <div className="mt-4 d-inline-block">
+            <ApplicationActionBtn
+              applicationId={applicationId}
+              isDeadlineDue={isDeadlineDue}
+              lastCompletedSectionIndex={lastCompletedSectionIndex}
+              applicationScholarshipName={thisApplicationScholarshipName}
+            />
+          </div>
         </div>
         <div className="ms-3 d-none d-md-block">
           <div

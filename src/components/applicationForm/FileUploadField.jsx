@@ -17,6 +17,8 @@ const FileUploadField = ({
 
   const fileResponse = formData?.[questionId]?.response;
 
+  console.log("File Response: ", fileResponse);
+
   // Generate preview for images and PDF
   useEffect(() => {
     if (fileResponse instanceof File) {
