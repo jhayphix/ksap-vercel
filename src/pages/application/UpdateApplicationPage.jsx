@@ -348,7 +348,7 @@ const UpdateApplicationPage = () => {
     }
   };
 
-  // On Create Application on Submit
+  // Update application submit
   const submitUpdateApplication = async () => {
     const updatedSection = scholarshipApplicationSections
       ?.map((section) => ({
@@ -360,13 +360,6 @@ const UpdateApplicationPage = () => {
           .filter(Boolean),
       }))
       ?.find((section) => section?.sectionId === thisSection?.id);
-
-    // const responseSections = applicantApplication?.responseSections?.map(
-    //   (section) =>
-    //     section?.sectionId === updatedSection?.sectionId
-    //       ? updatedSection
-    //       : section
-    // );
 
     // Ensure all scholarship sections exist in responseSections
     const responseSections = scholarshipApplicationSections.map((section) => {

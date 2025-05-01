@@ -8,6 +8,49 @@ export const ADMINS_API_REF = `${BASE_API_REF}/admins`;
 export const APPLICANTS_API_REF = `${BASE_API_REF}/applicants`;
 export const EXTERNAL_SCHOLARSHIPS_API_REF = `${BASE_API_REF}/external-scholarships`;
 
+/**
+ * Helper to detect if an object contains any File or Blob.
+ */
+const containsFile = (obj) => {
+  if (obj instanceof File || obj instanceof Blob) return true;
+
+  if (Array.isArray(obj)) {
+    return obj.some(containsFile);
+  }
+
+  if (typeof obj === "object" && obj !== null) {
+    return Object.values(obj).some(containsFile);
+  }
+
+  return false;
+};
+
+/**
+ * Recursively converts a nested object to FormData.
+ * @param {object} obj - The object to convert.
+ * @param {FormData} formData - The FormData instance.
+ * @param {string} [parentKey] - The prefix for nested keys.
+ */
+const objectToFormData = (obj, formData = new FormData(), parentKey = "") => {
+  if (obj instanceof File || obj instanceof Blob) {
+    formData.append(parentKey, obj);
+  } else if (Array.isArray(obj)) {
+    obj.forEach((value, index) => {
+      const key = `${parentKey}[${index}]`;
+      objectToFormData(value, formData, key);
+    });
+  } else if (typeof obj === "object" && obj !== null) {
+    Object.entries(obj).forEach(([key, value]) => {
+      const fullKey = parentKey ? `${parentKey}[${key}]` : key;
+      objectToFormData(value, formData, fullKey);
+    });
+  } else {
+    formData.append(parentKey, obj ?? "");
+  }
+
+  return formData;
+};
+
 
 /**
  * Sends a GET request to retrieve data from the API.
@@ -29,13 +72,20 @@ export const getRequest = async (url) => {
 
 /**
  * Sends a POST request to create a new resource.
+ * Automatically handles multipart/form-data if a File or Blob is present.
  * @param {string} url - The API endpoint.
- * @param {object} data - The data to be sent.
+ * @param {object|FormData} data - The data to be sent.
  * @returns {Promise<object>} - The response data.
  */
 export const postRequest = async (url, data) => {
   try {
-    const response = await axios.post(url, data);
+    const isMultipart = containsFile(data);
+    const payload = isMultipart ? objectToFormData(data) : data;
+    const headers = {
+      "Content-Type": isMultipart ? "multipart/form-data" : "application/json",
+    };
+
+    const response = await axios.post(url, payload, { headers });
     return response.data;
   } catch (error) {
     console.error("POST request error:", error);
@@ -45,20 +95,29 @@ export const postRequest = async (url, data) => {
 
 /**
  * Sends a PUT request to update an existing resource.
+ * Automatically handles multipart/form-data if a File or Blob is present.
+ * Sends a PUT request and handles file upload automatically.
  * @param {string} url - The API endpoint.
  * @param {string} id - The ID of the resource.
- * @param {object} data - The updated data.
+ * @param {object|FormData} data - The updated data.
  * @returns {Promise<object>} - The response data.
  */
 export const putRequest = async (url, id, data) => {
   try {
-    const response = await axios.put(`${url}/${id}`, data);
+    const isMultipart = containsFile(data);
+    const payload = isMultipart ? objectToFormData(data) : data;
+    const headers = {
+      "Content-Type": isMultipart ? "multipart/form-data" : "application/json",
+    };
+
+    const response = await axios.put(`${url}/${id}`, payload, { headers });
     return response.data;
   } catch (error) {
     console.error("PUT request error:", error);
     throw error;
   }
 };
+
 
 /**
  * Sends a DELETE request to remove a resource.
