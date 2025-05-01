@@ -361,7 +361,6 @@ const UpdateApplicationPage = () => {
       }))
       ?.find((section) => section?.sectionId === thisSection?.id);
 
-    // Ensure all scholarship sections exist in responseSections
     const responseSections = scholarshipApplicationSections.map((section) => {
       const existingSection = applicantApplication?.responseSections?.find(
         (s) => s.sectionId === section.id
@@ -369,13 +368,13 @@ const UpdateApplicationPage = () => {
 
       return existingSection
         ? existingSection.sectionId === updatedSection?.sectionId
-          ? updatedSection // Update existing section
+          ? updatedSection
           : existingSection
         : {
             id: uuidv4(),
             sectionId: section.id,
             sectionTitle: section.sectionTitle,
-            responses: [], // Empty responses for new section
+            responses: [],
           };
     });
 
@@ -396,12 +395,11 @@ const UpdateApplicationPage = () => {
       isCompleted: completedSections.length === totalApplicationSections,
     };
 
-    // const { scholarship, ...withOutScholarship } = applicantApplication;
     const applicationDataToSave = {
       ...applicantApplicationOnly,
       updatedAt: HELPER?.getISODate(new Date()),
       progress,
-      responseSections: responseSections,
+      responseSections,
     };
 
     setUpdateLoading(true);
@@ -411,6 +409,7 @@ const UpdateApplicationPage = () => {
         loggedInApplicantId,
         scholarshipId
       );
+
       const response =
         existingApplication &&
         (await putRequest(
@@ -452,6 +451,7 @@ const UpdateApplicationPage = () => {
       setUpdateLoading(false);
     }
   };
+  
 
   return (
     <PageTransition effect={myApplicationsPageEffect}>
