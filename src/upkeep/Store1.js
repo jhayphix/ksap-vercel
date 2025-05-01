@@ -406,8 +406,6 @@ const UpdateApplicationPage = () => {
 
     setUpdateLoading(true);
 
-    console.log("applicationDataToSave: ", applicationDataToSave);
-
     try {
       const existingApplication = await getExistingApplication(
         loggedInApplicantId,

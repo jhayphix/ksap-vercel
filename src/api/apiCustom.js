@@ -1,7 +1,7 @@
 import axios from "axios";
 
-const BASE_API_REF = "https://ksap-api.onrender.com/api";
-// const BASE_API_REF = "http://localhost:5000/api";
+// const BASE_API_REF = "https://ksap-api.onrender.com/api";
+const BASE_API_REF = "http://localhost:5000/api";
 export const SCHOLARSHIPS_API_REF = `${BASE_API_REF}/scholarships`;
 export const APPLICATIONS_API_REF = `${BASE_API_REF}/applications`;
 export const ADMINS_API_REF = `${BASE_API_REF}/admins`;
@@ -48,6 +48,11 @@ const objectToFormData = (obj, formData = new FormData(), parentKey = "") => {
     formData.append(parentKey, obj ?? "");
   }
 
+  for (let pair of formData.entries()) {
+    console.log(`Object to form pair ${pair[0]}:`, pair[1]);
+  }
+  
+
   return formData;
 };
 
@@ -81,11 +86,22 @@ export const postRequest = async (url, data) => {
   try {
     const isMultipart = containsFile(data);
     const payload = isMultipart ? objectToFormData(data) : data;
-    const headers = {
-      "Content-Type": isMultipart ? "multipart/form-data" : "application/json",
-    };
+    const headers = isMultipart
+  ? {} // Let Axios/browser handle Content-Type with boundary
+  : { "Content-Type": "application/json" };
+
+
+    if (isMultipart) {
+      for (let [key, val] of payload.entries()) {
+        console.log("print payload key value: ", key, val);
+      }
+    }
+    console.log("Headers: ", headers)
+  
 
     const response = await axios.post(url, payload, { headers });
+
+    console.log("response", response)
     return response.data;
   } catch (error) {
     console.error("POST request error:", error);
@@ -106,9 +122,10 @@ export const putRequest = async (url, id, data) => {
   try {
     const isMultipart = containsFile(data);
     const payload = isMultipart ? objectToFormData(data) : data;
-    const headers = {
-      "Content-Type": isMultipart ? "multipart/form-data" : "application/json",
-    };
+    const headers = isMultipart
+  ? {} // Let Axios/browser handle Content-Type with boundary
+  : { "Content-Type": "application/json" };
+
 
     const response = await axios.put(`${url}/${id}`, payload, { headers });
     return response.data;

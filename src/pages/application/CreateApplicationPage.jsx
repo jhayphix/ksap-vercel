@@ -51,7 +51,7 @@ const CreateApplicationPage = () => {
   const pageParams = useParams();
   const scholarshipId = pageParams?.id;
 
-  const [loading, setLoading] = useState(false); // Loading state
+  
   useEffect(() => {
     if (scholarshipId) {
       getScholarship(scholarshipId);
@@ -70,6 +70,9 @@ const CreateApplicationPage = () => {
   const notOnLastSection = thisSectionIndex < totalApplicationSections - 1;
   const isOnLastSection = thisSectionIndex === totalApplicationSections - 1;
 
+  const [loading, setLoading] = useState(false); // Loading state
+  const [thereIsErrorWhileSubmitting, setThereIsErrorWhileSubmiting] =
+    useState(true);
   const [finalSubmit, setFinalSubmit] = useState(false); // Track submission
 
   const progressPercentage =
@@ -221,6 +224,9 @@ const CreateApplicationPage = () => {
   };
 
   const goToNextSection = async () => {
+    if (thereIsErrorWhileSubmitting) {
+      return;
+    }
     if (!thisFormStatus || !thisFormStatus?.isValid) {
       setShowFlashMessage({
         isActive: true,
@@ -315,6 +321,8 @@ const CreateApplicationPage = () => {
 
     setLoading(true);
 
+    console.log("dataToSave: ", dataToSave);
+
     try {
       const existingApplication = await getExistingApplication(
         loggedInApplicantId,
@@ -336,6 +344,7 @@ const CreateApplicationPage = () => {
         : await postRequest(APPLICATIONS_API_REF, dataToSave);
 
       if (response) {
+        setThereIsErrorWhileSubmiting(false);
         setShowFlashMessage({
           isActive: true,
           message: "Application saved successfully!",
@@ -350,6 +359,7 @@ const CreateApplicationPage = () => {
         }
       } else {
         setFinalSubmit(false);
+        setThereIsErrorWhileSubmiting(true);
         setShowFlashMessage({
           isActive: true,
           message: "Failed to save scholarship application. Please try again.",
@@ -358,6 +368,7 @@ const CreateApplicationPage = () => {
       }
     } catch (error) {
       console.error("Error submitting application:", error);
+      setThereIsErrorWhileSubmiting(true);
       setFinalSubmit(false);
       setShowFlashMessage({
         isActive: true,
