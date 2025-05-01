@@ -111,7 +111,7 @@ const FileUploadField = ({
 
       {/* Preview image */}
       {previewUrl && fileResponse?.type?.startsWith("image") && (
-        <div className="mt-2">
+        <div className="mt-2 text-center">
           <img
             src={previewUrl}
             alt="Preview"
