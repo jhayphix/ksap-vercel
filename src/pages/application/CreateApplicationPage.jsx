@@ -263,24 +263,33 @@ const CreateApplicationPage = () => {
   // On Create Application on Submit
   const submitCreateApplication = async () => {
     const completedSections = applicationSections
-      .filter((section) => thisFormError[section.id]?.isValid)
+      .filter((section) => thisFormError?.[section.id]?.isValid)
       .map((section) => section.id);
 
     const progress = {
       lastCompletedSection:
-        completedSections[completedSections?.length - 1] || null,
-      lastCompletedSectionIndex: completedSections?.length - 1,
+        completedSections[completedSections.length - 1] || null,
+      lastCompletedSectionIndex: completedSections.length - 1,
       completedSections,
       percentage: (completedSections.length / totalApplicationSections) * 100,
       isCompleted: completedSections.length === totalApplicationSections,
     };
 
+    const responseSections = applicationSections.map((section) => ({
+      id: uuidv4(),
+      sectionId: section.id,
+      sectionTitle: section.sectionTitle,
+      responses: section.sectionQuestions
+        .map((question) => applicationFormData?.[question?.id])
+        .filter(Boolean),
+    }));
+
     const dataToSave = {
       externalId: uuidv4(),
       applicantId: loggedInApplicantId,
+      scholarshipId: scholarshipData?.id,
       reviewedByAdminId: null,
       approvedByAdminId: null,
-      scholarshipId: scholarshipData?.id,
       isApproved: false,
       isPendingApproval: false,
       isDisapproved: false,
@@ -290,28 +299,21 @@ const CreateApplicationPage = () => {
       isDisqualified: false,
       isReviewed: false,
       reviewComment: null,
+      approvalComment: null,
       applicationScore: null,
       reviewedAcademicScore: null,
       applicationStatus: "Awaiting Review",
       reviewStatus: "Awaiting Review",
       approvalStatus: "Awaiting Approval",
-      approvalComment: null,
       reviewedAt: null,
       approvedAt: null,
       appliedAt: HELPER?.getISODate(new Date()),
       updatedAt: HELPER?.getISODate(new Date()),
       progress,
-      responseSections: applicationSections.map((section) => ({
-        id: uuidv4(),
-        sectionId: section.id,
-        sectionTitle: section.sectionTitle,
-        responses: section.sectionQuestions
-          .map((question) => applicationFormData[question?.id])
-          .filter(Boolean),
-      })),
+      responseSections,
     };
 
-    setLoading(true); // Start loading
+    setLoading(true);
 
     try {
       const existingApplication = await getExistingApplication(
@@ -319,25 +321,19 @@ const CreateApplicationPage = () => {
         scholarshipId
       );
 
-      let response;
-
-      if (
+      const isExisting =
         existingApplication &&
         !Array.isArray(existingApplication) &&
-        existingApplication.id
-      ) {
-        response = await putRequest(
-          APPLICATIONS_API_REF,
-          existingApplication.id,
-          dataToSave,
-          DATABASE_TABLE_NAMES?.APPLICATIONS_TABLE_NAME
-        );
-      } else if (
-        !existingApplication ||
-        (Array.isArray(existingApplication) && existingApplication.length === 0)
-      ) {
-        response = await postRequest(APPLICATIONS_API_REF, dataToSave);
-      }
+        existingApplication.id;
+
+      const response = isExisting
+        ? await putRequest(
+            APPLICATIONS_API_REF,
+            existingApplication.id,
+            dataToSave,
+            DATABASE_TABLE_NAMES?.APPLICATIONS_TABLE_NAME
+          )
+        : await postRequest(APPLICATIONS_API_REF, dataToSave);
 
       if (response) {
         setShowFlashMessage({
@@ -361,16 +357,18 @@ const CreateApplicationPage = () => {
         });
       }
     } catch (error) {
+      console.error("Error submitting application:", error);
       setFinalSubmit(false);
       setShowFlashMessage({
         isActive: true,
-        message: `Error saving application. Please try again.`,
+        message: "Error saving application. Please try again.",
         type: "danger",
       });
     } finally {
-      setLoading(false); // Stop loading
+      setLoading(false);
     }
   };
+  
 
   // Return
   return (
