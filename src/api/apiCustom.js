@@ -48,14 +48,8 @@ const objectToFormData = (obj, formData = new FormData(), parentKey = "") => {
     formData.append(parentKey, obj ?? "");
   }
 
-  for (let pair of formData.entries()) {
-    console.log(`Object to form pair ${pair[0]}:`, pair[1]);
-  }
-  
-
   return formData;
 };
-
 
 /**
  * Sends a GET request to retrieve data from the API.
@@ -87,27 +81,17 @@ export const postRequest = async (url, data) => {
     const isMultipart = containsFile(data);
     const payload = isMultipart ? objectToFormData(data) : data;
     const headers = isMultipart
-  ? {} // Let Axios/browser handle Content-Type with boundary
-  : { "Content-Type": "application/json" };
-
-
-    if (isMultipart) {
-      for (let [key, val] of payload.entries()) {
-        console.log("print payload key value: ", key, val);
-      }
-    }
-    console.log("Headers: ", headers)
-  
+      ? {} // Let Axios/browser handle Content-Type with boundary
+      : { "Content-Type": "application/json" };
 
     const response = await axios.post(url, payload, { headers });
-
-    console.log("response", response)
     return response.data;
   } catch (error) {
     console.error("POST request error:", error);
     throw error;
   }
 };
+
 
 /**
  * Sends a PUT request to update an existing resource.

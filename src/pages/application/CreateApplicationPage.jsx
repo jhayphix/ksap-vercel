@@ -72,7 +72,7 @@ const CreateApplicationPage = () => {
 
   const [loading, setLoading] = useState(false); // Loading state
   const [thereIsErrorWhileSubmitting, setThereIsErrorWhileSubmiting] =
-    useState(true);
+    useState(null);
   const [finalSubmit, setFinalSubmit] = useState(false); // Track submission
 
   const progressPercentage =
@@ -224,9 +224,6 @@ const CreateApplicationPage = () => {
   };
 
   const goToNextSection = async () => {
-    if (thereIsErrorWhileSubmitting) {
-      return;
-    }
     if (!thisFormStatus || !thisFormStatus?.isValid) {
       setShowFlashMessage({
         isActive: true,
@@ -238,8 +235,11 @@ const CreateApplicationPage = () => {
 
     try {
       await createApplicationController();
-      if (notOnLastSection) {
-        setSearchParams({ section: thisSectionIndex + 1 });
+
+      if (thereIsErrorWhileSubmitting === false) {
+        if (notOnLastSection) {
+          setSearchParams({ section: thisSectionIndex + 1 });
+        }
       }
     } catch (error) {
       setShowFlashMessage({

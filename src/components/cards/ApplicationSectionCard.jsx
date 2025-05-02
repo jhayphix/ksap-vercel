@@ -20,7 +20,7 @@ const ApplicationSectionCard = ({ applicationSection }) => {
             } else if (response?.type === "file") {
               return (
                 <div key={index} className="mb-3 col-6">
-                  <FileDisplay />
+                  <FileDisplay response={response} />
                 </div>
               );
             } else {
