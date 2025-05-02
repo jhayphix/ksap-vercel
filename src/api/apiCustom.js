@@ -9,49 +9,6 @@ export const APPLICANTS_API_REF = `${BASE_API_REF}/applicants`;
 export const EXTERNAL_SCHOLARSHIPS_API_REF = `${BASE_API_REF}/external-scholarships`;
 
 /**
- * Helper to detect if an object contains any File or Blob.
- */
-const containsFile = (obj) => {
-  if (obj instanceof File || obj instanceof Blob) return true;
-
-  if (Array.isArray(obj)) {
-    return obj.some(containsFile);
-  }
-
-  if (typeof obj === "object" && obj !== null) {
-    return Object.values(obj).some(containsFile);
-  }
-
-  return false;
-};
-
-/**
- * Recursively converts a nested object to FormData.
- * @param {object} obj - The object to convert.
- * @param {FormData} formData - The FormData instance.
- * @param {string} [parentKey] - The prefix for nested keys.
- */
-const objectToFormData = (obj, formData = new FormData(), parentKey = "") => {
-  if (obj instanceof File || obj instanceof Blob) {
-    formData.append(parentKey, obj);
-  } else if (Array.isArray(obj)) {
-    obj.forEach((value, index) => {
-      const key = `${parentKey}[${index}]`;
-      objectToFormData(value, formData, key);
-    });
-  } else if (typeof obj === "object" && obj !== null) {
-    Object.entries(obj).forEach(([key, value]) => {
-      const fullKey = parentKey ? `${parentKey}[${key}]` : key;
-      objectToFormData(value, formData, fullKey);
-    });
-  } else {
-    formData.append(parentKey, obj ?? "");
-  }
-
-  return formData;
-};
-
-/**
  * Sends a GET request to retrieve data from the API.
  * @param {string} url - The API endpoint.
  * @returns {Promise<object>} - The response data.
@@ -78,20 +35,13 @@ export const getRequest = async (url) => {
  */
 export const postRequest = async (url, data) => {
   try {
-    const isMultipart = containsFile(data);
-    const payload = isMultipart ? objectToFormData(data) : data;
-    const headers = isMultipart
-      ? {} // Let Axios/browser handle Content-Type with boundary
-      : { "Content-Type": "application/json" };
-
-    const response = await axios.post(url, payload, { headers });
+    const response = await axios.post(url, data);
     return response.data;
   } catch (error) {
     console.error("POST request error:", error);
     throw error;
   }
 };
-
 
 /**
  * Sends a PUT request to update an existing resource.
@@ -104,14 +54,7 @@ export const postRequest = async (url, data) => {
  */
 export const putRequest = async (url, id, data) => {
   try {
-    const isMultipart = containsFile(data);
-    const payload = isMultipart ? objectToFormData(data) : data;
-    const headers = isMultipart
-  ? {} // Let Axios/browser handle Content-Type with boundary
-  : { "Content-Type": "application/json" };
-
-
-    const response = await axios.put(`${url}/${id}`, payload, { headers });
+    const response = await axios.put(`${url}/${id}`, data);
     return response.data;
   } catch (error) {
     console.error("PUT request error:", error);

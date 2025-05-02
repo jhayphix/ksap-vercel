@@ -4,8 +4,6 @@ const FileDisplay = ({ response = {}, className }) => {
   const responseFileUrl = response?.response;
   const responseLabel = response?.label;
 
-  console.log("Response: ", response);
-
   return (
     <div className={`${className}`}>
       <p className="text mb-2 text-muted" style={{ fontWeight: "600" }}>
