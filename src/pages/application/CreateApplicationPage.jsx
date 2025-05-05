@@ -235,8 +235,11 @@ const CreateApplicationPage = () => {
 
     try {
       await createApplicationController();
-
-      if (thereIsErrorWhileSubmitting === false) {
+      if (thereIsErrorWhileSubmitting === true) {
+        if (notOnLastSection) {
+          setSearchParams({ section: thisSectionIndex });
+        }
+      } else if (thereIsErrorWhileSubmitting === false) {
         if (notOnLastSection) {
           setSearchParams({ section: thisSectionIndex + 1 });
         }
@@ -320,8 +323,6 @@ const CreateApplicationPage = () => {
     };
 
     setLoading(true);
-
-    console.log("dataToSave: ", dataToSave);
 
     try {
       const existingApplication = await getExistingApplication(

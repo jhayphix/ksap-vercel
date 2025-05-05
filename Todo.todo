@@ -1,5 +1,11 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+CleanUp:
+    ☐ Clean ksap client
+    ☐ Create application without image
+    ☐ Update applicaiton without image
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 UPDATE:
     ✔ Delete scholarship the hard way @done(25-04-30 01:17)
     ☐ Deactivate and activate admin

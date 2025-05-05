@@ -18,7 +18,7 @@ export const getRequest = async (url) => {
     const response = await axios.get(url);
     return response.data.data?.map((doc) => ({
       ...doc,
-      id: doc._id, // Renamed from documentId for clarity
+      id: doc._id, // Renamed from _id for clarity
     }));
   } catch (error) {
     console.error("GET request error:", error);

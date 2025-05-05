@@ -348,7 +348,7 @@ const UpdateApplicationPage = () => {
     }
   };
 
-  // Update application submit
+  // On Create Application on Submit
   const submitUpdateApplication = async () => {
     const updatedSection = scholarshipApplicationSections
       ?.map((section) => ({
@@ -361,6 +361,7 @@ const UpdateApplicationPage = () => {
       }))
       ?.find((section) => section?.sectionId === thisSection?.id);
 
+    // Ensure all scholarship sections exist in responseSections
     const responseSections = scholarshipApplicationSections.map((section) => {
       const existingSection = applicantApplication?.responseSections?.find(
         (s) => s.sectionId === section.id
@@ -368,13 +369,13 @@ const UpdateApplicationPage = () => {
 
       return existingSection
         ? existingSection.sectionId === updatedSection?.sectionId
-          ? updatedSection
+          ? updatedSection // Update existing section
           : existingSection
         : {
             id: uuidv4(),
             sectionId: section.id,
             sectionTitle: section.sectionTitle,
-            responses: [],
+            responses: [], // Empty responses for new section
           };
     });
 
@@ -395,11 +396,12 @@ const UpdateApplicationPage = () => {
       isCompleted: completedSections.length === totalApplicationSections,
     };
 
+    // const { scholarship, ...withOutScholarship } = applicantApplication;
     const applicationDataToSave = {
       ...applicantApplicationOnly,
       updatedAt: HELPER?.getISODate(new Date()),
       progress,
-      responseSections,
+      responseSections: responseSections,
     };
 
     setUpdateLoading(true);
@@ -409,7 +411,6 @@ const UpdateApplicationPage = () => {
         loggedInApplicantId,
         scholarshipId
       );
-
       const response =
         existingApplication &&
         (await putRequest(
@@ -451,7 +452,6 @@ const UpdateApplicationPage = () => {
       setUpdateLoading(false);
     }
   };
-  
 
   return (
     <PageTransition effect={myApplicationsPageEffect}>
