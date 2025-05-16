@@ -43,6 +43,7 @@ import CreateExternalScholarshipPage from "@pages/externalScholarship/CreateExte
 import UpdateExternalScholarshipPage from "@pages/externalScholarship/UpdateExternalScholarshipPage";
 
 import NotFoundPage from "@pages/notFound/NotFoundPage";
+import TestPage from "@src/test/TestPage";
 
 const WebRouting = () => {
   const location = useLocation();
@@ -79,6 +80,7 @@ const WebRouting = () => {
     <AnimatePresence mode="wait">
       <Routes location={location} key={location.pathname}>
         {/* ✅ Public Routes */}
+        <Route path="/test" element={<TestPage />} />
         <Route path={homeRoute?.path} element={<DashboardPage />} />
         <Route path={dashboardRoute?.path} element={<DashboardPage />} />
         <Route
